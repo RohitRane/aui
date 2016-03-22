@@ -8,15 +8,23 @@ import { GithubContributorService } from '../app/components/githubContributor/gi
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 
-angular.module('aftermarket', ['ngResource', 'ui.router', 'ui.bootstrap', 'toastr','aftermarket.header','aftermarket.searchResults'])
-  .constant('malarkey', malarkey)
-  .constant('moment', moment)
-  .config(config)
-  .config(routerConfig)
-  .run(runBlock)
-  .service('githubContributor', GithubContributorService)
-  .service('webDevTec', WebDevTecService)
-  .controller('MainController', MainController)
-  .directive('acmeMalarkey', MalarkeyDirective);
+angular.module('aftermarket', 
+    ['ngResource', 
+    'ui.router', 
+    'ui.bootstrap', 
+    'toastr',
+    'aftermarket.header',
+    'aftermarket.home',
+    'aftermarket.searchResults']
+)
+      .constant('malarkey', malarkey)
+      .constant('moment', moment)
+      .config(config)
+      .config(routerConfig)
+      .run(runBlock)
+      .service('githubContributor', GithubContributorService)
+      .service('webDevTec', WebDevTecService)
+      .controller('MainController', MainController)
+      .directive('acmeMalarkey', MalarkeyDirective);
 
 //Main module.
