@@ -8,7 +8,7 @@ import { GithubContributorService } from '../app/components/githubContributor/gi
 import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 
-angular.module('aftermarket', ['ngResource', 'ui.router', 'ui.bootstrap', 'toastr','aftermarket.navbar'])
+angular.module('aftermarket', ['ngResource', 'ui.router', 'ui.bootstrap', 'toastr','aftermarket.header','aftermarket.searchResults'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)

@@ -4,7 +4,6 @@
  */
 $navbar-inverse-link-color: #5AADBB;
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-$container-sm:100%;
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -12,11 +11,6 @@ $container-sm:100%;
  */
 // bower:scss
 // endbower
-
-.container-fluid{
-  padding-left: 0px;
-  padding-right: 0px;
-}
 
 .browsehappy {
   margin: 0.2em 0;
