@@ -9,7 +9,7 @@ import { WebDevTecService } from '../app/components/webDevTec/webDevTec.service'
 import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 
-angular.module('aftermarket', ['ngResource', 'ui.router', 'ui.bootstrap', 'toastr','aftermarket.search-results'])
+angular.module('aftermarket', ['ngResource', 'ui.router', 'ui.bootstrap', 'toastr'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .config(config)
@@ -21,4 +21,4 @@ angular.module('aftermarket', ['ngResource', 'ui.router', 'ui.bootstrap', 'toast
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);
 
-//Main module
+//Main module.
