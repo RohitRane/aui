@@ -20,3 +20,5 @@ angular.module('aftermarket', ['ngResource', 'ui.router', 'ui.bootstrap', 'toast
   .controller('MainController', MainController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);
+
+//Main module
