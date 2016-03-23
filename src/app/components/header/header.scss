@@ -1,3 +1,35 @@
-.acme-navbar-text{
-  color: white;
+header{
+    .top-nav{
+       @media(min-width:768px){
+        height: 140px;
+      }   
+    }
+    .nav-section{
+      //display:block; 
+      &.top{
+          height: 40px;
+          ul{
+            height: 40px;
+            li{
+              height: 40px;
+              a{
+                padding-top: 0px;
+                padding-bottom: 0px
+              }
+            }
+          }
+      }
+      &.bottom{
+          height: 60px
+      }
+      
+    }
+    .navbar-header{
+      @media(min-width:768px){
+        width: 10%;
+      }      
+      &.top{
+        height: 100px;
+      }
+    }
 }

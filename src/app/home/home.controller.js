@@ -1,7 +1,7 @@
 /*Author:Rohit Rane*/
-export class HomeController{
-    constructor(){
-      'ngInject';
-      
+export class HomeController {
+    constructor() {
+        'ngInject';
+
     }
 }

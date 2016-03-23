@@ -1,8 +1,8 @@
 export class PageHeaderController {
-  constructor (moment) {
-    'ngInject';
+    constructor(moment) {
+        'ngInject';
 
-    // "this.creation" is available by directive option "bindToController: true"
-    this.relativeDate = moment(this.creationDate).fromNow();
-  }
+        // "this.creation" is available by directive option "bindToController: true"
+        this.relativeDate = moment(this.creationDate).fromNow();
+    }
 }
