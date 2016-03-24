@@ -7,7 +7,6 @@ export function routerConfig($stateProvider) {
             templateUrl: 'app/search-results/search-results.html',
             controller: 'SearchResultsController',
             controllerAs: 'srchRes'
-
         });
 }
 

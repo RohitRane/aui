@@ -1,6 +1,6 @@
 export class SearchResultsController{
-    constructor(){
-      'ngInject';
-      
+    constructor($scope) {
+        'ngInject';
+        this.name="India";
     }
 }
