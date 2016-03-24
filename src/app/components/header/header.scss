@@ -1,4 +1,7 @@
 header{
+    .navbar{
+      margin-bottom: 0px;
+    }
     .top-nav{
        @media(min-width:768px){
         height: 140px;
@@ -19,8 +22,21 @@ header{
             }
           }
       }
-      &.bottom{
+      &.middle{
           height: 60px
+      }
+      &.bottom{
+        height: 30px;
+          ul{
+            height: 30px;
+            li{
+              height: 30px;
+              a{
+                padding-top: 0px;
+                padding-bottom: 0px
+              }
+            }
+          }
       }
       
     }
@@ -30,6 +46,12 @@ header{
       }      
       &.top{
         height: 100px;
+      }
+    }
+    .category-menu{
+      height: 30px;
+      .navbar-header{
+        height: 30px;
       }
     }
 }
