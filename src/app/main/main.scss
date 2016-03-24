@@ -1,6 +1,27 @@
 /*Author : Rohit Rane*/
+
+// global sass variables
+
+$accent_color : #0099CC;
+$color_extreme_one : black;
+$color_extreme_two : white;
+$support_color_dark_one : #222222;
+$support_color_dark_two : #323232;
+$support_color_light_one : #dbdbdb;
+$support_color_light_two : #f0f0f0;
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+    font-family: 'Open Sans';
+}
+
 .content{
   >*{
     padding-top: 1px;
   }
+}
+
+.btn, input[type=text] {
+  border-radius: 0px; 
 }

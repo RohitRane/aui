@@ -23,7 +23,17 @@ header{
           }
       }
       &.middle{
-          height: 60px
+          height: 60px;
+          .form-group{
+            float:left;
+          }
+          [uib-dropdown]{
+            float: left
+          }
+          .btn, input[type=text] {
+            border-radius: 0px;
+            height: 40px;
+          }
       }
       &.bottom{
         height: 30px;
