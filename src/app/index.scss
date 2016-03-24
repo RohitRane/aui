@@ -34,3 +34,12 @@ $grid-gutter-width: 20px;
  */
 // injector
 // endinjector
+
+@font-face {
+    font-family: OpenSans;
+    src: url('assets/fonts/OpenSans-Regular.ttf');
+}
+
+body{
+    font-family: OpenSans;
+}
