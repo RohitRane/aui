@@ -1,6 +1,6 @@
 <form class="navbar-form navbar-left search-bar" role="search">
   <div class="form-group">
-    <input type="text" class="form-control" placeholder="Search">
+    <input type="text" class="form-control" data-ng-model="searchBar.search.searchString" placeholder="Search" data-ng-change="searchBar.textTyped()">
   </div>
   <div class="btn-group" uib-dropdown>
     <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
@@ -9,7 +9,7 @@
     <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
       <li role="menuitem" data-ng-repeat="category in searchBar.categories" data-ng-click="searchBar.searchScope = category"><a href="#">{{category}}</a></li>
       <li class="divider"></li>
-      <li role="menuitem" data-ng-click="searchBar.searchScope = 'All'"><a href="#">All</a></li>
+      <li role="menuitem" data-ng-click="searchBar.search.searchScope = 'All'"><a href="#">All</a></li>
     </ul>
   </div>
   <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
