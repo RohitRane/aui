@@ -10,9 +10,29 @@ $support_color_dark_two : #323232;
 $support_color_light_one : #dbdbdb;
 $support_color_light_two : #f0f0f0;
 
+//mixins and extendable classes defined here 
+
+.title{
+    font-size:18px;
+    font-weight: 500;
+    color: $accent_color
+}
+
+.regular-text{
+    font-weight: 400px;
+    color: $color_extreme_one
+}
+
+.sub-title{
+    @extend .regular-text;
+    font-size: 13px;    
+}
+
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 body{
+    @extend .regular-text;
     font-family: 'Open Sans';
 }
 

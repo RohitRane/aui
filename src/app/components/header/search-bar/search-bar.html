@@ -4,7 +4,7 @@
   </div>
   <div class="btn-group" uib-dropdown>
     <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
-      {{searchBar.searchScope}} <span class="caret"></span>
+      {{searchBar.search.searchScope}} <span class="caret"></span>
     </button>
     <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
       <li role="menuitem" data-ng-repeat="category in searchBar.categories" data-ng-click="searchBar.searchScope = category"><a href="#">{{category}}</a></li>

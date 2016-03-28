@@ -10,6 +10,7 @@ header{
        @media(min-width:768px){
         height: 140px;
       }   
+      background-color:$support_color_dark_two;
     }
     .nav-section{
       //display:block; 
@@ -21,7 +22,8 @@ header{
               height: 40px;
               a{
                 padding-top: 0px;
-                padding-bottom: 0px
+                padding-bottom: 0px;
+                color: $support_color_light_one
               }
             }
           }
@@ -38,6 +40,13 @@ header{
             border-radius: 0px;
             height: 40px;
           }
+          ul{
+              li{
+                  a{
+                      color: $support_color_light_one;
+                  }
+              }
+          }
       }
       &.bottom{
         height: 30px;
@@ -47,7 +56,8 @@ header{
               height: 30px;
               a{
                 padding-top: 0px;
-                padding-bottom: 0px
+                padding-bottom: 0px;
+                color: $support_color_light_one;
               }
             }
           }
