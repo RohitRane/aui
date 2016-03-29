@@ -9,5 +9,3 @@ export function routerConfig($stateProvider) {
             controllerAs: 'srchRes'
         });
 }
-
-

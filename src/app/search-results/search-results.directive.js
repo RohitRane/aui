@@ -3,14 +3,23 @@ export function SearchResultDirective() {
 
     let directive = {
         restrict: 'E',
-        templateUrl: 'app/search-results/search-results.html',
+        templateUrl: 'app/search-results/search-results-directive.html',
         scope: {
-            creationDate: '='
+            list: '='
         },
-        controller: 'SearchResultsController',
-        controllerAs: 'vm',
-        bindToController: true
+        controller: SearchResultDirectiveController,
+        controllerAs: 'searchResult',
+        bindToController: true,
     };
-
     return directive;
 }
+
+class SearchResultDirectiveController{
+    constructor($log, $http){
+         'ngInject';
+         this.http = $http;
+         this.log = $log;
+    }
+}
+
+

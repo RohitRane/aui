@@ -1,0 +1,45 @@
+<h5>Steer Axel Assembly</h5>
+    <div class="search-results-details" data-ng-repeat="obj in searchResult.list">
+        <div class="result-card">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                        <span class="name">{{obj.name}}</span>
+                        <span class="cart pull-right">
+                            <span><img src="http://placehold.it/20x20"></span>
+                            <span>Add to WishList <span class="caret"></span></span>
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                        </span>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img alt="http://placehold.it/160x160" src="{{obj.imageURL}}">
+                        </div>
+                        <div class="col-md-5">
+                            <ul>
+                                <li>Specifications</li>
+                                <li><a>View all specs</a></li>
+                            </ul>
+                            <table class="table table-striped">
+                                <tr data-ng-repeat="tab in obj.table">
+                                    <td>{{tab.name}}</td>
+                                    <td>{{tab.value}}</td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="http://placehold.it/30x30">
+                            <div><p>MMS<sup>TM</sup>Hub</p></div>
+                            <div>
+                                <ul>
+                                <li>Industry leading hub system technology</li>
+                                <li>Reduce the maintainance and improved reliability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+</div>

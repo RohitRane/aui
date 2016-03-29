@@ -1,6 +1,89 @@
+.bread-crum{
+    height: 40px;
+    width: 100%;
+    padding: 0px 10px;
+    .resultBar{
+        font-size: 12px;
+        float: left;
+        line-height: 40px;
+        vertical-align: middle;
+        .bold{
+            font-weight: bold;
+            a{
+                cursor: pointer;
+            }
+        }
+    }
+    .dropdownBar{
+        line-height: 40px;
+        vertical-align: middle;
+        float: right;
+        .btn{
+            padding: 2px 5px;
+            font-size: 12px;
+            font-weight: bold;
+            background-color: #bdbdbd;
+        }
+    }
+}
 .search-results{
     background-color: #dbdbdb;
-    
+    .filter{
+        .refine-list{
+            .refine-header{
+                font-weight: bold;
+                .expander{
+                    float: right;
+                }
+            }
+            .refine-options{
+                label{
+                 font-weight: normal;   
+                }
+                .list{
+                    margin-left: 20px;   
+                }
+                .scale{
+                    form{
+                        display: table;
+                            input[type="range"] {
+                                display: inline-block;
+                                width: 70%;
+                        }
+                        output{
+                            display: table-cell;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                .search{
+                    .filterBox{
+                        padding: 5px 5px 10px 0px;
+                        input[type="text"]{
+                            width: 90%;
+                            -moz-border-bottom-colors: none;
+                            -moz-border-left-colors: none;
+                            -moz-border-right-colors: none;
+                            -moz-border-top-colors: none;
+                            border-color: -moz-use-text-color -moz-use-text-color #ddd;
+                            border-image: none;
+                            border-width: 0 0 1px;
+                            font-size: 13px;
+                            line-height: 18px;
+                            padding: 0 5px 5px 0;
+                        }
+                        .glyphicon-search{
+                            float: right;
+                        }
+                    }
+                    .list{
+                        margin-left: 0px; 
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
     .search-results-details{
         background-color: white;
         .result-card{

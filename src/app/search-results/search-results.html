@@ -1,57 +1,30 @@
 
+<div class="bread-crum">
+    <span class="resultBar">1-16 of 189 Results for the <span class="bold">Commercial vechile:<a> "steer axie"
+    </a></span></span>
+    <span class="dropdownBar">
+         <div class="btn-group" uib-dropdown is-open="status.isopen">
+            <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                Relevance <span class="caret"></span>
+            </button>
+            <ul class="pull-right"" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a href="#">Action</a></li>
+                <li role="menuitem"><a href="#">Another action</a></li>
+                <li role="menuitem"><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li role="menuitem"><a href="#">Separated link</a></li>
+            </ul>
+         </div>
+    </span>
+    <div style="clear:fix"> </div>
+</div>
+
 <div class="search-results row">
-    <div class="col-md-2">
-        <h6>SEE ALL CATEGORIES</h6>{{name}}
+    <div class="col-md-2 filter">
+        <filter-directive list="srchRes.filters"></filter-directive>
     </div>
     <div class="col-md-8">
-        <h5>Steer Axel Assembly</h5>
-        <div class="search-results-details">
-            <div class="result-card">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                            <span class="name">E-10021</span>
-                            <span class="cart pull-right">
-                                <span><img src="http://placehold.it/20x20"></span>
-                                <span>Add to WishList <span class="caret"></span></span>
-                                <span class="glyphicon glyphicon-shopping-cart"></span>
-                            </span>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="http://placehold.it/160x160">
-                            </div>
-                            <div class="col-md-5">
-                                <ul>
-                                    <li>Specifications</li>
-                                    <li><a>View all specs</a></li>
-                                </ul>
-                                <table class="table table-striped">
-                                    <tr>
-                                        <td>GAWR</td>
-                                        <td>1000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Center Drop</td>
-                                        <td>1.25 inch</td>
-                                    </tr>
-                                </table>
-                            </div>
-                            <div class="col-md-4">
-                              <img src="http://placehold.it/30x30">
-                              <div><p>MMS<sup>TM</sup>Hub</p></div>
-                              <div>
-                                  <ul>
-                                    <li>abcdddddddddddddddddddddddddddddddddddddddddddd</li>
-                                    <li>def</li>
-                                 </ul>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-            </div>
-        </div>
+        <search-result-directive list="srchRes.resultCard"></search-result-directive>
     </div>
     <div class="col-md-2"></div>
 </div>
