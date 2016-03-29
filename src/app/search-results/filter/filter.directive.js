@@ -9,7 +9,7 @@ export function FilterDirective() {
         },
         controller: FilterDirectiveController,
         controllerAs: 'vm',
-        bindToController: true,
+        bindToController: true
     };
     return directive;
 }
