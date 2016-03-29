@@ -1,5 +1,5 @@
 export class SearchResultsController{
-    constructor($log) {
+    constructor() {
         'ngInject';
         
         this.filters = [            
@@ -30,14 +30,7 @@ export class SearchResultsController{
             }
         ];
         
-        this.filter = [
-          {
-              name: "abhi"
-          },
-          {
-              name: "teju"
-          }  
-        ];
+        
        this.resultCard = [
           {
               name: "E-10021",

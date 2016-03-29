@@ -197,16 +197,35 @@
         }
     }
     .parts{
-        padding: 0px 10px 0px 0px;;
-        .part1{
-            padding: 10px;
+        padding: 20px 10px 0px 0px;;
+        .part{
             background-color: white;
-            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .part1{
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            p{
+                margin: 10px 0px 0px 0px;
+                span{
+                    font-weight: bold;
+                }
+            }
+             
         }
         .part2{
-            padding: 10px;
             background-color: white;
-            height: 100px;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            background-color: white;
+            p{
+                font-size: 10px;
+            }
         }
     }
 }

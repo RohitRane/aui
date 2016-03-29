@@ -15,19 +15,9 @@ export function FilterDirective() {
 }
 
 class FilterDirectiveController{
-    constructor($log, $http){
+    constructor(){
          'ngInject';
-         this.http = $http;
-         this.log = $log;
-         this.prestine = {};
-         this.setValues();
     }   
-    
-     setValues(){
-        angular.forEach(this.list, function(filter) {
-          
-        });
-    }
 }
 
 

@@ -9,16 +9,14 @@ export function SearchResultDirective() {
         },
         controller: SearchResultDirectiveController,
         controllerAs: 'searchResult',
-        bindToController: true,
+        bindToController: true
     };
     return directive;
 }
 
 class SearchResultDirectiveController{
-    constructor($log, $http){
+    constructor(){
          'ngInject';
-         this.http = $http;
-         this.log = $log;
     }
 }
 
