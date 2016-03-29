@@ -1,0 +1,25 @@
+.category-list{
+    @extend .sub-title;
+    a {
+        position: relative;
+        &:after {
+            content: '';
+            height: 15px;
+            width: 1px;
+            top: 3px;
+            background: $support_color_light_one;
+            position: absolute;
+            right: 0px;
+        }
+        &.last-item {
+            &:after{
+                content: '';
+                height: 15px;
+                width: 0px;
+                top: 3px;
+                position: absolute;
+                right: 0px;
+            }
+        }
+    }
+}

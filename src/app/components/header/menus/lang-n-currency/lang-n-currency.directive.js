@@ -10,14 +10,15 @@ export function langNCurrencyDirective() {
         controller: LangNCurrencyController,
         controllerAs: 'lnc',
         bindToController: true,
-        replace:true
+        replace: true
     };
 
     return directive;
 }
 
-class LangNCurrencyController{
-  constructor(){
-    
-  }
+class LangNCurrencyController {
+    constructor($log) {
+        'ngInject';
+        $log.debug("Running lng n curr controller.");
+    }
 }

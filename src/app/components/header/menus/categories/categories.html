@@ -1,3 +1,7 @@
-<ul class="nav navbar-nav">
-  <li data-ng-repeat="category in categoryMenu.categories"><a href="#">{{category|uppercase}}</a></li>
+<ul class="nav navbar-nav category-list">
+  <li data-ng-repeat="category in categoryMenu.categories">
+      <a href="#" class="separator" data-ng-class="{'last-item':$index===categoryMenu.categories.length-1}">
+          {{category|uppercase}}
+      </a>
+  </li>
 </ul>
