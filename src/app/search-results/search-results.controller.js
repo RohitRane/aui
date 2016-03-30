@@ -34,7 +34,7 @@ export class SearchResultsController{
        this.resultCard = [
           {
               name: "E-10021",
-              imageURL: "http://placehold.it/160x160",
+              imageURL: "assets/images/VectorSmart.png",
               table:[
                   {
                       name: "GAWR",
@@ -48,7 +48,7 @@ export class SearchResultsController{
           },
           {
               name: "G-10051",
-              imageURL: "http://placehold.it/160x160",
+              imageURL: "assets/images/VectorSmart.png",
               table:[
                   {
                       name: "GAWR",

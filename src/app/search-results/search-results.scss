@@ -119,6 +119,12 @@
              }
              .panel-body{
                  padding: 10px 10px;
+                 .col-md-3{
+                     img{
+                         width: 160px;
+                         height: 160px;
+                     }
+                 }
                  .col-md-5{
                      border-right:1px solid #AAAAAA;
                      ul{
@@ -205,10 +211,7 @@
             text-align: center;
         }
         .part1{
-            background-color: white;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-align: center;
+            @extend .part;
             p{
                 margin: 10px 0px 0px 0px;
                 span{
@@ -218,11 +221,7 @@
              
         }
         .part2{
-            background-color: white;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-align: center;
-            background-color: white;
+             @extend .part;
             p{
                 font-size: 10px;
             }

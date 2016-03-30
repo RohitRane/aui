@@ -9,6 +9,14 @@
         "sku": "SPL90X",
         "desc": "U-Joint Kit",
         "imgUrl": "null",
+        "brandImgUrl":"null",
+        "innovation":{
+            "title": "MMSTMHub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "OSR Style",
