@@ -15,7 +15,25 @@ export class SearchBarController {
         ];
 
         this.search = {
-            searchScope : 'All'
+            searchScope : 'All',
+            results : [
+                'ujoint',
+                'ujoint-A',
+                'ujoint-B',
+                'ujoint-C',
+                'ujoint-D',
+                'ujoint-E',
+                'ujoint-1',
+                'ujoint-2',
+                'ujoint-3',
+                'ujoint-4',
+                'ujoint-5',
+                'steer-axle-1',
+                'steer-axle-2',
+                'steer-axle-3',
+                'steer-axle-4',
+                'steer-axle-5'                
+            ]
         };
     }
     
