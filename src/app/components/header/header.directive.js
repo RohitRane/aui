@@ -10,7 +10,7 @@ export function pageHeaderDirective($log, $window) {
         controller: 'PageHeaderController',
         controllerAs: 'vm',
         bindToController: true,
-        link: function (scope, element, attrs) {
+        link: function (scope, element) {
             let navbar = element.children().children()[0];
             let navbarOriginalHgt = navbar.offsetHeight;
             angular.element($window).bind("scroll", function () {

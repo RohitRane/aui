@@ -12,7 +12,7 @@ import { categoryMenuDirective } from './menus/categories/categories.directive';
 import { searchBarDirective } from './search-bar/search-bar.directive';
 import { SearchBarController } from './search-bar/search-bar.controller';
 
-angular.module('aftermarket.header', [])
+angular.module('aftermarket.header', ['aftermarket.core'])
     .directive('pageHeader', pageHeaderDirective)
     .directive('langCurrencySelector',langNCurrencyDirective)
     .directive('helpNFaq',helpNFaqDirective)

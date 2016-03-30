@@ -15,7 +15,8 @@ angular.module('aftermarket',
         'toastr',
         'aftermarket.header',
         'aftermarket.home',
-        'aftermarket.searchResults']
+        'aftermarket.searchResults',
+        'aftermarket.core']
     )
     .constant('malarkey', malarkey)
     .constant('moment', moment)

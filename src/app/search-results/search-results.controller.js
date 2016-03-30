@@ -1,6 +1,12 @@
 export class SearchResultsController{
-    constructor() {
+    constructor($log, dataServices) {
         'ngInject';
+        
+        dataServices.partSearch().then(function (response) {
+            $log.debug("Response in Controller :", response);
+        }, function (error) {
+            $log.debug("Error in response :", error);
+        });
         
         this.filters = [            
             {
