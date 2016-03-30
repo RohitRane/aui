@@ -1,4 +1,4 @@
-export function pageHeaderDirective() {
+export function pageHeaderDirective($log, $window) {
     'ngInject';
 
     let directive = {
@@ -9,7 +9,19 @@ export function pageHeaderDirective() {
         },
         controller: 'PageHeaderController',
         controllerAs: 'vm',
-        bindToController: true
+        bindToController: true,
+        link: function (scope, element, attrs) {
+            let navbar = element.children().children()[0];
+            let navbarOriginalHgt = navbar.offsetHeight;
+            angular.element($window).bind("scroll", function () {
+                if (this.pageYOffset >= navbarOriginalHgt) {
+                    scope.sticky = true;
+                } else {
+                    scope.sticky = false;
+                }
+                scope.$apply();
+            });
+        }
     };
 
     return directive;

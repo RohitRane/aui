@@ -7,13 +7,13 @@
     
      @media(min-width:1100px){
         input[type=text]{
-            width:455px;
+            width:450px;
         }
     }
     
     @media(min-width:1200px){
         input[type=text]{
-            width:555px;
+            width:550px;
         }
     }
     [uib-dropdown-menu ]{
@@ -25,10 +25,6 @@
         }
     }
     [uib-dropdown-toggle]{
-        width: 175px;
         font-size: 14px;
-        /*p{
-            float: right   
-        }  */      
     }
 }

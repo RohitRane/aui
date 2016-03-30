@@ -1,5 +1,8 @@
 .order-menu{
     @extend .sub-title;
+    a{
+        line-height: 15px !important;
+    }
     .top-text{
         font-size: 9px;
     }
