@@ -2,8 +2,11 @@ export class SearchResultsController{
     constructor($log, dataServices) {
         'ngInject';
         
+        let vm = this;
+        vm.results = {};
         dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
+            vm.results = response;
         }, function (error) {
             $log.debug("Error in response :", error);
         });
