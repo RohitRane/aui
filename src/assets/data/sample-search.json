@@ -8,10 +8,10 @@
         "name": "U-Joint Kit",
         "sku": "SPL90X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
-        "brandImgUrl":"null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
         "innovation":{
-            "title": "MMSTMHub",
+            "title": "MMS<sup>TM</sup>Hub",
             "features":[
                 "Industry leading hub system technology",
                 "Reduce the maintainance and improved reliability"
@@ -33,7 +33,15 @@
         "name": "U-Joint Kit",
         "sku": "SPL100-1X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "OSR Style",
@@ -50,7 +58,15 @@
         "name": "U-Joint Kit",
         "sku": "5001247",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "N",
           "Type": "HR Style",
@@ -67,7 +83,15 @@
         "name": "U-Joint Kit",
         "sku": "5-777X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -84,7 +108,15 @@
         "name": "U-Joint Kit",
         "sku": "5-773X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+       "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -101,7 +133,15 @@
         "name": "U-Joint Kit",
         "sku": "5-746X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -118,7 +158,15 @@
         "name": "U-Joint Kit",
         "sku": "5-677X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -135,7 +183,15 @@
         "name": "U-Joint Kit",
         "sku": "5-676X",
         "desc": "U-Joint Kit",
-        "imgUrl": "5-676X.png",
+       "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -152,7 +208,15 @@
         "name": "U-Joint Kit",
         "sku": "5-675X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -169,7 +233,15 @@
         "name": "U-Joint Kit",
         "sku": "5-674X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -186,7 +258,15 @@
         "name": "U-Joint Kit",
         "sku": "5-671X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -203,7 +283,15 @@
         "name": "U-Joint Kit",
         "sku": "5-610X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "N",
           "Type": "HR Style",
@@ -220,7 +308,15 @@
         "name": "U-Joint Kit",
         "sku": "5-585XM",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -237,7 +333,15 @@
         "name": "U-Joint Kit",
         "sku": "5-54X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "BP Style",
@@ -252,7 +356,15 @@
         "name": "U-Joint Kit",
         "sku": "5-515X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -269,7 +381,15 @@
         "name": "U-Joint Kit",
         "sku": "5-510X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -286,7 +406,15 @@
         "name": "U-Joint Kit",
         "sku": "5-469X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -303,7 +431,15 @@
         "name": "U-Joint Kit",
         "sku": "5-438X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -320,7 +456,15 @@
         "name": "U-Joint Kit",
         "sku": "5-423X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "Y",
           "Type": "HR Style",
@@ -337,7 +481,15 @@
         "name": "U-Joint Kit",
         "sku": "5-407X",
         "desc": "U-Joint Kit",
-        "imgUrl": "null",
+        "imgUrl": "assets/images/VectorSmart.png",
+        "brandImgUrl":"assets/images/spicer.png",
+        "innovation":{
+            "title": "MMS<sup>TM</sup>Hub",
+            "features":[
+                "Industry leading hub system technology",
+                "Reduce the maintainance and improved reliability"
+            ]
+        },
         "attrs": {
           "Greasable": "",
           "Type": "BP Style",

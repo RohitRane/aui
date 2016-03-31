@@ -38,41 +38,5 @@ export class SearchResultsController{
                 "options": ["HR Style", "BP Style", "OSR Style"]
             }
         ];
-        
-        
-       this.resultCard = [
-          {
-              name: "E-10021",
-              imageURL: "assets/images/VectorSmart.png",
-              table:[
-                  {
-                      name: "GAWR",
-                      value: 1000
-                  },
-                  {
-                      name: "Center Drop",
-                      value: "10.4 inches"
-                  }
-              ]
-          },
-          {
-              name: "G-10051",
-              imageURL: "assets/images/VectorSmart.png",
-              table:[
-                  {
-                      name: "GAWR",
-                      value: 4000
-                  },
-                  {
-                      name: "Center Drop",
-                      value: "12.4 inches"
-                  },
-                  {
-                      name: "width",
-                      value: "5.5 cm"
-                  }
-              ]
-          }
-         ];
     }
 }

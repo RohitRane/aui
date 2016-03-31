@@ -1,11 +1,11 @@
-<h5>Steer Axel Assembly</h5>
-<div class="search-results-details" data-ng-repeat="obj in searchResult.list">
+
+<div class="search-results-details">
   <div class="result-card">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <span class="name">{{obj.name}}</span>
+        <span class="name">{{partCard.part.name}}</span>
         <span class="cart pull-right">
-          <span><img src="assets/images/spicer.png">
+          <span><img src="{{partCard.part.brandImgUrl}}">
         </span>
         <span>Add to WishList <span class="caret"></span></span>
         <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -14,17 +14,17 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3">
-            <img alt="http://placehold.it/160x160" src="{{obj.imageURL}}">
+            <img alt="http://placehold.it/160x160" src="{{partCard.part.imgUrl}}">
           </div>
           <div class="col-md-5">
             <ul>
               <li>Specifications</li>
-              <li><a>View all specs</a></li>
+              <li data-ng-click="partCard.toggleSpecs()"><a>{{partCard.specToggleName}}</a></li>
             </ul>
             <table class="table table-striped">
-              <tr data-ng-repeat="tab in obj.table">
-                <td>{{tab.name}}</td>
-                <td>{{tab.value}}</td>
+              <tr data-ng-repeat="key in partCard.part.attrList | limitTo : partCard.specLimit" >
+                <td>{{key}}</td>
+                <td>{{partCard.part.attrs[key]}}</td>
               </tr>
 
             </table>
@@ -36,8 +36,7 @@
             </div>
             <div>
               <ul>
-                <li>Industry leading hub system technology</li>
-                <li>Reduce the maintainance and improved reliability</li>
+                <li data-ng-repeat="list in partCard.part.innovation.features">{{list}}</li>
               </ul>
             </div>
           </div>

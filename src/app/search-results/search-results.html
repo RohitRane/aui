@@ -23,8 +23,9 @@
   <div class="col-md-2 filter ">
     <filter-directive list="srchRes.filters"></filter-directive>
   </div>
-  <div class="col-md-8 ">
-    <search-result-directive list="srchRes.results"></search-result-directive>
+  <div class="col-md-8">
+    <h5>Steer Axel Assembly</h5>
+    <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
   </div>
   <div class="col-md-2 parts ">
     <!--<div class="part1 ">
