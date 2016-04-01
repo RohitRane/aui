@@ -84,7 +84,7 @@
             }
         }
     }
-    .search-results-details{
+    .part-card{
         background-color: white;
         .result-card{
             .panel{
@@ -135,6 +135,9 @@
                          font-size: 12px;
                          a{
                            font-size: 10px;
+                           &:hover{
+                             cursor:pointer;
+                           }
                          }
                        }
                        li:nth-child(2){
@@ -218,7 +221,6 @@
                     font-weight: bold;
                 }
             }
-             
         }
         .part2{
              @extend .part;
