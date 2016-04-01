@@ -1,44 +1,36 @@
 export class SearchBarController {
-    constructor($log) {
+    constructor($log, dataServices) {
         'ngInject';
-        
-        //Add all the 
-        this.logger = $log;
-        
-        this.categories = [
-            'Commercial Vehicles',
-            'Light Vehicles',
-            'Off-Highway',
-            'High Performance',
-            'Military/Defence',
-            'Industrial'
-        ];
 
-        this.search = {
-            searchScope : 'All',
-            results : [
-                'ujoint',
-                'ujoint-A',
-                'ujoint-B',
-                'ujoint-C',
-                'ujoint-D',
-                'ujoint-E',
-                'ujoint-1',
-                'ujoint-2',
-                'ujoint-3',
-                'ujoint-4',
-                'ujoint-5',
-                'steer-axle-1',
-                'steer-axle-2',
-                'steer-axle-3',
-                'steer-axle-4',
-                'steer-axle-5'                
+        let vm = this;
+        //Add all the DI this the vm model so that u can use them in the controller functions.
+        vm.logger = $log;
+        
+        vm.search = {
+            searchScope: 'All',
+            typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
+            categories: [
+                'Commercial Vehicles',
+                'Light Vehicles',
+                'Off-Highway',
+                'High Performance',
+                'Military/Defence',
+                'Industrial'
             ]
         };
-    }
-    
-    textTyped(){
         
-        this.logger.debug("change fired.",this.search.searchString);
+        dataServices.partSearch().then(function (response) {
+            $log.debug("Response in Controller :", response);
+            vm.search.results = response.parts;
+            $log.debug("Search OBj :",vm.search);
+        }, function (error) {
+            $log.debug("Error in response :", error);
+        });
+
+    }
+
+    textTyped() {
+        let vm = this;
+        vm.logger.debug("change fired.", this.search.searchString);
     }
 }
