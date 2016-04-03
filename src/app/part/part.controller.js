@@ -25,7 +25,7 @@ export class PartController {
         let zoomElement = angular.element(zoom);
         vm.DI.log.debug("zoom :",zoomElement);
         let a = -lensCenterX*5;
-        let b = -(lensCenterY+400);
+        let b = -(lensCenterY)*5;
         let bg = "url("+"assets/images/VectorSmart.png"+") "+a+"px"+" "+b+"px/2000px 1125px no-repeat";
         zoomElement.css("background",bg);
     }
