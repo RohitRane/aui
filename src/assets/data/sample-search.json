@@ -1,609 +1,609 @@
 {
-  "DanaResponse": {
-    "lineId": "1",
-    "total": 29,
-    "parts": [
-      {
-        "id": "151",
-        "name": "U-Joint Kit",
-        "sku": "SPL90X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
+    "DanaResponse": {
+        "lineId": "1",
+        "total": 29,
+        "parts": [
+            {
+                "id": "151",
+                "name": "U-Joint Kit",
+                "sku": "SPL90X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "OSR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.625",
+                    "Bearing Cap Diameter (2)": "1.625",
+                    "Snap Ring (1)": "4.957",
+                    "Snap Ring (2)": "4.957"
+                }
+            },
+            {
+                "id": "150",
+                "name": "steer Axle",
+                "sku": "SPL100-1X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "OSR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.625",
+                    "Bearing Cap Diameter (2)": "1.625",
+                    "Snap Ring (1)": "4.957",
+                    "Snap Ring (2)": "4.957"
+                }
+            },
+            {
+                "id": "125",
+                "name": "U-Joint Kit",
+                "sku": "5001247",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "N",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.875",
+                    "Bearing Cap Diameter (2)": "1.875",
+                    "Bearing Plate (1)": "5.312",
+                    "Bearing Plate (2)": "5.312"
+                }
+            },
+            {
+                "id": "149",
+                "name": "U-Joint Kit",
+                "sku": "5-777X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.875",
+                    "Bearing Cap Diameter (2)": "1.875",
+                    "Bearing Plate (1)": "5.312",
+                    "Bearing Plate (2)": "5.312"
+                }
+            },
+            {
+                "id": "148",
+                "name": "steer Axle",
+                "sku": "5-773X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "6.094",
+                    "Bearing Plate (2)": "6.094"
+                }
+            },
+            {
+                "id": "147",
+                "name": "U-Joint Kit",
+                "sku": "5-746X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "6.094",
+                    "Bearing Plate (2)": "6.094"
+                }
+            },
+            {
+                "id": "146",
+                "name": "U-Joint Kit",
+                "sku": "5-677X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "7.000",
+                    "Bearing Plate (2)": "7.000"
+                }
+            },
+            {
+                "id": "1",
+                "name": "steer Axle",
+                "sku": "5-676X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "1810",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "7.547",
+                    "Bearing Plate (2)": "7.547"
+                }
+            },
+            {
+                "id": "145",
+                "name": "U-Joint Kit",
+                "sku": "5-675X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "6.094",
+                    "Bearing Plate (2)": "6.094"
+                }
+            },
+            {
+                "id": "144",
+                "name": "U-Joint Kit",
+                "sku": "5-674X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.875",
+                    "Bearing Cap Diameter (2)": "1.875",
+                    "Bearing Plate (1)": "5.312",
+                    "Bearing Plate (2)": "5.312"
+                }
+            },
+            {
+                "id": "143",
+                "name": "steer Axle",
+                "sku": "5-671X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "6.094",
+                    "Bearing Plate (2)": "6.094"
+                }
+            },
+            {
+                "id": "142",
+                "name": "U-Joint Kit",
+                "sku": "5-610X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "N",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.875",
+                    "Bearing Cap Diameter (2)": "1.875",
+                    "Bearing Plate (1)": "5.312",
+                    "Bearing Plate (2)": "5.312"
+                }
+            },
+            {
+                "id": "141",
+                "name": "U-Joint Kit",
+                "sku": "5-585XM",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.875",
+                    "Bearing Cap Diameter (2)": "1.875",
+                    "Bearing Plate (1)": "5.312",
+                    "Bearing Plate (2)": "5.312"
+                }
+            },
+            {
+                "id": "140",
+                "name": "steer Axle",
+                "sku": "5-54X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "BP Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "2.812",
+                    "Bearing Plate (1)": "8.781"
+                }
+            },
+            {
+                "id": "139",
+                "name": "U-Joint Kit",
+                "sku": "5-515X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "6.094",
+                    "Bearing Plate (2)": "6.094"
+                }
+            },
+            {
+                "id": "138",
+                "name": "U-Joint Kit",
+                "sku": "5-510X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "7.547",
+                    "Bearing Plate (2)": "5.547"
+                }
+            },
+            {
+                "id": "137",
+                "name": "steer Axle",
+                "sku": "5-469X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Cap Diameter (2)": "1.938",
+                    "Bearing Plate (1)": "7.000",
+                    "Bearing Plate (2)": "7.000"
+                }
+            },
+            {
+                "id": "136",
+                "name": "U-Joint Kit",
+                "sku": "5-438X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.875",
+                    "Bearing Cap Diameter (2)": "1.875",
+                    "Bearing Plate (1)": "5.312",
+                    "Bearing Plate (2)": "5.312"
+                }
+            },
+            {
+                "id": "135",
+                "name": "U-Joint Kit",
+                "sku": "5-423X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "Y",
+                    "Type": "HR Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.875",
+                    "Bearing Cap Diameter (2)": "1.875",
+                    "Bearing Plate (1)": "5.312",
+                    "Bearing Plate (2)": "5.312"
+                }
+            },
+            {
+                "id": "134",
+                "name": "steer Axle",
+                "sku": "5-407X",
+                "desc": "U-Joint Kit",
+                "imgUrl": "assets/images/VectorSmart.png",
+                "brandImgUrl": "assets/images/spicer.png",
+                "innovation": {
+                    "title": "MMS<sup>TM</sup>Hub",
+                    "features": [
+                        "Industry leading hub system technology",
+                        "Reduce the maintainance and improved reliability"
+                    ]
+                },
+                "attrs": {
+                    "Greasable": "",
+                    "Type": "BP Style",
+                    "OEM Mfg": "Spicer",
+                    "OEM Series": "Spicer",
+                    "Bearing Cap Diameter (1)": "1.938",
+                    "Bearing Plate (1)": "7.000"
+                }
+            }
+        ],
         "attrs": {
-          "Greasable": "Y",
-          "Type": "OSR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.625",
-          "Bearing Cap Diameter (2)": "1.625",
-          "Snap Ring (1)": "4.957",
-          "Snap Ring (2)": "4.957"
+            "Type": {
+                "isSort": true,
+                "isList": true,
+                "attrVals": [
+                    "HR Style",
+                    "BP Style",
+                    "OSR Style"
+                ]
+            },
+            "Greasable": {
+                "isSort": false,
+                "isList": false,
+                "attrVals": [
+                    "Y",
+                    "N"
+                ]
+            },
+            "OEM Mfg": {
+                "isSort": false,
+                "isList": false,
+                "attrVals": [
+                    "Spicer"
+                ]
+            },
+            "OEM Series": {
+                "isSort": true,
+                "isList": true,
+                "attrVals": [
+                    "Spicer",
+                    "1810",
+                    "1710"
+                ]
+            },
+            "Bearing Cap Diameter (1)": {
+                "isSort": true,
+                "isList": true,
+                "attrVals": [
+                    "2.812",
+                    "1.875",
+                    "1.938",
+                    "2.312",
+                    "2.186",
+                    "1.625",
+                    "2.188"
+                ]
+            },
+            "Bearing Cap Diameter (2)": {
+                "isSort": true,
+                "isList": true,
+                "attrVals": [
+                    "1.875",
+                    "1.938",
+                    "1.625",
+                    "2.186"
+                ]
+            },
+            "Bearing Plate (1)": {
+                "isSort": null,
+                "isList": null,
+                "attrVals": [
+                    "7.547",
+                    "7.000",
+                    "5.312",
+                    "6.094",
+                    "8.094",
+                    "8.781",
+                    "6.594"
+                ]
+            },
+            "Bearing Plate (2)": {
+                "isSort": null,
+                "isList": null,
+                "attrVals": [
+                    "5.312",
+                    "6.094",
+                    "5.547",
+                    "7.000",
+                    "7.547"
+                ]
+            },
+            "Snap Ring (1)": {
+                "isSort": null,
+                "isList": null,
+                "attrVals": [
+                    "5.590",
+                    "4.957",
+                    "8.092"
+                ]
+            },
+            "Snap Ring (2)": {
+                "isSort": null,
+                "isList": null,
+                "attrVals": [
+                    "8.092",
+                    "5.590",
+                    "4.957"
+                ]
+            },
+            "Pilot Diameter": {
+                "isSort": null,
+                "isList": null,
+                "attrVals": []
+            }
         }
-      },
-      {
-        "id": "150",
-        "name": "steer Axle",
-        "sku": "SPL100-1X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "OSR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.625",
-          "Bearing Cap Diameter (2)": "1.625",
-          "Snap Ring (1)": "4.957",
-          "Snap Ring (2)": "4.957"
-        }
-      },
-      {
-        "id": "125",
-        "name": "U-Joint Kit",
-        "sku": "5001247",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "N",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.875",
-          "Bearing Cap Diameter (2)": "1.875",
-          "Bearing Plate (1)": "5.312",
-          "Bearing Plate (2)": "5.312"
-        }
-      },
-      {
-        "id": "149",
-        "name": "U-Joint Kit",
-        "sku": "5-777X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.875",
-          "Bearing Cap Diameter (2)": "1.875",
-          "Bearing Plate (1)": "5.312",
-          "Bearing Plate (2)": "5.312"
-        }
-      },
-      {
-        "id": "148",
-        "name": "steer Axle",
-        "sku": "5-773X",
-        "desc": "U-Joint Kit",
-       "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "6.094",
-          "Bearing Plate (2)": "6.094"
-        }
-      },
-      {
-        "id": "147",
-        "name": "U-Joint Kit",
-        "sku": "5-746X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "6.094",
-          "Bearing Plate (2)": "6.094"
-        }
-      },
-      {
-        "id": "146",
-        "name": "U-Joint Kit",
-        "sku": "5-677X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "7.000",
-          "Bearing Plate (2)": "7.000"
-        }
-      },
-      {
-        "id": "1",
-        "name": "steer Axle",
-        "sku": "5-676X",
-        "desc": "U-Joint Kit",
-       "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "1810",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "7.547",
-          "Bearing Plate (2)": "7.547"
-        }
-      },
-      {
-        "id": "145",
-        "name": "U-Joint Kit",
-        "sku": "5-675X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "6.094",
-          "Bearing Plate (2)": "6.094"
-        }
-      },
-      {
-        "id": "144",
-        "name": "U-Joint Kit",
-        "sku": "5-674X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.875",
-          "Bearing Cap Diameter (2)": "1.875",
-          "Bearing Plate (1)": "5.312",
-          "Bearing Plate (2)": "5.312"
-        }
-      },
-      {
-        "id": "143",
-        "name": "steer Axle",
-        "sku": "5-671X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "6.094",
-          "Bearing Plate (2)": "6.094"
-        }
-      },
-      {
-        "id": "142",
-        "name": "U-Joint Kit",
-        "sku": "5-610X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "N",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.875",
-          "Bearing Cap Diameter (2)": "1.875",
-          "Bearing Plate (1)": "5.312",
-          "Bearing Plate (2)": "5.312"
-        }
-      },
-      {
-        "id": "141",
-        "name": "U-Joint Kit",
-        "sku": "5-585XM",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.875",
-          "Bearing Cap Diameter (2)": "1.875",
-          "Bearing Plate (1)": "5.312",
-          "Bearing Plate (2)": "5.312"
-        }
-      },
-      {
-        "id": "140",
-        "name": "steer Axle",
-        "sku": "5-54X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "BP Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "2.812",
-          "Bearing Plate (1)": "8.781"
-        }
-      },
-      {
-        "id": "139",
-        "name": "U-Joint Kit",
-        "sku": "5-515X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "6.094",
-          "Bearing Plate (2)": "6.094"
-        }
-      },
-      {
-        "id": "138",
-        "name": "U-Joint Kit",
-        "sku": "5-510X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "7.547",
-          "Bearing Plate (2)": "5.547"
-        }
-      },
-      {
-        "id": "137",
-        "name": "steer Axle",
-        "sku": "5-469X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Cap Diameter (2)": "1.938",
-          "Bearing Plate (1)": "7.000",
-          "Bearing Plate (2)": "7.000"
-        }
-      },
-      {
-        "id": "136",
-        "name": "U-Joint Kit",
-        "sku": "5-438X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.875",
-          "Bearing Cap Diameter (2)": "1.875",
-          "Bearing Plate (1)": "5.312",
-          "Bearing Plate (2)": "5.312"
-        }
-      },
-      {
-        "id": "135",
-        "name": "U-Joint Kit",
-        "sku": "5-423X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "Y",
-          "Type": "HR Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.875",
-          "Bearing Cap Diameter (2)": "1.875",
-          "Bearing Plate (1)": "5.312",
-          "Bearing Plate (2)": "5.312"
-        }
-      },
-      {
-        "id": "134",
-        "name": "steer Axle",
-        "sku": "5-407X",
-        "desc": "U-Joint Kit",
-        "imgUrl": "assets/images/VectorSmart.png",
-        "brandImgUrl":"assets/images/spicer.png",
-        "innovation":{
-            "title": "MMS<sup>TM</sup>Hub",
-            "features":[
-                "Industry leading hub system technology",
-                "Reduce the maintainance and improved reliability"
-            ]
-        },
-        "attrs": {
-          "Greasable": "",
-          "Type": "BP Style",
-          "OEM Mfg": "Spicer",
-          "OEM Series": "Spicer",
-          "Bearing Cap Diameter (1)": "1.938",
-          "Bearing Plate (1)": "7.000"
-        }
-      }
-    ],
-    "attrs": {
-      "Type": {
-        "isSort": true,
-        "isList": true,
-        "attrVals": [
-          "HR Style",
-          "BP Style",
-          "OSR Style"
-        ]
-      },
-      "Greasable": {
-        "isSort": false,
-        "isList": false,
-        "attrVals": [
-          "Y",
-          "N"
-        ]
-      },
-      "OEM Mfg": {
-        "isSort": false,
-        "isList": false,
-        "attrVals": [
-          "Spicer"
-        ]
-      },
-      "OEM Series": {
-        "isSort": true,
-        "isList": true,
-        "attrVals": [
-          "Spicer",
-          "1810",
-          "1710"
-        ]
-      },
-      "Bearing Cap Diameter (1)": {
-        "isSort": true,
-        "isList": true,
-        "attrVals": [
-          "2.812",
-          "1.875",
-          "1.938",
-          "2.312",
-          "2.186",
-          "1.625",
-          "2.188"
-        ]
-      },
-      "Bearing Cap Diameter (2)": {
-        "isSort": true,
-        "isList": true,
-        "attrVals": [
-          "1.875",
-          "1.938",
-          "1.625",
-          "2.186"
-        ]
-      },
-      "Bearing Plate (1)": {
-        "isSort": null,
-        "isList": null,
-        "attrVals": [
-          "7.547",
-          "7.000",
-          "5.312",
-          "6.094",
-          "8.094",
-          "8.781",
-          "6.594"
-        ]
-      },
-      "Bearing Plate (2)": {
-        "isSort": null,
-        "isList": null,
-        "attrVals": [
-          "5.312",
-          "6.094",
-          "5.547",
-          "7.000",
-          "7.547"
-        ]
-      },
-      "Snap Ring (1)": {
-        "isSort": null,
-        "isList": null,
-        "attrVals": [
-          "5.590",
-          "4.957",
-          "8.092"
-        ]
-      },
-      "Snap Ring (2)": {
-        "isSort": null,
-        "isList": null,
-        "attrVals": [
-          "8.092",
-          "5.590",
-          "4.957"
-        ]
-      },
-      "Pilot Diameter": {
-        "isSort": null,
-        "isList": null,
-        "attrVals": []
-      }
     }
-  }
 }

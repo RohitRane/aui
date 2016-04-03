@@ -16,6 +16,7 @@ angular.module('aftermarket',
         'aftermarket.header',
         'aftermarket.home',
         'aftermarket.searchResults',
+        'aftermarket.part',
         'aftermarket.core']
     )
     .constant('malarkey', malarkey)
