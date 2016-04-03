@@ -3,6 +3,7 @@
   <header>
     <page-header></page-header>
   </header>
-  <section class="container-fluid content" ui-view>
-  </section>
+  <div id="main-content" class="container-fluid content" ui-view>
+  </div>
+  <div id="overlay" data-ng-if="main.putOverlay"></div>
 </article>
