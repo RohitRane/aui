@@ -7,20 +7,12 @@ export function imageZoomDirective($log, $window) {
         scope: {
             //creationDate: '='
         },
-        //controller: 'ImageZoomController',
-        controllerAs: 'vm',
+        controller: 'ImageZoomController',
+        controllerAs: 'imgZoom',
         bindToController: true,
         link: function (scope, element) {
-            let navbar = element.children().children()[0];
-            let navbarOriginalHgt = navbar.offsetHeight;
-            angular.element($window).bind("scroll", function () {
-                if (this.pageYOffset >= navbarOriginalHgt) {
-                    scope.sticky = true;
-                } else {
-                    scope.sticky = false;
-                }
-                scope.$apply();
-            });
+            $log.debug("image zoom.");
+            
         }
     };
 

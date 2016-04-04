@@ -1,1 +1,9 @@
-<span>ABCD</span>
+<div class="image-zoom">
+    <div class="profile-pic">
+        <img id="active-img" src="assets/images/u-joint.jpg" alt="" data-ng-mousemove="imgZoom.enlarge($event)" >
+       <div id="lens" data-ng-mousemove="imgZoom.enlarge($event)" data-ng-if="imgZoom.showZoom"></div>
+    </div>
+   <div class="zoom-section" data-ng-if="imgZoom.showZoom">
+       <div id="zoom"></div>
+   </div>
+</div>

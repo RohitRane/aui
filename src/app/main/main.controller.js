@@ -48,9 +48,9 @@ export class MainController {
     addOpaqueOverlay() {
         //var mc = angular.element(('#main-content')).css("color");
         var vm = this;
-        this.DI.timeout(function () {
-            var mc = angular.element(vm.DI.document[0].getElementById('main-content'));
-            var mcHeight = mc[0].offsetHeight;
+        //this.DI.timeout(function () {
+            var mc =vm.DI.document[0].getElementById('main-content');
+            var mcHeight = mc.offsetHeight;
             vm.putOverlay = true;
             vm.DI.timeout(function () {
                 var overlay = angular.element(vm.DI.document[0].getElementById('overlay'));
@@ -58,7 +58,7 @@ export class MainController {
                 overlay.css("height", mcHeight+'px');
             });
 
-        });
+        //});
 
     }
 }
