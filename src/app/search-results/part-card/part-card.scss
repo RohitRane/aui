@@ -1,0 +1,121 @@
+ .part-card{
+        background-color: white;
+        .result-card{
+            .panel{
+                border-radius: 0px !important;
+                padding: 0 20px;
+                .col-md-6, .col-md-3{
+                    padding: 0;
+                }
+                .panel-heading{
+                background: white !important;
+                height: 40px;
+                padding: 10px 0px;
+                .name{
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: blue; 
+                }
+                .cart{
+                  span{
+                    margin: 0px 5px;
+                  }
+                  span:nth-child(2){
+                    border-left: 1px solid #AAAAAA;
+                    border-right: 1px solid #AAAAAA;
+                    padding: 0px 5px;
+                    margin: 0px;
+                  }
+                    .glyphicon-shopping-cart{
+                        color: blue;
+                    }
+                }
+             }
+             .panel-body{
+                 padding: 10px 10px;
+                 .col-md-3{
+                     img{
+                         width: 160px;
+                         height: 160px;
+                     }
+                 }
+                 .col-md-5{
+                     border-right:1px solid #AAAAAA;
+                     ul{
+                         padding-left: 0px;
+                       li{
+                         display: inline-block;
+                         font-weight: bold;
+                         font-size: 12px;
+                         a{
+                           font-size: 10px;
+                           &:hover{
+                             cursor:pointer;
+                           }
+                         }
+                       }
+                       li:nth-child(2){
+                           float: right;
+                       } 
+                    }
+                    table{
+                        tr{
+                            td{
+                                font-size: 10px;
+                                font-weight: bold;
+                                height: 20px;
+                                vertical-align: middle;
+                                padding: 0px !important;
+                            }
+                        }
+                    }
+                 }
+                 .col-md-4{
+                     p{
+                         font-size: 10px;
+                         color: blue;
+                         margin-top: 8px;
+                         font-weight: bold;
+                     }
+                     ul{
+                         padding-left: 10px;
+                         li{
+                             word-break: break-all;
+                             font-size: 10px;
+                             list-style: square;
+                             font-weight: 600;
+                             margin-top: 3px;
+                         }
+                     }
+                 }
+             }
+          }
+        }
+        .first-row{
+            height: 40px;
+            padding: 10px;
+            .name{
+                font-size: 16px;
+                color: blue; 
+            }
+            .cart{
+                ul{
+                    float: right;
+                    li{
+                        padding: 0px 5px;
+                        display: inline-block;
+                        .glyphicon-shopping-cart{
+                            color: blue;
+                        }
+                    }
+                    li:nth-child(2){
+                        border-left: 1px solid #AAAAAA;
+                        border-right: 1px solid #AAAAAA;
+                    }
+                }
+            }
+        }
+        hr{
+            margin: 0px !important;
+        }
+    }
