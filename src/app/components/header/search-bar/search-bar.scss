@@ -1,4 +1,7 @@
 .search-bar{
+    .form-group .dropdown-menu li.active{
+        background-color: $support_color_light_one;
+    }
     @media(min-width:1024px){
         input[type=text], .form-group .dropdown-menu li{
             width:375px;
@@ -29,5 +32,15 @@
     }
     [uib-dropdown-toggle]{
         font-size: 14px;
+    }
+    
+    .dropdown-menu{
+       ul {
+           li {
+               &.active{
+                   background:gray;
+               }
+           }
+       }
     }
 }
