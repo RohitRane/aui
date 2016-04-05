@@ -13,7 +13,7 @@ export class SearchBarController {
         vm.logger = $log;
 
         vm.search = {
-            searchScope: 'All',
+            searchScope: 'Commercial Vehicles',
             typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
             resultCountUpperLimit: 8,
             categories: [

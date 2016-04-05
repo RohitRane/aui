@@ -7,6 +7,32 @@
                 .col-md-6, .col-md-3{
                     padding: 0;
                 }
+                @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+                    .panel-heading{
+                         height: 30px !important;
+                         padding: 5px 0px !important;
+                         .name{
+                            font-size: 10px !important;
+                        }
+                        .cart{
+                            span{
+                                margin: 0px 2px !important;
+                            }
+                            span:nth-child(1){
+                                img{
+                                    width: 30px !important;
+                                }
+                            }
+                            span:nth-child(2){
+                                padding: 0px 2px !important;
+                                font-size: 10px !important;
+                            }
+                            .glyphicon-shopping-cart{
+                                color: blue;
+                            }
+                        }
+                    }
+                }
                 .panel-heading{
                 background: white !important;
                 height: 40px;
@@ -34,12 +60,21 @@
              .panel-body{
                  padding: 10px 10px;
                  .col-md-3{
+                    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+                        text-align: center !important;
+                     }
                      img{
                          width: 160px;
                          height: 160px;
                      }
                  }
                  .col-md-5{
+                     @media only screen and (device-width: 768px) {
+                         border-right: 0px;
+                     }
+                     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+                        border-right: 0px;
+                     }
                      border-right:1px solid #AAAAAA;
                      ul{
                          padding-left: 0px;

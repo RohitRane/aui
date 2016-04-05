@@ -13,10 +13,12 @@ angular.module('aftermarket',
         'ui.router',
         'ui.bootstrap',
         'toastr',
+        'imageZoom',
         'aftermarket.header',
         'aftermarket.home',
         'aftermarket.searchResults',
         'aftermarket.part',
+        'aftermarket.category',
         'aftermarket.core']
     )
     .constant('malarkey', malarkey)

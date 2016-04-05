@@ -3,10 +3,13 @@
     width: 100%;
     padding: 0px 10px;
     .resultBar{
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            font-size: 8px !important;
+            line-height: 50px !important;
+        }
         font-size: 12px;
         float: left;
         line-height: 40px;
-        vertical-align: middle;
         .bold{
             font-weight: bold;
             a{
@@ -15,8 +18,12 @@
         }
     }
     .dropdownBar{
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            line-height: 50px !important;
+        }
+    }
+    .dropdownBar{
         line-height: 40px;
-        vertical-align: middle;
         float: right;
         .btn{
             padding: 2px 5px;
@@ -85,7 +92,11 @@
         }
     }
     .parts{
-        padding: 20px 10px 0px 0px;;
+        padding-top: 20px;
+        img{
+            width: 100%;
+            text-align: center;
+        }
         .part{
             background-color: white;
             padding: 10px;

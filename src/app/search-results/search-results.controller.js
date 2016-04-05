@@ -7,6 +7,11 @@ export class SearchResultsController{
         dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
             vm.results = response;
+            vm.results.parts = vm.results.parts.map(function (part) {
+                part.displayName = part.sku+' '+part.name;
+                return part;
+            });
+            $log.debug("results :",vm.results);
         }, function (error) {
             $log.debug("Error in response :", error);
         });

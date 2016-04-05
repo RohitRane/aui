@@ -8,7 +8,7 @@
                 "name": "U-Joint Kit",
                 "sku": "SPL90X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -30,10 +30,10 @@
             },
             {
                 "id": "150",
-                "name": "steer Axle",
+                "name": "U-Joint Kit",
                 "sku": "SPL100-1X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -58,7 +58,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5001247",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -83,7 +83,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-777X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -105,10 +105,10 @@
             },
             {
                 "id": "148",
-                "name": "steer Axle",
+                "name": "U-Joint Kit",
                 "sku": "5-773X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -133,7 +133,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-746X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -158,7 +158,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-677X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -180,10 +180,10 @@
             },
             {
                 "id": "1",
-                "name": "steer Axle",
+                "name": "U-Joint Kit",
                 "sku": "5-676X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -208,7 +208,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-675X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -233,7 +233,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-674X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -255,10 +255,10 @@
             },
             {
                 "id": "143",
-                "name": "steer Axle",
+                "name": "U-Joint Kit",
                 "sku": "5-671X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -283,7 +283,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-610X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -308,7 +308,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-585XM",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -330,10 +330,10 @@
             },
             {
                 "id": "140",
-                "name": "steer Axle",
+                "name": "U-Joint Kit",
                 "sku": "5-54X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -356,7 +356,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-515X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -381,7 +381,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-510X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -403,10 +403,10 @@
             },
             {
                 "id": "137",
-                "name": "steer Axle",
+                "name": "U-Joint Kit",
                 "sku": "5-469X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -431,7 +431,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-438X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -456,7 +456,7 @@
                 "name": "U-Joint Kit",
                 "sku": "5-423X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",
@@ -478,10 +478,10 @@
             },
             {
                 "id": "134",
-                "name": "steer Axle",
+                "name": "U-Joint Kit",
                 "sku": "5-407X",
                 "desc": "U-Joint Kit",
-                "imgUrl": "assets/images/VectorSmart.png",
+                "imgUrl": "assets/images/u-joint.jpg",
                 "brandImgUrl": "assets/images/spicer.png",
                 "innovation": {
                     "title": "MMS<sup>TM</sup>Hub",

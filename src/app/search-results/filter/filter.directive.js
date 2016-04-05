@@ -17,6 +17,11 @@ export function FilterDirective() {
 class FilterDirectiveController{
     constructor(){
          'ngInject';
+         this.prestine = {
+            changed : true,
+            value: "" 
+          };
+          this.prestine = [];
     }   
 }
 
