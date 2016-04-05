@@ -29,12 +29,12 @@
             padding: 2px 5px;
             font-size: 12px;
             font-weight: bold;
-            background-color: #bdbdbd;
+            background-color: $support_color_light_one;
         }
     }
 }
 .search-results{
-    background-color: #dbdbdb;
+    background-color: $support_color_light_one;
     .filter{
         .refine-list{
             .refine-header{
@@ -98,7 +98,7 @@
             text-align: center;
         }
         .part{
-            background-color: white;
+            background-color: $color_extreme_two;
             padding: 10px;
             margin-bottom: 10px;
             text-align: center;

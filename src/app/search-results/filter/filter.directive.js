@@ -17,12 +17,18 @@ export function FilterDirective() {
 class FilterDirectiveController{
     constructor(){
          'ngInject';
-         this.prestine = {
-            changed : true,
-            value: "" 
-          };
-          this.prestine = [];
+          this.tempId = '';
+          this.prestine = {};
+          this.reset();
     }   
+    reset(){
+        for (let x of this.list) {
+            this.prestine[x.id] = {
+                collapsed: true,
+                changed: false
+            };
+        }
+    }
 }
 
 
