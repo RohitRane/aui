@@ -2,7 +2,7 @@
   <div class="form-group">
     <input type="text" class="form-control" data-ng-model="searchBar.search.searchString" 
     uib-typeahead="result as result.sku+' '+result.name for result in searchBar.textTyped($viewValue) | limitTo:8" 
-    placeholder="Search" typeahead-template-url="{{searchBar.search.typeaheadTemplate}}"
+    placeholder="Search" typeahead-popup-template-url="app/components/header/search-bar/typeahead-popup.html" typeahead-template-url="{{searchBar.search.typeaheadTemplate}}"
     data-ng-focus="searchBar.focus()" data-ng-blur="searchBar.blur()">
   </div>
   <div class="btn-group" uib-dropdown>

@@ -1,4 +1,4 @@
-export function imageZoomDirective($log, $window) {
+export function imageZoomDirective($log) {
     'ngInject';
 
     let directive = {
@@ -10,7 +10,7 @@ export function imageZoomDirective($log, $window) {
         controller: 'ImageZoomController',
         controllerAs: 'imgZoom',
         bindToController: true,
-        link: function (scope, element) {
+        link: function () {
             $log.debug("image zoom.");
             
         }

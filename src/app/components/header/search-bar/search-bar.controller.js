@@ -1,5 +1,5 @@
 export class SearchBarController {
-    constructor($log, $scope, dataServices) {
+    constructor($log, $scope, $rootScope, dataServices) {
         'ngInject';
 
         let vm = this;
@@ -7,7 +7,8 @@ export class SearchBarController {
         vm.DI = {
             log: $log,
             dataServices: dataServices,
-            scope:$scope
+            scope: $scope,
+            rootScope: $rootScope
         };
 
         vm.logger = $log;
@@ -15,6 +16,7 @@ export class SearchBarController {
         vm.search = {
             searchScope: 'Commercial Vehicles',
             typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
+            typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
             resultCountUpperLimit: 8,
             categories: [
                 'Commercial Vehicles',
@@ -25,12 +27,30 @@ export class SearchBarController {
                 'Industrial'
             ]
         };
+
     }
 
     textTyped() {
         let vm = this;
-        return vm.DI.dataServices.partSearch().then(function (response) {
-            let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
+        return vm.DI.dataServices.autoSearch().then(function (response) {
+            let resultSet = response.parts,
+                firstExact = true,
+                firstClose = true,
+                firstSuggest = true;
+            //let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
+            angular.forEach(resultSet, function (part, index) {
+                if (part.typeId === 1 && firstExact) {
+                    part.firstExact = true;
+                    firstExact = false;
+                } else if (part.typeId === 2 && firstClose) {
+                    part.firstClose = true;
+                    firstClose = false;
+                } else if (part.typeId === 3 && firstSuggest) {
+                    part.firstSuggest = true;
+                    firstSuggest = false;
+                }
+                vm.DI.log.debug(vm.DI.rootScope.firstExactIndex+" "+vm.firstCloseIndex+" "+vm.firstSuggestIndex);
+            })
             return resultSet.map(function (part) {
                 return part;
             });
@@ -38,15 +58,15 @@ export class SearchBarController {
             vm.DI.log.debug("Error in response :", error);
         });
     }
-    
-    focus(){
+
+    focus() {
         let vm = this;
         vm.DI.log.debug("Focus.");
         vm.DI.scope.$emit("searchbarFocussed");
-        
+
     }
-    
-    blur(){
+
+    blur() {
         let vm = this;
         vm.DI.log.debug("Blur.");
         vm.DI.scope.$emit("searchbarBlurred");
