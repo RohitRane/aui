@@ -1,20 +1,8 @@
 .typeahead-popup{
-    .first-exact{
-        &:before{
-            content: 'exact match';
-            font-size: 11px;
-        }
-    }
-    .first-close{
-        &:before{
-            content: 'close matches';
-            font-size: 11px;
-        }
-    }
-    .first-suggest{
-        &:before{
-            content: 'suggestions';            
-            font-size:11px;
-        }
+    p{
+        font-size: 11px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        color:#c1c1c1
     }
 }

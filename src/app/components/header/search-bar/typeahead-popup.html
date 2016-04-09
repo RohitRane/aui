@@ -1,9 +1,14 @@
 <ul class="typeahead-popup dropdown-menu" data-ng-show="isOpen() && !moveInProgress" data-ng-style="{top: position().top+'px', left: position().left+'px'}" role="listbox" aria-hidden="{{!isOpen()}}">
     <!--exact match-->
-    <li data-ng-repeat="match in matches |orderBy:'model.typeId' track by $index" data-ng-class="{'first-exact':match.model.firstExact, 'first-close':match.model.firstClose,'first-suggest':match.model.firstSuggest,active: isActive($index) }"
-    data-ng-mouseenter="$parent.typeAheadSelectActive($index)" data-ng-click="selectMatch($index, $event)" role="option" id="{{::match.id}}">
+    <div data-ng-repeat="match in matches |orderBy:'model.typeId' track by $index">
+        <p data-ng-if="match.model.firstExact">Exact match</p>
+        <p data-ng-if="match.model.firstClose">Close matches</p>
+        <p data-ng-if="match.model.firstSuggest">Suggestions</p>
+        <li  data-ng-class="{active: isActive($index) }" data-ng-mouseenter="$parent.typeAheadSelectActive($index)" data-ng-click="selectMatch($index, $event)" role="option" id="{{::match.id}}">
         <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
     </li>
+    </div>
+    
    <!-- close matches
     <li data-ng-repeat="match in matches |filter:{model:{'type':'close'}}|limitTo:8 track by $index" data-ng-class="{active: isActive($index) }" data-ng-mouseenter="selectActive($index)" data-ng-click="selectMatch($index, $event)" role="option" id="{{::match.id}}">
         <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
