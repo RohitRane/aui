@@ -4,7 +4,7 @@
         <p data-ng-if="match.model.firstExact">Exact match</p>
         <p data-ng-if="match.model.firstClose">Close matches</p>
         <p data-ng-if="match.model.firstSuggest">Suggestions</p>
-        <li  data-ng-class="{active: isActive($index) }" data-ng-mouseenter="$parent.typeAheadSelectActive($index)" data-ng-click="selectMatch($index, $event)" role="option" id="{{::match.id}}">
+        <li  data-ng-class="{active: isActive($index) }" data-ng-mouseenter="selectActive($index)" data-ng-click="selectMatch($index, $event)" role="option" id="{{::match.id}}">
         <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
     </li>
     </div>
