@@ -1,8 +1,14 @@
 export class SearchResultsController{
-    constructor($log, dataServices) {
+        constructor($log, $rootScope, dataServices, SearchBarService) {
         'ngInject';
         
         let vm = this;
+        vm.DI = {
+            log : $log,
+            SearchBarService : SearchBarService
+        }
+        
+        vm.getParts();
         vm.results = {};
         dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
@@ -43,5 +49,10 @@ export class SearchResultsController{
                 "options": ["HR Style", "BP Style", "OSR Style"]
             }
         ];
+    }
+    
+    getParts(){
+        let vm = this;
+        vm.DI.log.debug("SEARCH STR",vm.DI.SearchBarService.srchStr);
     }
 }

@@ -11,6 +11,7 @@ import { orderMenuDirective } from './menus/order/order.directive';
 import { categoryMenuDirective } from './menus/categories/categories.directive';
 import { searchBarDirective } from './search-bar/search-bar.directive';
 import { SearchBarController } from './search-bar/search-bar.controller';
+import { SearchBarService } from './search-bar/search-bar.service';
 import { TypeaheadPopupController } from './search-bar/typeahead-popup.controller';
 
 angular.module('aftermarket.header', ['aftermarket.core'])
@@ -22,5 +23,6 @@ angular.module('aftermarket.header', ['aftermarket.core'])
     .directive('categoryMenu',categoryMenuDirective)
     .directive('searchBar',searchBarDirective)
     .controller('SearchBarController',SearchBarController)
+    .service('SearchBarService',SearchBarService)
     .controller('TypeaheadPopupController',TypeaheadPopupController)
     .controller('PageHeaderController', PageHeaderController);
