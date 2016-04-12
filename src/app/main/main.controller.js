@@ -1,20 +1,9 @@
 export class MainController {
-    constructor($scope, $timeout, $log, $document, webDevTec, toastr) {
+    constructor($scope, $timeout, $log, $document) {
         'ngInject';
         let vm = this;
-        vm.DI = {
-            scope:$scope,
-            log: $log,
-            timeout: $timeout,
-            document: $document
-        };
-        vm.awesomeThings = [];
-        vm.classAnimation = '';
-        vm.creationDate = 1458569030841;
-        vm.toastr = toastr;
-        vm.putOverlay = false;
+        vm.DI = ()=> ({$scope, $timeout, $log, $document});
 
-        vm.activate($timeout, webDevTec);
         
         $scope.$on("searchbarFocussed",function () {
             vm.addOpaqueOverlay();
@@ -25,36 +14,18 @@ export class MainController {
         });
     }
 
-    activate($timeout, webDevTec) {
-        this.getWebDevTec(webDevTec);
-        $timeout(() => {
-            this.classAnimation = 'rubberBand';
-        }, 4000);
-    }
-
-    getWebDevTec(webDevTec) {
-        this.awesomeThings = webDevTec.getTec();
-
-        angular.forEach(this.awesomeThings, (awesomeThing) => {
-            awesomeThing.rank = Math.random();
-        });
-    }
-
-    showToastr() {
-        this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-        this.classAnimation = '';
-    }
-    
+      
     addOpaqueOverlay() {
         //var mc = angular.element(('#main-content')).css("color");
         var vm = this;
+        let {$timeout, $log, $document} = vm.DI();
         //this.DI.timeout(function () {
-            var mc =vm.DI.document[0].getElementById('main-content');
+            var mc =$document[0].getElementById('main-content');
             var mcHeight = mc.offsetHeight;
             vm.putOverlay = true;
-            vm.DI.timeout(function () {
-                var overlay = angular.element(vm.DI.document[0].getElementById('overlay'));
-                vm.DI.log.debug(overlay);
+            $timeout(function () {
+                var overlay = angular.element($document[0].getElementById('overlay'));
+                $log.debug(overlay);
                 overlay.css("height", mcHeight+'px');
             });
 

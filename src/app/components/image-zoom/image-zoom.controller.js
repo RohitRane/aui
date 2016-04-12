@@ -6,16 +6,13 @@ export class ImageZoomController {
         'ngInject';
 
         let vm = this;
-        vm.DI = {
-            log: $log,
-            document: $document,
-            timeout: $timeout
-        }
+        vm.DI = () => ({$log, $document, $timeout});
 
         vm.showZoom = false;
     }
     enlarge(event) {
         let vm = this;
+        let {$log, $document, $timeout} = vm.DI();
         vm.showZoom = true;
         let zoomLevel = 5;
         let imgUrl = "assets/images/u-joint.jpg";
@@ -24,13 +21,13 @@ export class ImageZoomController {
             width: 80
         };
         
-        let activeImg = vm.DI.document[0].getElementById("active-img");
-        //vm.DI.log.debug("id :", activeImg);
+        let activeImg = $document[0].getElementById("active-img");
+        //$log.debug("id :", activeImg);
         
-        //vm.DI.log.debug("mouse over :", event.clientY);
-        let lens = vm.DI.document[0].getElementById("lens");
+        //$log.debug("mouse over :", event.clientY);
+        let lens = $document[0].getElementById("lens");
         let lensElement = angular.element(lens);
-        //vm.DI.log.debug("lens :", lensElement);
+        //$log.debug("lens :", lensElement);
         let lensCenterY = event.clientY - 180;
         let lensCenterX = event.clientX -40;
         lensCenterX < 0 ? lensCenterX = 0 : angular.noop();
@@ -40,21 +37,21 @@ export class ImageZoomController {
         
         lensElement.css("top", lensCenterY + 'px');
         lensElement.css("left", lensCenterX + 'px');
-        //vm.DI.log.debug("top :", lensElement.css("top"));
+        //$log.debug("top :", lensElement.css("top"));
 
 
-        let zoom = vm.DI.document[0].getElementById("zoom");
+        let zoom = $document[0].getElementById("zoom");
         let zoomElement = angular.element(zoom);
         zoomElement.css("height", crossSection.height * zoomLevel + "px");
         zoomElement.css("width", crossSection.width * zoomLevel + "px");
-        //vm.DI.log.debug("zoom :", zoomElement);
+        //$log.debug("zoom :", zoomElement);
 
         let startX = -lensCenterX * zoomLevel;
         let startY = -(lensCenterY) * zoomLevel;
         
         let zoomedImgHgt = activeImg.offsetHeight * zoomLevel;
         let zoomedImgWdt = activeImg.offsetWidth * zoomLevel;
-        //vm.DI.log.debug("ht :", zoomedImgHgt);
+        //$log.debug("ht :", zoomedImgHgt);
 
         zoomElement.css("background", generateBgString(imgUrl, startX, startY, zoomedImgHgt, zoomedImgWdt));
     }

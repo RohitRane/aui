@@ -6,6 +6,6 @@ export class CategoryController {
         let vm = this;
         
         $log.debug("Cat Name :",$stateParams.catName);
-        this.categoryName = $stateParams.catName;
+        vm.categoryName = $stateParams.catName;
     }
 }

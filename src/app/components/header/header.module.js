@@ -24,5 +24,5 @@ angular.module('aftermarket.header', ['aftermarket.core'])
     .directive('searchBar',searchBarDirective)
     .controller('SearchBarController',SearchBarController)
     .service('SearchBarService',SearchBarService)
-    .controller('TypeaheadPopupController',TypeaheadPopupController)
+    //.controller('TypeaheadPopupController',TypeaheadPopupController)
     .controller('PageHeaderController', PageHeaderController);
