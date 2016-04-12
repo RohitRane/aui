@@ -12,7 +12,7 @@ export class ImageZoomController {
     }
     enlarge(event) {
         let vm = this;
-        let {$log, $document, $timeout} = vm.DI();
+        let {$document} = vm.DI();
         vm.showZoom = true;
         let zoomLevel = 5;
         let imgUrl = "assets/images/u-joint.jpg";
