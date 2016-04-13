@@ -11,7 +11,7 @@ export let apiConfig = {
         //'url': '/assets/data/sample-search.json',
         'url': '',
         'setUrl': function (param) {
-            this.url = apiBaseUrl + '/result?q=' + param + '&cid='+cId+'&from=0&size=10';
+            this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=0&size=10';
         },
         'method': 'GET',
         'data': {}
@@ -19,7 +19,15 @@ export let apiConfig = {
     'AUTO_SEARCH': {
         'url': '',
         'setUrl': function (param) {
-            this.url = apiBaseUrl + '/suggest?q=' + param + '&cid='+cId;
+            this.url = apiBaseUrl + '/suggest?q=' + param + '&cid=' + cId;
+        },
+        'method': 'GET',
+        'data': {}
+    },
+    'PART': {
+        'url': '',
+        'setUrl': function (param) {
+            this.url = apiBaseUrl + '/part?q=' + param + '&cid=' + cId;
         },
         'method': 'GET',
         'data': {}

@@ -3,7 +3,7 @@
   <div class="result-card">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <span class="name">{{partCard.part.displayName}}</span>
+        <a href="/part/{{partCard.part.partNumber}}"><span class="name">{{partCard.part.displayName}}</span></a>
         <span class="cart pull-right">
           <span><img src="{{partCard.part.brandImgUrl}}"></span>
         <span>Add to WishList <span class="caret"></span></span>
@@ -13,7 +13,7 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3">
-            <a href="/part/{{partCard.part.sku}}"><img alt="http://placehold.it/160x160" src="{{partCard.part.imgUrl}}"></a>
+            <a href="/part/{{partCard.part.partNumber}}"><img alt="http://placehold.it/160x160" src="{{partCard.part.imgUrl}}"></a>
           </div>
           <div class="col-md-5">
             <ul>

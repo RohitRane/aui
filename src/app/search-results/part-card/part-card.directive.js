@@ -1,4 +1,4 @@
-export function PartCardDirective() {
+export function PartCardDirective($log,$timeout) {
     'ngInject';
 
     let directive = {
@@ -9,12 +9,17 @@ export function PartCardDirective() {
         },
         controller: SearchResultDirectiveController,
         controllerAs: 'partCard',
-        link: function(scope, elem, attr) { 
-            /*if(this.part.attrs != null){this.dI.log.debug("if");
-              this.part.attrList = Object.keys(this.part.attrs);
-            }else{ this.dI.log.debug("else");
-                this.part.attrList =[];
-            }*/
+        link: function(scope) {
+            $timeout(function(){
+                if(angular.isDefined(scope.part) && scope.part.attrs != null){
+                    $log.debug("if");
+                    scope.part.attrList = Object.keys(scope.part.attrs);
+                }else{ 
+                    $log.debug("else");
+                    scope.part.attrList =[];
+                }
+            }); 
+            
          },
         bindToController: true
     };

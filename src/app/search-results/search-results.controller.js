@@ -11,6 +11,7 @@ export class SearchResultsController {
         });
         vm.results = {};
         
+        vm.getParts();
         /*dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
             vm.results = response;
@@ -54,17 +55,18 @@ export class SearchResultsController {
 
     getParts() {
         let vm = this;
-        let {$log, dataServices, SearchBarService} = vm.DI();
+        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         
         $log.debug("SEARCH STR", SearchBarService.srchStr);
         dataServices.partSearch(SearchBarService.srchStr).then(function (response) {
             $log.debug("Response in Controller :", response);
             vm.results = response;
+            
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber+ ' ' + part.partDesc;
                 return part;
             });
-            $log.debug("results :", vm.results);
+            $log.debug("results :", vm.results);            
         }, function (error) {
             $log.debug("Error in response :", error);
         });
