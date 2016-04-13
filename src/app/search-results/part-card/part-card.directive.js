@@ -9,7 +9,7 @@ export function PartCardDirective($log,$timeout) {
         },
         controller: SearchResultDirectiveController,
         controllerAs: 'partCard',
-        link: function(scope) {
+       /* link: function(scope) {
             $timeout(function(){
                 if(angular.isDefined(scope.part) && scope.part.attrs != null){
                     $log.debug("if");
@@ -20,7 +20,7 @@ export function PartCardDirective($log,$timeout) {
                 }
             }); 
             
-         },
+         },*/
         bindToController: true
     };
     return directive;
@@ -34,11 +34,11 @@ class SearchResultDirectiveController{
             scope: $scope
           };
           
-          if(this.part.attrs != null){this.dI.log.debug("if");
+         /* if(this.part.attrs != null){this.dI.log.debug("if");
               this.part.attrList = Object.keys(this.part.attrs);
           }else{ this.dI.log.debug("else");
               this.part.attrList =[];
-          }
+          }*/
          
          this.specLimit = 4; 
          this.toggle = false;

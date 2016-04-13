@@ -64,6 +64,11 @@ export class SearchResultsController {
             
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber+ ' ' + part.partDesc;
+                if(part.attrs != null){
+                    part.attrList = Object.keys(part.attrs);
+                }else{ 
+                    part.attrList =[];
+                }
                 return part;
             });
             $log.debug("results :", vm.results);            
