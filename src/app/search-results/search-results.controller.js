@@ -1,13 +1,17 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, dataServices, SearchBarService) {
+    constructor($log, $rootScope, $scope, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, SearchBarService }) ;
-       
-        vm.getParts();
+        vm.DI = () => ({ $log, $scope, dataServices, SearchBarService }) ;
+        
+        $rootScope.$on('searchIconClicked', function(){
+            $log.debug("$on");
+            vm.getParts();
+        });
         vm.results = {};
-        dataServices.partSearch().then(function (response) {
+        
+        /*dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
             vm.results = response;
             vm.results.parts = vm.results.parts.map(function (part) {
@@ -17,7 +21,7 @@ export class SearchResultsController {
             $log.debug("results :", vm.results);
         }, function (error) {
             $log.debug("Error in response :", error);
-        });
+        });*/
 
         this.filters = [
             {
@@ -50,7 +54,19 @@ export class SearchResultsController {
 
     getParts() {
         let vm = this;
-        let {$log, SearchBarService} = vm.DI();
+        let {$log, dataServices, SearchBarService} = vm.DI();
+        
         $log.debug("SEARCH STR", SearchBarService.srchStr);
+        dataServices.partSearch(SearchBarService.srchStr).then(function (response) {
+            $log.debug("Response in Controller :", response);
+            vm.results = response;
+            vm.results.parts = vm.results.parts.map(function (part) {
+                part.displayName = part.partNumber+ ' ' + part.partDesc;
+                return part;
+            });
+            $log.debug("results :", vm.results);
+        }, function (error) {
+            $log.debug("Error in response :", error);
+        });
     }
 }

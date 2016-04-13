@@ -9,6 +9,13 @@ export function PartCardDirective() {
         },
         controller: SearchResultDirectiveController,
         controllerAs: 'partCard',
+        link: function(scope, elem, attr) { 
+            /*if(this.part.attrs != null){this.dI.log.debug("if");
+              this.part.attrList = Object.keys(this.part.attrs);
+            }else{ this.dI.log.debug("else");
+                this.part.attrList =[];
+            }*/
+         },
         bindToController: true
     };
     return directive;
@@ -21,7 +28,13 @@ class SearchResultDirectiveController{
             log : $log,
             scope: $scope
           };
-         this.part.attrList = Object.keys(this.part.attrs);
+          
+          if(this.part.attrs != null){this.dI.log.debug("if");
+              this.part.attrList = Object.keys(this.part.attrs);
+          }else{ this.dI.log.debug("else");
+              this.part.attrList =[];
+          }
+         
          this.specLimit = 4; 
          this.toggle = false;
          this.specToggleName = "View all specs";
@@ -39,6 +52,7 @@ class SearchResultDirectiveController{
       }
       this.toggle = !this.toggle;
     }
+    
     
 }
 

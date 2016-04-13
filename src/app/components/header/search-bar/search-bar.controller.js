@@ -87,7 +87,9 @@ export class SearchBarController {
     
     searchIconClick(){
         let vm = this;
-        let {$log} = vm.DI();
+        let {$log, $rootScope} = vm.DI();
         $log.debug("Click Fired");
+        $log.debug("$emit");
+        $rootScope.$emit("searchIconClicked");
     }
 }
