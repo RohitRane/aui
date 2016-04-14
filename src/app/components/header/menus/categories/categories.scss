@@ -13,10 +13,11 @@
             position: relative;
             &:after {
                 content: '';
-                height: 15px;
+                height: 21px;
                 width: 1px;
-                top: 3px;
-                background: $support_color_light_one;
+                top: 0px;
+                //background: $support_color_light_one !important;
+                background: gray !important;
                 position: absolute;
                 right: 0px;
             }

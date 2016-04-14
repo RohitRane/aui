@@ -17,7 +17,6 @@ export function categoryMenuDirective($document) {
                     if (elem !== e.target && !elem[0].contains(e.target)) {
                         scope.$apply(function () {
                             //scope.$eval(scope.showSubMenu);
-                            console.log("Evet fred");
                             scope.showSubMenu = !scope.showSubMenu;
                             return;
                         });
