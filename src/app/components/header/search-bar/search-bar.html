@@ -6,7 +6,7 @@
     data-ng-focus="searchBar.focus()" data-ng-blur="searchBar.blur()">
   </div>
   <div class="form-group btn-group" uib-dropdown>
-    <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+    <button id="single-button" type="button" class="btn " uib-dropdown-toggle>
       <p>{{searchBar.search.searchScope}} <span class="caret"></span></p>
     </button>
     <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
@@ -15,5 +15,5 @@
       <li role="menuitem" data-ng-click="searchBar.search.searchScope = 'All'"><a href="#">All</a></li>
     </ul>
   </div>
-  <a href="/search" data-ng-click="searchBar.searchIconClick()"><button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button></a>
+  <a href="/search" data-ng-click="searchBar.searchIconClick()"><button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button></a>
 </form>
