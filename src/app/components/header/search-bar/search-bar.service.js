@@ -23,4 +23,14 @@ export class SearchBarService{
             this._productLine = newSrchStr;
         }
     }
+    
+     get typeId() {
+        return this._typeId;
+    }
+ 
+    set typeId(newTypeId){
+        if(newTypeId){ 
+            this._typeId = newTypeId;
+        }
+    }
 }
