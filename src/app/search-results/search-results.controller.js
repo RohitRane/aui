@@ -5,6 +5,7 @@ export class SearchResultsController {
         let vm = this;
         vm.DI = () => ({ $log, $scope, dataServices, SearchBarService }) ;
         
+        vm.searchString = "";
         $rootScope.$on('searchIconClicked', function(){
             $log.debug("$on");
             vm.getParts();
@@ -58,6 +59,8 @@ export class SearchResultsController {
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         
         $log.debug("SEARCH STR", SearchBarService.srchStr);
+        vm.searchString = SearchBarService.srchStr;
+        vm.productLine = SearchBarService.productLine;
         dataServices.partSearch(SearchBarService.srchStr).then(function (response) {
             $log.debug("Response in Controller :", response);
             vm.results = response;

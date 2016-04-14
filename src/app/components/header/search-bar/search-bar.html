@@ -1,7 +1,7 @@
 <form class="navbar-form navbar-left search-bar" role="search">
   <div class="form-group">
     <input type="text" class="form-control" data-ng-model="searchBar.search.searchString" 
-    uib-typeahead="result as result.partNumber+' '+result.lineDesc+' '+result.partDesc for result in searchBar.textTyped($viewValue)" 
+    typeahead-on-select="searchBar.gotoPartDetails($item, $model, $label, $event)" uib-typeahead="result as result.partNumber+' '+result.lineDesc+' '+result.partDesc for result in searchBar.textTyped($viewValue)" 
     placeholder="Search" typeahead-popup-template-url="app/components/header/search-bar/typeahead-popup.html" typeahead-template-url="{{searchBar.search.typeaheadTemplate}}"
     data-ng-focus="searchBar.focus()" data-ng-blur="searchBar.blur()">
   </div>
@@ -10,7 +10,7 @@
       <p>{{searchBar.search.searchScope}} <span class="caret"></span></p>
     </button>
     <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-      <li role="menuitem" data-ng-repeat="category in searchBar.search.categories" data-ng-click="searchBar.search.searchScope = category"><a href="#">{{category}}</a></li>
+      <li role="menuitem" data-ng-repeat="category in searchBar.search.categories" ng-click="searchBar.search.searchScope = category; searchBar.productDropDownClick()" data-ng-click="searchBar.search.searchScope = category"><a href="#">{{category}}</a></li>
       <li class="divider"></li>
       <li role="menuitem" data-ng-click="searchBar.search.searchScope = 'All'"><a href="#">All</a></li>
     </ul>

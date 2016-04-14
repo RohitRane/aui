@@ -1,11 +1,12 @@
 export class SearchBarController {
-    constructor($log, $scope, $rootScope, dataServices, SearchBarService) {
+    constructor($log, $scope, $location, $rootScope, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
-        vm.DI = ()=>({$log, $scope, $rootScope, dataServices, SearchBarService})
-        
+        vm.DI = ()=>({$log, $scope, $location, $rootScope, dataServices, SearchBarService})
+        vm.totalResults = "";
+        vm.partNumber = "";
         vm.logger = $log;
 
         vm.search = {
@@ -32,6 +33,7 @@ export class SearchBarController {
         SearchBarService.srchStr = searchString;
         return dataServices.autoSearch(searchString).then(function (response) {
             $log.debug("Response in Controller : ", response);
+            vm.totalResults = response.totalResults;
             let resultSet = response.parts,
                 firstExact = true,
                 firstClose = true,
@@ -75,20 +77,37 @@ export class SearchBarController {
         let {$log, $scope} = vm.DI();
         $log.debug("Focus.");
         $scope.$emit("searchbarFocussed");
-
     }
 
     blur() {
         let vm = this;
         let {$log, $scope} = vm.DI();
         $log.debug("Blur.");
+        
         $scope.$emit("searchbarBlurred");
+    }
+    
+    productDropDownClick(){
+        let vm = this;
+        let {$log, $rootScope, SearchBarService} = vm.DI();
+        SearchBarService.productLine = vm.search.searchScope;
+        $rootScope.$emit("searchIconClicked");
+    }
+    
+    gotoPartDetails(item, model, label, event){
+        let vm = this;
+        let {$log, $location, $rootScope, SearchBarService} = vm.DI();
+        $log.debug("item ",item);
+         $log.debug("model ", model);
+          $log.debug(" label",label);
+           $log.debug("event ",event);
+        $location.path('/part/' + item.partNumber);
     }
     
     searchIconClick(){
         let vm = this;
-        let {$log, $rootScope} = vm.DI();
-        $log.debug("Click Fired");
+        let {$log, $rootScope, SearchBarService} = vm.DI();
+        SearchBarService.productLine = vm.search.searchScope;
         $log.debug("$emit");
         $rootScope.$emit("searchIconClicked");
     }

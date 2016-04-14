@@ -13,4 +13,14 @@ export class SearchBarService{
             this._srchStr = newSrchStr;
         }
     }
+    
+    get productLine() {
+        return this._productLine;
+    }
+ 
+    set productLine(newSrchStr){
+        if(newSrchStr){ 
+            this._productLine = newSrchStr;
+        }
+    }
 }
