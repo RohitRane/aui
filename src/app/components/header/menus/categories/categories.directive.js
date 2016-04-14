@@ -17,6 +17,7 @@ export function categoryMenuDirective($document) {
                     if (elem !== e.target && !elem[0].contains(e.target)) {
                         scope.$apply(function () {
                             //scope.$eval(scope.showSubMenu);
+                            console.log("Evet fred");
                             scope.showSubMenu = !scope.showSubMenu;
                             return;
                         });
@@ -29,7 +30,7 @@ export function categoryMenuDirective($document) {
                     currElem[scope.currentIndex].style.borderBottom ='none';
                     //angular.element(currElem[scope.currentIndex]).find('a').css('color','white')
                 }
-                angular.element(currElem[e.target.dataset.index]).css('border-bottom','4px solid #0093c6');
+                //angular.element(currElem[e.target.dataset.index]).css('border-bottom','4px solid #0093c6');
                 angular.element(currElem[e.target.dataset.index]).children().css('color','#0093c6');
                 scope.setCurrentIndex(e.target.dataset.index);
 

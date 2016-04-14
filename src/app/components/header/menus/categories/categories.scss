@@ -1,26 +1,35 @@
 .category-list{
     @extend .sub-title;
-    a {
-        color: $color_extreme_two;
-        position: relative;
-        &:after {
-            content: '';
-            height: 15px;
-            width: 1px;
-            top: 3px;
-            background: $support_color_light_one;
-            position: absolute;
-            right: 0px;
+    li{
+        &:hover,
+        &:active{
+            border-bottom: 4px solid $accent_color;
+            a{
+                color: $accent_color !important;
+            }
         }
-        &.last-item {
-            &:after{
+        a {
+            color: $color_extreme_two;
+            position: relative;
+            &:after {
                 content: '';
                 height: 15px;
-                width: 0px;
+                width: 1px;
                 top: 3px;
+                background: $support_color_light_one;
                 position: absolute;
                 right: 0px;
             }
-        }
-    }
+            &.last-item {
+                &:after{
+                    content: '';
+                    height: 15px;
+                    width: 0px;
+                    top: 3px;
+                    position: absolute;
+                    right: 0px;
+                }
+            }
+        }   
+    }    
 }
