@@ -31,20 +31,30 @@ div#subcategories{
           line-height: 0.5%;
           margin-top: -2em; /* negate the DL line-height */
           a{
-            color:#323232;
+            // color:#323232;
+            //color:$color_extreme_one ;
+            color:$support_color_dark_black_third;
             text-decoration:none;
+            &:hover{
+              color: $support_color_light_blue_third !important; 
+              text-decoration:none;
+            }
+          
           }
         }
         dt {
           display: inline-block;
           width: 100px;
           line-height: 1;
-          border-bottom: 0.5px solid grey;
+          // border-bottom: 0.5px solid grey;
+          border-bottom:0.5px solid $support_color_light_one;
           padding-bottom:10px;
           a {
-            color:#323232;
+            // color:#323232;
+            color:$support_color_dark_two;
             text-decoration:none;
-          }
+            }
+         
         }
 
       }
