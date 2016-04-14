@@ -1,6 +1,7 @@
 .category-list{
     @extend .sub-title;
     a {
+        color: $color_extreme_two;
         position: relative;
         &:after {
             content: '';

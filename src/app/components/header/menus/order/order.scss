@@ -1,9 +1,19 @@
 .order-menu{
     @extend .sub-title;
-    a{
-        line-height: 15px !important;
+    li{
+        a{
+            line-height: 15px !important;
+            padding-left: 9px !important;
+            padding-right: 9px !important;  
+            &.last-anchor{
+                padding-right: 24px !important;
+            }          
+        }
     }
+    
     .top-text{
         font-size: 9px;
+        line-height: 1;
+        color: $support_color_light_one !important
     }
 }

@@ -11,7 +11,7 @@ header {
         text-align: center;
         width: 160px;
         img{
-            margin-top: 20px;
+            margin-top: 10px;
             margin-left: 30px;
             margin-right: 20px;
             width: 105px;
@@ -40,7 +40,7 @@ header {
                 height: 40px;
                 li {
                     height: 40px;
-                    padding-top: 15px;
+                    padding-top: 10px;
                     a {
                         padding-top: 0px;
                         padding-bottom: 0px;
@@ -65,7 +65,7 @@ header {
             ul {
                 li {
                     a {
-                        color: $support_color_light_one;
+                        color: $color_extreme_two;
                     }
                 }
             }
@@ -79,7 +79,7 @@ header {
                     a {
                         padding-top: 0px;
                         padding-bottom: 0px;
-                        color: $support_color_light_one;
+                        color: $color_extreme_two;
                     }
                 }
             }
@@ -94,7 +94,8 @@ header {
         }
     }
     .category-menu {
-        height: 30px;
+        height: 40px;
+        background-color: #222222;
         .navbar-header {
             height: 30px;
             .navbar-brand {
@@ -113,7 +114,7 @@ header {
                 a {
                     &:hover,
                     &:focus {
-                        color: $color_extreme_two;
+                        color: $accent_color;
                     }
                 }
             }

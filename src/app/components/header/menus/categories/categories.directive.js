@@ -27,7 +27,7 @@ export function categoryMenuDirective($document) {
                 if(scope.currentIndex !=="")
                 {
                     currElem[scope.currentIndex].style.borderBottom ='none';
-                    angular.element(currElem[scope.currentIndex]).find('a').css('color','white')
+                    //angular.element(currElem[scope.currentIndex]).find('a').css('color','white')
                 }
                 angular.element(currElem[e.target.dataset.index]).css('border-bottom','4px solid #0093c6');
                 angular.element(currElem[e.target.dataset.index]).children().css('color','#0093c6');

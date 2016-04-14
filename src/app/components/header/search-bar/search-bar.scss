@@ -1,8 +1,9 @@
 .search-bar{
+    margin-top: 0px;
     .form-group .dropdown-menu li.active{
         background-color: $support_color_light_one;
     }
-    @media(min-width:1024px){
+    /*@media(min-width:1024px){
         input[type=text], .form-group .dropdown-menu li{
             width:375px;
         }
@@ -16,9 +17,20 @@
     
     @media(min-width:1200px){
         input[type=text], .form-group .dropdown-menu li{
-            width:550px;
+            //width:550px;
+            width: 720px;
+            //width: 400%
         }
     }
+    */
+    @for $i from 1024 to 1400 {
+        @media(min-width: + $i*1px){
+            input[type=text], .form-group .dropdown-menu li{
+                width:($i+380-1024)*1px;
+            }
+        }
+    }
+    
     .form-group .dropdown-menu li a{
       color: black;
     }
