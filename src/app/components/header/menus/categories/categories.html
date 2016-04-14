@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav category-list">
   <li data-ng-repeat="category in categoryMenu.categories">
-      <a href="#" class="separator" data-ng-class="{'last-item':$index===categoryMenu.categories.length-1}">
-          {{category|uppercase}}
+      <a href="" data-id={{category.link}} ng-click="clickHandler(this)" class="separator" data-index={{$index}} data-ng-class="{'last-item':$index===categoryMenu.categories.length-1}">
+          {{category.name|uppercase}}
       </a>
   </li>
 </ul>
