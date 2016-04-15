@@ -1,10 +1,10 @@
 /*Author:Rohit Rane*/
 export class PartController {
-    constructor($log, $document, $stateParams, dataServices) {
+    constructor($log, $document, $stateParams, SearchBarService, dataServices) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $document, $stateParams, dataServices });
+        vm.DI = () => ({ $log, $document, $stateParams, SearchBarService, dataServices });
         vm.getPart();
 
     }
@@ -32,13 +32,14 @@ export class PartController {
 
     getPart() {
         let vm = this;
-        let {$log, $stateParams, dataServices} = vm.DI();
-        $log.debug("Part No :",$stateParams.partNumber);
+        let {$log, $stateParams, SearchBarService, dataServices} = vm.DI();
+        $log.debug("Part No :",SearchBarService.productLine);
+        vm.productLine = SearchBarService.productLine;
         dataServices.part($stateParams.partNumber).then(function (response) {
-            $log.debug("Response in Controller :", response);
-            
+            $log.debug("Response in Controller :", response.attrs);
+          // vm.attrsList = Object.keys(response.attrs);
             //vm.partData = JSON.stringify(response);
-            vm.partData = angular.toJson(response, true);
+            vm.partData = response;
         }, function (error) {
             $log.debug("Error in response :", error);
         });

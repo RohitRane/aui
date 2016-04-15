@@ -103,6 +103,7 @@ export class SearchBarController {
     gotoPartDetails(item, model, label, event) {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService} = vm.DI();
+         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if(item.typeId===3){
             SearchBarService.srchStr = item.lineDesc;
