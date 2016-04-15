@@ -1,10 +1,10 @@
 export class SearchBarController {
-    constructor($log, $scope, $location, $rootScope, dataServices, SearchBarService) {
+    constructor($log, $scope, $sce, $location, $rootScope, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, dataServices, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $sce, $location, $rootScope, dataServices, SearchBarService })
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
@@ -28,7 +28,7 @@ export class SearchBarController {
 
     textTyped(searchString) {
         let vm = this;
-        let {$log, $rootScope, dataServices, SearchBarService} = vm.DI();
+        let {$log, $rootScope, $sce, dataServices, SearchBarService} = vm.DI();
         //root$scope.searchString = searchString;
         SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
@@ -54,7 +54,7 @@ export class SearchBarController {
             });
             let obj = {
                     lineDesc: "View All "+ response.totalResults+" matches",
-                    typeId: 4
+                    typeId: 2
              };
              resultSet.push(obj);
              
