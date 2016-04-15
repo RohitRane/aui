@@ -31,6 +31,7 @@ export class SearchBarController {
         let {$log, $rootScope, dataServices, SearchBarService} = vm.DI();
         //root$scope.searchString = searchString;
         SearchBarService.srchStr = searchString;
+        SearchBarService.typeId = 2;
         return dataServices.autoSearch(searchString).then(function (response) {
             $log.debug("Response in Controller : ", response);
             vm.totalResults = response.totalResults;
@@ -50,6 +51,11 @@ export class SearchBarController {
                 };
                 resultSet.push(obj);
             });
+            let obj = {
+                    lineDesc: "View All "+ response.totalResults,
+                    typeId: 4
+             };
+             resultSet.push(obj);
             //let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
             angular.forEach(resultSet, function (part) {
                 if (part.typeId === 1 && firstExact) {
@@ -102,17 +108,25 @@ export class SearchBarController {
             SearchBarService.srchStr = item.lineDesc;
             SearchBarService.typeId = item.typeId;
             $location.path('/search');
+        }else if(item.typeId===4){
+            vm. searchIconClick();
         }
        else{
            $location.path('/part/' + item.partNumber);
        }        
     }
 
-    searchIconClick() {
+    searchIconClick() { 
         let vm = this;
-        let {$log, $rootScope, SearchBarService} = vm.DI();
-        SearchBarService.productLine = vm.search.searchScope;
-        $log.debug("$emit");
-        $rootScope.$emit("searchIconClicked");
+        let {$log, $location, $rootScope, SearchBarService} = vm.DI();
+        $log.debug("vm.search.searchString ",vm.search.searchString);
+        if(vm.search.searchString){
+            SearchBarService.productLine = vm.search.searchScope;
+            $rootScope.$emit("searchIconClicked");
+            $location.path('/search');
+        }else{
+             $log.debug("$emit");
+        }
+        
     }
 }
