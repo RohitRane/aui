@@ -48,13 +48,22 @@
     }
     [uib-dropdown-toggle]{
         font-size: 14px;
+        box-shadow: none;
     }
     
     .dropdown-menu{
+        margin: 0px 0 0;
+        border: none;
+      
+    // border-radius: 4px;
        ul {
            li {
+               &.hover{
+                background:#000000;
+               }
                &.active{
                    background:gray;
+                   // color:#262626;
                }
            }
        }
