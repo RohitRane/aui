@@ -1,8 +1,11 @@
 .search-bar{
     margin-top: 0px;
-    .form-group .dropdown-menu li.active{
-        background-color: $support_color_light_one;
-    }
+    .form-group .dropdown-menu{
+        border-radius: 0px;
+        li.active{
+            background-color: $support_color_light_one;
+        }
+    } 
     /*@media(min-width:1024px){
         input[type=text], .form-group .dropdown-menu li{
             width:375px;
@@ -25,7 +28,7 @@
     */
     @for $i from 1024 to 1400 {
         @media(min-width: + $i*1px){
-            input[type=text], .form-group .dropdown-menu li{
+            input[type=text]/*, .form-group .dropdown-menu li*/{
                 width:($i+380-1024)*1px;
             }
         }
@@ -35,6 +38,7 @@
       color: black;
     }
     [uib-dropdown-menu ]{
+        //top:0px;
         li{
             a{
                 color:$support_color_dark_one !important; 
