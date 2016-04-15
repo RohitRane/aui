@@ -24,6 +24,14 @@ export let apiConfig = {
         'method': 'GET',
         'data': {}
     },
+    'CAT_SEARCH': {
+        'url': '',
+        'setUrl': function (param) {
+            this.url = apiBaseUrl + '/catSearch?q=' + param + '&cid=' + cId + '&from=0&size=10';
+        },
+        'method': 'GET',
+        'data': {}
+    },
     'PART': {
         'url': '',
         'setUrl': function (param) {

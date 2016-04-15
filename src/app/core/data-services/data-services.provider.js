@@ -18,6 +18,7 @@ export function dataServices() {
             //register your api calls here
             partSearch: partSearch(DI),
             autoSearch: autoSearch(DI),
+            catSearch: catSearch(DI),
             part: part(DI)
         }
     }
@@ -26,4 +27,5 @@ export function dataServices() {
 //import your api request files here
 import { partSearch } from './requests/part-search.request';
 import { autoSearch } from './requests/auto-search.request';
+import { catSearch } from './requests/cat-search.request';
 import { part } from './requests/part.request';
