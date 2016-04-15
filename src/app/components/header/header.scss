@@ -1,6 +1,6 @@
 header {
     .typeahead-popup{
-            top:88px !important;
+            top:78px !important;
         }
     .navbar {
         margin-bottom: 0px;
@@ -60,6 +60,9 @@ header {
             }
             .search_btn{
                background-color: $support_color_primary;
+            }
+            .search_ddl_head{
+                margin:0 0 0;
             }
             .btn,
             input[type=text] {
