@@ -26,8 +26,8 @@ header {
     }
     .top-nav {
         @media(min-width: 768px) {
-            -webkit-transition: height 0.25s;
-        transition: height 0.25s;
+            /*-webkit-transition: height 0.25s;
+        transition: height 0.25s;*/
             height: 140px;
         }
         background-color:$support_color_dark_two;
@@ -132,8 +132,8 @@ header {
     
     //css for sticky header
     .scrolled{
-        -webkit-transition: height 0.25s;
-        transition: height 0.25s;
+        /*-webkit-transition: height 0.25s;
+        transition: height 0.25s;*/
         height: 60px;
         padding-top:2px;
         .nav-section{
