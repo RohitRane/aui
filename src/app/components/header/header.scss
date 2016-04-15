@@ -18,7 +18,8 @@ header {
         }
         p{
             margin: 5px 0 0 5px;
-            font-size: 16px; 
+            //it was font-size: 16px
+            font-size: 15px; 
             color: $color_extreme_two;
             font-weight: 500
         }
@@ -56,6 +57,9 @@ header {
             }
             [uib-dropdown] {
                 float: left
+            }
+            .search_btn{
+               background-color: $support_color_primary;
             }
             .btn,
             input[type=text] {
