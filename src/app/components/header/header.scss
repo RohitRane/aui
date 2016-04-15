@@ -1,6 +1,6 @@
 header {
     .typeahead-popup{
-            top:88px !important;
+            top:78px !important;
         }
     .navbar {
         margin-bottom: 0px;
@@ -18,7 +18,8 @@ header {
         }
         p{
             margin: 5px 0 0 5px;
-            font-size: 16px; 
+            //it was font-size: 16px
+            font-size: 15px; 
             color: $color_extreme_two;
             font-weight: 500
         }
@@ -57,10 +58,17 @@ header {
             [uib-dropdown] {
                 float: left
             }
+            .search_ddl_head{
+                margin:0 0 0;
+            }
             .btn,
             input[type=text] {
                 border-radius: 0px;
                 height: 40px;
+            }
+            .btn-primary{
+                background-color:$support_color_primary;
+                border-color:$support_color_primary;
             }
             ul {
                 li {

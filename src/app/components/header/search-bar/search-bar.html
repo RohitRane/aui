@@ -6,8 +6,8 @@
     data-ng-focus="searchBar.focus()" data-ng-blur="searchBar.blur()">
   </div>
   <div class="form-group btn-group" uib-dropdown>
-    <button id="single-button" type="button" class="btn " uib-dropdown-toggle>
-      <p>{{searchBar.search.searchScope}} <span class="caret"></span></p>
+    <button id="single-button" type="button" class="btn" uib-dropdown-toggle>
+      <p class="search_ddl_head">{{searchBar.search.searchScope}} <span class="caret"></span></p>
     </button>
     <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
       <li role="menuitem" data-ng-repeat="category in searchBar.search.categories" ng-click="searchBar.search.searchScope = category; searchBar.productDropDownClick()" data-ng-click="searchBar.search.searchScope = category"><a href="#">{{category}}</a></li>

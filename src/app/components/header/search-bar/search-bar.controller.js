@@ -46,6 +46,7 @@ export class SearchBarController {
 
             angular.forEach(response.lines, function (line) {
                 let obj = {
+                    partNumber:SearchBarService.srchStr+" in ",
                     lineDesc: line.lineDescription,
                     typeId: 3
                 };
@@ -122,6 +123,7 @@ export class SearchBarController {
         let {$log, $location, $rootScope, SearchBarService} = vm.DI();
         $log.debug("vm.search.searchString ",vm.search.searchString);
         if(vm.search.searchString){
+            $log.debug("Hello...........");
             SearchBarService.productLine = vm.search.searchScope;
             $rootScope.$emit("searchIconClicked");
             $location.path('/search');
