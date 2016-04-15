@@ -28,11 +28,18 @@
     */
     @for $i from 1024 to 1400 {
         @media(min-width: + $i*1px){
-            input[type=text], .form-group .typeahead-popup.dropdown-menu li{
+            input[type=text]{
                 width:($i+380-1024)*1px;
+            }
+            .form-group .typeahead-popup.dropdown-menu li{
+                width:($i+379-1024)*1px;
             }
         }
     }
+    
+     .form-group .typeahead-popup.dropdown-menu{
+         left: 170px !important;
+     }
     
     .form-group .dropdown-menu li a{
       color: black;
@@ -49,6 +56,17 @@
     [uib-dropdown-toggle]{
         font-size: 14px;
         box-shadow: none;
+    }
+    
+    .scope-selector{
+        [uib-dropdown-menu ]{
+            width: 173px;
+        }
+        &.open{
+            button{
+                box-shadow: none
+            }
+        }
     }
     
     .dropdown-menu{

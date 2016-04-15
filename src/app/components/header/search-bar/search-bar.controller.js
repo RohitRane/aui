@@ -53,10 +53,11 @@ export class SearchBarController {
                 resultSet.push(obj);
             });
             let obj = {
-                    lineDesc: "View All "+ response.totalResults,
+                    lineDesc: "View All "+ response.totalResults+" matches",
                     typeId: 4
              };
              resultSet.push(obj);
+             
             //let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
             angular.forEach(resultSet, function (part) {
                 if (part.typeId === 1 && firstExact) {
