@@ -28,7 +28,7 @@
     */
     @for $i from 1024 to 1400 {
         @media(min-width: + $i*1px){
-            input[type=text]/*, .form-group .dropdown-menu li*/{
+            input[type=text], .form-group .typeahead-popup.dropdown-menu li{
                 width:($i+380-1024)*1px;
             }
         }

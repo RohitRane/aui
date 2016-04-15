@@ -46,6 +46,7 @@ export class SearchBarController {
 
             angular.forEach(response.lines, function (line) {
                 let obj = {
+                    partNumber:SearchBarService.srchStr+" in ",
                     lineDesc: line.lineDescription,
                     typeId: 3
                 };
