@@ -58,9 +58,6 @@ header {
             [uib-dropdown] {
                 float: left
             }
-            .search_btn{
-               background-color: $support_color_primary;
-            }
             .search_ddl_head{
                 margin:0 0 0;
             }
@@ -68,6 +65,10 @@ header {
             input[type=text] {
                 border-radius: 0px;
                 height: 40px;
+            }
+            .btn-primary{
+                background-color:$support_color_primary;
+                border-color:$support_color_primary;
             }
             ul {
                 li {
