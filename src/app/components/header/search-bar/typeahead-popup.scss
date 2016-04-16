@@ -1,12 +1,30 @@
 .typeahead-popup{
     border-radius: 0px;
+    border: 1px solid black !important;
     p{
         font-size: 11px;
         margin-bottom: 5px;
         margin-top: 5px;
+        margin-left: 10px;
         color:#c1c1c1
     }
     li{
         cursor: pointer;
+    }
+    .view-all-results{
+        color: $accent_color;
+        margin-top: 5px;
+        font-weight: 600
+    }
+    .suggestions{
+        div{
+            span{
+                a{
+                    color:$accent_color !important;
+                    font-weight: 600;
+                    text-decoration: none
+                }
+            }
+        }
     }
 }

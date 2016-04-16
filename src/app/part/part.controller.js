@@ -1,11 +1,15 @@
 /*Author:Rohit Rane*/
 export class PartController {
-    constructor($log, $document, $stateParams, SearchBarService, dataServices) {
+    constructor($log, $document, $stateParams, $scope, $timeout, SearchBarService, dataServices) {
         'ngInject';
 
         let vm = this;
         vm.DI = () => ({ $log, $document, $stateParams, SearchBarService, dataServices });
+               
         vm.getPart();
+        $timeout(function () {
+            $scope.$emit("searchbarBlurred");
+        });
 
     }
     enlarge(event) {

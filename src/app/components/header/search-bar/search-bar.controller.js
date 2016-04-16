@@ -55,7 +55,7 @@ export class SearchBarController {
             angular.forEach(response.lines, function (line) {
                 let obj = {
                     partNumber: SearchBarService.srchStr + " in ",
-                    lineDesc: line.lineDescription,
+                    lineDesc: "<a>" + line.lineDescription + "</a>",
                     typeId: 4
                 };
                 resultSet.push(obj);
@@ -107,14 +107,18 @@ export class SearchBarController {
 
     gotoPartDetails(item, model, label, event) {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService} = vm.DI();
+        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();        
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
             SearchBarService.srchStr = item.lineDesc;
             SearchBarService.typeId = item.typeId;
-            $log.debug("location :", $location.url());
+            $log.debug("Srcchhhh :::", vm.search.searchString);
+            item.lineDesc = item.lineDesc.replace("<a>", "");
+            item.lineDesc = item.lineDesc.replace("</a>", "");
+            SearchBarService.srchStr = item.lineDesc;
             if ($location.url() === '/search') {
+                $scope.$emit("searchbarBlurred");
                 $rootScope.$emit("searchLaunched");
             }
             else {
@@ -131,13 +135,15 @@ export class SearchBarController {
 
     searchIconClick() {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService} = vm.DI();
+        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+        $scope.$emit("searchbarBlurred");
         $log.debug("vm.search.searchString ", vm.search.searchString);
         if (vm.search.searchString) {
             $log.debug("Hello...........");
             SearchBarService.productLine = vm.search.searchScope;
             $rootScope.$emit("searchIconClicked");
             if ($location.url() === '/search') {
+                $scope.$emit("searchbarBlurred");
                 $rootScope.$emit("searchLaunched");
             }
             else {
@@ -147,5 +153,12 @@ export class SearchBarController {
             $log.debug("$emit");
         }
 
+    }
+
+    scopeSelClicked() {
+        let vm = this;
+        let {$scope} = vm.DI();
+        //alert("Hi");
+        $scope.$emit("searchbarFocussed");
     }
 }

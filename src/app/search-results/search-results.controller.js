@@ -1,14 +1,20 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, $scope, dataServices, SearchBarService) {
+    constructor($log, $rootScope, $scope, $timeout, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $scope, dataServices, SearchBarService });
+        vm.DI = () => ({ $log, $scope, $timeout, dataServices, SearchBarService });
         vm.searchString = "";
+        
+        $timeout(function () {
+            $scope.$emit("searchbarBlurred");
+        });
+            
         $rootScope.$on('searchLaunched', function () {
             $log.debug("$on");
             vm.getParts();
         });
+        
         vm.results = {};
 
         vm.getParts();
@@ -56,7 +62,8 @@ export class SearchResultsController {
     getParts() {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
-
+        
+        $scope.$emit("searchbarBlurred");
         $log.debug("SEARCH STR", SearchBarService.srchStr);
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine;
