@@ -4,9 +4,8 @@ export class SearchResultsController {
 
         let vm = this;
         vm.DI = () => ({ $log, $scope, dataServices, SearchBarService });
-
         vm.searchString = "";
-        $rootScope.$on('searchIconClicked', function () {
+        $rootScope.$on('searchLaunched', function () {
             $log.debug("$on");
             vm.getParts();
         });
@@ -63,7 +62,7 @@ export class SearchResultsController {
         vm.productLine = SearchBarService.productLine;
 
         let typeId = SearchBarService.typeId;
-        if (typeId === 3) {
+        if (typeId === 4) {
             dataServices.catSearch(SearchBarService.srchStr).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.results = response;
@@ -85,6 +84,7 @@ export class SearchResultsController {
             dataServices.partSearch(SearchBarService.srchStr).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.results = response;
+                vm.resultSetLimit = response.resultSetLimit;
 
                 vm.results.parts = vm.results.parts.map(function (part) {
                     part.displayName = part.partNumber + ' ' + part.partDesc;

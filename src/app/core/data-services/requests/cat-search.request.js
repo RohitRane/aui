@@ -5,6 +5,7 @@ export function catSearch(DI) {
             DI.log.debug("cat searchString :", DI.apiConfig.CAT_SEARCH);
             DI.http(DI.apiConfig.CAT_SEARCH).then(function (response) {
                 DI.log.debug("response :", response);
+                response.data.APIResponse.resultSetLimit = 10;
                 resolve(response.data.APIResponse);
             }, function (error) {
                 DI.log.debug("error", error);

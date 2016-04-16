@@ -1,6 +1,6 @@
 <div>
   <div class="bread-crum">
-    <span class="resultBar">1-<span ng-show="srchRes.results.totalResults > 10 ">10</span> <span ng-show="srchRes.results.totalResults < 10 ">{{srchRes.results.totalResults}}</span> of {{srchRes.results.totalResults}} Results for the <span class="bold">{{srchRes.productLine}}:<a> {{srchRes.searchString}}
+    <span class="resultBar">1-<span ng-show="srchRes.results.totalResults > srchRes.resultSetLimit ">{{srchRes.resultSetLimit}}</span> <span ng-show="srchRes.results.totalResults < srchRes.resultSetLimit">{{srchRes.results.totalResults}}</span> of {{srchRes.results.totalResults}} Results for the <span class="bold">{{srchRes.productLine}}:<a> {{srchRes.searchString}}
     </a></span></span>
     <span class="dropdownBar">
       <div class="btn-group" uib-dropdown is-open="status.isopen">

@@ -35,6 +35,7 @@ export class SearchBarController {
         return dataServices.autoSearch(searchString).then(function (response) {
             $log.debug("Response in Controller : ", response);
             vm.totalResults = response.totalResults;
+            vm.resultSetLimit = response.resultSetLimit;
             let resultSet = response.parts,
                 firstExact = true,
                 firstClose = true,
@@ -43,20 +44,22 @@ export class SearchBarController {
                 part.typeId = 2;
                 return part;
             });
-
-            angular.forEach(response.lines, function (line) {
+            if (response.totalResults > vm.resultSetLimit) {
                 let obj = {
-                    partNumber:SearchBarService.srchStr+" in ",
-                    lineDesc: line.lineDescription,
+                    lineDesc: "View All " + response.totalResults + " matches",
                     typeId: 3
                 };
                 resultSet.push(obj);
+            }
+
+            angular.forEach(response.lines, function (line) {
+                let obj = {
+                    partNumber: SearchBarService.srchStr + " in ",
+                    lineDesc: line.lineDescription,
+                    typeId: 4
+                };
+                resultSet.push(obj);
             });
-            let obj = {
-                    lineDesc: "View All "+ response.totalResults+" matches",
-                    typeId: 2
-             };
-             resultSet.push(obj);
              
             //let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
             angular.forEach(resultSet, function (part) {
@@ -66,7 +69,7 @@ export class SearchBarController {
                 } else if (part.typeId === 2 && firstClose) {
                     part.firstClose = true;
                     firstClose = false;
-                } else if (part.typeId === 3 && firstSuggest) {
+                } else if (part.typeId === 4 && firstSuggest) {
                     part.firstSuggest = true;
                     firstSuggest = false;
                 }
@@ -99,38 +102,50 @@ export class SearchBarController {
         let vm = this;
         let {$log, $rootScope, SearchBarService} = vm.DI();
         SearchBarService.productLine = vm.search.searchScope;
-        $rootScope.$emit("searchIconClicked");
+        $rootScope.$emit("searchLaunched");
     }
 
     gotoPartDetails(item, model, label, event) {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService} = vm.DI();
-         SearchBarService.productLine = vm.search.searchScope;
+        SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
-        if(item.typeId===3){
+        if (item.typeId === 4) {
             SearchBarService.srchStr = item.lineDesc;
             SearchBarService.typeId = item.typeId;
-            $location.path('/search');
-        }else if(item.typeId===4){
-            vm. searchIconClick();
+            $log.debug("location :", $location.url());
+            if ($location.url() === '/search') {
+                $rootScope.$emit("searchLaunched");
+            }
+            else {
+                $location.path('/search');
+            }
+        } else if (item.typeId === 3) {
+            vm.search.searchString = SearchBarService.srchStr;
+            vm.searchIconClick();
         }
-       else{
-           $location.path('/part/' + item.partNumber);
-       }        
+        else {
+            $location.path('/part/' + item.partNumber);
+        }
     }
 
-    searchIconClick() { 
+    searchIconClick() {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService} = vm.DI();
-        $log.debug("vm.search.searchString ",vm.search.searchString);
-        if(vm.search.searchString){
+        $log.debug("vm.search.searchString ", vm.search.searchString);
+        if (vm.search.searchString) {
             $log.debug("Hello...........");
             SearchBarService.productLine = vm.search.searchScope;
             $rootScope.$emit("searchIconClicked");
-            $location.path('/search');
-        }else{
-             $log.debug("$emit");
+            if ($location.url() === '/search') {
+                $rootScope.$emit("searchLaunched");
+            }
+            else {
+                $location.path('/search');
+            }
+        } else {
+            $log.debug("$emit");
         }
-        
+
     }
 }
