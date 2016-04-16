@@ -61,6 +61,13 @@
     .scope-selector{
         [uib-dropdown-menu ]{
             width: 173px;
+            li{
+                a{
+                    &:focus,&:hover{
+                        background-color:$support_color_light_one !important;
+                    }   
+                }
+            }
         }
         &.open{
             button{

@@ -107,7 +107,7 @@ export class SearchBarController {
 
     gotoPartDetails(item, model, label, event) {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();        
+        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -137,22 +137,23 @@ export class SearchBarController {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
-        $log.debug("vm.search.searchString ", vm.search.searchString);
         if (vm.search.searchString) {
-            $log.debug("Hello...........");
-            SearchBarService.productLine = vm.search.searchScope;
-            $rootScope.$emit("searchIconClicked");
-            if ($location.url() === '/search') {
-                $scope.$emit("searchbarBlurred");
-                $rootScope.$emit("searchLaunched");
+            $log.debug("vm.search.searchString ", vm.search.searchString);
+            if (vm.search.searchString) {
+                $log.debug("Hello...........");
+                SearchBarService.productLine = vm.search.searchScope;
+                $rootScope.$emit("searchIconClicked");
+                if ($location.url() === '/search') {
+                    $scope.$emit("searchbarBlurred");
+                    $rootScope.$emit("searchLaunched");
+                }
+                else {
+                    $location.path('/search');
+                }
+            } else {
+                $log.debug("$emit");
             }
-            else {
-                $location.path('/search');
-            }
-        } else {
-            $log.debug("$emit");
         }
-
     }
 
     scopeSelClicked() {
