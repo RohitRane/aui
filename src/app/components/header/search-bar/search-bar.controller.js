@@ -46,7 +46,7 @@ export class SearchBarController {
             });
             if (response.totalResults > vm.resultSetLimit) {
                 let obj = {
-                    lineDesc: "View All " + response.totalResults + " matches",
+                    lineDesc: "View " + response.totalResults + " matches",
                     typeId: 3
                 };
                 resultSet.push(obj);
