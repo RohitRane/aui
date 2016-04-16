@@ -66,6 +66,7 @@ export class SearchResultsController {
             dataServices.catSearch(SearchBarService.srchStr).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.results = response;
+                vm.resultSetLimit = response.resultSetLimit;
 
                 vm.results.parts = vm.results.parts.map(function (part) {
                     part.displayName = part.partNumber + ' ' + part.partDesc;
