@@ -11,34 +11,36 @@ export function categoryMenuDirective($document) {
         bindToController: true,
         replace:true,
         link: function(scope, elem, attrs,controller) {
-            elem.bind('click', function(e) {
+        //(start) code in future it will use
+            // elem.bind('click', function(e) {
 
-                $document.on('click', function (e) {
-                    if (elem !== e.target && !elem[0].contains(e.target)) {
-                        scope.$apply(function () {
-                            //scope.$eval(scope.showSubMenu);
-                            scope.showSubMenu = !scope.showSubMenu;
-                            return;
-                        });
-                    }
-                });
+            //     $document.on('click', function (e) {
+            //         if (elem !== e.target && !elem[0].contains(e.target)) {
+            //             scope.$apply(function () {
+            //                 //scope.$eval(scope.showSubMenu);
+            //                 scope.showSubMenu = !scope.showSubMenu;
+            //                 return;
+            //             });
+            //         }
+            //     });
 
-                var currElem = elem.find('li');//.attr('src');
-                if(scope.currentIndex !=="")
-                {
-                    currElem[scope.currentIndex].style.borderBottom ='none';
-                    //angular.element(currElem[scope.currentIndex]).find('a').css('color','white')
-                }
-                //angular.element(currElem[e.target.dataset.index]).css('border-bottom','4px solid #0093c6');
-                angular.element(currElem[e.target.dataset.index]).children().css('color','#0093c6');
-                scope.setCurrentIndex(e.target.dataset.index);
+            //     var currElem = elem.find('li');//.attr('src');
+            //     if(scope.currentIndex !=="")
+            //     {
+            //         currElem[scope.currentIndex].style.borderBottom ='none';
+            //         //angular.element(currElem[scope.currentIndex]).find('a').css('color','white')
+            //     }
+            //     //angular.element(currElem[e.target.dataset.index]).css('border-bottom','4px solid #0093c6');
+            //     angular.element(currElem[e.target.dataset.index]).children().css('color','#0093c6');
+            //     scope.setCurrentIndex(e.target.dataset.index);
 
-                //evt.$parent.categoryMenu.data
-                var currSelObj = scope.categoryMenu.data.categories.map(function(x){if(x.link == e.target.dataset.id){return x;}});
-                console.log('emitting the message');
-                scope.$emit("showSubMenu",currSelObj);
+            //     //evt.$parent.categoryMenu.data
+            //     var currSelObj = scope.categoryMenu.data.categories.map(function(x){if(x.link == e.target.dataset.id){return x;}});
+            //     console.log('emitting the message');
+            //     scope.$emit("showSubMenu",currSelObj);
 
-            });
+            // });
+        //(end) code in future it will use
         }
     };
 
