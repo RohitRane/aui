@@ -144,7 +144,7 @@ class CategoryMenuController{
                "link": "4",
                "sub": ""
            }, {
-               "name": "Military/defence",
+               "name": "Military/defense",
                "link": "5",
                "sub": ""
            }, {
