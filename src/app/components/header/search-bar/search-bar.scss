@@ -93,4 +93,11 @@
            }
        }
     }
+    
+    @media(width:1024px){
+        #search-box::-webkit-input-placeholder {font-size:12px }
+        #search-box::-moz-placeholder {font-size:12px } /* firefox 19+ */
+        #search-box:-ms-input-placeholder {font-size:12px } /* ie */
+        #search-box:-moz-placeholder {font-size:12px }
+    }
 }

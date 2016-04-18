@@ -5,13 +5,14 @@ export function imageZoomDirective($log) {
         restrict: 'E',
         templateUrl: 'app/components/image-zoom/image-zoom.html',
         scope: {
-            //creationDate: '='
+            src: '@src'
         },
         controller: 'ImageZoomController',
         controllerAs: 'imgZoom',
         bindToController: true,
-        link: function () {
-            $log.debug("image zoom.");
+        link: function (scope, elem, attr) {
+            $log.debug("Attr :",attr);
+            $log.debug("scope :",scope);
             
         }
     };
