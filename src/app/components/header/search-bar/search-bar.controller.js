@@ -19,7 +19,7 @@ export class SearchBarController {
                 'Light Vehicles',
                 'Off-Highway',
                 'High Performance',
-                'Military/Defense',
+                'Military/Defence',
                 'Industrial'
             ]
         };
