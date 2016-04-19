@@ -8,11 +8,15 @@
                 Relevance <span class="caret"></span>
         </button>
         <ul class="pull-right" uib-dropdown-menu role="menu " aria-labelledby="single-button ">
-          <li role="menuitem"><a href="# ">Action</a></li>
-          <li role="menuitem"><a href="# ">Another action</a></li>
-          <li role="menuitem"><a href="# ">Something else here</a></li>
-          <li class="divider"></li>
-          <li role="menuitem"><a href="# ">Separated link</a></li>
+            <li role="menuitem">
+                <a href="#" ng-click="srchRes.change(action)" ng-repeat="action in srchRes.sortType">{{action}}</a>
+            </li>
+          
+         <!-- <li ng-click="srchRes.change(action)" role="menuitem"><a href="# ">Relevance</a></li>
+          <li role="menuitem"><a href="# ">Featured</a></li>
+          <li role="menuitem"><a href="# ">New Launch</a></li>
+          <li role="menuitem"><a href="# ">Part Number</a></li>
+          <li role="menuitem"><a href="# ">Brand Name</a></li>-->
         </ul>
       </div>
     </span>

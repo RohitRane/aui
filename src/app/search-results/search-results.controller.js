@@ -29,7 +29,14 @@ export class SearchResultsController {
         }, function (error) {
             $log.debug("Error in response :", error);
         });*/
-
+        
+        this.sortType = [
+                "Relevance",
+                "Featured",
+                "New Launch",
+                "Part Number",
+                "Brand Name"
+        ];
         this.filters = [
             {
                 "name": "Radio",
@@ -58,7 +65,13 @@ export class SearchResultsController {
             }
         ];
     }
-
+    
+    change(action){
+        let vm = this;
+        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
+         $log.debug("Action", action);
+    }
+    
     getParts() {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();

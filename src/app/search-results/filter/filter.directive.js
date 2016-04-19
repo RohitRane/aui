@@ -20,6 +20,15 @@ class FilterDirectiveController{
           this.tempId = '';
           this.prestine = {};
           this.reset();
+          this.slider = {
+            minValue: 20,
+            maxValue: 90,
+            options: {
+                floor: 0,
+                ceil: 100,
+                step: 1
+            }
+        };
     }   
     reset(){
         for (let x of this.list) {
@@ -28,6 +37,10 @@ class FilterDirectiveController{
                 changed: false
             };
         }
+    }
+    applyFilter(id, option){
+        console.log(id);
+         console.log(option);
     }
 }
 

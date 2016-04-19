@@ -15,7 +15,7 @@
                 <div data-ng-switch-when="true" class="form-group" data-ng-init="vm.prestine[refine.id].value = {}">
                     <label class="checkbox" data-ng-repeat="option in refine.options">
                         <input type="checkbox" name="{{refine.id}}"
-                        data-ng-change="vm.prestine[refine.id].changed = true; vm.tempId = refine.id" data-ng-model="vm.prestine[refine.id].value[option]"/>{{option}}
+                        data-ng-change="vm.prestine[refine.id].changed = true; vm.tempId = refine.id; vm.applyFilter(refine.id)" data-ng-model="vm.prestine[refine.id].value[option]"/>{{option}}
                     </label>
                 </div>
                 <div data-ng-switch-when="false" class="form-group"  data-ng-init="vm.prestine[refine.id].value = {}">
@@ -46,3 +46,10 @@
         <hr>
     </div>
 </span>
+
+
+
+<rzslider rz-slider-model="vm.slider.minValue"
+          rz-slider-high="vm.slider.maxValue"
+          rz-slider-options="vm.slider.options"></rzslider>
+
