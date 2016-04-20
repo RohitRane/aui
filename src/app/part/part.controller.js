@@ -10,6 +10,11 @@ export class PartController {
         $timeout(function () {
             $scope.$emit("searchbarBlurred");
         });
+            
+        vm.lensDimensions = {
+            height: 80,
+            width: 160
+        };
 
     }
     enlarge(event) {
