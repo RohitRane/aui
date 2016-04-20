@@ -1,17 +1,41 @@
-<div class="modal-dialog" id="subcategories">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="sample" >
-                <dl data-ng-repeat="obj in subcategories">
-                    <dt><a href="">
-                        {{obj.name|uppercase}}
-                    </a></dt>
-                    <dd data-ng-repeat="temp in obj.sub"><a href="">
-                        {{temp.name}}
-                    </a></dd>
-
-                </dl>
+<!-- <div class="popover">
+    <div class="popover-content"> -->
+        <div class="container-fluid" id="subcategories">
+            <div class="popover-content">
+                <!-- <div class=""> -->
+                    <div class="sample">
+                        <dl data-ng-repeat="obj in subcategories">
+                            <dt>
+                                <a href="">{{obj.name|uppercase}}</a>
+                            </dt>
+                            <dd data-ng-repeat="temp in obj.sub">
+                                <a href="">{{temp.name}}</a>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
             </div>
+            <!-- /.modal-content -->
         </div>
-    </div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
+        <!-- /.modal-dialog -->
+   <!--  </div>
+</div> -->
+<!-- <div class="container-fluid" id="subcategories">
+    <div class="popover" >
+        <div class="popover-inner">
+             <div class="popover-content">
+                 <div class="sample">
+                    <dl data-ng-repeat="obj in subcategories">
+                        <dt>
+                            <a href="">{{obj.name|uppercase}}</a>
+                        </dt>
+                        <dd data-ng-repeat="temp in obj.sub">
+                            <a href="">{{temp.name}}</a>
+                        </dd>
+                    </dl>
+                </div>
+             </div>
+        </div>
+    </div>
+</div> -->
+

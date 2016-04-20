@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav category-list">
-  <li data-ng-repeat="category in categoryMenu.categories">
-      <a href="" data-id={{category.link}} ng-click="clickHandler(this)" class="separator" data-index={{$index}} data-ng-class="{'last-item':$index===categoryMenu.categories.length-1}">
+  <li data-ng-repeat="category in categoryMenu.categories" uib-popover-template="'app/components/header/menus/sub-categories/subcategories.html'" popover-trigger="mouseenter" popover-placement="bottom">
+      <a href="" data-id={{category.link}}  class="separator" data-index={{$index}} data-ng-class="{'last-item':$index===categoryMenu.categories.length-1}">
           {{category.name|uppercase}}
       </a>
   </li>
