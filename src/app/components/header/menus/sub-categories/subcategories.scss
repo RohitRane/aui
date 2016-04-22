@@ -9,10 +9,6 @@ div.popover {
     }
     &.bottom .arrow {
         display:none;
-        // border-bottom-color: transparent;
-        // border-bottom-color: transparent;
-        // top: 0;
-        // border-style: none; 
     }
     .popover > .arrow {
         &:after {
@@ -46,7 +42,7 @@ div#subcategories {
             left: 120px;
             margin-top: 20px;
             dl {
-                line-height: 2;
+                line-height: 1.6em;
                 display: inline-block;
                 position: relative;
                 text-transform: uppercase;
