@@ -57,8 +57,6 @@ class SearchResultDirectiveController{
       }
       this.toggle = !this.toggle;
     }
-    
-    
 }
 
 

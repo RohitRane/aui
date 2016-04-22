@@ -3,12 +3,14 @@
   <div class="result-card">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <a href="/part/{{partCard.part.partNumber}}"><span class="name">{{partCard.part.displayName}}</span></a>
+        <span><img src="assets/images/icon_feature.jpg" alt="http://placehold.it/50x50"></span>
+        <a class="description" href="/part/{{partCard.part.partNumber}}"><span class="name">{{partCard.part.displayName}}</span></a>
         <span class="cart pull-right">
-          <span><img src="{{partCard.part.brandImgUrl}}"></span>
-        <span>Add to WishList <span class="caret"></span></span>
-        <span class="glyphicon glyphicon-shopping-cart"></span>
+            <span><img src="{{partCard.part.brandImgUrl}}"></span>
+            <span>Add to WishList <span class="caret"></span></span>
+            <span><img src="assets/images/icon_shoppingCart.jpg"></span>
         </span>
+        <div class="hrLine"></div>
       </div>
       <div class="panel-body">
         <div class="row">
@@ -16,7 +18,7 @@
             <a href="/part/{{partCard.part.partNumber}}"><img alt="http://placehold.it/160x160" src="{{partCard.part.imgUrl}}"></a>
           </div>
           <div class="col-md-5">
-            <ul>
+            <ul ng-if="partCard.part.attrList.length">
               <li>Specifications</li>
               <li data-ng-click="partCard.toggleSpecs()"><a>{{partCard.specToggleName}}</a></li>
             </ul>

@@ -3,7 +3,8 @@
         .result-card{
             .panel{
                 border-radius: 0px !important;
-                padding: 0 20px;
+                padding: 0px 10px;
+                border: none;
                 .col-md-6, .col-md-3{
                     padding: 0;
                 }
@@ -36,14 +37,18 @@
                 .panel-heading{
                 background: white !important;
                 height: 40px;
-                padding: 10px 0px;
+                padding: 0px 0px;
+                border-bottom: none;
+                .description{
+                    padding: 10px 10px;
+                }
                 .name{
                     font-size: 16px;
                     font-weight: bold;
                     color: $accent_color; 
-                    
                 }
                 .cart{
+                    padding: 10px 0px;
                   span{
                     margin: 0px 5px;
                   }
@@ -57,9 +62,13 @@
                         color: $accent_color;
                     }
                 }
+                .hrLine{
+                    border: 1px solid #dbdbdb;
+                    margin: -5px 5px 0px 30px;
+                }
              }
              .panel-body{
-                 padding: 10px 10px;
+                 padding: 10px 10px 10px 20px;
                  .col-md-3{
                     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
                         text-align: center !important;
