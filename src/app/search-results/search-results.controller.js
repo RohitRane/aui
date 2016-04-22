@@ -144,7 +144,7 @@ export class SearchResultsController {
         vm.productLine = SearchBarService.productLine;
 
         let typeId = SearchBarService.typeId;
-        if (typeId === 4) {
+        /*if (typeId === 4) {*/
             dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.results = response;
@@ -163,7 +163,7 @@ export class SearchResultsController {
             }, function (error) {
                 $log.debug("Error in response :", error);
             });
-        } else {
+        /*} else {
             dataServices.partSearch(SearchBarService.srchStr).then(function (response) {
                 $log.debug("Response in Controller else:", response);
                 vm.results = response;
@@ -183,6 +183,6 @@ export class SearchResultsController {
             }, function (error) {
                 $log.debug("Error in response :", error);
             });
-        }
+        }*/
     }
 }
