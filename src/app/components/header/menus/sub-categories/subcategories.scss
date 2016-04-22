@@ -4,6 +4,7 @@ div.popover {
     border: none;
     border-radius: 0px;
     box-shadow: none;
+    width:100%
     &.bottom {
         margin-top: 0px;
     }
@@ -16,9 +17,11 @@ div.popover {
         }
     }
     .popover-inner {
-        width: 1348px;
+        // width: 1348px;
+        width:100%;
         .popover-content{
             padding:0px;
+            width:100%;
         }
     }
 }
@@ -38,7 +41,7 @@ div#subcategories {
         padding: 0px 0px !important;
         margin-top: -2px;
         div.sample {
-            position: absolute;
+            // position: absolute;
             left: 120px;
             margin-top: 20px;
             dl {
