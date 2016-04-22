@@ -1,77 +1,280 @@
-.part{
-    .partHeading{
-        border-bottom: 1px solid #bdbdbd;
-        p{
-            font-size: 16px;
-            font-weight: bold;
-        }
+.partDetails{
+  .panel, .thumbnail{
+    border-radius: 0px;
+  }
+  .other-images{
+    .thumbnail{
+      height: 70px;
     }
-    .part-margin{
-        padding: 10px;
-        background-color: #ffffff;
-        margin-bottom: 20px;
-    }
-    background-color: #dbdbdb;
-    .bread-crum{
-        height: 40px;
-        width: 100%;
-        padding: 0px 20px;
-        background-color: #ffffff;
-        .resultBar{
-            @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-                font-size: 8px !important;
-                line-height: 50px !important;
-            }
-            font-size: 12px;
-            font-weight: bold;
-            float: left;
-            line-height: 40px;
-            .bold{
-                font-weight: bold;
-                a{
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-    .part-content{
-        padding: 20px;
-        .imagePart{
-            padding: 20px;
-            background-color: #ffffff;
-            margin-bottom: 20px;
-            @extend .partHeading;
-            .image{
-                margin-top: 20px;
-            }
-            .add-to-cart{
-                margin:auto;
-                width: 200px;
-                margin-top: 20px;
-                padding: 20px;
-                background-color: #bdbdbd; 
-                
-            }
-        }
-        .pairs{
-            @extend .part-margin;
-            @extend .partHeading;
-        }
-        .youAlsoBought{
-            @extend .part-margin;
-            @extend .partHeading;
-        }
-        .identify{
-            @extend .part-margin;
-            @extend .partHeading;
-        }
-        .explodedView{
-            @extend .part-margin;
-            @extend .partHeading;
-        }
-        .discussions{
-            @extend .part-margin;
-            @extend .partHeading;
-        }
-    }
+  }
+}
+.partDetails header{
+padding-bottom:10px;
+margin-bottom:10px;
+}
+
+.partDetails h4{
+padding-bottom:10px;
+}
+
+.partDetails .reducePaddingRt{
+	padding-right:0px;
+}
+
+.partDetails .elearn span{
+	padding-left:5px;
+	
+}
+
+
+div.catalog:before {
+   background-image:url('/images/icon_download.jpg') !important;
+	background-repeat:no-repeat ;
+	content:"" !important;
+   display: block;
+   width: 24px;
+   height: 20px;
+}
+
+
+div.part:before {
+   background-image:url('/images/icon_play.jpg') !important;
+	background-repeat:no-repeat ;
+	content:"" !important;
+   display: block;
+   width: 24px;
+   height: 20px;
+}
+
+
+
+div.partlist:before {
+   background-image:url('/images/icon_globe.jpg') !important;
+	background-repeat:no-repeat ;
+	content:"" !important;
+   display: block;
+   width: 24px;
+   height: 20px;
+}
+
+
+div.elearn p{
+	margin:0px !important;
+}
+
+div.elearn .row div.catalog,div.part,div.partlist{
+padding-bottom:10px;
+}
+
+div.feature{
+	padding: 20px 0;
+}
+div.feature img{
+	float: left;
+	margin: 0 20px 0 0;
+	width:62px;
+	height:30px;
+}
+div.feature p{
+	margin-top: 0;
+}
+
+div.poster{
+	height:300px;
+	background-image:url('/images/machine_enlarged.jpg');
+	background-repeat:no-repeat;
+	background-position:right center;
+}
+
+div.partDetails  div#wrap {
+   width:400px;
+   margin:0 auto;
+}
+div.partDetails   div#left_col {
+   float:left;
+   width:200px;
+}
+div.partDetails  div#right_col {
+   float:right;
+   width:200px;
+}
+
+ .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  
+  .pairCarousel label{
+		font-size:12px;
+		background-color:#eff0f1;
+		font-weight:normal;
+		color:#64b1d4;
+		position:absolute;
+		bottom:0px;
+		margin-bottom:0px;
+  }
+  
+   .pairCarousel .thumbnail{
+		padding:0px ;
+		height:190px;
+		position:relative;
+  }
+  
+  .carousal-control.left ,.carousal-control.right{
+  background-image:none !important; 
+      width: 50px;
+    height: 50px;
+    background-color: #333333;
+    top: 40%;
+
+  }
+  
+  
+    
+  .carouselNav .left ,.carouselNav .right{
+  background-image:none !important; 
+      width: 40px;
+    height: 40px;
+    background-color: #333333;
+    top: 40%;
+  }
+  
+  .carouselNav .left {
+  left:30px;
+  }
+  
+  .carouselNav .right {
+  right:7px !important;
+  }
+  
+ .partDetails .bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.bomDetails tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+.bomDetails tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+
+.partDetails table{
+	width:100%;
+	padding:0px;
+}
+
+label.partDesc {
+	font-weight:normal;
+	font-size:14px;
+	width:100%;
+
+}
+
+label.partDetailsTabDesc {
+	padding-top:15px;
+	font-weight:bold;
+	font-size:15px;
+	width:100%;
+
+}
+
+.resetPadding {
+	padding:0px !important;
+}
+.partDetails table {
+	line-height:25px !important;
+}
+
+.partDetails table tr {
+	line-height:25px !important;
+}
+
+.partDetails table tr td{
+	padding:0px !important;
+	margin:0px important;
+	line-height:25px !important;
+}
+
+.partDetails tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+
+.partDetails  tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+
+
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.warranty .panel-body{
+padding:0px;
+}
+
+
+
+.warranty h5{
+	font-size:15px;
+	font-weight:bold;
+}
+.extraLeft{
+	padding:8px;
+}
+
+.section-title{
+font-size:18px;
+font-weight:bold;
+}
+div.comment {
+padding:15px;
+}
+div.comment .section-title{
+	font-size:16px;
+font-weight:bold;
+}
+
+.partResultsBM ul {
+	margin:0px;
+	padding:0px;
+	background-color:#ededed;
+}
+
+.partResultsBM ul li{
+	display:inline-block;
+	background-color:#ededed;
+	line-height:25px;
+	text-align:center;
+	font-size:12x;
+	width:32%;
+	padding-left:10px;
+	border-right:1px solid white;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+.partResultsBM ul li a{
+	color:#34acd1;
+}
+
+.partResultsBM ul li:last-child {
+	border-right:none;
 }

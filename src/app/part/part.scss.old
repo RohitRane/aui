@@ -1,0 +1,77 @@
+.part{
+    .partHeading{
+        border-bottom: 1px solid #bdbdbd;
+        p{
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    .part-margin{
+        padding: 10px;
+        background-color: #ffffff;
+        margin-bottom: 20px;
+    }
+    background-color: #dbdbdb;
+    .bread-crum{
+        height: 40px;
+        width: 100%;
+        padding: 0px 20px;
+        background-color: #ffffff;
+        .resultBar{
+            @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+                font-size: 8px !important;
+                line-height: 50px !important;
+            }
+            font-size: 12px;
+            font-weight: bold;
+            float: left;
+            line-height: 40px;
+            .bold{
+                font-weight: bold;
+                a{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .part-content{
+        padding: 20px;
+        .imagePart{
+            padding: 20px;
+            background-color: #ffffff;
+            margin-bottom: 20px;
+            @extend .partHeading;
+            .image{
+                margin-top: 20px;
+            }
+            .add-to-cart{
+                margin:auto;
+                width: 200px;
+                margin-top: 20px;
+                padding: 20px;
+                background-color: #bdbdbd; 
+                
+            }
+        }
+        .pairs{
+            @extend .part-margin;
+            @extend .partHeading;
+        }
+        .youAlsoBought{
+            @extend .part-margin;
+            @extend .partHeading;
+        }
+        .identify{
+            @extend .part-margin;
+            @extend .partHeading;
+        }
+        .explodedView{
+            @extend .part-margin;
+            @extend .partHeading;
+        }
+        .discussions{
+            @extend .part-margin;
+            @extend .partHeading;
+        }
+    }
+}
