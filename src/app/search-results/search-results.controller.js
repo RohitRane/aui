@@ -83,7 +83,7 @@ export class SearchResultsController {
 
         let typeId = SearchBarService.typeId;
         if (typeId === 4) {
-            dataServices.catSearch(SearchBarService.srchStr).then(function (response) {
+            dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.results = response;
                 vm.resultSetLimit = response.resultSetLimit;

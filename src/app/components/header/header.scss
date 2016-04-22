@@ -16,6 +16,10 @@ header {
             margin-right: 20px;
             width: 105px;
             content:url($website_logo);
+            &:after{
+                width: 105px;
+                content:url($website_logo);
+            }
         }
         p{
             margin: 5px 0 0 5px;

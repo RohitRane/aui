@@ -1,10 +1,10 @@
 export class SearchBarController {
-    constructor($log, $scope, $sce, $location, $rootScope, dataServices, SearchBarService) {
+    constructor($log, $scope, $location, $rootScope, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
-        vm.DI = () => ({ $log, $scope, $sce, $location, $rootScope, dataServices, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, dataServices, SearchBarService })
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
@@ -28,7 +28,7 @@ export class SearchBarController {
 
     textTyped(searchString) {
         let vm = this;
-        let {$log, $rootScope, $sce, dataServices, SearchBarService} = vm.DI();
+        let {$log, $rootScope, dataServices, SearchBarService} = vm.DI();
         //root$scope.searchString = searchString;
         SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
@@ -102,6 +102,8 @@ export class SearchBarController {
         let vm = this;
         let {$log, $rootScope, SearchBarService} = vm.DI();
         SearchBarService.productLine = vm.search.searchScope;
+        console.log("hi");
+        
         $rootScope.$emit("searchLaunched");
     }
 
@@ -111,12 +113,12 @@ export class SearchBarController {
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
-            SearchBarService.srchStr = item.lineDesc;
+            //SearchBarService.srchStr = item.lineDesc;
             SearchBarService.typeId = item.typeId;
             $log.debug("Srcchhhh :::", vm.search.searchString);
             item.lineDesc = item.lineDesc.replace("<a>", "");
             item.lineDesc = item.lineDesc.replace("</a>", "");
-            SearchBarService.srchStr = item.lineDesc;
+            SearchBarService.productLine = item.lineDesc;
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 $rootScope.$emit("searchLaunched");

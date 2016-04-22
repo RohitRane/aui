@@ -26,9 +26,10 @@ export let apiConfig = {
     },
     'CAT_SEARCH': {
         'url': '',
-        'setUrl': function (param) {
-            this.url = apiBaseUrl + '/catSearch?q=' + param + '&cid=' + cId + '&from=0&size=10';
-            //this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=0&size=10&pcat=';
+        'setUrl': function (param, scope) {
+            //this.url = apiBaseUrl + '/catSearch?q=' + param + '&cid=' + cId + '&from=0&size=10';
+            console.log(param +":"+scope);
+            this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=0&size=10&pcat=' + scope;
         },
         'method': 'GET',
         'data': {}
