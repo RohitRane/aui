@@ -1,17 +1,23 @@
-<div class="modal-dialog" id="subcategories">
-    <div class="modal-content">
-        <div class="modal-body">
-            <div class="sample" >
-                <dl data-ng-repeat="obj in subcategories">
-                    <dt><a href="">
-                        {{obj.name|uppercase}}
-                    </a></dt>
-                    <dd data-ng-repeat="temp in obj.sub"><a href="">
-                        {{temp.name}}
-                    </a></dd>
-
-                </dl>
+<!-- <div class="subcategories"> -->
+<div class="container-fluid " id="subcategories">
+    <div class="row">
+   <!-- {{category.name}} -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="popover-content">
+                <div class="sample">
+                    <dl data-ng-repeat="obj in category.sub">
+                        <dt>
+                            <a href="">{{obj.name|uppercase}}</a>
+                        </dt>
+                        <dd data-ng-repeat="temp in obj.sub">
+                            <a href="">{{temp.name}}</a>
+                        </dd>
+                    </dl>
+                </div>
             </div>
         </div>
-    </div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
+    </div>
+</div>
+<!-- </div> -->
+
+         

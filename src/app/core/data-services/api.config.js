@@ -28,6 +28,7 @@ export let apiConfig = {
         'url': '',
         'setUrl': function (param) {
             this.url = apiBaseUrl + '/catSearch?q=' + param + '&cid=' + cId + '&from=0&size=10';
+            //this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=0&size=10&pcat=';
         },
         'method': 'GET',
         'data': {}

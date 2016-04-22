@@ -15,6 +15,7 @@ header {
             margin-left: 30px;
             margin-right: 20px;
             width: 105px;
+            content:url($website_logo);
         }
         p{
             margin: 5px 0 0 5px;
@@ -111,7 +112,7 @@ header {
     }
     .category-menu {
         height: 40px;
-        background-color: #222222;
+        background-color: $category_menu_bg;
         .navbar-header {
             height: 30px;
             .navbar-brand {
@@ -119,7 +120,7 @@ header {
                     width: 106px;
                 }
                 img {
-                    height: 0px;
+                    height: 0px;                    
                 }
             }
         }
@@ -160,6 +161,7 @@ header {
                 margin-left: 50px;
                 margin-right: 20px;
                 width: 65px;
+                content:url($website_logo);
             }
             p{
                 margin: 0px 0 0 5px;

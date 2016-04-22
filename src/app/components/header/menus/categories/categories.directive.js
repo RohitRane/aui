@@ -172,7 +172,9 @@ class CategoryMenuController{
 
        this.init = function(){
            this.categories = this.data.categories.map(function(item){
-               var temp= {}; temp.name = item.name;temp.link=item.link; return temp});
+                return item;
+               //var temp= {}; temp.name = item.name;temp.link=item.link; return temp
+             });
 
         };
         this.init();

@@ -1,6 +1,6 @@
 <div class="image-zoom row">
-    <div class="profile-pic col-md-4">
-        <img id="active-img" ng-src="{{imgZoom.src}}" alt="" data-ng-mousemove="imgZoom.enlarge($event)" >
+    <div class="profile-pic col-md-4" data-ng-mouseleave="imgZoom.mouseleft()">
+        <img id="active-img" ng-src="{{imgZoom.src}}" alt=""  data-ng-mousemove="imgZoom.enlarge($event)" >
        <div id="lens" data-ng-mousemove="imgZoom.enlarge($event)" data-ng-if="imgZoom.showZoom"></div>
     </div>
    <div class="zoom-section col-md-4" data-ng-if="imgZoom.showZoom">

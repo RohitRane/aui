@@ -1,20 +1,17 @@
-export function imageZoomDirective($log) {
+export function imageZoomDirective($log, $window, $timeout) {
     'ngInject';
 
     let directive = {
         restrict: 'E',
         templateUrl: 'app/components/image-zoom/image-zoom.html',
         scope: {
-            src: '@src'
+            src: '@src',
+            zoomIndex: '@zoomIndex',
+            lensDimensions: '@lensDimensions'
         },
         controller: 'ImageZoomController',
         controllerAs: 'imgZoom',
-        bindToController: true,
-        link: function (scope, elem, attr) {
-            $log.debug("Attr :",attr);
-            $log.debug("scope :",scope);
-            
-        }
+        bindToController: true
     };
 
     return directive;
