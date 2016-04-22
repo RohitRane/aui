@@ -45,10 +45,32 @@
             }
             .refine-options{
                 label{
-                 font-weight: normal;   
+                 font-weight: normal; 
+                 padding-left: 0px;  
                 }
                 .list{
-                    margin-left: 20px;   
+                    margin-left: 20px; 
+                    input{
+                        width: 80%;
+                        height: 20px;
+                    }  
+                    input:focus{
+                        border: 1px solid black;
+                    }
+                    .bold{
+                            font-weight: bold;
+                    }
+                    .icon{
+                        background-color: black;
+                        height: 20px;
+                        position: absolute;
+                        i{
+                            color: white;
+                            padding: 2px;
+                            font-weight: 400;
+                            font-size: 10px;
+                        }
+                    }
                 }
                 .scale{
                     form{

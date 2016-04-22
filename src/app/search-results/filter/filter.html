@@ -2,54 +2,73 @@
 <span class="refine-list">
     <div class="text-muted">
         <span class="refine">Refine By </span>
-        <button class="btn btn-xs btn-warning" data-ng-hide="!vm.prestine[vm.tempId].changed" data-ng-click="vm.reset()">Reset All</button>
     </div>
     <div class="refine" data-ng-repeat="refine in vm.list">
         <div class="refine-header">
-            {{refine.name}} 
-            <button class="btn btn-xs btn-warning" data-ng-hide="!vm.prestine[refine.id].changed" data-ng-click="vm.prestine[refine.id].changed = false; vm.prestine[refine.id].value = {}">Reset</button>
-            <span class="glyphicon expander" data-ng-class="vm.prestine[refine.id].collapsed ?'glyphicon-chevron-up': 'glyphicon-chevron-down'" data-ng-click="vm.prestine[refine.id].collapsed = !vm.prestine[refine.id].collapsed" >
+            {{refine.name}}
+            <span ng-show="refine.type == 'STRING'" class="pull-right" ng-click="vm.toggleselectAll(refine.buckets, refine.name)">{{vm.prestine[refine.name].viewSelect}}</span>
         </div>
-        <div class="refine-options" data-ng-switch="refine.type" data-ng-hide="vm.prestine[refine.id].collapsed">
-            <div class="list" data-ng-switch-when="list" data-ng-switch="refine.multiSelect">
-                <div data-ng-switch-when="true" class="form-group" data-ng-init="vm.prestine[refine.id].value = {}">
-                    <label class="checkbox" data-ng-repeat="option in refine.options">
-                        <input type="checkbox" name="{{refine.id}}"
-                        data-ng-change="vm.prestine[refine.id].changed = true; vm.tempId = refine.id; vm.applyFilter(refine.id)" data-ng-model="vm.prestine[refine.id].value[option]"/>{{option}}
+        <div class="refine-options" data-ng-switch="refine.type">
+            <div class="list" data-ng-switch-when="STRING">
+                <input data-ng-model="searchText"/><label class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></label>
+                <div  class="form-group">
+                    <label class="checkbox" data-ng-repeat="option in refine.buckets | filter:searchText | limitTo : vm.prestine[refine.name].viewLimit">
+                        <label data-ng-click="vm.apicall()" data-ng-model="option.select" uib-btn-checkbox>
+                            <i class="fa" ng-class="option.select ? 'fa-check-square' : 'fa-square-o' "></i>
+                            <span ng-class="option.select ? 'bold' : '' ">{{option.key}}({{option.count}})</span>
+                        </label>
                     </label>
                 </div>
-                <div data-ng-switch-when="false" class="form-group"  data-ng-init="vm.prestine[refine.id].value = {}">
-                    <label class="radio" data-ng-repeat="option in refine.options">
-                        <input type="radio" name="{{refine.id}}" data-ng-model="vm.prestine[refine.id].value" data-ng-value="option" value="{{option}}" data-ng-change="vm.prestine[refine.id].changed = true; vm.tempId = refine.id"/>{{option}}
-                    </label>
-                </div>
+                <label ng-if="refine.buckets.length > 4" ng-click="vm.toggleviewLimit(refine.name)">{{vm.prestine[refine.name].viewLimitName}}</label>
             </div>
-            <div class="scale" data-ng-switch-when="scale" class="form-group">
-                <form oninput="amount.value=rangeInput.value">
-                    <span>
-                        <input type="range" id="rangeInput" value="20" name="rangeInput" min="0" max="100">                  
-                        <output name="amount" for="rangeInput">20</output>
-                    </span>
-                </form>
-            </div>
-            <div class="form-group search" data-ng-switch-when="search" data-ng-init="vm.prestine[refine.id].value = {}">
-                <div class="filterBox">
-                    <input type="text">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                </div>
-                <label class="list" data-ng-repeat="option in refine.options">
-                    <input type="checkbox" name="{{refine.id}}"
-                    data-ng-change="vm.prestine[refine.id].changed = true" data-ng-model="vm.prestine[refine.id].value[option]"/>{{option}}
-                </label>
+            <div class="scale" data-ng-switch-when="NUMERIC" class="form-group">
+                <rzslider rz-slider-model="vm.prestine[refine.name].minValue"
+                    rz-slider-high="vm.prestine[refine.name].maxValue"
+                    rz-slider-options="vm.prestine[refine.name].options"
+                    rz-slider-on-change="vm.onSliderChange()">
+                </rzslider>
             </div>
         </div>
         <hr>
     </div>
 </span>
-
-
-
-<rzslider rz-slider-model="vm.slider.minValue"
-          rz-slider-high="vm.slider.maxValue"
-          rz-slider-options="vm.slider.options"></rzslider>
-
+<rzslider rz-slider-model=5
+                    rz-slider-high=50
+                    rz-slider-options="vm.slider.options"
+                    rz-slider-on-change="vm.onSliderChange()">
+</rzslider>
+<!--
+    <h6>SEE ALL CATEGORIES</h6>
+<span class="refine-list">
+    <div class="text-muted">
+        <span class="refine">Refine By </span>
+    </div>
+    <div class="refine" data-ng-repeat="refine in vm.list">
+        <div class="refine-header">
+            {{refine.name}}
+            <span ng-show="refine.type == 'string'" class="pull-right" ng-click="vm.toggleselectAll(refine.options, refine.id)">{{vm.prestine[refine.id].viewSelect}}</span>
+        </div>
+        <div class="refine-options" data-ng-switch="refine.type">
+            <div class="list" data-ng-switch-when="string">
+                <input data-ng-model="searchText"/><label class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></label>
+                <div  class="form-group">
+                    <label class="checkbox" data-ng-repeat="option in refine.options | filter:searchText | limitTo : vm.prestine[refine.id].viewLimit">
+                        <label data-ng-click="vm.apicall()" data-ng-model="option.select" uib-btn-checkbox>
+                            <i class="fa" ng-class="option.select ? 'fa-check-square' : 'fa-square-o' "></i>
+                            <span ng-class="option.select ? 'bold' : '' ">{{option.value}}</span>
+                        </label>
+                    </label>
+                </div>
+                <label ng-click="vm.toggleviewLimit(refine.id)">{{vm.prestine[refine.id].viewLimitName}}</label>
+            </div>
+            <div class="scale" data-ng-switch-when="number" class="form-group">
+                <rzslider rz-slider-model="vm.prestine[refine.id].minValue"
+                    rz-slider-high="vm.prestine[refine.id].maxValue"
+                    rz-slider-options="vm.prestine[refine.id].options">
+                </rzslider>
+            </div>
+        </div>
+        <hr>
+    </div>
+</span>
+-->
