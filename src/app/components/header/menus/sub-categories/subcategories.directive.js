@@ -40,10 +40,13 @@ class SubCategoryMenuController{
                 $scope.showSubMenu = true;
                 $scope.$apply();
             }
+            // var self =  this ;
+            //var self = $scope.showSubMenu;
         })
 
       $scope.subcategories = [
 
       ];
+
   }
 }
