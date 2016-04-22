@@ -19,24 +19,16 @@ class FilterDirectiveController{
          'ngInject';
          let vm = this;
          vm.DI = () => ({ $log, dataServices, $rootScope });
-          this.prestine = {};
-          this.viewLimitName = "View all";
-          this.reset();
-          this.slider = {
-            minValue: 20,
-            maxValue: 90,
-            options: {
-                floor: 0,
-                ceil: 100,
-                step: 1
-            }
-        };
+         vm.prestine = {};
+         vm.viewLimitName = "View all";
+         vm.reset();
     }   
     
-    reset(){
-        for (let x of this.list) {
+    reset(){ 
+        let vm = this;
+        for (let x of vm.list) {
             if(x.type == 'STRING'){
-                this.prestine[x.name] = {
+                vm.prestine[x.name] = {
                 collapsed: false,
                 changed: false,
                 select: false,
@@ -53,60 +45,64 @@ class FilterDirectiveController{
             }
             if(x.type == 'NUMERIC'){
                 let xVals = x.buckets.map(function(val) { return val.count; });
-                this.prestine[x.name] = {
+                vm.prestine[x.name] = {
                 minValue: Math.min(...xVals),
                 maxValue: Math.max(...xVals),
                 options: {
                     floor: Math.min(...xVals),
                     ceil:  Math.max(...xVals),
-                    step: 1
+                    step: 1,
+                    id: x.name,
+                    onChange: function(sliderId, modelValue, highValue){
+                       vm.apicall();
+                    }
                 }
                 };
+                 
             }
         }
     }
     
     toggleselectAll(arr, id){
-        if(this.prestine[id].toggleView){
-            this.prestine[id].viewSelect = "Unselect";
+         let vm = this;
+        if(vm.prestine[id].toggleView){
+            vm.prestine[id].viewSelect = "Unselect";
             angular.forEach(arr, function(obj){
                 obj.select = true;
             });
         }else{
-            this.prestine[id].viewSelect = "Select All";
+            vm.prestine[id].viewSelect = "Select All";
             angular.forEach(arr, function(obj){
                 obj.select = false;
             });
         }
-        this.apicall();
-        this.prestine[id].toggleView = !this.prestine[id].toggleView;
+        vm.apicall();
+        vm.prestine[id].toggleView = !vm.prestine[id].toggleView;
     }
     
     toggleviewLimit(id){
-      if(this.prestine[id].toggle){
-        this.prestine[id].viewLimitName = "View all";
-        this.prestine[id].viewLimit = 4;
+        let vm = this;
+      if(vm.prestine[id].toggle){
+        vm.prestine[id].viewLimitName = "View all";
+        vm.prestine[id].viewLimit = 4;
       }
       else{
-        this.prestine[id].viewLimitName = "Collapse view";
-        this.prestine[id].viewLimit = this.prestine[id].options.length;
+        vm.prestine[id].viewLimitName = "Collapse view";
+        vm.prestine[id].viewLimit = vm.prestine[id].options.length;
       }
-      this.prestine[id].toggle = !this.prestine[id].toggle;
+      vm.prestine[id].toggle = !vm.prestine[id].toggle;
     }
     
     apicall(){
         let vm = this;
         let { $log, dataServices, $rootScope } = vm.DI();
+         $log.debug("call");
          for (let x of this.list) {
              angular.forEach(x.buckets, function(obj){
-                 $log.debug(obj.key+" "+obj.select);
+                 
              });
          }
-         $rootScope.$emit("searchLaunched", [1,2]);
-    }
-    
-    onSliderChange(){
-         alert("hello");
+         //$rootScope.$emit("searchLaunched", [1,2]);
     }
     /*
         reset(){ console.log("super", this.list);

@@ -24,19 +24,14 @@
             <div class="scale" data-ng-switch-when="NUMERIC" class="form-group">
                 <rzslider rz-slider-model="vm.prestine[refine.name].minValue"
                     rz-slider-high="vm.prestine[refine.name].maxValue"
-                    rz-slider-options="vm.prestine[refine.name].options"
-                    rz-slider-on-change="vm.onSliderChange()">
+                    rz-slider-options="vm.prestine[refine.name].options">
                 </rzslider>
             </div>
         </div>
         <hr>
     </div>
 </span>
-<rzslider rz-slider-model=5
-                    rz-slider-high=50
-                    rz-slider-options="vm.slider.options"
-                    rz-slider-on-change="vm.onSliderChange()">
-</rzslider>
+
 <!--
     <h6>SEE ALL CATEGORIES</h6>
 <span class="refine-list">
