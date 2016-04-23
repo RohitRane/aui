@@ -1,6 +1,7 @@
 export class PageHeaderController {
-    constructor() {
+    constructor(AftermarketConstants) {
         'ngInject';
-        
+        let vm = this;
+        vm.websiteLogo = AftermarketConstants.skin.logo;
     }
 }

@@ -13,7 +13,6 @@ import { subcategoryMenuDirective } from './menus/sub-categories/subcategories.d
 import { searchBarDirective } from './search-bar/search-bar.directive';
 import { SearchBarController } from './search-bar/search-bar.controller';
 import { SearchBarService } from './search-bar/search-bar.service';
-//import { TypeaheadPopupController } from './search-bar/typeahead-popup.controller';
 
 angular.module('aftermarket.header', ['aftermarket.core'])
     .directive('pageHeader', pageHeaderDirective)

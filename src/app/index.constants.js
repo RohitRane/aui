@@ -1,6 +1,8 @@
 export let appConstants = {
-    'DANA': {
-        'logo': '/assets/images/dana-logo.png',
-        'home': '/assets/images/home.png'
-    }
+    skin:skin
 }
+
+/*Uncomment the skin you want loaded in the application*/
+
+import { skin } from '../assets/skins/dana/dana';
+//import { skin } from '../assets/skins/meritor/meritor';

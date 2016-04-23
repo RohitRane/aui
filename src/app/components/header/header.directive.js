@@ -8,7 +8,7 @@ export function pageHeaderDirective($log, $window) {
             creationDate: '='
         },
         controller: 'PageHeaderController',
-        controllerAs: 'vm',
+        controllerAs: 'pgHdr',
         bindToController: true,
         link: function (scope, element) {
             let navbar = element.children().children()[0];

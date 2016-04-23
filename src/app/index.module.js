@@ -18,7 +18,7 @@ angular.module('aftermarket',
         'aftermarket.category',
         'aftermarket.core']
     )
-    .constant('appConstants', appConstants)
+    .constant('AftermarketConstants', appConstants)
     .config(config)
     .config(routerConfig)
     .run(runBlock)
