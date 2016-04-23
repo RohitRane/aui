@@ -5,8 +5,7 @@ import { appConstants } from './index.constants';
 import { MainController } from './main/main.controller';
 
 angular.module('aftermarket',
-    ['ngResource',
-        'ui.router',
+    ['ui.router',
         'ui.bootstrap',
         'imageZoom',
         'aftermarket.header',
