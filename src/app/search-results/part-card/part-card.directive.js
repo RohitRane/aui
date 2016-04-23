@@ -1,4 +1,4 @@
-export function PartCardDirective($log,$timeout) {
+export function PartCardDirective() {
     'ngInject';
 
     let directive = {

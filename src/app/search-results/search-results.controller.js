@@ -147,7 +147,7 @@ export class SearchResultsController {
     
     change(action){
         let vm = this;
-        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
+        let {$log} = vm.DI();
          $log.debug("Action", action);
     }
     
@@ -158,7 +158,7 @@ export class SearchResultsController {
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine;
 
-        let typeId = SearchBarService.typeId;
+        //let typeId = SearchBarService.typeId;
         /*if (typeId === 4) {*/
             dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine).then(function (response) {
                 $log.debug("Response in Controller :", response);

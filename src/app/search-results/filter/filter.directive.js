@@ -53,7 +53,7 @@ class FilterDirectiveController{
                     ceil:  Math.max(...xVals),
                     step: 1,
                     id: x.name,
-                    onChange: function(sliderId, modelValue, highValue){
+                    onChange: function(/*sliderId, modelValue, highValue*/){
                        vm.apicall();
                     }
                 }
@@ -95,13 +95,13 @@ class FilterDirectiveController{
     
     apicall(){
         let vm = this;
-        let { $log, dataServices, $rootScope } = vm.DI();
+        let { $log } = vm.DI();
          $log.debug("call");
-         for (let x of this.list) {
+         /*for (let x of this.list) {
              angular.forEach(x.buckets, function(obj){
                  
              });
-         }
+         }*/
          //$rootScope.$emit("searchLaunched", [1,2]);
     }
     /*
