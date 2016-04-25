@@ -96,10 +96,23 @@ class FilterDirectiveController{
     apicall(){
         let vm = this;
         let { $log, dataServices, $rootScope } = vm.DI();
-         $log.debug("call");
+        let data = [
+          {
+            name:"gear",
+            buckets:[]
+          },
+          {
+            name:"gear",
+            buckets:[]
+          }
+          ];
          for (let x of this.list) {
              angular.forEach(x.buckets, function(obj){
-                 
+               if(x.type == "STRING"){
+                  $log.debug("STRING", x.name,  obj.select);
+               }else{
+                  $log.debug("NUMERIC", x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+               }
              });
          }
          //$rootScope.$emit("searchLaunched", [1,2]);
