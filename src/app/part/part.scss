@@ -1,5 +1,5 @@
 .partDetails{
-   margin-top: 20px;
+    margin-top: 20px;
   .panel, .thumbnail{
     border-radius: 0px;
   }
@@ -9,6 +9,50 @@
     }
   }
 }
+/* shaifali code*/
+.catalog a {
+	color:#0093c6;
+	font-size: 13px;
+	&:hover, &:focus{
+		color:#0093c6;
+		text-decoration: none	
+	}
+}
+.part a  {
+	color:#0093c6;
+	font-size: 13px;
+	&:hover, &:focus{
+		color:#0093c6;
+		text-decoration: none		
+	}
+	
+}
+.partlist a  {
+	color:#0093c6;
+	font-size: 13px;
+	&:hover, &:focus{
+		color:#0093c6;
+		text-decoration: none		
+	}
+	
+}  
+.well .pannel-body .row .Warranty-Matrix a{
+	color:#0093c6 !important;
+	text-decoration: none !important;
+	&:hover{
+		text-decoration: none !important;
+	}	
+}
+// .pannel .pannel-body .row .wishlist .btn-primary{
+	
+// 	background-color: #0093c6 !important;
+// 	}
+
+
+
+/* end shaifali code*/
+
+.pannel 
 .partDetails header{
 padding-bottom:10px;
 margin-bottom:10px;
@@ -76,8 +120,19 @@ div.feature img{
 	width:62px;
 	height:30px;
 }
-div.feature p{
-	margin-top: 0;
+div.feature 
+	p{
+		margin-top: 0;
+		a{	
+			color:#0093c6;
+			font-size:!2px;
+			text-decoration: none;
+			&:hover, &:focus{
+			color:#0093c6;
+			text-decoration: none
+		}
+	}
+	
 }
 
 div.poster{
@@ -193,17 +248,19 @@ label.partDetailsTabDesc {
 }
 
 .partDetails table tr td{
-	padding:0px !important;
+	padding-top:0px !important;
+	padding-bottom:0px !important;
+	padding-left: 10px;
 	margin:0px important;
 	line-height:25px !important;
 }
 
 .partDetails tr:nth-child(even) {
-    background-color: #eaeaea;
+    background-color: #fafafa;
 }
 
 .partDetails  tr:nth-child(odd) {
-    background-color: #fafafa;
+    background-color: #eaeaea;
 }
 
 
@@ -256,24 +313,30 @@ font-weight:bold;
 .partResultsBM ul {
 	margin:0px;
 	padding:0px;
-	background-color:#ededed;
+	background-color:#fafafa;
 }
 
 .partResultsBM ul li{
 	display:inline-block;
-	background-color:#ededed;
+	// background-color:#fafafa;
 	line-height:25px;
 	text-align:center;
 	font-size:12x;
 	width:32%;
 	padding-left:10px;
-	border-right:1px solid white;
+	border-right:1px solid #eee;
 	padding-top:3px;
 	padding-bottom:3px;
 }
 
 .partResultsBM ul li a{
-	color:#34acd1;
+	// color:#34acd1;
+	color: #0093C6;
+    font-size: 13px;
+    &:hover, &:focus{
+    	text-decoration: none;
+    	color: #0093C6;
+    }
 }
 
 .partResultsBM ul li:last-child {
