@@ -4,7 +4,7 @@ div.popover {
     border: none;
     border-radius: 0px;
     box-shadow: none;
-    width:100%
+    width:100%;
     &.bottom {
         margin-top: 0px;
     }
@@ -27,7 +27,8 @@ div.popover {
 }
 
 div#subcategories {
-    width: 100%;
+    //width: 100%;
+    width: 1350px;
     margin-top: 0px !important;
     div.popover-content {
         width: 100%;
@@ -44,6 +45,7 @@ div#subcategories {
             // position: absolute;
             left: 120px;
             margin-top: 20px;
+            margin-left: 120px;
             dl {
                 line-height: 1.6em;
                 display: inline-block;

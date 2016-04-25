@@ -1,12 +1,9 @@
-export function config($logProvider, toastrConfig) {
+export function config($logProvider, $uibTooltipProvider) {
     'ngInject';
     // Enable log
     $logProvider.debugEnabled(true);
+    //$uibTooltipProvider.setTriggers({ 'mouseenter': 'click' });
 
     // Set options third-party lib
-    toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 3000;
-    toastrConfig.positionClass = 'toast-top-right';
-    toastrConfig.preventDuplicates = true;
-    toastrConfig.progressBar = true;
+    
 }

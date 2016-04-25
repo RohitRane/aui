@@ -9,11 +9,10 @@ import { helpNFaqDirective } from './menus/help-n-faq/help-n-faq.directive';
 import { profileMenuDirective } from './menus/profile/profile.directive';
 import { orderMenuDirective } from './menus/order/order.directive';
 import { categoryMenuDirective } from './menus/categories/categories.directive';
-import { subcategoryMenuDirective } from './menus/sub-categories/subcategories.directive';
+//import { subcategoryMenuDirective } from './menus/sub-categories/subcategories.directive';
 import { searchBarDirective } from './search-bar/search-bar.directive';
 import { SearchBarController } from './search-bar/search-bar.controller';
 import { SearchBarService } from './search-bar/search-bar.service';
-//import { TypeaheadPopupController } from './search-bar/typeahead-popup.controller';
 
 angular.module('aftermarket.header', ['aftermarket.core'])
     .directive('pageHeader', pageHeaderDirective)

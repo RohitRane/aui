@@ -11,7 +11,7 @@ export function subcategoryMenuDirective() {
         controllerAs: 'SubcategoryMenu',
         bindToController: true,
         replace:true,
-        link: function(scope, elem, attrs,controller) {
+        link: function(scope, elem, attrs) {
             elem.bind('click', function() {
             });
         }
@@ -24,8 +24,7 @@ class SubCategoryMenuController{
     {
         'ngInject';
         $scope.showSubMenu = false;
-        let self = this;
-        $scope.$on('showSubMenu', function (obj,temp,self) {
+        $scope.$on('showSubMenu', function (obj,temp) {
             if(temp[0] == null || temp[0] == undefined)
             {
                 $scope.showSubMenu = false;

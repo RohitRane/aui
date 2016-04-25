@@ -100,14 +100,12 @@ export class SearchBarController {
 
     productDropDownClick() {
         let vm = this;
-        let {$log, $rootScope, SearchBarService} = vm.DI();
-        SearchBarService.productLine = vm.search.searchScope;
-        console.log("hi");
-        
+        let {$rootScope, SearchBarService} = vm.DI();
+        SearchBarService.productLine = vm.search.searchScope;        
         $rootScope.$emit("searchLaunched");
     }
 
-    gotoPartDetails(item, model, label, event) {
+    gotoPartDetails(item) {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         SearchBarService.productLine = vm.search.searchScope;

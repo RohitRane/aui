@@ -2,17 +2,17 @@
     Author : Rohit Rane
 */
 export class ImageZoomController {
-    constructor($log, $document, $timeout) {
+    constructor($log, $document) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $document, $timeout });
+        vm.DI = () => ({ $log, $document });
 
         vm.showZoom = false;
     }
     enlarge(event) {
         let vm = this;
-        let {$document, $log, $timeout} = vm.DI();
+        let {$document, $log} = vm.DI();
         vm.showZoom = true;
 
         let zoomLevel = vm.zoomIndex;
@@ -20,9 +20,9 @@ export class ImageZoomController {
 
         let activeImg = $document[0].getElementById("active-img");
         $log.debug("mouse x :" + event.pageY + " " + event.pageX);
-        let crossSection = JSON.parse(vm.lensDimensions);
-        crossSection.yOffset= 315;
-        crossSection.xOffset= 60;
+        let crossSection = angular.fromJson(vm.lensDimensions);
+        crossSection.yOffset = 315;
+        crossSection.xOffset = 60;
         $log.debug("lens dim:", crossSection);
         let lensCenterY = event.pageY - crossSection.yOffset;
         let lensCenterX = event.pageX - crossSection.xOffset;
@@ -51,17 +51,17 @@ export class ImageZoomController {
 
     repositionLens(lensCenterX, lensCenterY, crossSection) {
         let vm = this;
-        let {$document, $log, $timeout} = vm.DI();
+        let {$document, $log} = vm.DI();
         $log.debug("lens reposition.", vm.lensDimensions);
         let lens = $document[0].getElementById("lens");
         let lensElement = angular.element(lens);
-        
-            lensElement.css("height", crossSection.height + 'px');
-            lensElement.css("width", crossSection.width + 'px');
+
+        lensElement.css("height", crossSection.height + 'px');
+        lensElement.css("width", crossSection.width + 'px');
         lensElement.css("top", lensCenterY + 'px');
         lensElement.css("left", lensCenterX + 'px');
         let activeImg = $document[0].getElementById("active-img");
-        (lensCenterX + crossSection.width-10 > activeImg.offsetWidth || lensCenterX+crossSection.xOffset/2 < angular.element(activeImg)[0].getBoundingClientRect().left ) ? vm.showZoom = false : angular.noop();
+        (lensCenterX + crossSection.width - 10 > activeImg.offsetWidth || lensCenterX + crossSection.xOffset / 2 < angular.element(activeImg)[0].getBoundingClientRect().left) ? vm.showZoom = false : angular.noop();
         lensCenterY + crossSection.height > activeImg.offsetHeight ? vm.showZoom = false : angular.noop();
 
     }

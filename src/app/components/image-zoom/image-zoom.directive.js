@@ -1,4 +1,4 @@
-export function imageZoomDirective($log, $window, $timeout) {
+export function imageZoomDirective() {
     'ngInject';
 
     let directive = {

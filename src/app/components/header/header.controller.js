@@ -1,9 +1,7 @@
 export class PageHeaderController {
-    constructor(moment) {
+    constructor(AftermarketConstants) {
         'ngInject';
-
-        // "this.creation" is available by directive option "bindToController: true"
-        this.relativeDate = moment(this.creationDate).fromNow();
-        
+        let vm = this;
+        vm.websiteLogo = AftermarketConstants.skin.logo;
     }
 }

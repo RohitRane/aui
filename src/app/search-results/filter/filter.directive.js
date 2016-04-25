@@ -43,7 +43,7 @@ class FilterDirectiveController{
                     obj.select = false;
                 });
             }
-            if(x.type == 'NUMERIC'){
+            if(x.type == 'NUMERIC'){ 
                 let xVals = x.buckets.map(function(val) { return val.count; });
                 vm.prestine[x.name] = {
                 minValue: Math.min(...xVals),
@@ -95,26 +95,13 @@ class FilterDirectiveController{
     
     apicall(){
         let vm = this;
-        let { $log, dataServices, $rootScope } = vm.DI();
-        let data = [
-          {
-            name:"gear",
-            buckets:[]
-          },
-          {
-            name:"gear",
-            buckets:[]
-          }
-          ];
-         for (let x of this.list) {
+        let { $log } = vm.DI();
+         $log.debug("call");
+         /*for (let x of this.list) {
              angular.forEach(x.buckets, function(obj){
-               if(x.type == "STRING"){
-                  $log.debug("STRING", x.name,  obj.select);
-               }else{
-                  $log.debug("NUMERIC", x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
-               }
+                 
              });
-         }
+         }*/
          //$rootScope.$emit("searchLaunched", [1,2]);
     }
     /*
@@ -175,5 +162,4 @@ class FilterDirectiveController{
       this.prestine[id].toggle = !this.prestine[id].toggle;
     }*/
 }
-
 

@@ -1,7 +1,8 @@
 /*Author:Rohit Rane*/
 export class HomeController {
-    constructor() {
+    constructor(AftermarketConstants) {
         'ngInject';
-
+        let vm = this;
+        vm.dummyHome = AftermarketConstants.skin.home;
     }
 }
