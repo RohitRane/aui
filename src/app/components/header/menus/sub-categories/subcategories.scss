@@ -56,12 +56,12 @@ div#subcategories {
                 vertical-align: top;
                 font-weight: bold;
                 dd {
-                    font-size: 13px;
-                    font-size: bold;
+                    font-size: 12px;
                     display: inline-block;
                     text-transform: capitalize;
                     width: 120px;
                     line-height: 0.5%;
+                    font-weight: 600;
                     margin-top: -2em;
                     /* negate the DL line-height */
                     a {
