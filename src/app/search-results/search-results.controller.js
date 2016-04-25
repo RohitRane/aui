@@ -6,7 +6,8 @@ export class SearchResultsController {
         vm.DI = () => ({ $log, $scope, $timeout, dataServices, SearchBarService });
         vm.searchString = "";
         vm.results = {
-            parts: []
+            parts: [],
+            totalResults: 0
         };
         vm.resultSetLimit = 10;
         vm.resultStartIndex = 0;
