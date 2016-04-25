@@ -113,6 +113,8 @@ export class SearchResultsController {
             {
                 "name": "AXEL",
                 "type": "NUMERIC",
+
+                "id": "id4",
                 "buckets": [{
                     "key": "n1",
                     "count": 25

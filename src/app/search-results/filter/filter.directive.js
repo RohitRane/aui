@@ -162,5 +162,3 @@ class FilterDirectiveController{
       this.prestine[id].toggle = !this.prestine[id].toggle;
     }*/
 }
-
-
