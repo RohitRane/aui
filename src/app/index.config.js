@@ -1,9 +1,7 @@
-export function config($logProvider, $uibTooltipProvider) {
+export function config($logProvider) {
     'ngInject';
     // Enable log
     $logProvider.debugEnabled(true);
-    //$uibTooltipProvider.setTriggers({ 'mouseenter': 'click' });
-
     // Set options third-party lib
     
 }

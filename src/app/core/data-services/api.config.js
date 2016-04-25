@@ -7,15 +7,14 @@ var apiBaseUrl = 'http://52.8.125.250:8080/search-web/api';
 var cId = 1;
 
 export let apiConfig = {
-    'PART_SEARCH': {
-        //'url': '/assets/data/sample-search.json',
+    /*'PART_SEARCH': {
         'url': '',
         'setUrl': function (param) {
             this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=0&size=10';
         },
         'method': 'GET',
         'data': {}
-    },
+    },*/
     'AUTO_SEARCH': {
         'url': '',
         'setUrl': function (param) {
@@ -26,9 +25,9 @@ export let apiConfig = {
     },
     'CAT_SEARCH': {
         'url': '',
-        'setUrl': function (param, scope) {
+        'setUrl': function (param, scope, from, size) {
             //this.url = apiBaseUrl + '/catSearch?q=' + param + '&cid=' + cId + '&from=0&size=10';
-            this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=0&size=10&pcat=' + scope;
+            this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=' + from + '&size=' + size + '&pcat=' + scope;
         },
         'method': 'GET',
         'data': {}

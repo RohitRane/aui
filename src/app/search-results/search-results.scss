@@ -149,4 +149,15 @@
             }
         }
     }
+    .load-more{
+        width: 465px;
+        height: 40px;
+        border-radius: 4px;
+        margin-bottom: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        background-color: $load_more;
+        color:$color_extreme_two;
+        border: none;
+    }
 }

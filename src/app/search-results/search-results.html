@@ -1,6 +1,6 @@
 <div>
   <div class="bread-crum">
-    <span class="resultBar">1-<span ng-show="srchRes.results.totalResults > srchRes.resultSetLimit ">{{srchRes.resultSetLimit}}</span> <span ng-show="srchRes.results.totalResults < srchRes.resultSetLimit">{{srchRes.results.totalResults}}</span> of {{srchRes.results.totalResults}} Results for the <span class="bold">{{srchRes.productLine}}:<a> {{srchRes.searchString}}
+    <span class="resultBar">1-<span ng-show="srchRes.results.totalResults > srchRes.resultSetLimit ">{{srchRes.results.parts.length}}</span> <span ng-show="srchRes.results.totalResults < srchRes.resultSetLimit">{{srchRes.results.totalResults}}</span> of {{srchRes.results.totalResults}} Results for the <span class="bold">{{srchRes.productLine}}:<a> {{srchRes.searchString}}
     </a></span></span>
     <span class="dropdownBar">
       <div class="btn-group" uib-dropdown is-open="status.isopen">
@@ -30,6 +30,9 @@
   <div class="col-md-8">
     <h5>Steer Axel Assembly</h5>
     <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
+    <div class="row text-center" data-ng-hide="srchRes.results.totalResults < srchRes.resultSetLimit">
+        <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>
+    </div>    
   </div>
   <div class="col-md-2 parts ">
     <!--<div class="part1 ">

@@ -48,12 +48,12 @@ export function categoryMenuDirective() {
 }
 
 class CategoryMenuController {
-    constructor($scope, $log, $document, $timeout) {
+    constructor($scope, $log, $document, $timeout, $window) {
         'ngInject';
 
         let vm = this;
 
-        vm.DI = () => ({ $scope, $log, $document, $timeout });
+        vm.DI = () => ({ $scope, $log, $document, $timeout, $window });
 
         vm.data = {
             "categories": [{
@@ -184,11 +184,11 @@ class CategoryMenuController {
 
     catHover(cat) {
         let vm = this;
-        let { $log, $document, $timeout } = vm.DI();
-        $log.debug("Cat hovered.", window.innerWidth);
+        let { $log, $document, $timeout, $window } = vm.DI();
+        $log.debug("Cat hovered.", $window.innerWidth);
 
 
-        let closeOthers = () => new Promise((resolve, reject) => {
+        let closeOthers = () => new Promise((resolve) => {
             cat.open = true;
             angular.forEach(vm.categories, function (item, index, arr) {
                 if (cat.name !== item.name) {
@@ -206,7 +206,7 @@ class CategoryMenuController {
                 let subCatList = $document[0].getElementById("subcategories");
                 $log.debug("subcatlist :", subCatList);
                 $log.debug("subcatlist :", subCatList);
-                angular.element(subCatList).css("width", window.innerWidth + "px");
+                angular.element(subCatList).css("width", $window.innerWidth + "px");
             }, 150);
         });
 
