@@ -97,11 +97,15 @@ class FilterDirectiveController{
         let vm = this;
         let { $log } = vm.DI();
          $log.debug("call");
-         /*for (let x of this.list) {
+         for (let x of this.list) {
              angular.forEach(x.buckets, function(obj){
-                 
+               if(x.type == "STRING"){
+                  $log.debug("STRING", x.name,  obj.key, obj.select);
+               }else{
+                  $log.debug("NUMERIC", x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+               }
              });
-         }*/
+         }
          //$rootScope.$emit("searchLaunched", [1,2]);
     }
     /*

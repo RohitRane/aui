@@ -37,6 +37,14 @@
     background-color: $support_color_light_one;
     .filter{
         .refine-list{
+          .text-muted{
+                margin: 10px 0px;
+                .refine{
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: black;
+                }
+            }
             .refine-header{
                 font-weight: bold;
                 .expander{
