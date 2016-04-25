@@ -43,7 +43,7 @@ class FilterDirectiveController{
                     obj.select = false;
                 });
             }
-            if(x.type == 'NUMERIC'){ 
+            if(x.type == 'NUMERIC'){
                 let xVals = x.buckets.map(function(val) { return val.count; });
                 vm.prestine[x.name] = {
                 minValue: Math.min(...xVals),
@@ -53,7 +53,7 @@ class FilterDirectiveController{
                     ceil:  Math.max(...xVals),
                     step: 1,
                     id: x.name,
-                    onChange: function(sliderId, modelValue, highValue){
+                    onChange: function(/*sliderId, modelValue, highValue*/){
                        vm.apicall();
                     }
                 }
@@ -162,4 +162,3 @@ class FilterDirectiveController{
       this.prestine[id].toggle = !this.prestine[id].toggle;
     }*/
 }
-
