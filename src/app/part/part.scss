@@ -14,7 +14,7 @@
 	   	}
   		li a{
   			color: #000;
-  			font-size: 14px;
+  			font-size: 13px;
   			font-weight: 600;
   			&:hover,
   			&:focus{
@@ -23,13 +23,21 @@
   		}
   		li.active a{
   			color: #0093c6;
-  			font-size: 14px;
+  			font-size: 13px;
   			font-weight: 600;
   		}
   	}
   }
-  .pannel-default{
+  .panel-default{
   	border-color: none;
+  }
+  .panel {
+  	.panel-heading{
+  		padding:21px 22px;
+  	}
+  	.panel-body{
+  		padding:10px 15px;
+  	}
   }
   //en shaifali code
   .panel, .thumbnail{
@@ -84,9 +92,18 @@ span.readmore a{
 			text-decoration: none !important;
 		}		
 }
+.viewAll a{
+	color:#0093c6 !important;
+	text-decoration: none !important;
+	font-size: 12px;
+	&:hover{
+		text-decoration: none !important;
+	}		
+}
 .Answered-by a{
 	color:#0093c6 !important;
 	text-decoration: none !important;
+	font-size: 9px;
 	&:hover{
 		text-decoration: none !important;
 	}		
@@ -118,6 +135,9 @@ padding-bottom:10px;
 
 .partDetails .elearn span{
 	padding-left:5px;
+	b{
+		font-size: 13px;
+	}
 	
 }
 
@@ -212,7 +232,7 @@ div.partDetails  div#right_col {
   }
   
   .pairCarousel label{
-		font-size:12px;
+		font-size:13px;
 		background-color:#eff0f1;
 		font-weight:normal;
 		color:#64b1d4;
@@ -221,12 +241,13 @@ div.partDetails  div#right_col {
 		margin-bottom:0px;
 		padding:10px 5px;
   }
-  
-   .pairCarousel .thumbnail{
+  	
+  .pairCarousel .thumbnail{
 		padding:0px ;
 		height:190px;
 		position:relative;
   }
+
   
   //where it has used?
   .carousal-control.left ,.carousal-control.right{
@@ -298,12 +319,16 @@ label.partDetailsTabDesc {
 
 .partDetails table tr {
 	line-height:25px !important;
+	th{
+		font-size: 13px;
+	}
 }
 
 .partDetails table tr td{
 	padding-top:0px !important;
 	padding-bottom:0px !important;
 	padding-left: 10px;
+	font-size: 	12px;
 	margin:0px important;
 	line-height:25px !important;
 	a{	
@@ -355,7 +380,7 @@ padding:0px;
 
 
 .warranty h5{
-	font-size:15px;
+	font-size:18px;
 	font-weight:bold;
 }
 .extraLeft{
@@ -364,7 +389,7 @@ padding:0px;
 
 .section-title{
 font-size:18px;
-padding-bottom: 9px;
+padding-bottom: 11px;
 font-weight:bold;
 }
 div.comment {
@@ -407,3 +432,8 @@ font-weight:bold;
 .partResultsBM ul li:last-child {
 	border-right:none;
 }
+.part-panel{
+  	.top-bottom-gap{
+  		padding:21px 22px 11px;
+  	}
+  }
