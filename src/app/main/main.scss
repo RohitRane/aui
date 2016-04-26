@@ -10,7 +10,11 @@ $fa-font-path: "../../bower_components/components-font-awesome/fonts";
 @import "../../src/assets/skins/dana/dana-skin";
 //@import "../../src/assets/skins/meritor/merritor-dummy-skin";
 
-//mixins and extendable classes defined here 
+
+/*Mixins*/
+@import "./mixin";
+
+//extendable classes defined here 
 
 .title{
     font-size:18px;
