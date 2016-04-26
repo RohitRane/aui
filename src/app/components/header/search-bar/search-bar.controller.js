@@ -99,10 +99,10 @@ export class SearchBarController {
     }
 
     productDropDownClick() {
-        let vm = this;
+        /*let vm = this;
         let {$rootScope, SearchBarService} = vm.DI();
         SearchBarService.productLine = vm.search.searchScope;        
-        $rootScope.$emit("searchLaunched");
+        $rootScope.$emit("searchLaunched");*/
     }
 
     gotoPartDetails(item) {

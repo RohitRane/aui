@@ -6,3 +6,5 @@ coverage/
 .tmp/
 .vscode/
 dist/
+gulp/sprite.js
+src/assets/sprite/

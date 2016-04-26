@@ -18,6 +18,7 @@ export class SearchResultsController {
 
         $rootScope.$on('searchLaunched', function (event, data) {
             $log.debug("$on", data);
+            vm.resultStartIndex = 0;
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         });
 
@@ -168,11 +169,17 @@ export class SearchResultsController {
         /*if (typeId === 4) {*/
         dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size).then(function (response) {
             $log.debug("Response in Controller :", response);
-            //vm.results = response;
-            vm.results.parts = vm.results.parts.concat(response.parts);
+            if (vm.resultStartIndex === 0) {
+                vm.results.parts = response.parts;
+            } else {
+                vm.results.parts = vm.results.parts.concat(response.parts);
+            }
+
             vm.results.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
-            $log.debug("Result set limit :",vm.resultSetLimit);
+            $log.debug("Result set limit :", vm.resultSetLimit);
+
+            $log.debug();
 
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber + ' ' + part.partDesc;
@@ -213,8 +220,11 @@ export class SearchResultsController {
     loadMore() {
         let vm = this;
         let { $log } = vm.DI();
-        $log.debug("load more clicked.");
         vm.resultStartIndex = vm.resultStartIndex + vm.resultSetLimit;
+        $log.debug("load more clicked." + vm.resultStartIndex + " : " + vm.results.totalResults);
+        $log.debug("Truth part 1 :",vm.results.totalResults > vm.resultStartIndex+vm.resultSetLimit );
+        $log.debug("Truth part 2 :",vm.results.totalResults > vm.resultSetLimit );
+        $log.debug("Truth : ",vm.results.totalResults > vm.resultStartIndex && vm.results.totalResults > vm.resultSetLimit);
         vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
     }
 }
