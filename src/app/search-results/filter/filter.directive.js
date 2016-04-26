@@ -66,7 +66,7 @@ class FilterDirectiveController{
     toggleselectAll(arr, id){
          let vm = this;
         if(vm.prestine[id].toggleView){
-            vm.prestine[id].viewSelect = "Unselect";
+            vm.prestine[id].viewSelect = "Un-select";
             angular.forEach(arr, function(obj){
                 obj.select = true;
             });
@@ -87,7 +87,7 @@ class FilterDirectiveController{
         vm.prestine[id].viewLimit = 4;
       }
       else{
-        vm.prestine[id].viewLimitName = "Collapse view";
+        vm.prestine[id].viewLimitName = "Collapse";
         vm.prestine[id].viewLimit = vm.prestine[id].options.length;
       }
       vm.prestine[id].toggle = !vm.prestine[id].toggle;
@@ -140,7 +140,7 @@ class FilterDirectiveController{
     
     toggleselectAll(arr, id){
         if(this.prestine[id].toggleView){
-            this.prestine[id].viewSelect = "Unselect";
+            this.prestine[id].viewSelect = "Un-select";
             angular.forEach(arr, function(obj){
                 obj.select = true;
             });
@@ -159,7 +159,7 @@ class FilterDirectiveController{
         this.prestine[id].viewLimit = 4;
       }
       else{
-        this.prestine[id].viewLimitName = "Collapse view";
+        this.prestine[id].viewLimitName = "Collapse";
         console.log(this.prestine[id].options);
         this.prestine[id].viewLimit = this.prestine[id].options.length;
       }

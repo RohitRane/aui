@@ -50,7 +50,12 @@
                 }
             }
             .refine-header{
-                font-weight: bold;
+                font-weight: 600;
+                font-size: 13px;
+                a{
+                    font-size: 9px;
+                    cursor: pointer;
+                }
                 .expander{
                     float: right;
                 }
@@ -62,6 +67,23 @@
                 }
                 .list{
                     margin-left: 20px; 
+                    .form-group{
+                        .checkbox{
+                            label{
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    .form-group{
+                        margin-bottom: 0px;
+                    }
+                    .view-more{
+                        overflow: hidden;
+                        a{
+                            cursor: pointer;
+                            font-size: 9px;
+                        }
+                    }
                     input{
                         width: 80%;
                         height: 20px;
@@ -70,7 +92,7 @@
                         border: 1px solid black;
                     }
                     .bold{
-                            font-weight: bold;
+                            font-weight: 600;
                     }
                     .icon{
                         background-color: black;
