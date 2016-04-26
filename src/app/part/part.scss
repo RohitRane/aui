@@ -52,7 +52,7 @@
 /* shaifali code*/
 .catalog a {
 	color:#0093c6;
-	font-weight: 600;
+	font-weight: 400;
 	font-size: 13px;
 	&:hover, &:focus{
 		color:#0093c6;
@@ -62,7 +62,7 @@
 .part a  {
 	color:#0093c6;
 	font-size: 13px;
-	font-weight: 600;
+	font-weight: 400;
 	&:hover, &:focus{
 		color:#0093c6;
 		text-decoration: none		
@@ -71,7 +71,7 @@
 }
 .partlist a  {
 	color:#0093c6;
-	font-weight: 600;
+	font-weight: 400;
 	font-size: 13px;
 	&:hover, &:focus{
 		color:#0093c6;
@@ -82,7 +82,7 @@
 div.Warranty-Matrix a{
 	color:#0093c6 !important;
 	font-size: 13px;
-	font-weight: 600;
+	font-weight: 400;
 	text-decoration: none !important;
 	&:hover{
 		text-decoration: none !important;
@@ -90,7 +90,7 @@ div.Warranty-Matrix a{
 }
 span.readmore a{
 		color:#0093c6 !important;
-		font-weight: 600;
+		font-weight: 400;
 		font-size: 13px;
 		text-decoration: none !important;
 		&:hover{
@@ -99,7 +99,7 @@ span.readmore a{
 }
 .viewAll a{
 	color:#0093c6 !important;
-	font-weight: 600;
+	font-weight: 400;
 	text-decoration: none !important;
 	font-size: 12px;
 	&:hover{
@@ -107,7 +107,7 @@ span.readmore a{
 	}		
 }
 .Answered-by a{
-	font-weight: 600;
+	font-weight: 400;
 	color:#0093c6 !important;
 	text-decoration: none !important;
 	font-size: 9px;
@@ -203,7 +203,7 @@ div.feature
 		a{	
 			color:#0093c6;
 			font-size:12px;
-			font-weight: 600;
+			font-weight: 400;
 			text-decoration: none;
 			&:hover, &:focus{
 			color:#0093c6;
@@ -242,7 +242,7 @@ div.partDetails  div#right_col {
   .pairCarousel label{
 		font-size:13px;
 		background-color:#eff0f1;
-		font-weight:600;
+		font-weight:400;
 		color:#0093C6;
 		position:absolute;
 		bottom:0px;
@@ -343,7 +343,7 @@ label.partDetailsTabDesc {
 		color:#0093c6 !important;
 		font-size:12px !important;
 		text-decoration: none;
-		font-weight: 600;
+		font-weight: 400;
 		&:hover,
 		&:focus{
 			color:#0093c6;
@@ -429,10 +429,11 @@ div.comment .section-title{
 }
 
 .partResultsBM ul li a{
+	// @include font(13px);
 	// color:#34acd1;
 	color: #0093C6;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     &:hover, &:focus{
     	text-decoration: none;
     	color: #0093C6;
