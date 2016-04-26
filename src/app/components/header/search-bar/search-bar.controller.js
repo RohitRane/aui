@@ -32,7 +32,7 @@ export class SearchBarController {
         //root$scope.searchString = searchString;
         SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
-        return dataServices.autoSearch(searchString).then(function (response) {
+        return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
             $log.debug("Response in Controller : ", response);
             vm.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;

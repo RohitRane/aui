@@ -17,8 +17,8 @@ export let apiConfig = {
     },*/
     'AUTO_SEARCH': {
         'url': '',
-        'setUrl': function (param) {
-            this.url = apiBaseUrl + '/suggest?q=' + param + '&cid=' + cId;
+        'setUrl': function (param, category) {
+            this.url = apiBaseUrl + '/suggest?q=' + param + '&cid=' + cId + '&cat=' +category;
         },
         'method': 'GET',
         'data': {}
