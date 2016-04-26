@@ -303,7 +303,7 @@ label.partDesc {
 }
 
 label.partDetailsTabDesc {
-	padding-top:15px;
+	padding-top:13px;
 	font-weight:bold;
 	font-size:15px;
 	width:100%;
@@ -371,7 +371,7 @@ label.partDetailsTabDesc {
 
 /* add padding  */
 .left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
+.right-addon input { padding-right: 80px; }
 
 .pannel .warranty .panel-body{
 padding:0px;
@@ -396,8 +396,8 @@ div.comment {
 padding:15px;
 }
 div.comment .section-title{
-	font-size:16px;
-font-weight:bold;
+	font-size:18px;
+	font-weight:bold;
 }
 
 .partResultsBM ul {
@@ -436,4 +436,9 @@ font-weight:bold;
   	.top-bottom-gap{
   		padding:21px 22px 11px;
   	}
-  }
+}
+.wishlist .btn-primary {
+	padding:5px 62px;
+	background-color:#0093C6; 
+	border-color: #0093C6;
+}
