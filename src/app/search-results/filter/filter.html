@@ -1,8 +1,50 @@
 <h6>SEE ALL CATEGORIES</h6>
 <span class="refine-list">
-    <div class="text-muted">
+    <!--<div class="text-muted">
         <span class="refine">Refine By </span>
+    </div>-->
+    <div class="refine-header">
+        Driveshaft
     </div>
+    <div class="refine-options">
+        <div class="list">
+            <div class="form-group">
+                <label class="checkbox">
+                    <label>
+                        <span>U-joints(15)</span>
+                    </label>
+                </label>
+                <label class="checkbox">
+                    <label>
+                        <span>Driveshaft Assembly(100)</span>
+                    </label>
+                </label>
+            </div>
+            <label ng-if="refine.buckets.length > 4" ng-click="vm.toggleviewLimit(refine.name)">{{vm.prestine[refine.name].viewLimitName}}</label>
+        </div>  
+    </div>
+    
+    <div class="refine-header">
+        Steer Axle(5457)
+    </div>
+    <div class="refine-options">
+        <div class="list">
+            <div class="form-group">
+                <label class="checkbox">
+                    <label>
+                        <span>Steer Axle Assembly(562)</span>
+                    </label>
+                </label>
+                <label class="checkbox">
+                    <label>
+                        <span>Tie Rod Ends(100)</span>
+                    </label>
+                </label>
+            </div>
+            <label ng-if="refine.buckets.length > 4" ng-click="vm.toggleviewLimit(refine.name)">{{vm.prestine[refine.name].viewLimitName}}</label>
+        </div>  
+    </div>
+    <hr>
     <div class="refine" data-ng-repeat="refine in vm.list">
         <div class="refine-header">
             {{refine.name}}
@@ -10,7 +52,7 @@
         </div>
         <div class="refine-options" data-ng-switch="refine.type">
             <div class="list" data-ng-switch-when="STRING">
-                <input data-ng-model="searchText"/><label class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></label>
+                <!--<input data-ng-model="searchText"/><label class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></label>-->
                 <div  class="form-group">
                     <label class="checkbox" data-ng-repeat="option in refine.buckets | filter:searchText | limitTo : vm.prestine[refine.name].viewLimit">
                         <label data-ng-click="vm.apicall()" data-ng-model="option.select" uib-btn-checkbox>

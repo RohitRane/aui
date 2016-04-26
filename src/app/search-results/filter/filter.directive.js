@@ -100,9 +100,9 @@ class FilterDirectiveController{
          for (let x of this.list) {
              angular.forEach(x.buckets, function(obj){
                if(x.type == "STRING"){
-                  $log.debug("STRING", x.name,  obj.key, obj.select);
+                  $log.debug(x.name,  obj.key, obj.select);
                }else{
-                  $log.debug("NUMERIC", x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+                  $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
                }
              });
          }

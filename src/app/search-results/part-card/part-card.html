@@ -17,8 +17,8 @@
           <div class="col-md-3">
             <a href="/part/{{partCard.part.partNumber}}"><img alt="http://placehold.it/160x160" src="{{partCard.part.imgUrl}}"></a>
           </div>
-          <div class="col-md-5">
-            <ul ng-if="partCard.part.attrList.length">
+          <div class="col-md-5" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
+            <ul ng-show="partCard.part.attrList.length">
               <li>Specifications</li>
               <li data-ng-click="partCard.toggleSpecs()"><a>{{partCard.specToggleName}}</a></li>
             </ul>

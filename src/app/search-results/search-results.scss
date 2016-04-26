@@ -1,7 +1,8 @@
 .bread-crum{
     height: 40px;
-    width: 100%;
     padding: 0px 10px;
+    background-color: $color_extreme_two;
+    margin: 0px -10px;
     .resultBar{
         @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
             font-size: 8px !important;
@@ -36,6 +37,9 @@
 .search-results{
     background-color: $support_color_light_one;
     .filter{
+        h6{
+            font-weight: bold;
+        }
         .refine-list{
           .text-muted{
                 margin: 10px 0px;

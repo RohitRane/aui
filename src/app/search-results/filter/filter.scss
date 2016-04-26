@@ -1,8 +1,4 @@
-/*! angularjs-slider - v2.13.0 - 
- (c) Rafal Zajac <rzajac@gmail.com>, Valentin Hervieu <valentin@hervieu.me>, Jussi Saarivirta <jusasi@gmail.com>, Angelin Sirbu <angelin.sirbu@gmail.com> - 
- https://github.com/angular-slider/angularjs-slider - 
- 2016-04-24 */
- rzslider {
+rzslider {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -63,7 +59,7 @@ rzslider .rz-bar {
 
 rzslider .rz-bar.rz-selection {
   z-index: 2;
-  background: black;
+  background: #777;
   -webkit-border-radius: 1px;
      -moz-border-radius: 1px;
           border-radius: 1px;
@@ -73,7 +69,7 @@ rzslider .rz-pointer {
   top: -14px;
   z-index: 3;
   width: 20px;
-  height: 32px;
+  height: 0px;
   cursor: pointer;
   background-color: transparent;
   -webkit-border-radius: 16px;
@@ -81,7 +77,23 @@ rzslider .rz-pointer {
           border-radius: 16px;
 }
 
+/* FOR SQUARE SLIDER*/
 rzslider .rz-pointer:after {
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  width: 20px;
+  height: 20px;
+  background: #777;
+  -webkit-border-radius: 0px;
+     -moz-border-radius: 0px;
+          border-radius: 0px;
+          border: 1px solid #777;
+  content: '';
+}
+
+/* FOR ROUNDED SLIDER*/
+/*rzslider .rz-pointer:after {
   position: absolute;
   top: 6px;
   left: 0px;
@@ -91,9 +103,9 @@ rzslider .rz-pointer:after {
   -webkit-border-radius: 10px;
      -moz-border-radius: 10px;
           border-radius: 10px;
-          border: 1px solid black;
+          border: 1px solid #777;
   content: '';
-}
+}*/
 
 rzslider .rz-pointer:hover:after {
   background-color: #ffffff;

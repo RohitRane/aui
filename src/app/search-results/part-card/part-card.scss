@@ -78,6 +78,9 @@
                          height: 160px;
                      }
                  }
+                 .rghtBorder{
+                          border-right:1px solid #AAAAAA;
+                 }
                  .col-md-5{
                      @media only screen and (device-width: 768px) {
                          border-right: 0px;
@@ -85,7 +88,6 @@
                      @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
                         border-right: 0px;
                      }
-                     border-right:1px solid #AAAAAA;
                      ul{
                          padding-left: 0px;
                        li{
