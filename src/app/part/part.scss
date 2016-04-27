@@ -141,7 +141,7 @@ padding-bottom:10px;
 }
 
 .partDetails .elearn span{
-	    padding-left: 2px;
+	    padding-left: 1px;
     	border-width: 5px;
 	b{
 		font-size: 13px;
@@ -451,13 +451,14 @@ div.comment .section-title{
   	}
 }
 .wishlist .btn-primary{
-	padding:5px 23px;
+	// padding:5px 23px;
+	width:100%;
 	background-color:$support_color_primary; 
 	border-color:$support_color_primary;
 	font-weight: 600;
-	@media(min-width: 1025px) {
-        padding:5px 55px;
-    }
+	// @media(min-width: 1025px) {
+ //        padding:5px 55px;
+ //    }
     &:active,&:focus,&:hover {
 		background-color:$support_color_primary; 
 		border-color:$support_color_primary;
