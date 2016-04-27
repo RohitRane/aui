@@ -18,7 +18,7 @@ export let apiConfig = {
     'AUTO_SEARCH': {
         'url': '',
         'setUrl': function (param, category) {
-            this.url = apiBaseUrl + '/suggest?q=' + param + '&cid=' + cId + '&cat=' +category;
+            this.url = apiBaseUrl + '/suggest?q=' + param + '&cat=' +category;
         },
         'method': 'GET',
         'data': {}
@@ -27,7 +27,7 @@ export let apiConfig = {
         'url': '',
         'setUrl': function (param, scope, from, size) {
             //this.url = apiBaseUrl + '/catSearch?q=' + param + '&cid=' + cId + '&from=0&size=10';
-            this.url = apiBaseUrl + '/result?q=' + param + '&cid=' + cId + '&from=' + from + '&size=' + size + '&pcat=' + scope;
+            this.url = apiBaseUrl + '/result?q=' + param +'&from=' + from + '&size=' + size + '&pcat=' + scope;
         },
         'method': 'GET',
         'data': {}
@@ -35,7 +35,7 @@ export let apiConfig = {
     'PART': {
         'url': '',
         'setUrl': function (param) {
-            this.url = apiBaseUrl + '/part?q=' + param + '&cid=' + cId;
+            this.url = apiBaseUrl + '/part?q=' + param;
         },
         'method': 'GET',
         'data': {}

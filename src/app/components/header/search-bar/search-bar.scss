@@ -26,7 +26,7 @@
         }
     }
     */
-    @for $i from 1024 to 1280 {
+    @for $i from 1024 to 1440 {
         @media(min-width: + $i*1px){
             input[type=text]{
                 width:($i+380-1024)*1px;

@@ -52,10 +52,10 @@ export class SearchBarController {
                 resultSet.push(obj);
             }
 
-            angular.forEach(response.lines, function (line) {
+            angular.forEach(response.partCategoryList, function (listItem) {
                 let obj = {
                     partNumber: SearchBarService.srchStr + " in ",
-                    lineDesc: "<a>" + line.lineDescription + "</a>",
+                    lineDesc: "<a>" + listItem + "</a>",
                     typeId: 4
                 };
                 resultSet.push(obj);
@@ -102,7 +102,6 @@ export class SearchBarController {
         let vm = this;
         let {$document} = vm.DI();
         let sBox = $document[0].getElementById('search-box');
-        console.log("ABCD");
         var ngModel = angular.element(sBox).controller('ngModel');
         ngModel.$setViewValue("ABC");
         angular.element(sBox).triggerHandler('input');
