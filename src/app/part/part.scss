@@ -9,7 +9,7 @@
   		background-color: white;
   		border-radius: 0px;
   		li + li:before{
-	  		content: ": ";
+	  		content: " ";
 	    	padding: 0 5px;
 	   	}
   		li a{
@@ -22,7 +22,7 @@
   			}
   		}
   		li.active a{
-  			color: #0093c6;
+  			color:$support_color_primary;
   			font-size: 13px;
   			font-weight: 600;
   		}
@@ -51,36 +51,36 @@
 }
 /* shaifali code*/
 .catalog a {
-	color:#0093c6;
+	color:$support_color_primary;
 	font-weight: 400;
 	font-size: 13px;
 	&:hover, &:focus{
-		color:#0093c6;
+		color:$support_color_primary;
 		text-decoration: none	
 	}
 }
 .part a  {
-	color:#0093c6;
+	color:$support_color_primary;
 	font-size: 13px;
 	font-weight: 400;
 	&:hover, &:focus{
-		color:#0093c6;
+		color:$support_color_primary;
 		text-decoration: none		
 	}
 	
 }
 .partlist a  {
-	color:#0093c6;
+	color:$support_color_primary;
 	font-weight: 400;
 	font-size: 13px;
 	&:hover, &:focus{
-		color:#0093c6;
+		color:$support_color_primary;
 		text-decoration: none		
 	}
 	
 }  
 div.Warranty-Matrix a{
-	color:#0093c6 !important;
+	color:$support_color_primary !important;
 	font-size: 13px;
 	font-weight: 600;
 	text-decoration: none !important;
@@ -89,7 +89,7 @@ div.Warranty-Matrix a{
 	}	
 }
 span.readmore a{
-		color:#0093c6 !important;
+		color:$support_color_primary !important;
 		font-weight: 400;
 		font-size: 13px;
 		text-decoration: none !important;
@@ -98,7 +98,7 @@ span.readmore a{
 		}		
 }
 .viewAll a{
-	color:#0093c6 !important;
+	color:$support_color_primary !important;
 	font-weight: 600;
 	text-decoration: none !important;
 	font-size: 12px;
@@ -108,7 +108,7 @@ span.readmore a{
 }
 .Answered-by a{
 	font-weight: 400;
-	color:#0093c6 !important;
+	color:$support_color_primary !important;
 	text-decoration: none !important;
 	font-size: 9px;
 	&:hover{
@@ -117,7 +117,7 @@ span.readmore a{
 }
 // .pannel .pannel-body .row .wishlist .btn-primary{
 	
-// 	background-color: #0093c6 !important;
+// 	background-color:$support_color_primary !important;
 // 	}
 
 i.fa-1x{
@@ -202,12 +202,12 @@ div.feature
 	p{
 		margin-top: 0;
 		a{	
-			color:#0093c6;
+			color:$support_color_primary;
 			font-size:12px;
 			font-weight: 400;
 			text-decoration: none;
 			&:hover, &:focus{
-			color:#0093c6;
+			color:$support_color_primary;
 			text-decoration: none
 		}
 	}
@@ -244,7 +244,7 @@ div.partDetails  div#right_col {
 		font-size:13px;
 		background-color:#eff0f1;
 		font-weight:400;
-		color:#0093C6;
+		color:$support_color_primary;
 		position:absolute;
 		bottom:0px;
 		margin-bottom:0px;
@@ -342,13 +342,13 @@ label.partDetailsTabDesc {
 	font-weight: 600;
 	line-height:25px !important;
 	a{	
-		color:#0093c6 !important;
+		color:$support_color_primary !important;
 		font-size:12px !important;
 		text-decoration: none;
 		font-weight: 600;
 		&:hover,
 		&:focus{
-			color:#0093c6;
+			color:$support_color_primary;
 			text-decoration: none
 		}
 	}
@@ -433,12 +433,12 @@ div.comment .section-title{
 .partResultsBM ul li a{
 	// @include font(13px);
 	// color:#34acd1;
-	color: #0093C6;
+	color: $support_color_primary;
     font-size: 13px;
     font-weight: 600;
     &:hover, &:focus{
     	text-decoration: none;
-    	color: #0093C6;
+    	color: $support_color_primary;
     }
 }
 
@@ -450,15 +450,17 @@ div.comment .section-title{
   		padding:21px 22px 11px;
   	}
 }
-.wishlist .btn-primary {
+.wishlist .btn-primary{
 	padding:5px 23px;
-	background-color:#0093C6; 
-	border-color: #0093C6;
+	background-color:$support_color_primary; 
+	border-color:$support_color_primary;
 	font-weight: 600;
 	@media(min-width: 1025px) {
         padding:5px 60px;
-    }
-
+    }&:active,&:focus,&:hover {
+		background-color:$support_color_primary; 
+		border-color:$support_color_primary;
+	}
 }
 ul.lmsHub  li{
 	font-weight: 600;
