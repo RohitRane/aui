@@ -470,5 +470,21 @@ ul.lmsHub  li{
 .partDetails {
 	.panel.well {
 		padding:10px 19px;
+		border:none;
+		box-shadow: none;
 	}
 }
+.partDetails{
+	.withoutBorder{
+		.panel{
+			box-shadow: none;
+		}
+	}
+}
+// .partDetails{
+// 	.withoutBorder2{
+// 		.pannel.panel-default{
+// 			border-color: none;
+// 		}
+// 	}
+// }
