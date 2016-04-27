@@ -1,6 +1,7 @@
 .typeahead-popup{
     border-radius: 0px;
     border: 1px solid black !important;
+    z-index:99999;
     p{
         font-size: 11px;
         margin-bottom: 5px;

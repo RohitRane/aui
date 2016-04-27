@@ -1,10 +1,10 @@
 export class SearchBarController {
-    constructor($log, $scope, $location, $rootScope, dataServices, SearchBarService) {
+    constructor($log, $scope, $location, $rootScope, $document, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, dataServices, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, dataServices, SearchBarService })
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
@@ -98,11 +98,15 @@ export class SearchBarController {
         $scope.$emit("searchbarBlurred");
     }
 
-    productDropDownClick() {
-        /*let vm = this;
-        let {$rootScope, SearchBarService} = vm.DI();
-        SearchBarService.productLine = vm.search.searchScope;        
-        $rootScope.$emit("searchLaunched");*/
+    scopeSelectorChanged() {
+        let vm = this;
+        let {$document} = vm.DI();
+        let sBox = $document[0].getElementById('search-box');
+        console.log("ABCD");
+        var ngModel = angular.element(sBox).controller('ngModel');
+        ngModel.$setViewValue("ABC");
+        angular.element(sBox).triggerHandler('input');
+        //vm.textTyped(vm.search.searchString);
     }
 
     gotoPartDetails(item) {
