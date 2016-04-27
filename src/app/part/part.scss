@@ -458,15 +458,7 @@ div.comment .section-title{
 	@media(min-width: 1025px) {
         padding:5px 55px;
     }
-    @media(min-width: 1090px) {
-        padding:5px 40px;
-    }
-    // @media(max-width: 1183px) {
-    //     padding:5px 30px;
-    // }
-    @media(max-width: 1200px) {
-        padding:5px 55px;
-    }&:active,&:focus,&:hover {
+    &:active,&:focus,&:hover {
 		background-color:$support_color_primary; 
 		border-color:$support_color_primary;
 	}
