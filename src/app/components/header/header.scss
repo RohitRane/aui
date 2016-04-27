@@ -179,5 +179,10 @@ header {
         .search-bar{
             margin-top: 10px;
         }
+        .navbar-header{
+            &.top{
+                height: 70px;
+            }
+        }
     }
 }
