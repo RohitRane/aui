@@ -124,7 +124,7 @@
 }
 */
 
-.partDetails {
+/*.partDetails {
     .breadcrumb-section {
         margin-top: 0px !important;
         margin-left: -10px;
@@ -146,3 +146,4 @@
     }
 }
 
+*/
