@@ -55,6 +55,9 @@
             .refine-header{
                 font-weight: 600;
                 font-size: 13px;
+                span{
+                    margin-left: 10px;
+                }
                 a{
                     font-size: 9px;
                     cursor: pointer;
@@ -69,7 +72,11 @@
                  padding-left: 0px;  
                 }
                 .list{
-                    margin-left: 20px; 
+                    margin-left: 25px; 
+                    .search-text{
+                        margin-top: 5px;
+                        margin-left: -14px;
+                    }
                     .form-group{
                          margin-bottom: 0px;
                         .checkbox{
@@ -109,17 +116,7 @@
                     }
                 }
                 .scale{
-                    form{
-                        display: table;
-                            input[type="range"] {
-                                display: inline-block;
-                                width: 70%;
-                        }
-                        output{
-                            display: table-cell;
-                            vertical-align: middle;
-                        }
-                    }
+                    margin-left: 10px;
                 }
                 .search{
                     .filterBox{

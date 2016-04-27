@@ -42,17 +42,17 @@ class SearchResultDirectiveController{
          
          this.specLimit = 4; 
          this.toggle = false;
-         this.specToggleName = "View all specs";
+         this.specToggleName = "Expand";
     }
     
     toggleSpecs(){
       
       if(this.toggle){
-        this.specToggleName = "View all specs";
+        this.specToggleName = "Expand";
         this.specLimit = 4;
       }
       else{
-        this.specToggleName = "Collapse view";
+        this.specToggleName = "Collapse";
         this.specLimit = this.part.attrList.length;
       }
       this.toggle = !this.toggle;

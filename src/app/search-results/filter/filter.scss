@@ -49,7 +49,7 @@ rzslider .rz-bar-wrapper.rz-draggable {
 rzslider .rz-bar {
   left: 0;
   z-index: 1;
-  width: 92%;
+  width: 100%;
   height: 2px;
   background: #777;
   -webkit-border-radius: 2px;
@@ -78,7 +78,7 @@ rzslider .rz-pointer {
 }
 
 /* FOR SQUARE SLIDER*/
-rzslider .rz-pointer:after {
+/*rzslider .rz-pointer:after {
   position: absolute;
   top: 6px;
   left: 0px;
@@ -90,10 +90,10 @@ rzslider .rz-pointer:after {
           border-radius: 0px;
           border: 1px solid #777;
   content: '';
-}
+}*/
 
 /* FOR ROUNDED SLIDER*/
-/*rzslider .rz-pointer:after {
+rzslider .rz-pointer:after {
   position: absolute;
   top: 6px;
   left: 0px;
@@ -105,7 +105,7 @@ rzslider .rz-pointer:after {
           border-radius: 10px;
           border: 1px solid #777;
   content: '';
-}*/
+}
 
 rzslider .rz-pointer:hover:after {
   background-color: #ffffff;

@@ -4,7 +4,7 @@
         <span class="refine">Refine By </span>
     </div>-->
     <div class="refine-header">
-        Driveshaft
+        <span>Driveshaft</span>
     </div>
     <div class="refine-options">
         <div class="list">
@@ -25,7 +25,7 @@
     </div>
     
     <div class="refine-header">
-        Steer Axle(5457)
+        <span>Steer Axle(5457)</span>
     </div>
     <div class="refine-options">
         <div class="list">
@@ -47,12 +47,12 @@
     <hr>
     <div class="refine" data-ng-repeat="refine in vm.list">
         <div class="refine-header">
-            {{refine.name}}
+            <span>{{refine.name}}</span>
             <a ng-show="refine.type == 'STRING'" class="pull-right" ng-click="vm.toggleselectAll(refine.buckets, refine.name)">{{vm.prestine[refine.name].viewSelect}}</a>
         </div>
         <div class="refine-options" data-ng-switch="refine.type">
             <div class="list" data-ng-switch-when="STRING">
-                <!--<input data-ng-model="searchText"/><label class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></label>-->
+                <div class="search-text"><input placeholder="filter input" data-ng-model="searchText"/><label class="icon"><i class="fa fa-arrow-right" aria-hidden="true"></i></label></div>
                 <div class="form-group">
                     <label class="checkbox" data-ng-repeat="option in refine.buckets | filter:searchText | limitTo : vm.prestine[refine.name].viewLimit">
                         <label data-ng-click="vm.apicall()" data-ng-model="option.select" uib-btn-checkbox>

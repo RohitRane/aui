@@ -15,10 +15,10 @@ export function FilterDirective() {
 }
 
 class FilterDirectiveController{ 
-    constructor($log, dataServices, $rootScope){
+    constructor($log, SearchBarService, dataServices, $rootScope){
          'ngInject';
          let vm = this;
-         vm.DI = () => ({ $log, dataServices, $rootScope });
+         vm.DI = () => ({ $log, SearchBarService, dataServices, $rootScope });
          vm.prestine = {};
          vm.viewLimitName = "View all";
          vm.reset();
@@ -95,19 +95,58 @@ class FilterDirectiveController{
     
     apicall(){
         let vm = this;
-        let { $log } = vm.DI();
+        let { $log, SearchBarService } = vm.DI();
          $log.debug("call");
+         let filterObjectArray = [];
          for (let x of this.list) {
-             angular.forEach(x.buckets, function(obj){
+             let filterArray = [];
+             let filterObject = {};
+             /*angular.forEach(x.buckets, function(obj){
                if(x.type == "STRING"){
-                  $log.debug(x.name,  obj.key, obj.select);
+                   filterArray.push(obj.key);
+                   $log.debug(x.name,  obj.key, obj.select);
                }else{
-                  $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+                   filterArray.push(vm.prestine[x.name].minValue);
+                   filterArray.push(vm.prestine[x.name].maxValue);
+                   $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
                }
-             });
+             });*/
+              for(let obj=0; obj < x.buckets.length; obj++){
+                 if(x.type == "STRING"){
+                   x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
+                   $log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
+                }else{
+                    filterArray.push(vm.prestine[x.name].minValue);
+                    filterArray.push(vm.prestine[x.name].maxValue);
+                    $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+                    break;
+                }
+             }
+             //filterObject[x.name].name = x.name;
+             //filterObject[x.name].type = x.type;
+            // filterObject[x.name].values = filterArray;
+            if(filterArray.length){
+                filterObject[x.name] = {
+                name: x.name,
+                type: x.type,
+                values: filterArray
+                };
+                filterObjectArray.push(filterObject);
+            }
          }
+         $log.debug("filterObjectArray", filterObjectArray);
+         let payload = {
+	  			"q": SearchBarService.srchStr,
+                "cid": "1",
+                "from":0,
+                "size":10,
+                "cat1":SearchBarService.productLine,
+                "filter": filterObjectArray
+	    };
          //$rootScope.$emit("searchLaunched", [1,2]);
+         $log.debug("payload", payload);
     }
+    
     /*
         reset(){ console.log("super", this.list);
         for (let x of this.list) {
