@@ -9,7 +9,7 @@
   		background-color: white;
   		border-radius: 0px;
   		li + li:before{
-	  		content: " ";
+	  		content: " : ";
 	    	padding: 0 5px;
 	   	}
   		li a{
@@ -456,7 +456,16 @@ div.comment .section-title{
 	border-color:$support_color_primary;
 	font-weight: 600;
 	@media(min-width: 1025px) {
-        padding:5px 60px;
+        padding:5px 55px;
+    }
+    @media(min-width: 1090px) {
+        padding:5px 40px;
+    }
+    // @media(max-width: 1183px) {
+    //     padding:5px 30px;
+    // }
+    @media(max-width: 1200px) {
+        padding:5px 55px;
     }&:active,&:focus,&:hover {
 		background-color:$support_color_primary; 
 		border-color:$support_color_primary;
