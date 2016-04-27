@@ -49,6 +49,9 @@
                     color: black;
                 }
             }
+            .refine{
+                margin-bottom: 20px;
+            }
             .refine-header{
                 font-weight: 600;
                 font-size: 13px;
@@ -68,14 +71,13 @@
                 .list{
                     margin-left: 20px; 
                     .form-group{
+                         margin-bottom: 0px;
                         .checkbox{
+                            margin-bottom: 5px;
                             label{
                                 font-size: 12px;
                             }
                         }
-                    }
-                    .form-group{
-                        margin-bottom: 0px;
                     }
                     .view-more{
                         overflow: hidden;

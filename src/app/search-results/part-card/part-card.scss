@@ -43,20 +43,27 @@
                     padding: 10px 10px;
                 }
                 .name{
+                    font-family: Open Sans;
                     font-size: 16px;
-                    font-weight: bold;
+                    font-weight: 600;
                     color: $accent_color; 
                 }
                 .cart{
-                    padding: 10px 0px;
+                    padding: 5px 0px;
                   span{
                     margin: 0px 5px;
+                  }
+                  span:nth-child(1){
+                    font-weight: 600;
+                    font-size: 16px;
                   }
                   span:nth-child(2){
                     border-left: 1px solid $support_color_light_one;
                     border-right: 1px solid $support_color_light_one;
                     padding: 0px 5px;
                     margin: 0px;
+                    font-weight: 600;
+                    font-size: 12px;
                   }
                     .glyphicon-shopping-cart{
                         color: $accent_color;
@@ -92,10 +99,10 @@
                          padding-left: 0px;
                        li{
                          display: inline-block;
-                         font-weight: bold;
-                         font-size: 12px;
+                         font-weight: 600;
+                         font-size: 13px;
                          a{
-                           font-size: 10px;
+                           font-size: 9px;
                            &:hover{
                              cursor:pointer;
                            }
@@ -108,8 +115,7 @@
                     table{
                         tr{
                             td{
-                                font-size: 10px;
-                                font-weight: bold;
+                                font-size: 12px;
                                 height: 20px;
                                 vertical-align: middle;
                                 padding: 0px !important;
