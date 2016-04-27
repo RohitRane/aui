@@ -203,7 +203,7 @@ div.feature
 		a{	
 			color:#0093c6;
 			font-size:12px;
-			font-weight: 600;
+			font-weight: 400;
 			text-decoration: none;
 			&:hover, &:focus{
 			color:#0093c6;
@@ -338,12 +338,13 @@ label.partDetailsTabDesc {
 	padding-left: 10px;
 	font-size: 	12px;
 	margin:0px important;
+	font-weight: 600;
 	line-height:25px !important;
 	a{	
 		color:#0093c6 !important;
 		font-size:12px !important;
 		text-decoration: none;
-		font-weight: 400;
+		font-weight: 600;
 		&:hover,
 		&:focus{
 			color:#0093c6;
@@ -433,7 +434,7 @@ div.comment .section-title{
 	// color:#34acd1;
 	color: #0093C6;
     font-size: 13px;
-    font-weight: 400;
+    font-weight: 600;
     &:hover, &:focus{
     	text-decoration: none;
     	color: #0093C6;
@@ -452,5 +453,8 @@ div.comment .section-title{
 	padding:5px 62px;
 	background-color:#0093C6; 
 	border-color: #0093C6;
-	
+
+}
+ul.Lms-Hub  li{
+	font-weight: 600;
 }
