@@ -5,7 +5,7 @@
   	margin-left: -10px;
   	margin-right: -10px;
   	.breadcrumb{
-  		padding:10px 20px;
+  		padding:20px 20px 10px;
   		background-color: white;
   		border-radius: 0px;
   		li + li:before{
@@ -40,7 +40,7 @@
   	}
   }
   //en shaifali code
-  .panel, .thumbnail{
+  .thumbnail, .elearn{
     border-radius: 0px;
   }
   .other-images{
@@ -141,7 +141,7 @@ padding-bottom:10px;
 }
 
 .partDetails .elearn span{
-	    padding-left: 2px;
+	    padding-left: 1px;
     	border-width: 5px;
 	b{
 		font-size: 13px;
@@ -451,13 +451,14 @@ div.comment .section-title{
   	}
 }
 .wishlist .btn-primary{
-	padding:5px 23px;
+	// padding:5px 23px;
+	width:100%;
 	background-color:$support_color_primary; 
 	border-color:$support_color_primary;
 	font-weight: 600;
-	@media(min-width: 1025px) {
-        padding:5px 55px;
-    }
+	// @media(min-width: 1025px) {
+ //        padding:5px 55px;
+ //    }
     &:active,&:focus,&:hover {
 		background-color:$support_color_primary; 
 		border-color:$support_color_primary;
@@ -465,9 +466,26 @@ div.comment .section-title{
 }
 ul.lmsHub  li{
 	font-weight: 600;
+	list-style: square;
 }
 .partDetails {
 	.panel.well {
 		padding:10px 19px;
+		border:none;
+		box-shadow: none;
 	}
 }
+.partDetails{
+	.withoutBorder{
+		.panel{
+			box-shadow: none;
+		}
+	}
+}
+// .partDetails{
+// 	.withoutBorder2{
+// 		.pannel.panel-default{
+// 			border-color: none;
+// 		}
+// 	}
+// }
