@@ -404,11 +404,12 @@ padding-bottom: 11px;
 font-weight:bold;
 }
 div.comment {
-padding:15px;
+padding:25px 18px 5px;
 }
 div.comment .section-title{
 	font-size:18px;
 	font-weight:bold;
+	padding-bottom: 1px;
 }
 
 .partResultsBM ul {
@@ -447,7 +448,7 @@ div.comment .section-title{
 }
 .part-panel{
   	.top-bottom-gap{
-  		padding:21px 22px 11px;
+  		padding:21px 10px 11px;
   	}
 }
 .wishlist .btn-primary{
@@ -480,6 +481,9 @@ ul.lmsHub  li{
 		.panel{
 			box-shadow: none;
 		}
+	}
+	.addTopSpacing{
+		margin-top: 50px;
 	}
 }
 // .partDetails{
