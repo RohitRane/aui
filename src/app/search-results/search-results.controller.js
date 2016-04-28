@@ -44,7 +44,7 @@ export class SearchResultsController {
         ];
         
         
-       /* this.filters = [{
+        /*this.filters = [{
             "name": "Greasable",
             "type": "STRING",
             "id": "id1",
@@ -96,11 +96,17 @@ export class SearchResultsController {
                         "count": 22
                     }]
             },
+             {
+                "name": "TEST Single",
+                "type": "NUMERIC",
+                "buckets": [{
+                    "key": "Spicer",
+                    "count": 24
+                }]
+            },
             {
                 "name": "AXEL",
                 "type": "NUMERIC",
-
-                "id": "id4",
                 "buckets": [{
                     "key": "n1",
                     "count": 25
@@ -148,8 +154,9 @@ export class SearchResultsController {
         $log.debug("getParts ", payload);
         //let typeId = SearchBarService.typeId;
         /*if (typeId === 4) {*/
+            $log.debug("SearchBarService.productCategory:", SearchBarService.productCategory);
         dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload).then(function (response) {
-            $log.debug("Response in Controller :", response);
+           // $log.debug("Response in Controller :", response);
             if (vm.resultStartIndex === 0) {
                 vm.results.parts = response.parts;
             } else {
@@ -158,10 +165,11 @@ export class SearchResultsController {
 
             vm.results.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
+            
             vm.filters = response.filter;
             vm.category = response.partCategoryList;
-            $log.debug("response.filter:", response.filter);
-            $log.debug("response.partCategoryList", vm.category);
+            //$log.debug("response.filter:", response.filter);
+            //$log.debug("response.partCategoryList", vm.category);
             
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber + ' ' + part.partDesc;

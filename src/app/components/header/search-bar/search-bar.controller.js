@@ -145,12 +145,13 @@ export class SearchBarController {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
+        SearchBarService.productCategory = "";
         if (vm.search.searchString) {
-            $log.debug("vm.search.searchString ", vm.search.searchString);
+            //$log.debug("vm.search.searchString ", vm.search.searchString);
             if (vm.search.searchString) {
                 $log.debug("Hello...........");
                 SearchBarService.productLine = vm.search.searchScope;
-                $rootScope.$emit("searchIconClicked");
+               // $rootScope.$emit("searchIconClicked");
                 if ($location.url() === '/search') {
                     $scope.$emit("searchbarBlurred");
                     $rootScope.$emit("searchLaunched");

@@ -1,4 +1,4 @@
-export function FilterDirective() {
+export function FilterDirective($log, SearchBarService) {
     'ngInject';
 
     let directive = {
@@ -16,18 +16,46 @@ export function FilterDirective() {
 }
 
 class FilterDirectiveController{ 
-    constructor($log, SearchBarService, dataServices, $rootScope){
+    constructor($log, SearchBarService, dataServices, $scope, $rootScope){
          'ngInject';
          let vm = this;
+         
          vm.DI = () => ({ $log, SearchBarService, dataServices, $rootScope });
          vm.prestine = {};
          vm.viewLimitName = "View all";
          vm.reset();
-    }   
+         
+         $scope.$watch(function(){
+             return vm.list;
+         },function(n, o){
+             $log.debug("Service list :",SearchBarService.filters);
+             $log.debug("old :",o);
+             $log.debug("new :",n);
+             Object.assign(n,o);
+         });
+    } 
+    
+    _filterInit(filterObj){
+        
+        let obj = {
+            collapsed: false,
+                changed: false,
+                select: false,
+                viewLimit: 4,
+                viewLimitName: "View all",
+                toggle: false,
+                viewSelect: "Select All",
+                toggleView: true,
+                options: x.buckets
+            }
+            Object.assign(filterObj,obj);
+            return filterObj;
+    }
     
     reset(){ 
         let vm = this;
-        for (let x of vm.list) {
+        let { $log, SearchBarService } = vm.DI();
+        for (let x of vm.list) { 
             if(x.type == 'STRING'){
                 vm.prestine[x.name] = {
                 collapsed: false,
@@ -46,21 +74,42 @@ class FilterDirectiveController{
             }
             if(x.type == 'NUMERIC'){
                 let xVals = x.buckets.map(function(val) { return val.count; });
-                vm.prestine[x.name] = {
-                minValue: Math.min(...xVals),
-                maxValue: Math.max(...xVals),
-                options: {
-                    floor: Math.min(...xVals),
-                    ceil:  Math.max(...xVals),
-                    step: 1,
-                    id: x.name,
-                    onChange: function(/*sliderId, modelValue, highValue*/){
-                       vm.apicall();
+                //console.log("x.buckets.length", x.name, x.buckets,  x.buckets.length);
+                if(x.buckets.length == 1){
+                    vm.prestine[x.name] = {
+                    singleObject: true,
+                    collapsed: false,
+                    changed: false,
+                    select: false,
+                    viewLimit: 4,
+                    viewLimitName: "View all",
+                    toggle: false,
+                    viewSelect: "Select All",
+                    toggleView: true,
+                    options: x.buckets
+                    };
+                    angular.forEach(x.buckets, function(obj){
+                        obj.select = false;
+                    });
+                }else{
+                    vm.prestine[x.name] = {
+                    singleObject: false,
+                    minValue: Math.min(...xVals),
+                    maxValue: Math.max(...xVals),
+                    options: {
+                        floor: Math.min(...xVals),
+                        ceil:  Math.max(...xVals),
+                        step: 1,
+                        id: x.name,
+                        onChange: function(/*sliderId, modelValue, highValue*/){
+                        vm.apicall();
+                        }
                     }
+                    };
                 }
-                };
             }
         }
+        
     }
     
     toggleselectAll(arr, id){
@@ -101,32 +150,26 @@ class FilterDirectiveController{
          for (let x of this.list) {
              let filterArray = [];
              let filterObject = {};
-             /*angular.forEach(x.buckets, function(obj){
-               if(x.type == "STRING"){
-                   filterArray.push(obj.key);
-                   $log.debug(x.name,  obj.key, obj.select);
-               }else{
-                   filterArray.push(vm.prestine[x.name].minValue);
-                   filterArray.push(vm.prestine[x.name].maxValue);
-                   $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
-               }
-             });*/
+             
               for(let obj=0; obj < x.buckets.length; obj++){
                  if(x.type == "STRING"){
                    x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
-                   //$log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
+                   $log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
+                   
                 }else{
-                    filterArray.push(vm.prestine[x.name].minValue);
-                    filterArray.push(vm.prestine[x.name].maxValue);
-                   // $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+                    if(vm.prestine[x.name].singleObject){
+                        $log.debug("vm.prestine[x.name].singleObject", x.name,  x.buckets[0].key);
+                        x.buckets[0].select ? filterArray.push(x.buckets[0].key) : "";
+                    }else{
+                        $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+                        filterArray.push(vm.prestine[x.name].minValue);
+                        filterArray.push(vm.prestine[x.name].maxValue);
+                    }
                     break;
                 }
              }
-             //filterObject[x.name].name = x.name;
-             //filterObject[x.name].type = x.type;
-            // filterObject[x.name].values = filterArray;
             if(filterArray.length){
-                filterObject[x.name] = {
+                filterObject = {
                 name: x.name,
                 type: x.type,
                 values: filterArray
@@ -135,11 +178,10 @@ class FilterDirectiveController{
             }
          }
         // $log.debug("filterObjectArray", filterObjectArray);
-         let payload = {
-                "filter": filterObjectArray
-	    };
-        $log.debug("payload", payload);
-        $rootScope.$emit("searchLaunched", payload);
+        console.log("vm.prestine ", vm.list);
+        SearchBarService.filters = vm.list;
+        $log.debug("payload", filterObjectArray);
+        $rootScope.$emit("searchLaunched", filterObjectArray);
     }
     
     /*

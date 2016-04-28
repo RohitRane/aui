@@ -4,7 +4,7 @@
         <span class="refine">Refine By </span>
     </div>-->
     <div class="refine-header" data-ng-repeat="category in vm.category">
-        <span class="category">{{category}}</span>
+        <span class="category" ng-click="">{{category}}</span>
         <div class="refine-options" data-ng-repeat="subcategory in category.subcategory">
             <div class="list">
                 <div class="form-group">
@@ -39,11 +39,23 @@
                     <a ng-click="vm.toggleviewLimit(refine.name)">{{vm.prestine[refine.name].viewLimitName}}</a>
                 </div>
             </div>
-            <div class="scale" data-ng-switch-when="NUMERIC" class="form-group">
-                <rzslider rz-slider-model="vm.prestine[refine.name].minValue"
+            <div data-ng-switch-when="NUMERIC">
+                <div class="scale" ng-show="!vm.prestine[refine.name].singleObject" class="form-group">
+                    <rzslider rz-slider-model="vm.prestine[refine.name].minValue"
                     rz-slider-high="vm.prestine[refine.name].maxValue"
                     rz-slider-options="vm.prestine[refine.name].options">
-                </rzslider>
+                    </rzslider>
+                </div>
+               <div class="list" ng-show="vm.prestine[refine.name].singleObject">
+                   <div class="form-group">
+                    <label class="checkbox" data-ng-repeat="option in refine.buckets | filter:searchText | limitTo : vm.prestine[refine.name].viewLimit">
+                        <label data-ng-click="vm.apicall()" data-ng-model="option.select" uib-btn-checkbox>
+                            <i class="fa" ng-class="option.select ? 'fa-check-square' : 'fa-square-o' "></i>
+                            <span ng-class="option.select ? 'bold' : '' ">{{option.key}}({{option.count}})</span>
+                        </label>
+                    </label>
+                 </div>
+               </div>
             </div>
         </div>
     </div>

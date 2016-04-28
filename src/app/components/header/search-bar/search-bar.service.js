@@ -1,8 +1,11 @@
 export class SearchBarService{
     
     /*constructor(srchStr) {
-        this._srchStr = srchStr;
+        this{._srchStr = srchStr;
     }*/
+    constructor(){
+        this._filters = [{}];
+    }
      
     get srchStr() {
         return this._srchStr;
@@ -29,9 +32,7 @@ export class SearchBarService{
     }
  
     set productCategory(newProductCategory){
-        if(newProductCategory){ 
             this._productCategory = newProductCategory;
-        }
     }
     
      get typeId() {
@@ -44,13 +45,13 @@ export class SearchBarService{
         }
     }
     
-    get filterObjectArray() {
-        return this.filterObjectArray;
+    get filters() {
+        return this._filters;
     }
  
-    set filterObjectArray(newfilterObjectArray){
-        if(newfilterObjectArray){ 
-            this._filterObjectArray = newfilterObjectArray;
+    set filters(newfilters){
+        if(newfilters){ 
+            this._filters = newfilters;
         }
     }
 }
