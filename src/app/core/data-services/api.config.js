@@ -1,5 +1,9 @@
-//var apiBaseUrl = 'http://54.215.153.111:8080/search-web/api';
-var apiBaseUrl = 'http://52.8.125.250:8080/search-web/api';
+
+var devServer = "http://52.8.125.250:8080",
+    qaServer =  "http://54.183.226.9",
+    activeAPIBase = devServer,
+    //activeAPIBase = qaServer,
+    apiBaseUrl = activeAPIBase+'/search-web/api';
 
 
 
