@@ -1,6 +1,6 @@
 <div>
   <div class="bread-crum">
-    <span class="resultBar">1-<span ng-show="srchRes.results.totalResults > srchRes.resultSetLimit ">{{srchRes.results.parts.length}}</span> <span ng-show="srchRes.results.totalResults < srchRes.resultSetLimit">{{srchRes.results.totalResults}}</span> of {{srchRes.results.totalResults}} Results for the <span class="bold">{{srchRes.productLine}} : <a><span>"</span>{{srchRes.searchString}}<span>"</span></a></span></span>
+    <span class="resultBar">1-<span ng-show="srchRes.results.totalResults > srchRes.resultSetLimit ">{{srchRes.results.parts.length}}</span> <span ng-show="srchRes.results.totalResults < srchRes.resultSetLimit">{{srchRes.results.totalResults}}</span> of {{srchRes.results.totalResults}} results for <span class="bold">{{srchRes.productLine}} : <a><span>"</span>{{srchRes.searchString}}<span>"</span></a></span></span>
     <span class="dropdownBar">
       <div class="btn-group" uib-dropdown is-open="status.isopen">
         <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
@@ -23,8 +23,8 @@
 </div>
 
 <div class="row search-results">
-  <div  class="col-md-2 filter">
-    <filter-directive list="srchRes.filters"></filter-directive>
+  <div class="col-md-2 filter">
+    <filter-directive ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters"></filter-directive>
   </div>
   <div class="col-md-8">
     <h5>Related : <a>{{srchRes.searchString}}</a></h5>

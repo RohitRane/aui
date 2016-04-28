@@ -5,7 +5,8 @@ export function FilterDirective() {
         restrict: 'E',
         templateUrl: 'app/search-results/filter/filter.html',
         scope: {
-            list: '='
+            list: '=',
+            category: '='
         },
         controller: FilterDirectiveController,
         controllerAs: 'vm',
@@ -58,7 +59,6 @@ class FilterDirectiveController{
                     }
                 }
                 };
-                 
             }
         }
     }
@@ -87,7 +87,7 @@ class FilterDirectiveController{
         vm.prestine[id].viewLimit = 4;
       }
       else{
-        vm.prestine[id].viewLimitName = "Collapse";
+        vm.prestine[id].viewLimitName = "View less";
         vm.prestine[id].viewLimit = vm.prestine[id].options.length;
       }
       vm.prestine[id].toggle = !vm.prestine[id].toggle;
@@ -95,7 +95,7 @@ class FilterDirectiveController{
     
     apicall(){
         let vm = this;
-        let { $log, SearchBarService } = vm.DI();
+        let { $log, SearchBarService, $rootScope } = vm.DI();
          $log.debug("call");
          let filterObjectArray = [];
          for (let x of this.list) {
@@ -114,11 +114,11 @@ class FilterDirectiveController{
               for(let obj=0; obj < x.buckets.length; obj++){
                  if(x.type == "STRING"){
                    x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
-                   $log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
+                   //$log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
                 }else{
                     filterArray.push(vm.prestine[x.name].minValue);
                     filterArray.push(vm.prestine[x.name].maxValue);
-                    $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+                   // $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
                     break;
                 }
              }
@@ -134,17 +134,12 @@ class FilterDirectiveController{
                 filterObjectArray.push(filterObject);
             }
          }
-         $log.debug("filterObjectArray", filterObjectArray);
+        // $log.debug("filterObjectArray", filterObjectArray);
          let payload = {
-	  			"q": SearchBarService.srchStr,
-                "cid": "1",
-                "from":0,
-                "size":10,
-                "cat1":SearchBarService.productLine,
                 "filter": filterObjectArray
 	    };
-         //$rootScope.$emit("searchLaunched", [1,2]);
-         $log.debug("payload", payload);
+        $log.debug("payload", payload);
+        $rootScope.$emit("searchLaunched", payload);
     }
     
     /*
@@ -205,3 +200,4 @@ class FilterDirectiveController{
       this.prestine[id].toggle = !this.prestine[id].toggle;
     }*/
 }
+

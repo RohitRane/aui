@@ -10,13 +10,13 @@ export class SearchBarController {
         vm.logger = $log;
 
         vm.search = {
-            searchScope: 'Commercial Vehicles',
+            searchScope: 'Commercial Vehicle',
             typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
             typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
             resultCountUpperLimit: 8,
             categories: [
-                'Commercial Vehicles',
-                'Light Vehicles',
+                'Commercial Vehicle',
+                'Light Vehicle',
                 'Off-Highway',
                 'High Performance',
                 'Military/Defence',
@@ -119,7 +119,9 @@ export class SearchBarController {
             $log.debug("Srcchhhh :::", vm.search.searchString);
             item.lineDesc = item.lineDesc.replace("<a>", "");
             item.lineDesc = item.lineDesc.replace("</a>", "");
-            SearchBarService.productLine = item.lineDesc;
+           //SearchBarService.productLine = item.lineDesc;
+            SearchBarService.productLine = vm.search.searchScope;
+            SearchBarService.productCategory = item.lineDesc;
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 $rootScope.$emit("searchLaunched");

@@ -3,46 +3,20 @@
     <!--<div class="text-muted">
         <span class="refine">Refine By </span>
     </div>-->
-    <div class="refine-header">
-        <span>Driveshaft</span>
-    </div>
-    <div class="refine-options">
-        <div class="list">
-            <div class="form-group">
-                <label class="checkbox">
-                    <label>
-                        <span>U-joints(15)</span>
+    <div class="refine-header" data-ng-repeat="category in vm.category">
+        <span class="category">{{category}}</span>
+        <div class="refine-options" data-ng-repeat="subcategory in category.subcategory">
+            <div class="list">
+                <div class="form-group">
+                    <label class="checkbox">
+                        <label>
+                            <span class=
+                            "subcategory">{{subcategory}}</span>
+                        </label>
                     </label>
-                </label>
-                <label class="checkbox">
-                    <label>
-                        <span>Driveshaft Assembly(100)</span>
-                    </label>
-                </label>
-            </div>
-            <label ng-if="refine.buckets.length > 4" ng-click="vm.toggleviewLimit(refine.name)">{{vm.prestine[refine.name].viewLimitName}}</label>
-        </div>  
-    </div>
-    
-    <div class="refine-header">
-        <span>Steer Axle(5457)</span>
-    </div>
-    <div class="refine-options">
-        <div class="list">
-            <div class="form-group">
-                <label class="checkbox">
-                    <label>
-                        <span>Steer Axle Assembly(562)</span>
-                    </label>
-                </label>
-                <label class="checkbox">
-                    <label>
-                        <span>Tie Rod Ends(100)</span>
-                    </label>
-                </label>
-            </div>
-            <label ng-if="refine.buckets.length > 4" ng-click="vm.toggleviewLimit(refine.name)">{{vm.prestine[refine.name].viewLimitName}}</label>
-        </div>  
+                </div>
+            </div>  
+        </div>
     </div>
     <hr>
     <div class="refine" data-ng-repeat="refine in vm.list">

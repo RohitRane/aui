@@ -55,11 +55,15 @@
             .refine-header{
                 font-weight: 600;
                 font-size: 13px;
+                .category:hover{
+                    cursor: pointer;
+                    color: $accent_color;
+                }
                 span{
                     margin-left: 10px;
                 }
                 a{
-                    font-size: 9px;
+                    font-size: 10px;
                     cursor: pointer;
                 }
                 .expander{
@@ -83,6 +87,9 @@
                             margin-bottom: 5px;
                             label{
                                 font-size: 12px;
+                                .subcategory:hover{
+                                    color: $accent_color;
+                                }
                             }
                         }
                     }
@@ -90,7 +97,7 @@
                         overflow: hidden;
                         a{
                             cursor: pointer;
-                            font-size: 9px;
+                            font-size: 10px;
                         }
                     }
                     input{

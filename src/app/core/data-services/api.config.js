@@ -18,18 +18,45 @@ export let apiConfig = {
     'AUTO_SEARCH': {
         'url': '',
         'setUrl': function (param, category) {
-            this.url = apiBaseUrl + '/suggest?q=' + param + '&cat=' +category;
+            this.url = apiBaseUrl + '/suggest?q=' + param + '&cat1=' +category;
         },
         'method': 'GET',
         'data': {}
     },
     'CAT_SEARCH': {
         'url': '',
-        'setUrl': function (param, scope, from, size) {
-            //this.url = apiBaseUrl + '/catSearch?q=' + param + '&cid=' + cId + '&from=0&size=10';
-            this.url = apiBaseUrl + '/result?q=' + param +'&from=' + from + '&size=' + size + '&pcat=' + scope;
+        'setUrl': function (param, scope, from, size, productCategory, filterObjectArray) {
+           this.url = apiBaseUrl + '/result';
+           if(filterObjectArray){ console.log("AAAAAAAAAAAAAAAAAA", filterObjectArray);
+                this.data = {
+                    "q": param,
+                    "cid": "1",
+                    "from":from,
+                    "size":size,
+                    "cat1":scope,
+                    "cat3":productCategory,
+                    "filter":filterObjectArray
+                 }
+           }else if(productCategory){
+               this.data = {
+                    "q": param,
+                    "cid": "1",
+                    "from":from,
+                    "size":size,
+                    "cat1":scope,
+                    "cat3":productCategory
+                 }
+           }else{ console.log("normal");
+               this.data = {
+                    "q": param,
+                    "cid": "1",
+                    "from":from,
+                    "size":size,
+                    "cat1":scope
+                 }
+           }
         },
-        'method': 'GET',
+        'method': 'POST',
         'data': {}
     },
     'PART': {

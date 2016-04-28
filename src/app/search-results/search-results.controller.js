@@ -16,10 +16,10 @@ export class SearchResultsController {
             $scope.$emit("searchbarBlurred");
         });
 
-        $rootScope.$on('searchLaunched', function (event, data) {
-            $log.debug("$on", data);
+        $rootScope.$on('searchLaunched', function (event, payload) {
+            $log.debug("$on", payload);
             vm.resultStartIndex = 0;
-            vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
+            vm.getParts(0, 10, payload);
         });
 
         vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
@@ -42,28 +42,9 @@ export class SearchResultsController {
             "Part Number",
             "Brand Name"
         ];
-        /* this.filters = [
-             {
-                 "name": "Check Box",
-                 "id": "c1",
-                 "type": "string",
-                 "options": [{value:"HR Style",selected:false}, {value:"BP Style",selected:false}, {value:"OSR Style", selected:false}, {value:"BP Style",selected:false}, {value:"HR Style2",selected:false}, {value:"BP Style2",selected:false}]
-             },
-             {
-                 "name": "Check Box1",
-                 "id": "v1",
-                 "type": "string",
-                 "options": [{value:"HR Style",selected:false}, {value:"BP Style",selected:false}, {value:"OSR Style", selected:false}, {value:"BP Style",selected:false}, {value:"HR Style2",selected:false}, {value:"BP Style2",selected:false}]
-             },
-             {
-                 "name": "Scale",
-                 "id": "s1",
-                 "type": "number",
-                 "options": [10,20, 5, 8, 25, 30]
-             }
-         ];*/
-
-        this.filters = [{
+        
+        
+       /* this.filters = [{
             "name": "Greasable",
             "type": "STRING",
             "id": "id1",
@@ -149,7 +130,7 @@ export class SearchResultsController {
                         "key": "ns4",
                         "count": 35
                     }]
-            }];
+            }];*/
     }
 
     change(action) {
@@ -158,16 +139,16 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
-    getParts(from, size) {
+    getParts(from, size, payload) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine;
-
+        $log.debug("getParts ", payload);
         //let typeId = SearchBarService.typeId;
         /*if (typeId === 4) {*/
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size).then(function (response) {
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload).then(function (response) {
             $log.debug("Response in Controller :", response);
             if (vm.resultStartIndex === 0) {
                 vm.results.parts = response.parts;
@@ -177,10 +158,11 @@ export class SearchResultsController {
 
             vm.results.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
-            $log.debug("Result set limit :", vm.resultSetLimit);
-
-            $log.debug();
-
+            vm.filters = response.filter;
+            vm.category = response.partCategoryList;
+            $log.debug("response.filter:", response.filter);
+            $log.debug("response.partCategoryList", vm.category);
+            
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber + ' ' + part.partDesc;
                 if (part.attrs != null) {

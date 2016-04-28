@@ -24,6 +24,16 @@ export class SearchBarService{
         }
     }
     
+    get productCategory() {
+        return this._productCategory;
+    }
+ 
+    set productCategory(newProductCategory){
+        if(newProductCategory){ 
+            this._productCategory = newProductCategory;
+        }
+    }
+    
      get typeId() {
         return this._typeId;
     }
@@ -31,6 +41,16 @@ export class SearchBarService{
     set typeId(newTypeId){
         if(newTypeId){ 
             this._typeId = newTypeId;
+        }
+    }
+    
+    get filterObjectArray() {
+        return this.filterObjectArray;
+    }
+ 
+    set filterObjectArray(newfilterObjectArray){
+        if(newfilterObjectArray){ 
+            this._filterObjectArray = newfilterObjectArray;
         }
     }
 }
