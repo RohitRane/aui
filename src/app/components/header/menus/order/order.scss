@@ -12,13 +12,15 @@
         }
         a{
             line-height: 15px !important;
-            padding-left: 9px !important;
+            padding-left: 6px !important;
             padding-right: 9px !important;  
             &.last-anchor{
                 padding-right: 24px !important;
             }
-            .glyphicon-shopping-cart{
-                top:-0.5px;
+            .cart-icon{
+                position: relative;
+                //top:-0.5px;
+                top:-4px;
             }          
         }
     }
