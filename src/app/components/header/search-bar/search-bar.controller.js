@@ -56,7 +56,8 @@ export class SearchBarController {
                 let obj = {
                     partNumber: SearchBarService.srchStr + " in ",
                     lineDesc: "<a>" + listItem + "</a>",
-                    typeId: 4
+                    typeId: 4,
+                    productCategory: listItem
                 };
                 resultSet.push(obj);
             });
@@ -117,11 +118,13 @@ export class SearchBarController {
             //SearchBarService.srchStr = item.lineDesc;
             SearchBarService.typeId = item.typeId;
             $log.debug("Srcchhhh :::", vm.search.searchString);
-            item.lineDesc = item.lineDesc.replace("<a>", "");
-            item.lineDesc = item.lineDesc.replace("</a>", "");
-           //SearchBarService.productLine = item.lineDesc;
+            /*item.lineDesc = item.lineDesc.replace("<a>", "");
+            item.lineDesc = item.lineDesc.replace("</a>", "");*/
+            item.lineDesc = "";
+            item.partNumber = item.partNumber.replace(" in","");
+            //SearchBarService.productLine = item.lineDesc;
             SearchBarService.productLine = vm.search.searchScope;
-            SearchBarService.productCategory = item.lineDesc;
+            SearchBarService.productCategory = item.productCategory;
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 $rootScope.$emit("searchLaunched");
