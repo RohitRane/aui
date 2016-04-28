@@ -10,9 +10,9 @@
       <p class="search_ddl_head">{{searchBar.search.searchScope}} <span class="caret"></span></p>
     </button>
     <ul uib-dropdown-menu role="menu" aria-labelledby="category-dd">
-      <li role="menuitem" data-ng-repeat="category in searchBar.search.categories" ng-click="searchBar.search.searchScope = category; searchBar.scopeSelectorChanged()" data-ng-click="searchBar.search.searchScope = category"><a href="#">{{category}}</a></li>
+      <li role="menuitem" data-ng-repeat="category in searchBar.search.categories" data-ng-click="searchBar.search.searchScope = category; searchBar.scopeSelectorChanged()"><a href="#">{{category}}</a></li>
       <li class="divider"></li>
-      <li role="menuitem" data-ng-click="searchBar.search.searchScope = 'All'"><a href="#">All</a></li>
+      <li role="menuitem" data-ng-click="searchBar.search.searchScope = 'All';searchBar.scopeSelectorChanged()"><a href="#">All</a></li>
     </ul>
   </div>
   <a data-ng-click="searchBar.searchIconClick()"><button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button></a>
