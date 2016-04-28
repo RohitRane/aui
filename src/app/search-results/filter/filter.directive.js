@@ -22,40 +22,45 @@ class FilterDirectiveController{
          
          vm.DI = () => ({ $log, SearchBarService, dataServices, $rootScope });
          vm.prestine = {};
+         vm.pristineCategory = {};
          vm.viewLimitName = "View all";
          vm.reset();
          
          $scope.$watch(function(){
              return vm.list;
          },function(n, o){
-             $log.debug("Service list :",SearchBarService.filters);
+             //$log.debug("Service list :",SearchBarService.filters);
              $log.debug("old :",o);
              $log.debug("new :",n);
+             vm.reset();
              Object.assign(n,o);
          });
     } 
     
-    _filterInit(filterObj){
+    categoryFilter(category){
+        let vm = this;
+        let { $log, SearchBarService } = vm.DI();
+        category.select = !category.select;
+        SearchBarService.productCategory = category.name;
+        vm.apicall().then(()=>{ $log.debug("abcd");
+            //angular.noop();
+            //vm.reset();
+        });
         
-        let obj = {
-            collapsed: false,
-                changed: false,
-                select: false,
-                viewLimit: 4,
-                viewLimitName: "View all",
-                toggle: false,
-                viewSelect: "Select All",
-                toggleView: true,
-                options: x.buckets
-            }
-            Object.assign(filterObj,obj);
-            return filterObj;
     }
     
     reset(){ 
         let vm = this;
         let { $log, SearchBarService } = vm.DI();
-        for (let x of vm.list) { 
+        
+        for(let x of vm.category){
+            vm.pristineCategory[x] = {
+                name: x,
+                select: false
+            }
+        }
+        
+        for (let x of vm.list) {  console.log("ZZZZZZ", x.name, x.buckets,  x.buckets.length);
             if(x.type == 'STRING'){
                 vm.prestine[x.name] = {
                 collapsed: false,
@@ -74,7 +79,7 @@ class FilterDirectiveController{
             }
             if(x.type == 'NUMERIC'){
                 let xVals = x.buckets.map(function(val) { return val.count; });
-                //console.log("x.buckets.length", x.name, x.buckets,  x.buckets.length);
+                
                 if(x.buckets.length == 1){
                     vm.prestine[x.name] = {
                     singleObject: true,
@@ -102,7 +107,9 @@ class FilterDirectiveController{
                         step: 1,
                         id: x.name,
                         onChange: function(/*sliderId, modelValue, highValue*/){
-                        vm.apicall();
+                         vm.apicall().then(()=>{
+                                angular.noop();
+                            });
                         }
                     }
                     };
@@ -143,7 +150,9 @@ class FilterDirectiveController{
     }
     
     apicall(){
-        let vm = this;
+        
+        let prms = () => new Promise((resolve) => {
+           let vm = this;
         let { $log, SearchBarService, $rootScope } = vm.DI();
          $log.debug("call");
          let filterObjectArray = [];
@@ -182,6 +191,10 @@ class FilterDirectiveController{
         SearchBarService.filters = vm.list;
         $log.debug("payload", filterObjectArray);
         $rootScope.$emit("searchLaunched", filterObjectArray);
+        $log.debug("efgh");
+        resolve();
+        });
+        return prms();
     }
     
     /*

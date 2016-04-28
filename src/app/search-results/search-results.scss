@@ -55,12 +55,7 @@
             .refine-header{
                 font-weight: 600;
                 font-size: 13px;
-                .category{
-                    color: black;
-                    text-decoration: none;
-                }
-                .category:active{
-                    cursor: pointer;
+                .blue{
                     color: $accent_color;
                 }
                 .category:hover{
