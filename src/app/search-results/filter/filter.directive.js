@@ -20,11 +20,11 @@ class FilterDirectiveController{
          'ngInject';
          let vm = this;
          
-         vm.DI = () => ({ $log, SearchBarService, dataServices, $rootScope });
+         vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
          vm.prestine = {};
          vm.pristineCategory = {};
          vm.viewLimitName = "View all";
-         vm.reset();
+         //vm.reset();
          
          $scope.$watch(function(){
              return vm.list;
@@ -33,26 +33,36 @@ class FilterDirectiveController{
              $log.debug("old :",o);
              $log.debug("new :",n);
              vm.reset();
-             Object.assign(n,o);
+             //Object.assign(n,o);
+              n = n.map(function(item){
+                 angular.forEach(o,function(){
+                     if(n.name === o.name){
+                         Object.assign(n,o);
+                     }
+                 });
+             });
+             $log.debug("new after :",n);
+             
          });
     } 
     
-    categoryFilter(category){
+    categoryFilter(selectedCategory){  
         let vm = this;
         let { $log, SearchBarService } = vm.DI();
-        category.select = !category.select;
-        SearchBarService.productCategory = category.name;
-        vm.apicall().then(()=>{ $log.debug("abcd");
-            //angular.noop();
-            //vm.reset();
+        angular.forEach(vm.pristineCategory, function(obj){ 
+            obj.select = false;
         });
-        
+        selectedCategory.select = true;
+        SearchBarService.productCategory = selectedCategory.name;
+        vm.apicall().then(()=>{
+            //angular.noop();
+        });
     }
     
     reset(){ 
         let vm = this;
         let { $log, SearchBarService } = vm.DI();
-        
+        $log.debug("vm.category ", vm.category);
         for(let x of vm.category){
             vm.pristineCategory[x] = {
                 name: x,
@@ -60,7 +70,7 @@ class FilterDirectiveController{
             }
         }
         
-        for (let x of vm.list) {  console.log("ZZZZZZ", x.name, x.buckets,  x.buckets.length);
+        for (let x of vm.list) {  
             if(x.type == 'STRING'){
                 vm.prestine[x.name] = {
                 collapsed: false,
@@ -150,11 +160,9 @@ class FilterDirectiveController{
     }
     
     apicall(){
-        
         let prms = () => new Promise((resolve) => {
-           let vm = this;
-        let { $log, SearchBarService, $rootScope } = vm.DI();
-         $log.debug("call");
+        let vm = this;
+        let { $log, SearchBarService, $scope, $rootScope } = vm.DI();
          let filterObjectArray = [];
          for (let x of this.list) {
              let filterArray = [];
@@ -163,14 +171,14 @@ class FilterDirectiveController{
               for(let obj=0; obj < x.buckets.length; obj++){
                  if(x.type == "STRING"){
                    x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
-                   $log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
+                   //$log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
                    
                 }else{
                     if(vm.prestine[x.name].singleObject){
-                        $log.debug("vm.prestine[x.name].singleObject", x.name,  x.buckets[0].key);
+                        //$log.debug("vm.prestine[x.name].singleObject", x.name,  x.buckets[0].key);
                         x.buckets[0].select ? filterArray.push(x.buckets[0].key) : "";
                     }else{
-                        $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
+                       // $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
                         filterArray.push(vm.prestine[x.name].minValue);
                         filterArray.push(vm.prestine[x.name].maxValue);
                     }
@@ -187,11 +195,10 @@ class FilterDirectiveController{
             }
          }
         // $log.debug("filterObjectArray", filterObjectArray);
-        console.log("vm.prestine ", vm.list);
+        //console.log("vm.prestine ", vm.list);
         SearchBarService.filters = vm.list;
         $log.debug("payload", filterObjectArray);
-        $rootScope.$emit("searchLaunched", filterObjectArray);
-        $log.debug("efgh");
+        $scope.$emit("searchLaunched", filterObjectArray);
         resolve();
         });
         return prms();

@@ -31,7 +31,6 @@ export let apiConfig = {
         'url': '',
         'setUrl': function (param, scope, from, size, productCategory, filterObjectArray) {
            this.url = apiBaseUrl + '/result';
-           if(filterObjectArray){ console.log("AAAAAAAAAAAAAAAAAA");
                 this.data = {
                     "q": param,
                     "cid": "1",
@@ -40,24 +39,6 @@ export let apiConfig = {
                     "cat1":scope,
                     "cat3":productCategory,
                     "filter":filterObjectArray
-                 }
-           }else if(productCategory){ console.log("BBBBBBBBBBBBBB");
-               this.data = {
-                    "q": param,
-                    "cid": "1",
-                    "from":from,
-                    "size":size,
-                    "cat1":scope,
-                    "cat3":productCategory
-                 }
-           }else{ console.log("CCCCCCCCCCCCCCCCCCCCCCC");
-               this.data = {
-                    "q": param,
-                    "cid": "1",
-                    "from":from,
-                    "size":size,
-                    "cat1":scope
-                 }
            }
         },
         'method': 'POST',

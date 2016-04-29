@@ -127,7 +127,7 @@ export class SearchBarController {
             SearchBarService.productCategory = item.productCategory;
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
-                $rootScope.$emit("searchLaunched");
+                $scope.$emit("searchLaunched");
             }
             else {
                 $location.path('/search');
@@ -147,14 +147,15 @@ export class SearchBarController {
         $scope.$emit("searchbarBlurred");
         SearchBarService.productCategory = "";
         if (vm.search.searchString) {
-            //$log.debug("vm.search.searchString ", vm.search.searchString);
+            $log.debug("vm.search.searchString ", vm.search.searchString);
             if (vm.search.searchString) {
                 $log.debug("Hello...........");
                 SearchBarService.productLine = vm.search.searchScope;
                // $rootScope.$emit("searchIconClicked");
                 if ($location.url() === '/search') {
+                    $log.debug("url search ");
+                    $scope.$emit("searchLaunched");
                     $scope.$emit("searchbarBlurred");
-                    $rootScope.$emit("searchLaunched");
                 }
                 else {
                     $location.path('/search');
