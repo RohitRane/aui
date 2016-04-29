@@ -42,34 +42,41 @@ class FilterDirectiveController{
                  });
              });
              $log.debug("new after :",n);
-             
          });
     } 
     
     categoryFilter(selectedCategory){  
         let vm = this;
-        let { $log, SearchBarService } = vm.DI();
+        let { $log, SearchBarService, $scope } = vm.DI();
         angular.forEach(vm.pristineCategory, function(obj){ 
             obj.select = false;
         });
         selectedCategory.select = true;
         SearchBarService.productCategory = selectedCategory.name;
-        vm.apicall().then(()=>{
+        $scope.$emit("searchLaunched");
+        /*vm.apicall().then(()=>{
             //angular.noop();
-        });
+        });*/
     }
     
     reset(){ 
         let vm = this;
         let { $log, SearchBarService } = vm.DI();
-        $log.debug("vm.category ", vm.category);
-        for(let x of vm.category){
+        $log.debug("vm.category1 ", vm.category);
+        /*for(let x of vm.category){
             vm.pristineCategory[x] = {
                 name: x,
                 select: false
             }
-        }
+        }*/
+        vm.category = vm.category.map(function(cat){
+            return {
+                name:cat,
+                select:false
+            };
+        });
         
+        $log.debug("vm.category2 ", vm.category);
         for (let x of vm.list) {  
             if(x.type == 'STRING'){
                 vm.prestine[x.name] = {

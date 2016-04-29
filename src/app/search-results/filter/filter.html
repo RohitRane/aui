@@ -3,7 +3,7 @@
     <!--<div class="text-muted">
         <span class="refine">Refine By </span>
     </div>-->
-    <div class="refine-header" data-ng-repeat="category in vm.pristineCategory">
+    <div class="refine-header" data-ng-repeat="category in vm.category">
         <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category)">{{category.name}}</span>
         <div class="refine-options" data-ng-repeat="subcategory in category.subcategory">
             <div class="list">
