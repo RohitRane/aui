@@ -30,8 +30,8 @@ class FilterDirectiveController{
              return vm.list;
          },function(n, o){
              //$log.debug("Service list :",SearchBarService.filters);
-             $log.debug("old :",o);
-             $log.debug("new :",n);
+             //$log.debug("old :",o);
+             //$log.debug("new :",n);
              vm.reset();
              //Object.assign(n,o);
               n = n.map(function(item){
@@ -59,26 +59,32 @@ class FilterDirectiveController{
         });*/
     }
     
+    reserNew(){
+        
+    }
+    
     reset(){ 
         let vm = this;
         let { $log, SearchBarService } = vm.DI();
-        $log.debug("vm.category1 ", vm.category);
-        /*for(let x of vm.category){
+        if(vm.category.lenght > 1){
+            vm.pristineCategory = {};
+        }
+        for(let x of vm.category){
             vm.pristineCategory[x] = {
                 name: x,
                 select: false
             }
-        }*/
-        vm.category = vm.category.map(function(cat){
+        }
+        /*
+         vm.category = vm.category.map(function(cat){
             return {
                 name:cat,
                 select:false
             };
         });
-        
-        $log.debug("vm.category2 ", vm.category);
+        */
         for (let x of vm.list) {  
-            if(x.type == 'STRING'){
+            if(x.type == 'STRING'){ 
                 vm.prestine[x.name] = {
                 collapsed: false,
                 changed: false,
@@ -86,7 +92,7 @@ class FilterDirectiveController{
                 viewLimit: 4,
                 viewLimitName: "View all",
                 toggle: false,
-                viewSelect: "Select All",
+                viewSelect: x.buckets.length > 1 ? "Select All": '',
                 toggleView: true,
                 options: x.buckets
                 };
@@ -133,7 +139,6 @@ class FilterDirectiveController{
                 }
             }
         }
-        
     }
     
     toggleselectAll(arr, id){
@@ -185,9 +190,12 @@ class FilterDirectiveController{
                         //$log.debug("vm.prestine[x.name].singleObject", x.name,  x.buckets[0].key);
                         x.buckets[0].select ? filterArray.push(x.buckets[0].key) : "";
                     }else{
-                       // $log.debug(x.name, vm.prestine[x.name].minValue, vm.prestine[x.name].maxValue);
-                        filterArray.push(vm.prestine[x.name].minValue);
-                        filterArray.push(vm.prestine[x.name].maxValue);
+                       // $log.debug("slider ", x.name, vm.prestine[x.name].options.floor, vm.prestine[x.name].options.ceil);
+                       if(vm.prestine[x.name].minValue > vm.prestine[x.name].options.floor
+                       || vm.prestine[x.name].maxValue < vm.prestine[x.name].options.ceil){
+                           filterArray.push(vm.prestine[x.name].minValue);
+                           filterArray.push(vm.prestine[x.name].maxValue);
+                       }
                     }
                     break;
                 }
