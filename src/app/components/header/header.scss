@@ -119,6 +119,7 @@ header {
         .navbar-header {
             height: 30px;
             .navbar-brand {
+                cursor: default;
                 @media(max-width: 1024px) {
                     width: 106px;
                 }
