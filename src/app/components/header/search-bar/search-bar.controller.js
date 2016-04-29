@@ -14,6 +14,7 @@ export class SearchBarController {
             typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
             typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
             resultCountUpperLimit: 8,
+            firstSelect: false,
             categories: [
                 'Commercial Vehicle',
                 'Light Vehicle',
@@ -28,7 +29,7 @@ export class SearchBarController {
 
     textTyped(searchString) {
         let vm = this;
-        let {$log, $rootScope, dataServices, SearchBarService} = vm.DI();
+        let {$log, $rootScope, $scope, dataServices, SearchBarService} = vm.DI();
         //root$scope.searchString = searchString;
         SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
@@ -36,6 +37,8 @@ export class SearchBarController {
             $log.debug("Response in Controller : ", response);
             vm.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
+            response.totalResults === 1 ? vm.search.firstSelect = true : vm.search.firstSelect = false;
+            
             let resultSet = response.parts,
                 firstExact = true,
                 firstClose = true,
@@ -121,7 +124,7 @@ export class SearchBarController {
             /*item.lineDesc = item.lineDesc.replace("<a>", "");
             item.lineDesc = item.lineDesc.replace("</a>", "");*/
             item.lineDesc = "";
-            item.partNumber = item.partNumber.replace(" in","");
+            item.partNumber = item.partNumber.replace(" in", "");
             //SearchBarService.productLine = item.lineDesc;
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.productCategory = item.productCategory;
@@ -151,7 +154,7 @@ export class SearchBarController {
             if (vm.search.searchString) {
                 $log.debug("Hello...........");
                 SearchBarService.productLine = vm.search.searchScope;
-               // $rootScope.$emit("searchIconClicked");
+                // $rootScope.$emit("searchIconClicked");
                 if ($location.url() === '/search') {
                     $log.debug("url search ");
                     $scope.$emit("searchLaunched");
