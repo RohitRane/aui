@@ -123,16 +123,16 @@ class FilterDirectiveController{
                 viewLimit: 4
             });
             }else{
-                let xVals = x.buckets.map(function(val) { return parseInt(val.key); });
+                let xVals = x.buckets.map(function(val) { return parseFloat(val.key) * 1000; });
                 vm.listPristine.push({
                     name: x.name,
                     type: x.type,
                     singleObject: false,
-                    minValue: Math.min(...xVals),
-                    maxValue: Math.ceil(Math.max(...xVals)),
+                    minValue: Math.floor(Math.min(...xVals)/1000),
+                    maxValue: Math.ceil(Math.max(...xVals)/1000),
                     options: {
-                        floor: Math.min(...xVals),
-                        ceil:  Math.max(...xVals),
+                        floor: Math.floor(Math.min(...xVals) / 1000),
+                        ceil:  Math.ceil(Math.max(...xVals) / 1000),
                         step: 1,
                         id: x.name,
                         onChange: function(/*sliderId, modelValue, highValue*/){
