@@ -68,19 +68,7 @@ export class SearchResultsController {
                     }, {
                         "key": "WB Style",
                         "count": 6
-                    }, {
-                        "key": "BP Style",
-                        "count": 5
-                    }, {
-                        "key": "HR Style",
-                        "count": 5
-                    }, {
-                        "key": "BP/WB Style",
-                        "count": 1
-                    }, {
-                        "key": "ISR/WB Style",
-                        "count": 1
-                    }, {
+                    },{
                         "key": "OSR/ISR Style",
                         "count": 1
                     }]
@@ -168,8 +156,8 @@ export class SearchResultsController {
             
             vm.filters = response.filter;
             vm.category = response.partCategoryList;
-            //$log.debug("response.filter:", response.filter);
-            //$log.debug("response.partCategoryList", vm.category);
+            $log.debug("response.filter:", response.filter);
+            $log.debug("response.CategoryList", vm.category);
             
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber + ' ' + part.partDesc;

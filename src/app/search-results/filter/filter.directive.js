@@ -19,111 +19,117 @@ class FilterDirectiveController{
     constructor($log, SearchBarService, dataServices, $scope, $rootScope){
          'ngInject';
          let vm = this;
-         
          vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
-         vm.prestine = {};
-         vm.pristineCategory = {};
-         vm.viewLimitName = "View all";
-         //vm.reset();
+         vm.listPristine = [];
+         vm.categoryPristine = [];
+         //vm.resetList();
+        // vm.resetCategory();
          
+         $scope.$watch(function(){
+             return vm.category;
+         },function(n, o){
+             vm.resetCategory();
+         });
+         vm.count = true;
          $scope.$watch(function(){
              return vm.list;
          },function(n, o){
-             //$log.debug("Service list :",SearchBarService.filters);
-             //$log.debug("old :",o);
-             //$log.debug("new :",n);
-             vm.reset();
-             //Object.assign(n,o);
-              n = n.map(function(item){
+             $log.debug("old :",o);
+             $log.debug("new :",n);
+             $log.debug("vm.list :",vm.list.length);
+             if(vm.list.length == 0){
+                 vm.count = true;
+             }
+             if(vm.count){
+                 vm.resetList();
+                 vm.count = false;
+             }
+             
+            /* n = n.map(function(item){
                  angular.forEach(o,function(){
                      if(n.name === o.name){
                          Object.assign(n,o);
                      }
                  });
-             });
-             $log.debug("new after :",n);
+             });*/
          });
     } 
+    
+    resetCategory(){
+      let vm = this;
+      let { $log } = vm.DI();
+      if(vm.category.length > 0){
+            vm.categoryPristine = vm.category;
+            vm.categoryPristine = vm.categoryPristine.map(function(name){
+                return {
+                    name:name,
+                    select:false
+                };
+            });
+      }
+    }
     
     categoryFilter(selectedCategory){  
         let vm = this;
         let { $log, SearchBarService, $scope } = vm.DI();
-        angular.forEach(vm.pristineCategory, function(obj){ 
+        vm.count = true;
+        angular.forEach(vm.categoryPristine, function(obj){ 
             obj.select = false;
         });
         selectedCategory.select = true;
         SearchBarService.productCategory = selectedCategory.name;
+        //vm.listPristine = [];
         $scope.$emit("searchLaunched");
-        /*vm.apicall().then(()=>{
-            //angular.noop();
-        });*/
+        vm.resetList();
     }
     
-    reserNew(){
-        
-    }
-    
-    reset(){ 
-        let vm = this;
-        let { $log, SearchBarService } = vm.DI();
-        if(vm.category.lenght > 1){
-            vm.pristineCategory = {};
-        }
-        for(let x of vm.category){
-            vm.pristineCategory[x] = {
-                name: x,
-                select: false
-            }
-        }
-        /*
-         vm.category = vm.category.map(function(cat){
-            return {
-                name:cat,
-                select:false
-            };
-        });
-        */
-        for (let x of vm.list) {  
-            if(x.type == 'STRING'){ 
-                vm.prestine[x.name] = {
-                collapsed: false,
-                changed: false,
-                select: false,
-                viewLimit: 4,
-                viewLimitName: "View all",
-                toggle: false,
+    resetList(){ 
+      let vm = this;
+      let { $log } = vm.DI();
+      vm.listPristine = [];
+      $log.debug("resetList ", vm.list);
+      for(let x of vm.list){
+        if(x.type == "STRING"){
+            vm.tempBuckets = [];
+            angular.forEach(x.buckets, function(obj){
+              vm.tempBuckets.push({
+                key : obj.key,
+                count : obj.count,
+                select : false
+              });
+            });
+            vm.listPristine.push ({
+                name: x.name,
+                type: x.type,
+                buckets: vm.tempBuckets,
                 viewSelect: x.buckets.length > 1 ? "Select All": '',
-                toggleView: true,
-                options: x.buckets
-                };
-                angular.forEach(x.buckets, function(obj){
-                    obj.select = false;
-                });
-            }
-            if(x.type == 'NUMERIC'){
-                let xVals = x.buckets.map(function(val) { return val.count; });
-                
-                if(x.buckets.length == 1){
-                    vm.prestine[x.name] = {
-                    singleObject: true,
-                    collapsed: false,
-                    changed: false,
-                    select: false,
-                    viewLimit: 4,
-                    viewLimitName: "View all",
-                    toggle: false,
-                    viewSelect: "Select All",
-                    toggleView: true,
-                    options: x.buckets
-                    };
-                    angular.forEach(x.buckets, function(obj){
-                        obj.select = false;
-                    });
-                }else{
-                    vm.prestine[x.name] = {
+                toggleSelect: false,
+                viewLimitName: "View all",
+                toggleView: false,
+                viewLimit: 4
+            });
+        }
+        else if(x.type == "NUMERIC"){
+            if(x.buckets.length == 1){
+                vm.listPristine.push ({
+                name: x.name,
+                type: x.type,
+                buckets: x.buckets,
+                singleObject: true,
+                viewSelect: x.buckets.length > 1 ? "Select All": '',
+                toggleSelect: false,
+                viewLimitName: "View all",
+                toggleView: false,
+                viewLimit: 4
+            });
+            }else{
+                let xVals = x.buckets.map(function(val) { return parseInt(val.key); });
+                vm.listPristine.push({
+                    name: x.name,
+                    type: x.type,
                     singleObject: false,
                     minValue: Math.min(...xVals),
-                    maxValue: Math.max(...xVals),
+                    maxValue: Math.ceil(Math.max(...xVals)),
                     options: {
                         floor: Math.min(...xVals),
                         ceil:  Math.max(...xVals),
@@ -135,40 +141,39 @@ class FilterDirectiveController{
                             });
                         }
                     }
-                    };
-                }
+                });
             }
         }
+      }  
     }
     
-    toggleselectAll(arr, id){
-         let vm = this;
-        if(vm.prestine[id].toggleView){
-            vm.prestine[id].viewSelect = "Un-select";
-            angular.forEach(arr, function(obj){
-                obj.select = true;
+    toggleselect(list){
+        let vm = this;
+        if(list.toggleSelect){
+            list.viewSelect = "Select All";
+            angular.forEach(list.buckets, function(obj){
+                obj.select = false
             });
         }else{
-            vm.prestine[id].viewSelect = "Select All";
-            angular.forEach(arr, function(obj){
-                obj.select = false;
+            list.viewSelect = "Unselect";
+            angular.forEach(list.buckets, function(obj){
+                obj.select = true
             });
         }
+        list.toggleSelect = !list.toggleSelect;
         vm.apicall();
-        vm.prestine[id].toggleView = !vm.prestine[id].toggleView;
     }
     
-    toggleviewLimit(id){
+    toggleview(list){
         let vm = this;
-      if(vm.prestine[id].toggle){
-        vm.prestine[id].viewLimitName = "View all";
-        vm.prestine[id].viewLimit = 4;
-      }
-      else{
-        vm.prestine[id].viewLimitName = "View less";
-        vm.prestine[id].viewLimit = vm.prestine[id].options.length;
-      }
-      vm.prestine[id].toggle = !vm.prestine[id].toggle;
+        if(list.toggleView){
+            list.viewLimitName = "View all"
+            list.viewLimit = 4;
+        }else{
+            list.viewLimitName = "View less"
+            list.viewLimit = list.buckets.length;
+        }
+        list.toggleView = !list.toggleView;
     }
     
     apicall(){
@@ -176,30 +181,26 @@ class FilterDirectiveController{
         let vm = this;
         let { $log, SearchBarService, $scope, $rootScope } = vm.DI();
          let filterObjectArray = [];
-         for (let x of this.list) {
+         for (let x of vm.listPristine) {
              let filterArray = [];
              let filterObject = {};
-             
-              for(let obj=0; obj < x.buckets.length; obj++){
+              
                  if(x.type == "STRING"){
-                   x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
-                   //$log.debug(x.name,  x.buckets[obj].key, x.buckets[obj].select);
-                   
+                     for(let obj=0; obj < x.buckets.length; obj++){
+                         x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
+                     }
                 }else{
-                    if(vm.prestine[x.name].singleObject){
-                        //$log.debug("vm.prestine[x.name].singleObject", x.name,  x.buckets[0].key);
+                    if(x.singleObject){
                         x.buckets[0].select ? filterArray.push(x.buckets[0].key) : "";
                     }else{
-                       // $log.debug("slider ", x.name, vm.prestine[x.name].options.floor, vm.prestine[x.name].options.ceil);
-                       if(vm.prestine[x.name].minValue > vm.prestine[x.name].options.floor
-                       || vm.prestine[x.name].maxValue < vm.prestine[x.name].options.ceil){
-                           filterArray.push(vm.prestine[x.name].minValue);
-                           filterArray.push(vm.prestine[x.name].maxValue);
+                       if(x.minValue > x.options.floor
+                       || x.maxValue < x.options.ceil){
+                           filterArray.push(x.minValue);
+                           filterArray.push(x.maxValue);
                        }
                     }
-                    break;
                 }
-             }
+             
             if(filterArray.length){
                 filterObject = {
                 name: x.name,
@@ -209,72 +210,11 @@ class FilterDirectiveController{
                 filterObjectArray.push(filterObject);
             }
          }
-        // $log.debug("filterObjectArray", filterObjectArray);
-        //console.log("vm.prestine ", vm.list);
-        SearchBarService.filters = vm.list;
         $log.debug("payload", filterObjectArray);
         $scope.$emit("searchLaunched", filterObjectArray);
         resolve();
         });
         return prms();
     }
-    
-    /*
-        reset(){ console.log("super", this.list);
-        for (let x of this.list) {
-            if(x.type == 'string'){
-                this.prestine[x.id] = {
-                collapsed: false,
-                changed: false,
-                select: false,
-                viewLimit: 4,
-                viewLimitName: "View all",
-                toggle: false,
-                viewSelect: "Select All",
-                toggleView: true,
-                options: x.options
-                };
-            }
-            if(x.type == 'number'){
-                this.prestine[x.id] = {
-                minValue: Math.min(...x.options),
-                maxValue: Math.max(...x.options),
-                options: {
-                    floor: Math.min(...x.options),
-                    ceil:  Math.max(...x.options),
-                    step: 1
-                }
-                };
-            }
-        }
-    }
-    
-    toggleselectAll(arr, id){
-        if(this.prestine[id].toggleView){
-            this.prestine[id].viewSelect = "Un-select";
-            angular.forEach(arr, function(obj){
-                obj.select = true;
-            });
-        }else{
-            this.prestine[id].viewSelect = "Select All";
-            angular.forEach(arr, function(obj){
-                obj.select = false;
-            });
-        }
-        this.prestine[id].toggleView = !this.prestine[id].toggleView;
-    }
-    
-    toggleviewLimit(id){
-      if(this.prestine[id].toggle){
-        this.prestine[id].viewLimitName = "View all";
-        this.prestine[id].viewLimit = 4;
-      }
-      else{
-        this.prestine[id].viewLimitName = "Collapse";
-        console.log(this.prestine[id].options);
-        this.prestine[id].viewLimit = this.prestine[id].options.length;
-      }
-      this.prestine[id].toggle = !this.prestine[id].toggle;
-    }*/
 }
 

@@ -204,8 +204,8 @@ class CategoryMenuController {
         closeOthers().then(function () {
             $timeout(() => {
                 let subCatList = $document[0].getElementById("subcategories");
-                $log.debug("subcatlist :", subCatList);
-                $log.debug("subcatlist :", subCatList);
+                //$log.debug("subcatlist :", subCatList);
+                //$log.debug("subcatlist :", subCatList);
                 angular.element(subCatList).css("width", $window.innerWidth + "px");
             }, 150);
         });
