@@ -3,7 +3,7 @@
         .result-card{
             .panel{
                 border-radius: 0px !important;
-                padding: 0px 10px;
+                padding: 25px 26px;
                 border: none;
                 .col-md-6, .col-md-3{
                     padding: 0;
@@ -41,6 +41,7 @@
                 border-bottom: none;
                 .description{
                     padding: 10px 10px;
+                    text-decoration: none;
                 }
                 .name{
                     font-family: Open Sans;
@@ -75,7 +76,7 @@
                 }
              }
              .panel-body{
-                 padding: 10px 10px 10px 20px;
+                 padding: 25px 10px 22px 40px;
                  .col-md-3{
                     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
                         text-align: center !important;
