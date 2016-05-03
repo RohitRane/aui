@@ -21,6 +21,7 @@ class FilterDirectiveController{
          let vm = this;
          vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
          vm.listPristine = [];
+         vm.listPreviousFilter = [];
          vm.categoryPristine = [];
          //vm.resetList();
         // vm.resetCategory();
@@ -34,24 +35,31 @@ class FilterDirectiveController{
          $scope.$watch(function(){
              return vm.list;
          },function(n, o){
-             $log.debug("old :",o);
-             $log.debug("new :",n);
-             $log.debug("vm.list :",vm.list.length);
-             if(vm.list.length == 0){
-                 vm.count = true;
+             vm.resetList();
+             $log.debug("vm.listPristine: 1", vm.listPristine, vm.listPristine.length);
+             $log.debug("vm.listPreviousFilter:", vm.listPreviousFilter, vm.listPreviousFilter.length);
+             n = vm.listPristine;
+             o = vm.listPreviousFilter;
+             if(vm.listPreviousFilter.length > 1){
+                 for(let x of n){
+                     for(let y of o){ $log.debug(x.abc);
+                         if(x.name == y.name){
+                             Object.assign(x,y);
+                             break;
+                         }
+                     }
+                 }
              }
-             if(vm.count){
-                 vm.resetList();
-                 vm.count = false;
-             }
-             
-            /* n = n.map(function(item){
+             $log.debug("vm.listPristine: 2", vm.listPristine, vm.listPristine.length);
+             /*n = n.map(function(item){
                  angular.forEach(o,function(){
+                     $log.debug(n.name , o.name);
                      if(n.name === o.name){
                          Object.assign(n,o);
                      }
                  });
              });*/
+             
          });
     } 
     
@@ -78,16 +86,15 @@ class FilterDirectiveController{
         });
         selectedCategory.select = true;
         SearchBarService.productCategory = selectedCategory.name;
-        //vm.listPristine = [];
+        vm.listPreviousFilter = [];
         $scope.$emit("searchLaunched");
-        vm.resetList();
+       // vm.resetList();
     }
     
     resetList(){ 
       let vm = this;
       let { $log } = vm.DI();
       vm.listPristine = [];
-      $log.debug("resetList ", vm.list);
       for(let x of vm.list){
         if(x.type == "STRING"){
             vm.tempBuckets = [];
@@ -210,7 +217,9 @@ class FilterDirectiveController{
                 filterObjectArray.push(filterObject);
             }
          }
-        $log.debug("payload", filterObjectArray);
+        vm.listPreviousFilter = vm.listPristine;
+       // $log.debug("payload ", filterObjectArray);
+       // $log.debug("vm.listPristine ", vm.listPristine);
         $scope.$emit("searchLaunched", filterObjectArray);
         resolve();
         });
