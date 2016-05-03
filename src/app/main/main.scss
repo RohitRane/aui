@@ -30,7 +30,8 @@ $fa-font-path: "../../bower_components/components-font-awesome/fonts";
 
 .sub-title{
     @extend .regular-text;
-    font-size: 13px;    
+    font-size: 13px;   
+    padding-right: 17px; 
 }
 
 .tiny-text{
