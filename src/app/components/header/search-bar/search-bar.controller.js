@@ -1,10 +1,10 @@
 export class SearchBarController {
-    constructor($log, $scope, $location, $rootScope, $document, dataServices, SearchBarService) {
+    constructor($log, $scope, $location, $rootScope, $document, $timeout, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, dataServices, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, dataServices, SearchBarService })
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
@@ -37,7 +37,7 @@ export class SearchBarController {
             vm.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
             response.totalResults === 1 ? vm.search.firstSelect = true : vm.search.firstSelect = false;
-            
+
             let resultSet = response.parts,
                 firstExact = true,
                 firstClose = true,
@@ -96,7 +96,7 @@ export class SearchBarController {
     blur() {
         let vm = this;
         let {$log, $scope} = vm.DI();
-        $log.debug("Blur.");
+        $log.debug("Blur firrrrrrrrrring.");
 
         $scope.$emit("searchbarBlurred");
     }
@@ -114,6 +114,9 @@ export class SearchBarController {
     gotoPartDetails(item) {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+
+        vm._blurSrchBox();
+
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -145,6 +148,9 @@ export class SearchBarController {
 
     searchIconClick() {
         let vm = this;
+        
+        vm._blurSrchBox();        
+        
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
         SearchBarService.productCategory = "";
@@ -173,5 +179,16 @@ export class SearchBarController {
         let {$scope} = vm.DI();
         //alert("Hi");
         $scope.$emit("searchbarFocussed");
+    }
+
+    _blurSrchBox() {
+        let vm = this;
+        let { $document, $log, $timeout } = vm.DI();
+
+        $timeout(function () {
+            console.log("blurring");
+            var tb = $document[0].getElementById("search-box");
+            tb.blur();
+        },100);
     }
 }
