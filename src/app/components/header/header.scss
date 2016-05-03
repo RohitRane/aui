@@ -1,6 +1,7 @@
 header {
-    .navbar-header{
-       // max-width: 1280px;
+    .upper-container, .lower-container{
+       max-width:1440px;
+       margin:auto;
     }
     .typeahead-popup{
             top:78px !important;
