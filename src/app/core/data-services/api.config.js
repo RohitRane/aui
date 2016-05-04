@@ -51,7 +51,7 @@ export let apiConfig = {
     'PART': {
         'url': '',
         'setUrl': function (param) {
-            this.url = apiBaseUrl + '/part?q=' + param;
+            this.url = apiBaseUrl + '/part/' + param;
         },
         'method': 'GET',
         'data': {}

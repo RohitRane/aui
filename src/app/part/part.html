@@ -1,21 +1,21 @@
 <div class="partDetails">
     <div class="breadcrumb-section">
         <ol class="breadcrumb">
-            <li><a href="#">Commercial Vehicles</a></li>
+            <!--<li><a href="#">Commercial Vehicles</a></li>
             <li><a href="#">Heavy Axel</a></li>
             <li><a href="#">Steer Axel</a></li>
-            <li class="active"><a href="#">1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></li>
-            <!-- <li><a href="#">{{part.partData.classDesc}} :</a></li>
-            <li><a href="#">{{part.partData.lineDesc}} :</a></li>
-            <li><a href="#">{{part.partData.partDesc}}: </a></li>
-            <li class="active"><a href="#">{{part.partData.partNumber}}</a></li> -->
+            <li class="active"><a href="#">1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></li>-->
+             <li  data-ng-repeat="category in part.partData.categories"><a href="#">{{category}} </a></li>
+            <!--<li><a href="#">{{part.partData.lineDesc}} :</a></li>
+            <li><a href="#">{{part.partData.partDesc}}: </a></li>-->
+            <li class="active"><a href="#">{{part.partData.partNumber}}</a></li> 
         </ol>
     </div>
     <div class="panel">
         <div class="panel-heading ">
             <header class="section-title bottom">
-                1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)
-               <!--  {{part.partData.partNumber}}, {{part.partData.classDesc}}, {{part.partData.partDesc}} -->
+                <!--1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)-->
+                 {{part.partData.partNumber}}, <!--<span data-ng-repeat="category in part.partData.categories">{{category}},</span>--> {{part.partData.partDesc}} 
             </header>
         </div>
         <div class="panel-body">
@@ -27,7 +27,8 @@
                                 <div class="thumbnail">
                                     <a href="#" class="">
                                         <!-- <img src="assets/images/part-details/machine_main.jpg" alt="125x125" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"> -->
-                                        <img src="assets/images/part-details/machine_main.jpg" alt="125x125" >
+                                        <!--<img src="assets/images/part-details/machine_main.jpg" alt="125x125" >-->
+                                        <image-zoom src="assets/images/u-joint.jpg" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"></image-zoom>
                                     </a>
                                 </div>
                             </div>
@@ -102,11 +103,11 @@
                                     <label class="partDetailsTabDesc">Specification</label>
                                     <table class="table">
                                         <tbody>
-                                            <!-- <tr data-ng-repeat="(key,val) in part.partData.attrs" >
+                                             <tr data-ng-repeat="(key,val) in part.partData.attrs" >
                                                 <td>{{key}}</td>
                                                  <td>{{val}}</td>
-                                            </tr> -->
-                                            <tr>
+                                            </tr> 
+                                            <!--<tr>
                                                 <td>GAWR</td>
                                                 <td>10000 lbs</td>
                                             </tr>
@@ -121,7 +122,7 @@
                                             <tr>
                                                 <td>center drop</td>
                                                 <td>1.25 inch</td>
-                                            </tr>
+                                            </tr>-->
                                         </tbody>
                                     </table>
                                     <div class="panel learn partResultsBM">

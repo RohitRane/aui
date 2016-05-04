@@ -142,7 +142,7 @@ export class SearchBarController {
             vm.searchIconClick();
         }
         else {
-            $location.path('/part/' + item.partNumber);
+            $location.path('/part/' + item.id);
         }
     }
 

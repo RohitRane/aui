@@ -24,7 +24,7 @@ export class PartController {
         $log.debug("Part No :", SearchBarService.productLine);
         vm.productLine = SearchBarService.productLine;
         dataServices.part($stateParams.partNumber).then(function (response) {
-            $log.debug("Response in Controller :", response.attrs);
+            $log.debug("Response in Controller :", response);
             vm.partData = response;
         }, function (error) {
             $log.debug("Error in response :", error);
