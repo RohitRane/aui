@@ -7,7 +7,8 @@ export function imageZoomDirective() {
         scope: {
             src: '@src',
             zoomIndex: '@zoomIndex',
-            lensDimensions: '@lensDimensions'
+            lensDimensions: '@lensDimensions',
+            containerDimensions: '@containerDimensions'
         },
         controller: 'ImageZoomController',
         controllerAs: 'imgZoom',

@@ -17,10 +17,10 @@ export class SearchBarController {
             firstSelect: false,
             categories: [
                 'Commercial Vehicle',
-                'Light Vehicle',
+                'Automotive',
                 'Off-Highway',
                 'High Performance',
-                'Military/Defence',
+                'Military/Defense',
                 'Industrial'
             ]
         };
@@ -48,7 +48,7 @@ export class SearchBarController {
             });
             if (response.totalResults > vm.resultSetLimit) {
                 let obj = {
-                    lineDesc: "View " + response.totalResults + " matches",
+                    lineDesc: "View all " + response.totalResults + " matches",
                     typeId: 3
                 };
                 resultSet.push(obj);

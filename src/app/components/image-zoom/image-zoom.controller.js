@@ -9,6 +9,12 @@ export class ImageZoomController {
         vm.DI = () => ({ $log, $document });
 
         vm.showZoom = false;
+        
+        vm.containerDimensions = angular.fromJson(vm.containerDimensions);
+        $log.debug("Container Dimensions x :",vm.containerDimensions.width);
+        let activeImg = $document[0].getElementById("active-img");
+        angular.element(activeImg).css("width",vm.containerDimensions.width-8+ "px");
+        angular.element(activeImg).css("height",vm.containerDimensions.height-4+ "px");
     }
     enlarge(event) {
         let vm = this;
@@ -17,7 +23,7 @@ export class ImageZoomController {
 
         let zoomLevel = vm.zoomIndex;
         let imgUrl = vm.src;
-
+        
         let activeImg = $document[0].getElementById("active-img");
         $log.debug("mouse x :" + event.pageY + " " + event.pageX);
         let crossSection = angular.fromJson(vm.lensDimensions);

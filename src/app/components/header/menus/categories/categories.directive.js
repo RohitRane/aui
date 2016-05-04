@@ -57,7 +57,7 @@ class CategoryMenuController {
 
         vm.data = {
             "categories": [{
-                "name": "Commercial Vehicles",
+                "name": "Commercial Vehicle",
                 "link": "1",
                 "sub": [{
                     "name": "Driveline",
@@ -133,7 +133,7 @@ class CategoryMenuController {
                             }]
                     }]
             }, {
-                    "name": "Light Vehicles",
+                    "name": "Automotive",
                     "link": "2",
                     "sub": ""
                 }, {
@@ -145,7 +145,7 @@ class CategoryMenuController {
                     "link": "4",
                     "sub": ""
                 }, {
-                    "name": "Military/defence",
+                    "name": "Military/defense",
                     "link": "5",
                     "sub": ""
                 }, {
