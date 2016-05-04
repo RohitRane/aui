@@ -3,7 +3,7 @@ var devServer = "http://52.8.125.250:8080",
     qaServer =  "http://54.183.226.9",
     activeAPIBase = devServer,
     //activeAPIBase = qaServer,
-    apiBaseUrl = activeAPIBase+'/search-web/api';
+    apiBaseUrl = activeAPIBase+'/search-service/api';
 
 
 
@@ -22,9 +22,13 @@ export let apiConfig = {
     'AUTO_SEARCH': {
         'url': '',
         'setUrl': function (param, category) {
-            this.url = apiBaseUrl + '/suggest?q=' + param + '&cat1=' +category;
+            this.url = apiBaseUrl + '/suggest';
+            this.data = {
+              "q": param,
+              "cats":[category]
+            }
         },
-        'method': 'GET',
+        'method': 'POST',
         'data': {}
     },
     'CAT_SEARCH': {
