@@ -1,7 +1,8 @@
 header {
     .upper-container, .lower-container{
        max-width:1440px;
-       margin:auto;
+       // margin:auto;
+       margin:-6px auto;
     }
     .typeahead-popup{
             top:78px !important;
@@ -76,7 +77,8 @@ header {
             .btn,
             input[type=text] {
                 border-radius: 0px;
-                height: 40px;
+                // height: 40px;
+                height: 42px;
             }
             .btn-primary{
                 background-color:$support_color_primary;
@@ -92,7 +94,8 @@ header {
         }
         &.bottom {
             height: 30px;
-            padding-top: 10px;
+            // padding-top: 10px;
+            padding-top: 18px;
             ul {
                 margin-left: -6px;
                 height: 30px;
