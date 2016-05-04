@@ -1,10 +1,10 @@
 export class SearchBarController {
-    constructor($log, $scope, $location, $rootScope, $document, dataServices, SearchBarService) {
+    constructor($log, $scope, $location, $rootScope, $document, $timeout, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, dataServices, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, dataServices, SearchBarService })
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
@@ -24,25 +24,28 @@ export class SearchBarController {
                 'Industrial'
             ]
         };
+
+        vm._setWidthSearchBox();
+
     }
 
     textTyped(searchString) {
         let vm = this;
-        let {$log, $rootScope, $scope, dataServices, SearchBarService} = vm.DI();
+        let { $log, $rootScope, $scope, dataServices, SearchBarService } = vm.DI();
         //root$scope.searchString = searchString;
         SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
-        return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
+        return dataServices.autoSearch(searchString, vm.search.searchScope).then(function(response) {
             $log.debug("Response in Controller : ", response);
             vm.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
             response.totalResults === 1 ? vm.search.firstSelect = true : vm.search.firstSelect = false;
-            
+
             let resultSet = response.parts,
                 firstExact = true,
                 firstClose = true,
                 firstSuggest = true;
-            resultSet = resultSet.map(function (part) {
+            resultSet = resultSet.map(function(part) {
                 part.typeId = 2;
                 return part;
             });
@@ -54,7 +57,7 @@ export class SearchBarController {
                 resultSet.push(obj);
             }
 
-            angular.forEach(response.partCategoryList, function (listItem) {
+            angular.forEach(response.partCategoryList, function(listItem) {
                 let obj = {
                     partNumber: SearchBarService.srchStr + " in ",
                     lineDesc: "<a>" + listItem + "</a>",
@@ -63,9 +66,9 @@ export class SearchBarController {
                 };
                 resultSet.push(obj);
             });
-             
+
             //let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
-            angular.forEach(resultSet, function (part) {
+            angular.forEach(resultSet, function(part) {
                 if (part.typeId === 1 && firstExact) {
                     part.firstExact = true;
                     firstExact = false;
@@ -78,24 +81,24 @@ export class SearchBarController {
                 }
                 $log.debug($rootScope.firstExactIndex + " " + vm.firstCloseIndex + " " + vm.firstSuggestIndex);
             })
-            return resultSet.map(function (part) {
+            return resultSet.map(function(part) {
                 return part;
             });
-        }, function (error) {
+        }, function(error) {
             $log.debug("Error in response :", error);
         });
     }
 
     focus() {
         let vm = this;
-        let {$log, $scope} = vm.DI();
+        let { $log, $scope } = vm.DI();
         $log.debug("Focus.");
         $scope.$emit("searchbarFocussed");
     }
 
     blur() {
         let vm = this;
-        let {$log, $scope} = vm.DI();
+        let { $log, $scope } = vm.DI();
         $log.debug("Blur.");
 
         $scope.$emit("searchbarBlurred");
@@ -103,17 +106,21 @@ export class SearchBarController {
 
     scopeSelectorChanged() {
         let vm = this;
-        let {$document} = vm.DI();
+        let { $document, $timeout } = vm.DI();
         let sBox = $document[0].getElementById('search-box');
         var ngModel = angular.element(sBox).controller('ngModel');
         ngModel.$setViewValue("ABC");
         angular.element(sBox).triggerHandler('input');
         //vm.textTyped(vm.search.searchString);
+        $timeout(function(){
+            vm._setWidthSearchBox();
+        },1000);
+        
     }
 
     gotoPartDetails(item) {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+        let { $log, $location, $rootScope, SearchBarService, $scope } = vm.DI();
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -130,22 +137,20 @@ export class SearchBarController {
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 $scope.$emit("searchLaunched");
-            }
-            else {
+            } else {
                 $location.path('/search');
             }
         } else if (item.typeId === 3) {
             vm.search.searchString = SearchBarService.srchStr;
             vm.searchIconClick();
-        }
-        else {
+        } else {
             $location.path('/part/' + item.partNumber);
         }
     }
 
     searchIconClick() {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+        let { $log, $location, $rootScope, SearchBarService, $scope } = vm.DI();
         $scope.$emit("searchbarBlurred");
         SearchBarService.productCategory = "";
         if (vm.search.searchString) {
@@ -158,8 +163,7 @@ export class SearchBarController {
                     $log.debug("url search ");
                     $scope.$emit("searchLaunched");
                     $scope.$emit("searchbarBlurred");
-                }
-                else {
+                } else {
                     $location.path('/search');
                 }
             } else {
@@ -170,8 +174,27 @@ export class SearchBarController {
 
     scopeSelClicked() {
         let vm = this;
-        let {$scope} = vm.DI();
+        let { $scope } = vm.DI();
         //alert("Hi");
         $scope.$emit("searchbarFocussed");
+    }
+
+    _setWidthSearchBox() {
+        let vm = this;
+        let { $document, $log } = vm.DI();
+        let sBox = $document[0].getElementById('search-box');
+        $log.debug("sbox width :", sBox.clientWidth);
+        let catDd = $document[0].getElementById('category-dd');
+        $log.debug("cat dd width :", catDd.clientWidth);
+        let sBar = ($document[0].getElementsByClassName('search-bar'))[0];
+        $log.debug("s bar width :", sBar.clientWidth);
+        let lens = $document[0].getElementById('lens-button');
+        $log.debug("lens width :", lens.clientWidth);
+        let newSBoxWidth = sBar.clientWidth - catDd.clientWidth - 38;
+        angular.element(sBox).css("width", newSBoxWidth + "px");
+        $log.debug("sbox width after :", sBox.clientWidth);
+        let totalWidth = sBox.clientWidth + catDd.clientWidth + lens.clientWidth;
+        $log.debug("Total sbar width after :", totalWidth);
+
     }
 }
