@@ -84,13 +84,25 @@ class FilterDirectiveController{
         let vm = this;
         let obj = {};
         vm.tempBuckets = [];
-        angular.forEach(x.buckets, function(obj){
-            vm.tempBuckets.push({
-            key : obj.key,
-            count : obj.count,
-            select : false
+         if(x.type == "STRING" || x.type == "NUMERIC"){ 
+             angular.forEach(x.buckets, function(obj){
+                vm.tempBuckets.push({
+                key : obj.key,
+                count : obj.count,
+                select : false
+                });
             });
-        });
+         }else if(x.type == "NUMERIC_RANGE"){
+             angular.forEach(x.buckets, function(obj){
+                 console.log("start", obj.start);
+                vm.tempBuckets.push({
+                start: obj.start,
+                end: obj.end,
+                select : false
+                });
+            });
+         }
+        
         obj = {
             name: x.name,
             type: x.type,
@@ -101,11 +113,6 @@ class FilterDirectiveController{
             toggleView: false,
             viewLimit: 4
         };
-        if(x.type == "NUMERIC"){
-            Object.assign(obj, {
-                singleObject: true,
-            });
-        };    
         return obj;
     }
     
@@ -116,9 +123,11 @@ class FilterDirectiveController{
       for(let x of vm.list){
         if(x.type == "STRING"){
             vm.listPristine.push (vm.pushCheckboxData(x));
-        }
-        else if(x.type == "NUMERIC"){
-            if(x.buckets.length == 1){
+        }else if(x.type == "NUMERIC_RANGE"){
+             vm.listPristine.push (vm.pushCheckboxData(x));
+        }else if(x.type == "NUMERIC"){
+             vm.listPristine.push (vm.pushCheckboxData(x));
+            /*if(x.buckets.length == 1){
                 vm.listPristine.push (vm.pushCheckboxData(x));
             }else{
                 let xVals = x.buckets.map(function(val) { return parseFloat(val.key) * 1000; });
@@ -133,14 +142,14 @@ class FilterDirectiveController{
                         ceil:  Math.ceil(Math.max(...xVals) / 1000),
                         step: 1,
                         id: x.name,
-                        onChange: function(/*sliderId, modelValue, highValue*/){
+                        onChange: function(sliderId, modelValue, highValue){
                          vm.apicall().then(()=>{
                                 angular.noop();
                             });
                         }
                     }
                 });
-            }
+            }*/
         }
       }  
     }
@@ -181,12 +190,12 @@ class FilterDirectiveController{
          for (let x of vm.listPristine) {
              let filterArray = [];
              let filterObject = {};
-                 if(x.type == "STRING"){
+                 if(x.type == "STRING" || x.type == "NUMERIC"){
                      for(let obj=0; obj < x.buckets.length; obj++){
                          x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
                      }
                 }else{
-                    if(x.singleObject){
+                   /* if(x.singleObject){
                         x.buckets[0].select ? filterArray.push(x.buckets[0].key) : "";
                     }else{
                        if(x.minValue > x.options.floor
@@ -194,7 +203,7 @@ class FilterDirectiveController{
                            filterArray.push(x.minValue);
                            filterArray.push(x.maxValue);
                        }
-                    }
+                    }*/
                 }
             if(filterArray.length){
                 filterObject = {

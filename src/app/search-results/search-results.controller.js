@@ -43,7 +43,7 @@ export class SearchResultsController {
             "Brand Name"
         ];
         
-      /*  this.category =[
+       /* this.category =[
             "Relevance",
             "Featured",
             "New Launch",
@@ -122,22 +122,20 @@ export class SearchResultsController {
                         "count": 20
                     }]
             }, {
-                "name": "SPICER",
-                "type": "NUMERIC",
-                "buckets": [{
-                    "key": "ns1",
-                    "count": 25
-                }, {
-                        "key": "ns2",
-                        "count": 25
-                    }, {
-                        "key": "ns3",
-                        "count": 15
-                    }, {
-                        "key": "ns4",
-                        "count": 35
+                    "name": "NUMERIC_RANGE",
+                    "type": "NUMERIC_RANGE",
+                    "buckets": [{
+                        "key": "7.547",
+                        "start": 1,
+                        "end": 10,
+                        "count": 2
+                    },{
+                        "key": "7.547",
+                        "start": 11,
+                        "end": 20,
+                        "count": 2
                     }]
-            }];*/
+		}];*/
     }
 
     change(action) {
