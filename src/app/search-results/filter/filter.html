@@ -1,6 +1,6 @@
 <h6>SEE ALL CATEGORIES</h6>
 <span class="refine-list">
-    <div class="refine-header" data-ng-repeat="category in vm.categoryPristine">
+    <div class="refine-header" data-ng-repeat="category in vm.categoryPristine | orderBy: 'name'">
         <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category)">{{category.name}}</span>
         <div class="refine-options" data-ng-repeat="subcategory in category.subcategory">
             <div class="list">
@@ -16,7 +16,7 @@
         </div>
     </div>
     <hr>
-    <div class="refine" data-ng-repeat="refine in vm.listPristine">
+    <div class="refine" data-ng-repeat="refine in vm.listPristine | orderBy: ['priority', 'name']">
         <div class="refine-header">
             <span>{{refine.name}}</span>
             <a ng-show="refine.type == 'STRING'" class="pull-right" ng-click="vm.toggleselect(refine)">{{refine.viewSelect}}</a>

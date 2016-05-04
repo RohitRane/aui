@@ -1,6 +1,5 @@
-export function FilterDirective($log, SearchBarService) {
+export function FilterDirective() {
     'ngInject';
-
     let directive = {
         restrict: 'E',
         templateUrl: 'app/search-results/filter/filter.html',
@@ -23,49 +22,40 @@ class FilterDirectiveController{
          vm.listPristine = [];
          vm.listPreviousFilter = [];
          vm.categoryPristine = [];
-         //vm.resetList();
-        // vm.resetCategory();
-         
-         $scope.$watch(function(){
+         $scope.$watch(function(){  
              return vm.category;
-         },function(n, o){
+         },function(){ 
              vm.resetCategory();
          });
-         vm.count = true;
-         $scope.$watch(function(){
+        
+         $scope.$watch(function(){  
              return vm.list;
-         },function(n, o){
+         },function(){ 
              vm.resetList();
-             $log.debug("vm.listPristine: 1", vm.listPristine, vm.listPristine.length);
-             $log.debug("vm.listPreviousFilter:", vm.listPreviousFilter, vm.listPreviousFilter.length);
-             n = vm.listPristine;
-             o = vm.listPreviousFilter;
              if(vm.listPreviousFilter.length > 1){
-                 for(let x of n){
-                     for(let y of o){ $log.debug(x.abc);
+                 for(let x of vm.listPristine){
+                     x.priority = 2;
+                     for(let y of vm.listPreviousFilter){
                          if(x.name == y.name){
-                             Object.assign(x,y);
+                             if(y.bucketChanged){
+                                Object.assign(x, y);
+                                x.priority = 1;
+                             }
                              break;
                          }
                      }
                  }
              }
-             $log.debug("vm.listPristine: 2", vm.listPristine, vm.listPristine.length);
-             /*n = n.map(function(item){
-                 angular.forEach(o,function(){
-                     $log.debug(n.name , o.name);
-                     if(n.name === o.name){
-                         Object.assign(n,o);
-                     }
-                 });
-             });*/
-             
+             vm.listPreviousFilter = [];
          });
     } 
     
     resetCategory(){
       let vm = this;
-      let { $log } = vm.DI();
+      let { SearchBarService } = vm.DI();
+      if(SearchBarService.typeId == 4){
+          vm.categoryPristine = [];
+      }
       if(vm.category.length > 0){
             vm.categoryPristine = vm.category;
             vm.categoryPristine = vm.categoryPristine.map(function(name){
@@ -79,7 +69,7 @@ class FilterDirectiveController{
     
     categoryFilter(selectedCategory){  
         let vm = this;
-        let { $log, SearchBarService, $scope } = vm.DI();
+        let { SearchBarService, $scope } = vm.DI();
         vm.count = true;
         angular.forEach(vm.categoryPristine, function(obj){ 
             obj.select = false;
@@ -88,47 +78,48 @@ class FilterDirectiveController{
         SearchBarService.productCategory = selectedCategory.name;
         vm.listPreviousFilter = [];
         $scope.$emit("searchLaunched");
-       // vm.resetList();
+    }
+    
+    pushCheckboxData(x){
+        let vm = this;
+        let obj = {};
+        vm.tempBuckets = [];
+        angular.forEach(x.buckets, function(obj){
+            vm.tempBuckets.push({
+            key : obj.key,
+            count : obj.count,
+            select : false
+            });
+        });
+        obj = {
+            name: x.name,
+            type: x.type,
+            buckets: vm.tempBuckets,
+            viewSelect: x.buckets.length > 1 ? "Select All": '',
+            toggleSelect: false,
+            viewLimitName: "View all",
+            toggleView: false,
+            viewLimit: 4
+        };
+        if(x.type == "NUMERIC"){
+            Object.assign(obj, {
+                singleObject: true,
+            });
+        };    
+        return obj;
     }
     
     resetList(){ 
       let vm = this;
-      let { $log } = vm.DI();
+      let {  } = vm.DI();
       vm.listPristine = [];
       for(let x of vm.list){
         if(x.type == "STRING"){
-            vm.tempBuckets = [];
-            angular.forEach(x.buckets, function(obj){
-              vm.tempBuckets.push({
-                key : obj.key,
-                count : obj.count,
-                select : false
-              });
-            });
-            vm.listPristine.push ({
-                name: x.name,
-                type: x.type,
-                buckets: vm.tempBuckets,
-                viewSelect: x.buckets.length > 1 ? "Select All": '',
-                toggleSelect: false,
-                viewLimitName: "View all",
-                toggleView: false,
-                viewLimit: 4
-            });
+            vm.listPristine.push (vm.pushCheckboxData(x));
         }
         else if(x.type == "NUMERIC"){
             if(x.buckets.length == 1){
-                vm.listPristine.push ({
-                name: x.name,
-                type: x.type,
-                buckets: x.buckets,
-                singleObject: true,
-                viewSelect: x.buckets.length > 1 ? "Select All": '',
-                toggleSelect: false,
-                viewLimitName: "View all",
-                toggleView: false,
-                viewLimit: 4
-            });
+                vm.listPristine.push (vm.pushCheckboxData(x));
             }else{
                 let xVals = x.buckets.map(function(val) { return parseFloat(val.key) * 1000; });
                 vm.listPristine.push({
@@ -172,7 +163,6 @@ class FilterDirectiveController{
     }
     
     toggleview(list){
-        let vm = this;
         if(list.toggleView){
             list.viewLimitName = "View all"
             list.viewLimit = 4;
@@ -186,12 +176,11 @@ class FilterDirectiveController{
     apicall(){
         let prms = () => new Promise((resolve) => {
         let vm = this;
-        let { $log, SearchBarService, $scope, $rootScope } = vm.DI();
+        let { $scope } = vm.DI();
          let filterObjectArray = [];
          for (let x of vm.listPristine) {
              let filterArray = [];
              let filterObject = {};
-              
                  if(x.type == "STRING"){
                      for(let obj=0; obj < x.buckets.length; obj++){
                          x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
@@ -207,7 +196,6 @@ class FilterDirectiveController{
                        }
                     }
                 }
-             
             if(filterArray.length){
                 filterObject = {
                 name: x.name,
@@ -215,11 +203,12 @@ class FilterDirectiveController{
                 values: filterArray
                 };
                 filterObjectArray.push(filterObject);
+                x.bucketChanged = true;
+            }else{
+                x.bucketChanged = false;
             }
          }
         vm.listPreviousFilter = vm.listPristine;
-       // $log.debug("payload ", filterObjectArray);
-       // $log.debug("vm.listPristine ", vm.listPristine);
         $scope.$emit("searchLaunched", filterObjectArray);
         resolve();
         });

@@ -43,8 +43,15 @@ export class SearchResultsController {
             "Brand Name"
         ];
         
+      /*  this.category =[
+            "Relevance",
+            "Featured",
+            "New Launch",
+            "Part Number",
+            "Brand Name"
+        ];
         
-        /*this.filters = [{
+        this.filters = [{
             "name": "Greasable",
             "type": "STRING",
             "id": "id1",
@@ -69,7 +76,13 @@ export class SearchResultsController {
                         "key": "WB Style",
                         "count": 6
                     },{
-                        "key": "OSR/ISR Style",
+                        "key": "OSR/ISR Style21",
+                        "count": 1
+                    },{
+                        "key": "WB Style56",
+                        "count": 6
+                    },{
+                        "key": "OSR/ISR Style78",
                         "count": 1
                     }]
             }, {
