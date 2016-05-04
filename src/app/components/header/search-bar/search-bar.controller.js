@@ -114,7 +114,7 @@ export class SearchBarController {
         //vm.textTyped(vm.search.searchString);
         $timeout(function(){
             vm._setWidthSearchBox();
-        },1000);
+        });
         
     }
 
