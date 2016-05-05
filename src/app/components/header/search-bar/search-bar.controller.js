@@ -24,8 +24,10 @@ export class SearchBarController {
                 'Industrial'
             ]
         };
-
-        vm._setWidthSearchBox();
+        $timeout(()=>{
+            vm._setWidthSearchBox();
+        },100);
+        
 
     }
 
@@ -189,8 +191,8 @@ export class SearchBarController {
         let sBar = ($document[0].getElementsByClassName('search-bar'))[0];
         $log.debug("s bar width :", sBar.clientWidth);
         let lens = $document[0].getElementById('lens-button');
-        $log.debug("lens width :", lens.clientWidth);
-        let newSBoxWidth = sBar.clientWidth - catDd.clientWidth - 38;
+        $log.debug("lens width :", lens.offsetWidth);
+        let newSBoxWidth = sBar.clientWidth - (catDd.clientWidth + 43);
         angular.element(sBox).css("width", newSBoxWidth + "px");
         $log.debug("sbox width after :", sBox.clientWidth);
         let totalWidth = sBox.clientWidth + catDd.clientWidth + lens.clientWidth;
