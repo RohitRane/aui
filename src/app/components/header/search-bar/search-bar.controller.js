@@ -1,10 +1,10 @@
 export class SearchBarController {
-    constructor($log, $scope, $location, $rootScope, $document, $timeout, dataServices, SearchBarService) {
+    constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, dataServices, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService })
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
@@ -24,10 +24,14 @@ export class SearchBarController {
                 'Industrial'
             ]
         };
-        $timeout(()=>{
+        $timeout(() => {
             vm._setWidthSearchBox();
-        },100);
+        }, 100);
         
+        angular.element($window).bind('resize',()=>{
+            $log.debug("Window reseized");
+            vm._setWidthSearchBox();
+        });
 
     }
 
@@ -37,7 +41,7 @@ export class SearchBarController {
         //root$scope.searchString = searchString;
         SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
-        return dataServices.autoSearch(searchString, vm.search.searchScope).then(function(response) {
+        return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
             $log.debug("Response in Controller : ", response);
             vm.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
@@ -47,7 +51,7 @@ export class SearchBarController {
                 firstExact = true,
                 firstClose = true,
                 firstSuggest = true;
-            resultSet = resultSet.map(function(part) {
+            resultSet = resultSet.map(function (part) {
                 part.typeId = 2;
                 return part;
             });
@@ -59,7 +63,7 @@ export class SearchBarController {
                 resultSet.push(obj);
             }
 
-            angular.forEach(response.partCategoryList, function(listItem) {
+            angular.forEach(response.partCategoryList, function (listItem) {
                 let obj = {
                     partNumber: SearchBarService.srchStr + " in ",
                     lineDesc: "<a>" + listItem + "</a>",
@@ -70,7 +74,7 @@ export class SearchBarController {
             });
 
             //let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
-            angular.forEach(resultSet, function(part) {
+            angular.forEach(resultSet, function (part) {
                 if (part.typeId === 1 && firstExact) {
                     part.firstExact = true;
                     firstExact = false;
@@ -83,10 +87,10 @@ export class SearchBarController {
                 }
                 $log.debug($rootScope.firstExactIndex + " " + vm.firstCloseIndex + " " + vm.firstSuggestIndex);
             })
-            return resultSet.map(function(part) {
+            return resultSet.map(function (part) {
                 return part;
             });
-        }, function(error) {
+        }, function (error) {
             $log.debug("Error in response :", error);
         });
     }
@@ -114,10 +118,10 @@ export class SearchBarController {
         ngModel.$setViewValue("ABC");
         angular.element(sBox).triggerHandler('input');
         //vm.textTyped(vm.search.searchString);
-        $timeout(function(){
+        $timeout(function () {
             vm._setWidthSearchBox();
         });
-        
+
     }
 
     gotoPartDetails(item) {
