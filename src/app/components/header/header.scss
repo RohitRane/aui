@@ -23,9 +23,7 @@ header {
             //content:url($website_logo);
         }
         p{
-            //margin: 5px 0 0 5px;
             margin: 5px 0 0 9px;
-
             //it was font-size: 16px
             font-size: 15px; 
             color: $color_extreme_two;
@@ -47,7 +45,7 @@ header {
             height: 40px;
             ul {
                 height: 40px;
-                margin-left: 4px;
+                margin-left: -6px;
                 li {
                     height: 40px;
                     padding-top: 10px;
