@@ -1,5 +1,6 @@
 .order-menu{
     @extend .sub-title;
+    margin-right: -3px !important;
     li{
         &:focus,&:hover{
             a{
