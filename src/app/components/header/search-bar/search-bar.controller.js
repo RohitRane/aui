@@ -10,7 +10,7 @@ export class SearchBarController {
         vm.logger = $log;
 
         vm.search = {
-            searchScope: 'Commercial Vehicle',
+            searchScope: 'All',
             typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
             typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
             resultCountUpperLimit: 8,
@@ -29,7 +29,6 @@ export class SearchBarController {
         }, 100);
         
         angular.element($window).bind('resize',()=>{
-            $log.debug("Window reseized");
             vm._setWidthSearchBox();
         });
 
