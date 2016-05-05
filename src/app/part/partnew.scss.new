@@ -1,4 +1,4 @@
-/*.partDetails {
+/*.partDetailsMain{
  margin-top: 20px;
  .pannel {
      header {
@@ -124,7 +124,7 @@
 }
 */
 
-/*.partDetails {
+/*.partDetailsMain {
     .breadcrumb-section {
         margin-top: 0px !important;
         margin-left: -10px;
