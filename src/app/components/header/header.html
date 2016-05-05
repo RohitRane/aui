@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-default navbar-fixed-top top-nav" data-ng-class="{'scrolled':sticky === true}">
-    <div class="container-fluid">
+    <div class="container-fluid upper-container">
       <div class="navbar-header top">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
         aria-expanded="false">
@@ -31,6 +31,7 @@
       </span>
     </div>
     <div class="container-fluid category-menu">
+    <div class="lower-container">
       <div class="navbar-header">
         <a class="navbar-brand" href=""><img ng-src="{{pgHdr.websiteLogo}}" alt=""></a>
       </div>
@@ -40,6 +41,8 @@
         </div>
           <div class="subcategory-menu" ng-hide="!(showSubMenu)">blah</div>
       </span>
+    </div>
+      
     </div>
   </nav>
 </header>

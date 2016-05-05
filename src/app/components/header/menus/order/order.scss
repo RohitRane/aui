@@ -1,5 +1,7 @@
 .order-menu{
     @extend .sub-title;
+    margin-right: 2px !important;
+    margin-top: 3px !important;
     li{
         &:focus,&:hover{
             a{
@@ -12,8 +14,8 @@
         }
         a{
             line-height: 15px !important;
-            padding-left: 6px !important;
-            padding-right: 9px !important;  
+            padding-left: 10px !important;
+            padding-right: 20px !important;  
             &.last-anchor{
                 padding-right: 24px !important;
             }

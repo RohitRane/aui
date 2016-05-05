@@ -55,6 +55,10 @@ class CategoryMenuController {
 
         vm.DI = () => ({ $scope, $log, $document, $timeout, $window });
 
+        angular.element($window).bind('resize', () => {
+            vm._sizeMegaMenuPopover();
+        });
+
         vm.data = {
             "categories": [{
                 "name": "Commercial Vehicle",
@@ -203,14 +207,21 @@ class CategoryMenuController {
 
         closeOthers().then(function () {
             $timeout(() => {
-                let subCatList = $document[0].getElementById("subcategories");
-                //$log.debug("subcatlist :", subCatList);
-                //$log.debug("subcatlist :", subCatList);
-                angular.element(subCatList).css("width", $window.innerWidth + "px");
+                vm._sizeMegaMenuPopover();
             }, 150);
         });
 
 
+    }
+
+    _sizeMegaMenuPopover() {
+        let vm = this;
+        let { $document, $window } = vm.DI();
+        let subCatList = $document[0].getElementById("subcategories");
+        let subCatWidth = $window.innerWidth < 1440 ? $window.innerWidth : 1440;
+        angular.element(subCatList).css("width", subCatWidth + "px");
+        let subCatMarginLeft = $window.innerWidth < 1440 ? 0 : ($window.innerWidth-1440)/2;
+        angular.element(subCatList).css("margin-left", subCatMarginLeft + "px");        
     }
 
 }

@@ -1,6 +1,8 @@
 header {
-    .navbar-header{
-       // max-width: 1280px;
+    .upper-container, .lower-container{
+       max-width:1440px;
+       // margin:auto;
+       margin:-6px auto;
     }
     .typeahead-popup{
             top:78px !important;
@@ -14,14 +16,14 @@ header {
         text-align: center;
         width: 160px;
         img{
-            margin-top: 10px;
-            margin-left: 30px;
+            margin-top: 15px;
+            margin-left: 34px;
             margin-right: 20px;
             width: 105px;
             //content:url($website_logo);
         }
         p{
-            margin: 5px 0 0 5px;
+            margin: 5px 0 0 9px;
             //it was font-size: 16px
             font-size: 15px; 
             color: $color_extreme_two;
@@ -43,7 +45,7 @@ header {
             height: 40px;
             ul {
                 height: 40px;
-                
+                margin-left: -6px;
                 li {
                     height: 40px;
                     padding-top: 10px;
@@ -51,13 +53,15 @@ header {
                         padding-top: 0px;
                         padding-bottom: 0px;
                         padding-left: 10px;
-                        color: $support_color_light_one;
+                        // color: $support_color_light_one;
+                        color: $support_color_light_three;
                     }
                 }
             }
         }
         &.middle {
             height: 70px;
+            padding-top: 1px;
             .form-group {
                 float: left;
             }
@@ -68,13 +72,14 @@ header {
                 margin:0 0 0;
             }
             .button-ddl-head{
-                width: 173px;
+                // width: 173px;
                 background-color:$support_color_light_one;
             }
             .btn,
             input[type=text] {
                 border-radius: 0px;
-                height: 40px;
+                // height: 40px;
+                height: 42px;
             }
             .btn-primary{
                 background-color:$support_color_primary;
@@ -90,16 +95,19 @@ header {
         }
         &.bottom {
             height: 30px;
-            padding-top: 10px;
+            // padding-top: 10px;
+            padding-top: 18px;
             ul {
-                margin-left: -6px;
+                // margin-left: -6px;
+                margin-left: -12px !important;
                 height: 30px;
                 li {
                     height: 30px;
                     a {
                         padding-top: 0px;
                         padding-bottom: 0px;
-                        color: $color_extreme_two;
+                        // color: $color_extreme_two;
+                        color:$support_color_light_one;
                     }
                 }
             }
@@ -132,7 +140,8 @@ header {
     .navbar-default {
         .navbar-nav {
             li {
-                a {
+                a { 
+                    padding-top: 12px;
                     &:hover,
                     &:focus {
                         color: $accent_color;
@@ -147,7 +156,9 @@ header {
         /*-webkit-transition: height 0.25s;
         transition: height 0.25s;*/
         height: 70px;
-        padding-top:2px;
+        //padding-top:2px;
+        padding-top:7px;
+
         .nav-section{
             &.top{
                 display: none;
