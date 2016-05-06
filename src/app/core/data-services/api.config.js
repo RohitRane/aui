@@ -54,5 +54,9 @@ export let apiConfig = {
         },
         'method': 'GET',
         'data': {}
+    },
+    'APPINFO':{
+        'url': apiBaseUrl + '/appInfo',
+        'method':'GET'
     }
 }

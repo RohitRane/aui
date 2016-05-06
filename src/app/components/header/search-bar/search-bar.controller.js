@@ -20,19 +20,29 @@ export class SearchBarController {
             resultCountUpperLimit: 8,
             firstSelect: false,
             categories: [
-                'Commercial Vehicle',
+                /*'Commercial Vehicle',
                 'Automotive',
                 'Off-Highway',
                 'High Performance',
                 'Military/Defense',
-                'Industrial'
+                'Industrial'*/
             ]
         };
+
+        dataServices.appInfo().then(response => {
+            $log.debug("APP INFO :", response);
+            vm.search.categories = response.cats.map(function (cat) {
+                return cat.name;
+            });
+        }, error => {
+
+        });
+
         $timeout(() => {
             vm._setWidthSearchBox();
         }, 100);
-        
-        angular.element($window).bind('resize',()=>{
+
+        angular.element($window).bind('resize', () => {
             vm._setWidthSearchBox();
         });
 
@@ -164,9 +174,9 @@ export class SearchBarController {
 
     searchIconClick() {
         let vm = this;
-        
-        vm._blurSrchBox();        
-        
+
+        vm._blurSrchBox();
+
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
         SearchBarService.productCategory = "";
@@ -205,12 +215,12 @@ export class SearchBarController {
             console.log("blurring");
             var tb = $document[0].getElementById("search-box");
             tb.blur();
-        },100);
+        }, 100);
     }
 
     _setWidthSearchBox() {
         let vm = this;
-        let { $document, $log } = vm.DI();
+        let { $document, $log, $window } = vm.DI();
         let sBox = $document[0].getElementById('search-box');
         let catDd = $document[0].getElementById('category-dd');
         let sBar = ($document[0].getElementsByClassName('search-bar'))[0];
@@ -218,8 +228,8 @@ export class SearchBarController {
         let newSBoxWidth = sBar.clientWidth - (catDd.clientWidth + 43);
         angular.element(sBox).css("width", newSBoxWidth + "px");
         let typPopup = ($document[0].getElementsByClassName('typeahead-popup'))[0];
-        angular.element(typPopup).css("width", (sBox.clientWidth+3) + "px");
-        let typPopupLeft = $window.innerWidth < 1440 ? 163 : ($window.innerWidth-1440)/2;
-        angular.element(subCatList).css("left", typPopupLeft + "px");
+        angular.element(typPopup).css("width", (sBox.clientWidth + 3) + "px");
+        let typPopupLeft = $window.innerWidth < 1440 ? 163 : 163 + ($window.innerWidth - 1440) / 2;
+        angular.element(typPopup).css("left", typPopupLeft + "px");
     }
 }
