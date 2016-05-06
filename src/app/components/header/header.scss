@@ -80,7 +80,14 @@ header {
                 border-radius: 0px;
                 // height: 40px;
                 height: 42px;
+            //shaifali added
+            &:focus, &:active{
+                outline: none !important;
+                box-shadow: none;
             }
+            //shaifali added
+            }
+            
             .btn-primary{
                 background-color:$support_color_primary;
                 border-color:$support_color_primary;
