@@ -1,113 +1,110 @@
 <div class="partDetails">
-    <div class="breadcrumb-section">
-        <ol class="breadcrumb">
-            <!--<li><a href="#">Commercial Vehicles</a></li>
-            <li><a href="#">Heavy Axel</a></li>
-            <li><a href="#">Steer Axel</a></li>
-            <li class="active"><a href="#">1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></li>-->
-            <li  data-ng-repeat="category in part.partData.categories"><a href="#">{{category}} </a></li>
-            <!--<li><a href="#">{{part.partData.lineDesc}} :</a></li>
-            <li><a href="#">{{part.partData.partDesc}}: </a></li>-->
-            <li class="active"><a href="#">{{part.partData.partNumber}}</a></li> 
-        </ol>
+  <div class="breadcrumb-section">
+    <ol class="breadcrumb">
+      <li data-ng-repeat="category in part.partData.categories"><a href="#">{{category}} </a></li>
+      <li class="active"><a href="#">{{part.partData.partNumber}}</a></li>
+    </ol>
+  </div>
+  <div class="panel">
+    <div class="panel-heading ">
+      <header class="section-title bottom">
+        <!--1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)-->
+        {{part.partData.partNumber}},
+        <!--<span data-ng-repeat="category in part.partData.categories">{{category}},</span>-->{{part.partData.partDesc}}
+      </header>
     </div>
-    <div class="panel">
-        <div class="panel-heading ">
-            <header class="section-title bottom">
-                <!--1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)-->
-                 {{part.partData.partNumber}}, <!--<span data-ng-repeat="category in part.partData.categories">{{category}},</span>--> {{part.partData.partDesc}} 
-            </header>
-        </div>
-        <div class="panel-body">
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="custom">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="custom">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div id="active-pic" class="thumbnail">
-                                    <a href="#" class="">
-                                        <!-- <img src="assets/images/part-details/machine_main.jpg" alt="125x125" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"> -->
-                                        <!--<img src="assets/images/part-details/machine_main.jpg" alt="125x125" >-->
-                                        <image-zoom src="assets/images/u-joint.jpg" zoom-index="5" lens-dimensions="{{part.lensDimensions}}" container-dimensions="{{part.containerDimensions}}"></image-zoom>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div data-ng-hide="part.hideForNow" class="row other-images">
-                            <div class="col-sm-3">
-                                <div class="">
-                                    <a href="#" class="thumbnail">
-                                        <img src="assets/images/part-details/machine1.jpg" alt="125x125">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="">
-                                    <a href="#" class="thumbnail">
-                                        <img src="assets/images/part-details/machine2.jpg" alt="125x125">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="">
-                                    <a href="#" class="thumbnail">
-                                        <img src="assets/images/part-details/machine3.jpg" alt="125x125">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="">
-                                    <a href="#" class="thumbnail">
-                                        <img src="assets/images/part-details/machine3.jpg" alt="125x125">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default elearn">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4 class="section-title bottom">E Learning</br></h4>
-                                        </hr>
-                                        <div class="catalog" data-ng-hide="part.hideForNow">
-                                            <img src="/assets/images/part-details/icon_download.jpg" alt="">
-                                           
-                                            <p><a href="#">Part Catalog</a></p>
-                                            <p><a href="#">Service Manual</a></p>
-                                        </div>
-                                        <div class="part" data-ng-hide="part.hideForNow">
-                                            <img src="/assets/images/part-details/icon_play.jpg" alt="">
-                                            <p><a href="#">Part Installation</a></p>
-                                            <p><a href="#">Part Spec</a></p>
-                                        </div>
-                                        <div class="partlist" data-ng-hide="part.hideForNow">
-                                             <img src="/assets/images/part-details/icon_globe.jpg" alt="">
-                                            <p><a href="#">Illustrated Part List Dana</a></p>
-                                            <p><a href="#">Spicer Drive Axles S110 Illustrated Part List</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="col-sm-12">
+                <div id="active-pic" class="thumbnail">
+                  <a href="#" class="">
+                    <!-- <img src="assets/images/part-details/machine_main.jpg" alt="125x125" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"> -->
+                    <!--<img src="assets/images/part-details/machine_main.jpg" alt="125x125" >-->
+                    <image-zoom src="assets/images/u-joint.jpg" zoom-index="5" lens-dimensions="{{part.lensDimensions}}" container-dimensions="{{part.containerDimensions}}"></image-zoom>
+                  </a>
                 </div>
-                <div class="col-md-5">
-                    <div class="withoutBorder">
-                        <div class="panel panel-default elearn" style="border:none">
-                            <div class="panel-body resetPadding">
-                                <div class='poster' style="display:none"></div>
-                                <div class='partDetails'>
-                                    <label data-ng-hide="part.hideForNow" class="partDesc">
-                                        Spicer@ E-Series Medium-Duty Steer Axles improve vehicle performance for on-highway, city delivery, and bus applications The exclusive combination of our parented Dana Technologies and designs ensures long service life, reducedmaintenance, and overall, highly durable products.
-                                    </label>
-                                    <label class="partDetailsTabDesc">Specification</label>
-                                    <table class="table">
-                                        <tbody>
-                                             <tr data-ng-repeat="(key,val) in part.partData.attrs" >
-                                                <td>{{key}}</td>
-                                                 <td>{{val}}</td>
-                                            </tr> 
-                                            <!--<tr>
+              </div>
+            </div>
+            <div data-ng-hide="part.hideForNow" class="row other-images">
+              <div class="col-sm-3">
+                <div class="">
+                  <a href="#" class="thumbnail">
+                    <img src="assets/images/part-details/machine1.jpg" alt="125x125">
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="">
+                  <a href="#" class="thumbnail">
+                    <img src="assets/images/part-details/machine2.jpg" alt="125x125">
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="">
+                  <a href="#" class="thumbnail">
+                    <img src="assets/images/part-details/machine3.jpg" alt="125x125">
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="">
+                  <a href="#" class="thumbnail">
+                    <img src="assets/images/part-details/machine3.jpg" alt="125x125">
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default elearn">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <h4 class="section-title bottom">E Learning</br></h4>
+                    </hr>
+                    <div class="catalog" data-ng-hide="part.hideForNow">
+                      <img src="/assets/images/part-details/icon_download.jpg" alt="">
+
+                      <p><a href="#">Part Catalog</a></p>
+                      <p><a href="#">Service Manual</a></p>
+                    </div>
+                    <div class="part" data-ng-hide="part.hideForNow">
+                      <img src="/assets/images/part-details/icon_play.jpg" alt="">
+                      <p><a href="#">Part Installation</a></p>
+                      <p><a href="#">Part Spec</a></p>
+                    </div>
+                    <div class="partlist" data-ng-hide="part.hideForNow">
+                      <img src="/assets/images/part-details/icon_globe.jpg" alt="">
+                      <p><a href="#">Illustrated Part List Dana</a></p>
+                      <p><a href="#">Spicer Drive Axles S110 Illustrated Part List</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="withoutBorder">
+            <div class="panel panel-default elearn" style="border:none">
+              <div class="panel-body resetPadding">
+                <div class='poster' style="display:none"></div>
+                <div class='partDetails'>
+                  <label data-ng-hide="part.hideForNow" class="partDesc">
+                    Spicer@ E-Series Medium-Duty Steer Axles improve vehicle performance for on-highway, city delivery, and bus applications
+                    The exclusive combination of our parented Dana Technologies and designs ensures long service life, reducedmaintenance,
+                    and overall, highly durable products.
+                  </label>
+                  <label class="partDetailsTabDesc">Specification</label>
+                  <table class="table">
+                    <tbody>
+                      <tr data-ng-repeat="(key,val) in part.partData.attrs">
+                        <td>{{key}}</td>
+                        <td>{{val}}</td>
+                      </tr>
+                      <!--<tr>
                                                 <td>GAWR</td>
                                                 <td>10000 lbs</td>
                                             </tr>
@@ -123,300 +120,308 @@
                                                 <td>center drop</td>
                                                 <td>1.25 inch</td>
                                             </tr>-->
-                                        </tbody>
-                                    </table>
-                                    <div class="panel learn partResultsBM">
-                                        <ul>
-                                            <li><a href="#">Identify your part</a></li>
-                                            <li><a href="#">Exploded View</a></li>
-                                            <li><a href="#">Discussions</a></li>
-                                        </ul>
-                                    </div>
-                                    <div data-ng-hide="part.hideForNow" class="panel">
-                                        <img src="assets/images/part-details/icon_partDetails.jpg" />
-                                        <ul class="lmsHub">
-                                            <li>Industry Leading hub system technology</li>
-                                            <li>Reduced maintenance and improved liability</li>
-                                        </ul>
-                                    </div>
-                                    <div class="partDetails bottom addTopSpacing"></div>
-                                    <div class="panel  elearn">
-                                        <div class="panel-body" data-ng-hide="part.hideForNow">
-                                            <span><b>There is a advanced part of this model</b></span>
-                                            <div class="feature"> <img src="assets/images/part-details/machine_advanced.jpg" alt="" width="100" height="100" />
-                                                <p><a href="#">202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy
-                                                E1202I (69 Kpi)</a> </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="row col-md-12">
-                        <div class="panel  elearn well warranty">
-                            <div class="panel-body ">
-                                <div class="row">
-                                    <div class="dropdown text-center wishlist">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add to Orderlist
-                                            <span class="caret"></span></button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">HTML</a></li>
-                                            <li><a href="#">CSS</a></li>
-                                            <li><a href="#">JavaScript</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row col-md-12 warranty">
-                        <div class="panel  elearn well">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="Warranty-Matrix">
-                                        <h5>Warranty:</h5>
-                                        <div data-ng-hide="part.hideForNow">
-                                            3 years / 350,000 miles (560,000 kilometers)
-                                        </div>
-                                        <br/>
-                                        <a href="#" >See Warranty Matrix</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--/row-->
-    <!--/row-->
-    <!-- thumbnail for PAIRS With -->
-    <div class="row pairCarousel">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="panel panel-default part-panel">
-                <div class="panel-header top-bottom-gap">
-                    <div class="section-title bottom extraLeft">Pairs with </hr>
-                    </div>
-                </div>
-                <div class="panel-body" data-ng-hide="part.hideForNow">
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair6.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair3.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair4.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair5.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- thumbnail You also bought -->
-    <!-- thumbnail for PAIRS With -->
-    <div class="row pairCarousel">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="panel panel-default part-panel">
-                <div class="panel-header top-bottom-gap">
-                    <div class="section-title bottom extraLeft">You Also Bought</hr>
-                    </div>
-                </div>
-                <div class="panel-body" data-ng-hide="part.hideForNow">
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair6.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair3.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair4.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-2">
-                        <div class="thumbnail">
-                            <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair5.jpg" class="img-responsive"></a>
-                            <label class="">
-                                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-ng-hide="part.hideForNow" class="carouselNav"><a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a></div>
-        </div>
-    </div>
-    <div class="">
-        <div class="panel panel-default">
-            <div class="panel-body part-panel">
-                <div class="section-title bottom top-bottom-gap">Identify your part</hr>
-                </div>
-                <img data-ng-hide="part.hideForNow" src="assets/images/part-details/machine_partIdentification.jpg" class="img-responsive"></a>
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="panel panel-default">
-            <div class="panel-body part-panel">
-                <div class="row bottom top-bottom-gap">
-                    <div class="col-lg-6 col-xs-6  section-title ">Exploded View</div>
-                    <div class="col-lg-6 col-xs-6">
-                        <div class="pull-right">
-                            <div class="inner-addon right-addon">
-                                <i class="glyphicon glyphicon-search"></i>
-                                <input type="text" class="form-control" placeholder="Search" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <img data-ng-hide="part.hideForNow" src="assets/images/part-details/machine_exploded.jpg" class="img-responsive"></a>
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>BOM No</th>
-                            <th>Level</th>
-                            <th>Component Name</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody data-ng-hide="part.hideForNow">
-                        <tr>
-                            <td>0</td>
-                            <td>2</td>
-                            <td><a href="#">1202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>2</td>
-                            <td><a href="#">1202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>2</td>
-                            <td><a href="#">1202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>0</td>
-                            <td>2</td>
-                            <td><a href="#">1202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></td>
-                            <td>2</td>
-                        </tr>
                     </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="panel panel-default">
-            <div class="panel-body part-panel">
-                <div class="row bottom top-bottom-gap">
-                    <div class="col-lg-6 col-xs-6 section-title">Popular Discussions</div>
-                    <div class="col-lg-6 col-xs-6">
-                        <div class="col-lg-2 col-lg-push-10 col-md-2 col-md-push-0 col-sm-2 col-sm-push-0 col-xs-2 col-xs-push-0">
-                            <div class="pull-right viewAll" data-ng-hide="part.hideForNow"><a href="#">View All (31)</a></div>
-                        </div>
+                  </table>
+                  <div class="panel learn partResultsBM">
+                    <ul>
+                      <li><a href="#">Identify your part</a></li>
+                      <li><a href="#">Exploded View</a></li>
+                      <li><a href="#">Discussions</a></li>
+                    </ul>
+                  </div>
+                  <div data-ng-hide="part.hideForNow" class="panel">
+                    <img src="assets/images/part-details/icon_partDetails.jpg" />
+                    <ul class="lmsHub">
+                      <li>Industry Leading hub system technology</li>
+                      <li>Reduced maintenance and improved liability</li>
+                    </ul>
+                  </div>
+                  <div class="partDetails bottom addTopSpacing"></div>
+                  <div class="panel  elearn">
+                    <div class="panel-body" data-ng-hide="part.hideForNow">
+                      <span><b>There is a advanced part of this model</b></span>
+                      <div class="feature"> <img src="assets/images/part-details/machine_advanced.jpg" alt="" width="100" height="100" />
+                        <p><a href="#">202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy
+                                                E1202I (69 Kpi)</a> </p>
+                      </div>
                     </div>
+                  </div>
+
                 </div>
-                <div class="row" data-ng-hide="part.hideForNow">
-                    <div class="col-md-7">
-                         <div class="comment">
-                          <p class="section-title">Is this the right choice for my on-highway fleet? </p>
-                          <p>Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty. BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look <span class="readmore"><a>Read More...</a></span></p>
-                          <p class="Answered-by">Answered by <a href="#">blackw900</a>, 7 days ago</p>
-                          </div>
-                          <div class="comment">
-                          <p class="section-title">Is this the right choice for my on-highway fleet? </p>
-                          <p>Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty. BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look <span class="readmore"><a>Read More...</a></span></p>
-                          <p class="Answered-by">Answered by <a href="#">blackw900</a>, 7 days ago</p>
-                          </div>
-                    </div>
-                    <div class="col-md-5"></div>
-                   
-                </div>
+              </div>
             </div>
+          </div>
         </div>
+        <div class="col-md-3">
+          <div class="row col-md-12">
+            <div class="panel  elearn well warranty">
+              <div class="panel-body ">
+                <div class="row">
+                  <div class="dropdown text-center wishlist">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add to Orderlist
+                      <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">HTML</a></li>
+                      <li><a href="#">CSS</a></li>
+                      <li><a href="#">JavaScript</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row col-md-12 warranty">
+            <div class="panel  elearn well">
+              <div class="panel-body">
+                <div class="row">
+                  <div class="Warranty-Matrix">
+                    <h5>Warranty:</h5>
+                    <div data-ng-hide="part.hideForNow">
+                      3 years / 350,000 miles (560,000 kilometers)
+                    </div>
+                    <br/>
+                    <a href="#">See Warranty Matrix</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <!--/row-->
+  <!--/row-->
+  <!-- thumbnail for PAIRS With -->
+  <div class="row pairCarousel">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="panel panel-default part-panel">
+        <div class="panel-header top-bottom-gap">
+          <div class="section-title bottom extraLeft">Pairs with </hr>
+          </div>
+        </div>
+        <div class="panel-body" data-ng-hide="part.hideForNow">
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair6.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair3.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair4.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair5.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- thumbnail You also bought -->
+  <!-- thumbnail for PAIRS With -->
+  <div class="row pairCarousel">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="panel panel-default part-panel">
+        <div class="panel-header top-bottom-gap">
+          <div class="section-title bottom extraLeft">You Also Bought</hr>
+          </div>
+        </div>
+        <div class="panel-body" data-ng-hide="part.hideForNow">
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair1.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair6.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair3.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair4.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+          <div class="col-lg-2 col-sm-2">
+            <div class="thumbnail">
+              <a href="#" title="Image 1"><img src="assets/images/part-details/machine_pair5.jpg" class="img-responsive"></a>
+              <label class="">
+                Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-ng-hide="part.hideForNow" class="carouselNav"><a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a></div>
+    </div>
+  </div>
+  <div class="">
+    <div class="panel panel-default">
+      <div class="panel-body part-panel">
+        <div class="section-title bottom top-bottom-gap">Identify your part</hr>
+        </div>
+        <img data-ng-hide="part.hideForNow" src="assets/images/part-details/machine_partIdentification.jpg" class="img-responsive"></a>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="panel panel-default">
+      <div class="panel-body part-panel">
+        <div class="row bottom top-bottom-gap">
+          <div class="col-lg-6 col-xs-6  section-title ">Exploded View</div>
+          <div class="col-lg-6 col-xs-6">
+            <div class="pull-right">
+              <div class="inner-addon right-addon">
+                <i class="glyphicon glyphicon-search"></i>
+                <input type="text" class="form-control" placeholder="Search" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <img data-ng-hide="part.hideForNow" src="assets/images/part-details/machine_exploded.jpg" class="img-responsive"></a>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>BOM No</th>
+              <th>Level</th>
+              <th>Component Name</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="bom in part.partData.bom">
+              <td data-ng-bind="bom.no"></td>
+              <td data-ng-bind="bom.level"></td>
+              <td><a href="#" data-ng-bind="bom.partNumber"></a></td>
+              <td data-ng-bind="bom.quantity"></td>
+            </tr>
+            <!--<tr>
+              <td>0</td>
+              <td>2</td>
+              <td><a href="#">1202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>2</td>
+              <td><a href="#">1202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>0</td>
+              <td>2</td>
+              <td><a href="#">1202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)</a></td>
+              <td>2</td>
+            </tr>-->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="panel panel-default">
+      <div class="panel-body part-panel">
+        <div class="row bottom top-bottom-gap">
+          <div class="col-lg-6 col-xs-6 section-title">Popular Discussions</div>
+          <div class="col-lg-6 col-xs-6">
+            <div class="col-lg-2 col-lg-push-10 col-md-2 col-md-push-0 col-sm-2 col-sm-push-0 col-xs-2 col-xs-push-0">
+              <div class="pull-right viewAll" data-ng-hide="part.hideForNow"><a href="#">View All (31)</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="row" data-ng-hide="part.hideForNow">
+          <div class="col-md-7">
+            <div class="comment">
+              <p class="section-title">Is this the right choice for my on-highway fleet? </p>
+              <p>Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
+                BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look
+                <span
+                class="readmore"><a>Read More...</a></span>
+              </p>
+              <p class="Answered-by">Answered by <a href="#">blackw900</a>, 7 days ago</p>
+            </div>
+            <div class="comment">
+              <p class="section-title">Is this the right choice for my on-highway fleet? </p>
+              <p>Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
+                BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look
+                <span
+                class="readmore"><a>Read More...</a></span>
+              </p>
+              <p class="Answered-by">Answered by <a href="#">blackw900</a>, 7 days ago</p>
+            </div>
+          </div>
+          <div class="col-md-5"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
