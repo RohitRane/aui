@@ -15,12 +15,12 @@ export class SearchBarController {
         vm.temp = "";
         vm.onlyBlur = true;
         
-        /*$rootScope.$on('checkSearch', function () {console.log("event", vm.temp);
+        $rootScope.$on('checkSearch', function () {console.log("event", vm.temp);
             if(vm.onlyBlur){
                 vm.search.searchString = vm.temp;
             }
             vm.onlyBlur = true;
-        });*/
+        });
         
         vm.search = {
             searchScope: 'All',
