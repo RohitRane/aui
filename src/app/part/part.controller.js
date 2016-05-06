@@ -1,10 +1,12 @@
 /*Author:Rohit Rane*/
 export class PartController {
-    constructor($log, $document, $stateParams, $scope, $timeout, SearchBarService, dataServices) {
+    constructor($log, $document, $stateParams, $scope, $timeout, $window, SearchBarService, dataServices) {
         'ngInject';
 
         let vm = this;
         vm.DI = () => ({ $log, $document, $stateParams, SearchBarService, dataServices });
+
+        $window.scrollTo(0,0);
 
         vm.getPart();
         $timeout(function () {
