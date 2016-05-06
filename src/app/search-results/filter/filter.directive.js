@@ -94,6 +94,7 @@ class FilterDirectiveController{
         selectedCategory.select = true;
         SearchBarService.productCategory = selectedCategory.name;
         vm.listPreviousFilter = [];
+        $scope.$emit("checkSearch", SearchBarService.srchStr);
         $scope.$emit("searchLaunched");
     }
     
@@ -207,10 +208,10 @@ class FilterDirectiveController{
     apicall(){
         let prms = () => new Promise((resolve) => {
         let vm = this;
-        let { $scope } = vm.DI();
+        let { $scope, SearchBarService } = vm.DI();
         let filterObjectArray = [];
         
-        $scope.$emit("checkSearch");
+        $scope.$emit("checkSearch", SearchBarService.srchStr);
          /* put all the selected filters in filterObjectArray */
          for (let x of vm.listPristine) {
              let filterArray = [];

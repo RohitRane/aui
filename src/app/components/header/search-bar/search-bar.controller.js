@@ -12,14 +12,9 @@ export class SearchBarController {
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
-        vm.temp = "";
-        vm.onlyBlur = true;
         
-        $rootScope.$on('checkSearch', function () {console.log("event", vm.temp);
-            if(vm.onlyBlur){
-                vm.search.searchString = vm.temp;
-            }
-            vm.onlyBlur = true;
+        $rootScope.$on('checkSearch', function (event, previousSearchString) {
+            vm.search.searchString = previousSearchString;
         });
         
         vm.search = {
@@ -62,13 +57,13 @@ export class SearchBarController {
         let { $log, $rootScope, $scope, $location, dataServices, SearchBarService } = vm.DI();
         //root$scope.searchString = searchString;
          if($location.path() == '/search'){
-            
         }else{
             SearchBarService.srchStr = searchString;
         }
+       // SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
         return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
-            $log.debug("Response in Controller : ", response);
+            $log.debug("abcd Response in Controller : ", response);
             vm.totalResults = response.totalResults;
             vm.resultSetLimit = response.resultSetLimit;
             response.totalResults === 1 ? vm.search.firstSelect = true : vm.search.firstSelect = false;
@@ -91,7 +86,7 @@ export class SearchBarController {
 
             angular.forEach(response.partCategoryList, function (listItem) {
                 let obj = {
-                    partNumber: SearchBarService.srchStr + " in ",
+                    partNumber: searchString + " in ",
                     lineDesc: "<a>" + listItem + "</a>",
                     typeId: 4,
                     productCategory: listItem
@@ -133,7 +128,6 @@ export class SearchBarController {
 
         let { $log, $scope, SearchBarService } = vm.DI();
         $log.debug("Blur.");
-        //vm.temp = SearchBarService.srchStr;
         $scope.$emit("searchbarBlurred");
     }
 
@@ -187,10 +181,6 @@ export class SearchBarController {
     searchIconClick() {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
-        
-        if($location.path() == '/search'){
-            vm.onlyBlur = false;
-        }
         vm._blurSrchBox();
         $scope.$emit("searchbarBlurred");
         SearchBarService.productCategory = "";
