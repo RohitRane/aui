@@ -9,11 +9,12 @@ export class SearchBarService {
     }
 
     get srchStr() {
-        return this._srchStr;
+        return this._srchStr;        
     }
 
     set srchStr(newSrchStr) {
         if (newSrchStr) {
+          console.log(" new Srch Str :",newSrchStr);
             this._srchStr = newSrchStr;
             this._saveToSession();
         }

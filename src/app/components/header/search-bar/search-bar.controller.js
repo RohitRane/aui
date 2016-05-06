@@ -15,12 +15,12 @@ export class SearchBarController {
         vm.temp = "";
         vm.onlyBlur = true;
         
-        $rootScope.$on('checkSearch', function () {console.log("event", vm.temp);
+        /*$rootScope.$on('checkSearch', function () {console.log("event", vm.temp);
             if(vm.onlyBlur){
                 vm.search.searchString = vm.temp;
             }
             vm.onlyBlur = true;
-        });
+        });*/
         
         vm.search = {
             searchScope: 'All',
@@ -133,7 +133,7 @@ export class SearchBarController {
 
         let { $log, $scope, SearchBarService } = vm.DI();
         $log.debug("Blur.");
-        vm.temp = SearchBarService.srchStr;
+        //vm.temp = SearchBarService.srchStr;
         $scope.$emit("searchbarBlurred");
     }
 
@@ -154,7 +154,7 @@ export class SearchBarController {
     gotoPartDetails(item) {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
-        vm._blurSrchBox();
+        
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -180,12 +180,14 @@ export class SearchBarController {
         }
         else {
             $location.path('/part/' + item.id);
+            vm._blurSrchBox();
         }
     }
 
     searchIconClick() {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+        
         if($location.path() == '/search'){
             vm.onlyBlur = false;
         }
