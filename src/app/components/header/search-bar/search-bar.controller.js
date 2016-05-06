@@ -12,7 +12,16 @@ export class SearchBarController {
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
-
+        vm.temp = "";
+        vm.onlyBlur = true;
+        
+        $rootScope.$on('checkSearch', function () {console.log("event", vm.temp);
+            if(vm.onlyBlur){
+                vm.search.searchString = vm.temp;
+            }
+            vm.onlyBlur = true;
+        });
+        
         vm.search = {
             searchScope: 'All',
             typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
@@ -28,7 +37,7 @@ export class SearchBarController {
                 'Industrial'*/
             ]
         };
-
+        
         dataServices.appInfo().then(response => {
             $log.debug("APP INFO :", response);
             vm.search.categories = response.cats.map(function (cat) {
@@ -50,9 +59,13 @@ export class SearchBarController {
 
     textTyped(searchString) {
         let vm = this;
-        let { $log, $rootScope, $scope, dataServices, SearchBarService } = vm.DI();
+        let { $log, $rootScope, $scope, $location, dataServices, SearchBarService } = vm.DI();
         //root$scope.searchString = searchString;
-        SearchBarService.srchStr = searchString;
+         if($location.path() == '/search'){
+            
+        }else{
+            SearchBarService.srchStr = searchString;
+        }
         SearchBarService.typeId = 2;
         return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
             $log.debug("Response in Controller : ", response);
@@ -118,9 +131,9 @@ export class SearchBarController {
     blur() {
         let vm = this;
 
-        let { $log, $scope } = vm.DI();
+        let { $log, $scope, SearchBarService } = vm.DI();
         $log.debug("Blur.");
-
+        vm.temp = SearchBarService.srchStr;
         $scope.$emit("searchbarBlurred");
     }
 
@@ -141,9 +154,7 @@ export class SearchBarController {
     gotoPartDetails(item) {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
-
         vm._blurSrchBox();
-
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -174,10 +185,11 @@ export class SearchBarController {
 
     searchIconClick() {
         let vm = this;
-
-        vm._blurSrchBox();
-
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+        if($location.path() == '/search'){
+            vm.onlyBlur = false;
+        }
+        vm._blurSrchBox();
         $scope.$emit("searchbarBlurred");
         SearchBarService.productCategory = "";
         if (vm.search.searchString) {
@@ -209,8 +221,8 @@ export class SearchBarController {
 
     _blurSrchBox() {
         let vm = this;
-        let { $document, $log, $timeout } = vm.DI();
-
+        let { $document, $log, $timeout, SearchBarService } = vm.DI();
+        SearchBarService.srchStr = vm.search.searchString;
         $timeout(function () {
             console.log("blurring");
             var tb = $document[0].getElementById("search-box");
