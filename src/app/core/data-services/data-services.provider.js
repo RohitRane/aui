@@ -19,7 +19,8 @@ export function dataServices() {
             partSearch: partSearch(DI),
             autoSearch: autoSearch(DI),
             catSearch: catSearch(DI),
-            part: part(DI)
+            part: part(DI),
+            appInfo: appInfo(DI)
         }
     }
 }
@@ -29,3 +30,4 @@ import { partSearch } from './requests/part-search.request';
 import { autoSearch } from './requests/auto-search.request';
 import { catSearch } from './requests/cat-search.request';
 import { part } from './requests/part.request';
+import { appInfo } from './requests/app-info.request';
