@@ -5,6 +5,11 @@
     padding:0px;
     .form-group .dropdown-menu {
         border-radius: 0px;
+        //shaifali code
+        float: right !important;
+        right:0 !important;
+        left:auto;
+        //shaifali code
         li.active {
             background-color: $support_color_light_one;
         }
