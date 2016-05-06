@@ -19,15 +19,21 @@ class FilterDirectiveController{
          'ngInject';
          let vm = this;
          vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
+         /* array which holds the updated attributes list */
          vm.listPristine = [];
+         /* array which remembers the selected filters to update in new set of filters(retain filters) */
          vm.listPreviousFilter = [];
+         /* array which holds the updated attributes category */
          vm.categoryPristine = [];
+         
+         /* watch for the change in category */ 
          $scope.$watch(function(){  
              return vm.category;
          },function(){ 
              vm.resetCategory();
          });
         
+         /* watch for the change in list */ 
          $scope.$watch(function(){  
              return vm.list;
          },function(){ 
@@ -50,12 +56,17 @@ class FilterDirectiveController{
          });
     } 
     
+    /* convert categorty to object and put it in categoryPristine */
     resetCategory(){
       let vm = this;
       let { SearchBarService } = vm.DI();
+      
+      /* In case of typeId == 4 categories should not be retained only filters should be shown*/
       if(SearchBarService.typeId == 4){
           vm.categoryPristine = [];
       }
+      
+      /* convert array to object */
       if(vm.category.length > 0){
             vm.categoryPristine = vm.category;
             vm.categoryPristine = vm.categoryPristine.map(function(name){
@@ -65,8 +76,14 @@ class FilterDirectiveController{
                 };
             });
       }
+     
+      /* In case of only one product line filters should be shown along with the category */
+      if(vm.category.length == 1){  
+          vm.categoryFilter(vm.categoryPristine[0]);
+      }
     }
     
+    /* call api to get the filters for the selected category and selected category should be heighlighted */ 
     categoryFilter(selectedCategory){  
         let vm = this;
         let { SearchBarService, $scope } = vm.DI();
@@ -80,6 +97,7 @@ class FilterDirectiveController{
         $scope.$emit("searchLaunched");
     }
     
+    /* add extra properties to list and put in listPristine  */
     pushCheckboxData(x){
         let vm = this;
         let obj = {};
@@ -116,6 +134,7 @@ class FilterDirectiveController{
         return obj;
     }
     
+    /* categorize the filter based on their types */
     resetList(){ 
       let vm = this;
       let {  } = vm.DI();
@@ -154,6 +173,7 @@ class FilterDirectiveController{
       }  
     }
     
+    /* togglet the SelectAll and Unselect */
     toggleselect(list){
         let vm = this;
         if(list.toggleSelect){
@@ -171,6 +191,7 @@ class FilterDirectiveController{
         vm.apicall();
     }
     
+     /* togglet the View all and View less */
     toggleview(list){
         if(list.toggleView){
             list.viewLimitName = "View all"
@@ -182,11 +203,15 @@ class FilterDirectiveController{
         list.toggleView = !list.toggleView;
     }
     
+    /* call the api to get the filters and categories */
     apicall(){
         let prms = () => new Promise((resolve) => {
         let vm = this;
         let { $scope } = vm.DI();
-         let filterObjectArray = [];
+        let filterObjectArray = [];
+        
+        $scope.$emit("checkSearch");
+         /* put all the selected filters in filterObjectArray */
          for (let x of vm.listPristine) {
              let filterArray = [];
              let filterObject = {};
