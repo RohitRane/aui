@@ -212,18 +212,14 @@ export class SearchBarController {
         let vm = this;
         let { $document, $log } = vm.DI();
         let sBox = $document[0].getElementById('search-box');
-        $log.debug("sbox width :", sBox.clientWidth);
         let catDd = $document[0].getElementById('category-dd');
-        $log.debug("cat dd width :", catDd.clientWidth);
         let sBar = ($document[0].getElementsByClassName('search-bar'))[0];
-        $log.debug("s bar width :", sBar.clientWidth);
         let lens = $document[0].getElementById('lens-button');
-        $log.debug("lens width :", lens.offsetWidth);
         let newSBoxWidth = sBar.clientWidth - (catDd.clientWidth + 43);
         angular.element(sBox).css("width", newSBoxWidth + "px");
-        $log.debug("sbox width after :", sBox.clientWidth);
-        let totalWidth = sBox.clientWidth + catDd.clientWidth + lens.clientWidth;
-        $log.debug("Total sbar width after :", totalWidth);
-
+        let typPopup = ($document[0].getElementsByClassName('typeahead-popup'))[0];
+        angular.element(typPopup).css("width", (sBox.clientWidth+3) + "px");
+        let typPopupLeft = $window.innerWidth < 1440 ? 163 : ($window.innerWidth-1440)/2;
+        angular.element(subCatList).css("left", typPopupLeft + "px");
     }
 }

@@ -45,13 +45,13 @@
             .search-bar {
                 width: ($i+656-1024)*1px;
             }
-            .form-group .typeahead-popup.dropdown-menu li {
+            /*.form-group .typeahead-popup.dropdown-menu li {
                 width: ($i+379-1024)*1px;
-            }
+            }*/
         }
     }
     .form-group .typeahead-popup.dropdown-menu {
-        left: 170px !important;
+        left: 163px !important;
     }
     .form-group .dropdown-menu li a {
         color: black;
