@@ -1,5 +1,5 @@
 <ul class="nav navbar-nav category-list">
-  <li data-ng-repeat="category in categoryMenu.categories"  uib-popover-template="'app/components/header/menus/sub-categories/subcategories.html'" popover-trigger="outsideClick" popover-is-open="category.open" data-ng-mouseenter="categoryMenu.catHover(category)"  popover-placement="bottom">
+  <li data-ng-repeat="category in categoryMenu.categories"  uib-popover-template="'app/components/header/menus/sub-categories/subcategories.html'"  popover-is-open="category.open" data-ng-mouseenter="categoryMenu.catHover(category)" data-ng-mouseleave="categoryMenu.catLeave(category)"  popover-placement="bottom">
       <a href="" data-id={{category.link}}  class="separator" data-index={{$index}} data-ng-class="{'last-item':$index===categoryMenu.categories.length-1}">
           {{category.name|uppercase}}
       </a>

@@ -204,13 +204,22 @@ class CategoryMenuController {
                 }
             });
         });
+        vm.hoverTimeout = $timeout(() => {
+            closeOthers().then(function () {
+                $timeout(() => {
+                    vm._sizeMegaMenuPopover();
+                }, 150);
+            });
+        }, 500);
 
-        closeOthers().then(function () {
-            $timeout(() => {
-                vm._sizeMegaMenuPopover();
-            }, 150);
-        });
 
+    }
+
+    catLeave(cat) {
+        let vm = this;
+        let { $timeout} = vm.DI();
+        cat.open = false;
+        $timeout.cancel(vm.hoverTimeout);
 
     }
 
@@ -220,8 +229,8 @@ class CategoryMenuController {
         let subCatList = $document[0].getElementById("subcategories");
         let subCatWidth = $window.innerWidth < 1440 ? $window.innerWidth : 1440;
         angular.element(subCatList).css("width", subCatWidth + "px");
-        let subCatMarginLeft = $window.innerWidth < 1440 ? 0 : ($window.innerWidth-1440)/2;
-        angular.element(subCatList).css("margin-left", subCatMarginLeft + "px");        
+        let subCatMarginLeft = $window.innerWidth < 1440 ? 0 : ($window.innerWidth - 1440) / 2;
+        angular.element(subCatList).css("margin-left", subCatMarginLeft + "px");
     }
 
 }
