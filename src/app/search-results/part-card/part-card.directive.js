@@ -58,9 +58,7 @@ class SearchResultDirectiveController {
         this.toggle = !this.toggle;
     }
 
-    getImageUrl(url) {
-      console.log("IMG URL :", this.part);
-      
+    getImageUrl(url) {      
         let retUrl;
         url ?  retUrl = url : retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
         return retUrl;

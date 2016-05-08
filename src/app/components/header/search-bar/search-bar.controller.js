@@ -8,6 +8,12 @@ export class SearchBarController {
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
         vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService })
+        
+        let deregistrationCallback = $rootScope.$on("reachedhome",function(){
+            $log.debug("Reached Home");
+            vm.search.searchString = null;
+        });
+        $rootScope.$on('$destroy', deregistrationCallback);
 
         vm.totalResults = "";
         vm.partNumber = "";
