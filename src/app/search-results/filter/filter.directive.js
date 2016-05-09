@@ -5,7 +5,8 @@ export function FilterDirective() {
         templateUrl: 'app/search-results/filter/filter.html',
         scope: {
             list: '=',
-            category: '='
+            category: '=',
+            selectedItemsChanged: '&'
         },
         controller: FilterDirectiveController,
         controllerAs: 'vm',
@@ -244,7 +245,8 @@ class FilterDirectiveController{
             }
          }
         vm.listPreviousFilter = vm.listPristine;
-        $scope.$emit("searchLaunched", filterObjectArray);
+       // $scope.$emit("searchLaunched", filterObjectArray);
+        vm.selectedItemsChanged({selectedItems:filterObjectArray});
         resolve();
         });
         return prms();

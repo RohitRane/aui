@@ -14,7 +14,6 @@ export class SearchResultsController {
         };
         vm.resultSetLimit = 10;
         vm.resultStartIndex = 0;
-
         $timeout(function () {
             $scope.$emit("searchbarBlurred");
         });
@@ -153,9 +152,10 @@ export class SearchResultsController {
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine;
-        $log.debug("getParts ", payload);
         //let typeId = SearchBarService.typeId;
         /*if (typeId === 4) {*/
+        //from ? from : from=0;
+        //size ? size : size=10;
         $log.debug("SearchBarService.productCategory:", SearchBarService.productCategory);
         dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload).then(function (response) {
             // $log.debug("Response in Controller :", response);
