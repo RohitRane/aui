@@ -1,2 +1,19 @@
 <!--Author : Rohit Rane-->
-<span>Bread Crumb</span>
+<div class="bread-crumb">
+  <span class="resultBar">1-<span ng-show="bc.totalResults > bc.resultSetLimit ">{{bc.resultLength}}</span> <span ng-show="bc.totalResults < bc.resultSetLimit">{{bc.totalResults}}</span>  of {{bc.totalResults}} results for <span class="bold">{{bc.productLine}} : <a><span>"</span>{{bc.searchString}}<span>"</span></a>
+  </span>
+  </span>
+  <span class="dropdownBar">
+      <div class="btn-group" uib-dropdown is-open="status.isopen">
+        <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                Relevance <span class="caret"></span>
+  </button>
+  <ul class="pull-right" uib-dropdown-menu role="menu " aria-labelledby="single-button ">
+    <li role="menuitem">
+      <a href="#" ng-click="srchRes.change(action)" ng-repeat="action in srchRes.sortType">{{action}}</a>
+    </li>
+  </ul>
+</div>
+</span>
+<div style="clear:fix "> </div>
+</div>
