@@ -1,13 +1,15 @@
 /*Author:Rohit Rane*/
 
 export class BreadCrumbController {
-    constructor($log, $timeout) {
-        'ngInject';
+  constructor($log, $timeout, $rootScope) {
+    'ngInject';
 
-        let vm = this;
-        $log.debug("bcC :", vm);
-        $timeout(function () {
-            $log.debug("bcC 2:", vm);
-        },2000);
-    }
+    let vm = this;
+
+    let deregistrationCallback = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
+      $log.debug("Cat Fill :", selectedCategory);
+      vm.selectedCategory = selectedCategory;
+    });
+    $rootScope.$on('$destroy', deregistrationCallback);
+  }
 }

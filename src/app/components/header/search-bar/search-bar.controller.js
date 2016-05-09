@@ -10,7 +10,6 @@ export class SearchBarController {
         vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService })
         
         let deregistrationCallback = $rootScope.$on("reachedhome",function(){
-            $log.debug("Reached Home");
             vm.search.searchString = null;
         });
         $rootScope.$on('$destroy', deregistrationCallback);
@@ -189,6 +188,7 @@ export class SearchBarController {
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         vm._blurSrchBox();
         $scope.$emit("searchbarBlurred");
+        $rootScope.$emit("categoryFilterApplied",null);
         SearchBarService.productCategory = "";
         if (vm.search.searchString) {
             $log.debug("vm.search.searchString ", vm.search.searchString);

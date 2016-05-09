@@ -87,7 +87,10 @@ class FilterDirectiveController{
     /* call api to get the filters for the selected category and selected category should be heighlighted */ 
     categoryFilter(selectedCategory){  
         let vm = this;
-        let { SearchBarService, $scope } = vm.DI();
+        let { $rootScope, $scope, SearchBarService } = vm.DI();
+        
+        $rootScope.$emit("categoryFilterApplied",selectedCategory);
+        
         vm.count = true;
         angular.forEach(vm.categoryPristine, function(obj){ 
             obj.select = false;

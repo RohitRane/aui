@@ -1,6 +1,6 @@
 <!--Author : Rohit Rane-->
 <div class="bread-crumb">
-  <span class="resultBar">1-<span ng-show="bc.totalResults > bc.resultSetLimit ">{{bc.resultLength}}</span> <span ng-show="bc.totalResults < bc.resultSetLimit">{{bc.totalResults}}</span>  of {{bc.totalResults}} results for <span class="bold">{{bc.productLine}} : <a><span>"</span>{{bc.searchString}}<span>"</span></a>
+  <span class="resultBar">1-<span ng-show="bc.totalResults > bc.resultSetLimit ">{{bc.resultLength}}</span> <span ng-show="bc.totalResults < bc.resultSetLimit">{{bc.totalResults}}</span>  of {{bc.totalResults}} results for <span class="bold"><span>{{bc.productLine}} : </span><span data-ng-if="bc.selectedCategory">{{bc.selectedCategory.name}} : </span><a><span>"</span>{{bc.searchString}}<span>"</span></a>
   </span>
   </span>
   <span class="dropdownBar">
