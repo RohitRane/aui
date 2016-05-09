@@ -10,7 +10,7 @@ export function breadCrumbDirective() {
             resultSetLimit: '@resultSetLimit',
             totalResults: '@totalResults',
             resultLength: '@resultLength',
-            productLine: '@productLine',
+            selMainCategory: '@selMainCategory',
             searchString: '@searchString'
         },
         controller: 'BreadCrumbController',

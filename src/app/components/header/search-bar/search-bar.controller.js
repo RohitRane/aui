@@ -8,20 +8,31 @@ export class SearchBarController {
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
         vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService })
-        
-        let deregistrationCallback = $rootScope.$on("reachedhome",function(){
+
+        let deregistrationCallback = $rootScope.$on("reachedhome", function () {
             vm.search.searchString = null;
         });
         $rootScope.$on('$destroy', deregistrationCallback);
 
+        let deregistrationCallback2 = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
+            $log.debug("Cat Fill :", selectedCategory);
+            if (vm.search.searchScope === 'All') {
+                vm.search.searchScope = selectedCategory.name;
+                $timeout(() => {
+                    vm._setWidthSearchBox();
+                }, 50);
+            }
+        });
+        $rootScope.$on('$destroy', deregistrationCallback2);
+
         vm.totalResults = "";
         vm.partNumber = "";
         vm.logger = $log;
-        
+
         $rootScope.$on('checkSearch', function (event, previousSearchString) {
             vm.search.searchString = previousSearchString;
         });
-        
+
         vm.search = {
             searchScope: 'All',
             typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
@@ -37,7 +48,7 @@ export class SearchBarController {
                 'Industrial'*/
             ]
         };
-        
+
         dataServices.appInfo().then(response => {
             $log.debug("APP INFO :", response);
             vm.search.categories = response.cats.map(function (cat) {
@@ -61,11 +72,11 @@ export class SearchBarController {
         let vm = this;
         let { $log, $rootScope, $scope, $location, dataServices, SearchBarService } = vm.DI();
         //root$scope.searchString = searchString;
-         if($location.path() == '/search'){
-        }else{
+        if ($location.path() == '/search') {
+        } else {
             SearchBarService.srchStr = searchString;
         }
-       // SearchBarService.srchStr = searchString;
+        // SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
         return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
             $log.debug("abcd Response in Controller : ", response);
@@ -153,7 +164,7 @@ export class SearchBarController {
     gotoPartDetails(item) {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
-        
+
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -188,7 +199,7 @@ export class SearchBarController {
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         vm._blurSrchBox();
         $scope.$emit("searchbarBlurred");
-        $rootScope.$emit("categoryFilterApplied",null);
+        $rootScope.$emit("clearCategories");
         SearchBarService.productCategory = "";
         if (vm.search.searchString) {
             $log.debug("vm.search.searchString ", vm.search.searchString);

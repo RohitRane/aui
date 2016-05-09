@@ -89,7 +89,7 @@ class FilterDirectiveController{
         let vm = this;
         let { $rootScope, $scope, SearchBarService } = vm.DI();
         
-        $rootScope.$emit("categoryFilterApplied",selectedCategory);
+        $rootScope.$broadcast("categoryFilterApplied",selectedCategory);
         
         vm.count = true;
         angular.forEach(vm.categoryPristine, function(obj){ 
