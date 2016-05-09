@@ -145,7 +145,7 @@ class CategoryMenuController {
                     "link": "3",
                     "sub": ""
                 }, {
-                    "name": "High Performance",
+                    "name": "Performance/Specialty",
                     "link": "4",
                     "sub": ""
                 }, {
