@@ -19,6 +19,19 @@ export class SearchBarService {
             this._saveToSession();
         }
     }
+    
+    get srchTempStr() {
+        return this._srchTempStr;        
+    }
+
+    set srchTempStr(newSrchTempStr) {
+        if (newSrchTempStr) {
+          console.log(" new Srch Str :",newSrchTempStr);
+            this._srchTempStr = newSrchTempStr;
+            this._saveToSession();
+        }
+    }
+
 
     get productLine() {
         return this._productLine;
