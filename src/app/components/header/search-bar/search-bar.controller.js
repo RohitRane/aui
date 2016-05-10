@@ -18,6 +18,7 @@ export class SearchBarController {
             $log.debug("Cat Fill :", selectedCategory);
             if (vm.search.searchScope === 'All') {
                 vm.search.searchScope = selectedCategory.name;
+                SearchBarService.productLine = selectedCategory.name;
                 $timeout(() => {
                     vm._setWidthSearchBox();
                 }, 50);
