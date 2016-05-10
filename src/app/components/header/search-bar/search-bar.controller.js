@@ -18,7 +18,6 @@ export class SearchBarController {
             $log.debug("Cat Fill :", selectedCategory);
             if (vm.search.searchScope === 'All') {
                 vm.search.searchScope = selectedCategory.name;
-                SearchBarService.productLine = selectedCategory.name;
                 $timeout(() => {
                     vm._setWidthSearchBox();
                 }, 50);
@@ -165,10 +164,10 @@ export class SearchBarController {
 
     gotoPartDetails(item) {
         let vm = this;
-        let {$log, $location, $rootScope,$timeout, SearchBarService, $scope} = vm.DI();
+        let {$log, $location, $rootScope, $timeout, SearchBarService, $scope} = vm.DI();
 
-        $log.debug("Scope search :",vm.search.searchString);
-        
+        $log.debug("Scope search :", vm.search.searchString);
+
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -178,12 +177,14 @@ export class SearchBarController {
             $log.debug("Srcchhhh :::", vm.search.searchString);
             item.lineDesc = "";
             item.partNumber = item.partNumber.replace(" in", "");
+            
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.productCategory = item.productCategory;
-            $timeout(()=>{
-                $rootScope.$broadcast("categoryFilterApplied",{"name":item.productCategory, "suggestion": true});
+            $timeout(() => {
+                $rootScope.$broadcast("categoryFilterApplied", { "name": item.productCategory, "suggestion": true });
+                SearchBarService.productLine = vm.search.searchScope;
             });
-            
+
             vm._blurSrchBox();
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
@@ -196,7 +197,7 @@ export class SearchBarController {
             vm.searchIconClick();
         }
         else {
-            vm.search.searchString = vm.search.searchString.partNumber+' '+vm.search.searchString.partDesc;
+            vm.search.searchString = vm.search.searchString.partNumber + ' ' + vm.search.searchString.partDesc;
             $location.path('/part/' + item.id);
             vm._blurSrchBox();
         }
