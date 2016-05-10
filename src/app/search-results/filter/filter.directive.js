@@ -6,6 +6,7 @@ export function FilterDirective() {
         scope: {
             list: '=',
             category: '=',
+            totalCount: '=',
             selectedItemsChanged: '&'
         },
         controller: FilterDirectiveController,
@@ -62,6 +63,11 @@ class FilterDirectiveController{
       let vm = this;
       let { SearchBarService } = vm.DI();
       
+      console.log("vm.category in directive", vm.category);
+      if(vm.totalCount == 0){
+        vm.categoryPristine = [];
+      }
+      
       /* In case of typeId == 4 categories should not be retained only filters should be shown*/
       if(SearchBarService.typeId == 4){
           vm.categoryPristine = [];
@@ -97,10 +103,8 @@ class FilterDirectiveController{
         });
         selectedCategory.select = true;
         if(SearchBarService.productLine == "All"){
-          console.log("test if", SearchBarService.productLine);
            SearchBarService.productLine = selectedCategory.name;
         }else{
-          console.log("test else", SearchBarService.productLine);
            SearchBarService.productCategory = selectedCategory.name;
         }
         //SearchBarService.productCategory = selectedCategory.name;

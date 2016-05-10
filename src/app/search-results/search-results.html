@@ -3,7 +3,7 @@
   sel-main-category="{{srchRes.productLine}}" search-string="{{srchRes.searchString}}"></bread-crumb>
   <div class="row search-results">
     <div class="col-md-2 filter">
-      <filter-directive ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
+      <filter-directive ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
     </div>
     <div class="col-md-8">
       <h5>Related : <a>{{srchRes.searchString}}</a></h5>

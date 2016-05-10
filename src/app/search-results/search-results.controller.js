@@ -18,12 +18,16 @@ export class SearchResultsController {
             $scope.$emit("searchbarBlurred");
         });
 
-        $rootScope.$on('searchLaunched', function (event, payload) {
+       let deregistrationCallback2 = $rootScope.$on('searchLaunched', function (event, payload) {
             $log.debug("$on", payload);
             vm.resultStartIndex = 0;
             vm.getParts(0, 10, payload);
         });
-
+        
+        $rootScope.$on('$destroy', function () {
+            deregistrationCallback2();
+        });
+        
         vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         /*dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
