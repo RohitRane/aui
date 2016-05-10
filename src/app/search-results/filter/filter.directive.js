@@ -198,7 +198,7 @@ class FilterDirectiveController{
                 obj.select = false
             });
         }else{
-            list.viewSelect = "Unselect";
+            list.viewSelect = "Unselect All";
             angular.forEach(list.buckets, function(obj){
                 obj.select = true
             });
