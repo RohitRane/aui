@@ -96,7 +96,14 @@ class FilterDirectiveController{
             obj.select = false;
         });
         selectedCategory.select = true;
-        SearchBarService.productCategory = selectedCategory.name;
+        if(SearchBarService.productLine == "All"){
+          console.log("test if", SearchBarService.productLine);
+           SearchBarService.productLine = selectedCategory.name;
+        }else{
+          console.log("test else", SearchBarService.productLine);
+           SearchBarService.productCategory = selectedCategory.name;
+        }
+        //SearchBarService.productCategory = selectedCategory.name;
         vm.listPreviousFilter = [];
         $scope.$emit("checkSearch", SearchBarService.srchStr);
         $scope.$emit("searchLaunched");

@@ -163,21 +163,25 @@ export class SearchBarController {
 
     gotoPartDetails(item) {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+        let {$log, $location, $rootScope,$timeout, SearchBarService, $scope} = vm.DI();
 
+        $log.debug("Scope search :",SearchBarService.srchStr);
+        
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
-            //SearchBarService.srchStr = item.lineDesc;
             SearchBarService.typeId = item.typeId;
+            vm.search.searchString = SearchBarService.srchStr;
             $log.debug("Srcchhhh :::", vm.search.searchString);
-            /*item.lineDesc = item.lineDesc.replace("<a>", "");
-            item.lineDesc = item.lineDesc.replace("</a>", "");*/
             item.lineDesc = "";
             item.partNumber = item.partNumber.replace(" in", "");
-            //SearchBarService.productLine = item.lineDesc;
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.productCategory = item.productCategory;
+            $timeout(()=>{
+                $rootScope.$broadcast("categoryFilterApplied",{"name":item.productCategory, "suggestion": true});
+            });
+            
+            vm._blurSrchBox();
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 $scope.$emit("searchLaunched");
@@ -189,6 +193,7 @@ export class SearchBarController {
             vm.searchIconClick();
         }
         else {
+            vm.search.searchString = vm.search.searchString.partNumber+' '+vm.search.searchString.partDesc;
             $location.path('/part/' + item.id);
             vm._blurSrchBox();
         }
