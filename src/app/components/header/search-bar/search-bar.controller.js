@@ -171,7 +171,7 @@ export class SearchBarController {
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
-            SearchBarService.typeId = item.typeId;
+            SearchBarService.typeId = item.typeId;            
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
             $log.debug("Srcchhhh :::", vm.search.searchString);
@@ -193,6 +193,7 @@ export class SearchBarController {
                 $location.path('/search');
             }
         } else if (item.typeId === 3) {
+            SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
             vm.searchIconClick();
         }
