@@ -177,7 +177,7 @@ export class SearchBarController {
             $log.debug("Srcchhhh :::", vm.search.searchString);
             item.lineDesc = "";
             item.partNumber = item.partNumber.replace(" in", "");
-            
+            $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.productCategory = item.productCategory;
             $timeout(() => {

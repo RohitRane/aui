@@ -17,9 +17,13 @@ export function FilterDirective() {
 }
 
 class FilterDirectiveController{ 
-    constructor($log, SearchBarService, dataServices, $scope, $rootScope){
+    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $timeout){
          'ngInject';
          let vm = this;
+         
+         $rootScope.$on("clearCategoryFilter",function(){
+            vm.categoryPristine = [];
+         });
          vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
          /* array which holds the updated attributes list */
          vm.listPristine = [];
@@ -27,12 +31,16 @@ class FilterDirectiveController{
          vm.listPreviousFilter = [];
          /* array which holds the updated attributes category */
          vm.categoryPristine = [];
-         
+        
          /* watch for the change in category */ 
          $scope.$watch(function(){  
+            console.log("XYXXXXX");
              return vm.category;
          },function(){ 
-             vm.resetCategory();
+            $timeout(function(){
+               vm.resetCategory();
+            },200);
+             
          });
         
          /* watch for the change in list */ 
@@ -63,14 +71,14 @@ class FilterDirectiveController{
       let vm = this;
       let { SearchBarService } = vm.DI();
       
-      console.log("vm.category in directive", vm.category);
+      
       if(vm.totalCount == 0){
         vm.categoryPristine = [];
       }
       
       /* In case of typeId == 4 categories should not be retained only filters should be shown*/
       if(SearchBarService.typeId == 4){
-          vm.categoryPristine = [];
+         //vm.categoryPristine = [];
       }
       
       /* convert array to object */
@@ -86,8 +94,11 @@ class FilterDirectiveController{
      
       /* In case of only one product line filters should be shown along with the category */
       if(vm.category.length == 1){  
-          vm.categoryFilter(vm.categoryPristine[0]);
+          //vm.categoryFilter(vm.categoryPristine[0]);
+          vm.categoryPristine[0].select = true;
       }
+      
+      console.log("vm.category in directive", vm.category, vm.categoryPristine);
     }
     
     /* call api to get the filters for the selected category and selected category should be heighlighted */ 
