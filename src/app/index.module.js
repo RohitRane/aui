@@ -15,7 +15,9 @@ angular.module('aftermarket',
         'aftermarket.searchResults',
         'aftermarket.part',
         'aftermarket.category',
-        'aftermarket.core']
+        'aftermarket.core',
+        'aftermarket.footer'
+        ]
     )
     .constant('AftermarketConstants', appConstants)
     .config(config)
