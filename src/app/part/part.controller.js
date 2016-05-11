@@ -39,7 +39,7 @@ export class PartController {
         $log.debug("state type :",$stateParams.type);
         if ($stateParams.type === "partnum") {
             $log.debug("searching by part num.");
-            dataServices.partByPartNum($stateParams.partNo).then(function (response) {
+            dataServices.partByPartNum($stateParams.val).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.partData = response;
             }, function (error) {
