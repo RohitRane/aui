@@ -57,6 +57,15 @@ export let apiConfig = {
         'method': 'GET',
         'data': {}
     },
+    'PART_BY_PNUM': {
+        'url': '',
+        'setUrl': function (param) {
+            console.log("PARAM :::::",param);
+            this.url = apiBaseUrl + '/part/partnumber/' + param;
+        },
+        'method': 'GET',
+        'data': {}
+    },
     'APPINFO':{
         'url': apiBaseUrl + '/appInfo',
         'method':'GET'

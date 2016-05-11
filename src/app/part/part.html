@@ -357,7 +357,7 @@
             <tr data-ng-repeat="bom in part.partData.bom">
               <td data-ng-bind="bom.no"></td>
               <td data-ng-bind="bom.level"></td>
-              <td><a href="#" data-ng-bind="bom.partNumber"></a></td>
+              <td><a href="/part/partnum/?partNo={{bom.partNumber}}" data-ng-bind="bom.partNumber"></a></td>
               <td data-ng-bind="bom.quantity"></td>
             </tr>
             <!--<tr>

@@ -6,7 +6,7 @@ export class PartController {
         let vm = this;
         vm.DI = () => ({ $log, $document, $stateParams, SearchBarService, dataServices });
 
-        $window.scrollTo(0,0);
+        $window.scrollTo(0, 0);
 
         vm.getPart();
         $timeout(function () {
@@ -14,19 +14,19 @@ export class PartController {
         });
 
         let actvPic = $document[0].getElementById("active-pic");
-        
+
         vm.containerDimensions = {
             height: actvPic.offsetHeight,
             width: actvPic.offsetWidth
         }
-        
+
         $log.debug("Container Dimension :", vm.containerDimensions);
-        
+
         vm.lensDimensions = {
             height: 80,
             width: 80
         };
-        
+
         vm.hideForNow = true;
 
     }
@@ -34,13 +34,24 @@ export class PartController {
     getPart() {
         let vm = this;
         let {$log, $stateParams, SearchBarService, dataServices} = vm.DI();
-        $log.debug("Part No :", SearchBarService.productLine);
+        $log.debug("part no :", $stateParams);
         vm.productLine = SearchBarService.productLine;
-        dataServices.part($stateParams.id).then(function (response) {
-            $log.debug("Response in Controller :", response);
-            vm.partData = response;
-        }, function (error) {
-            $log.debug("Error in response :", error);
-        });
+        $log.debug("state type :",$stateParams.type);
+        if ($stateParams.type === "partnum") {
+            $log.debug("searching by part num.");
+            dataServices.partByPartNum($stateParams.partNo).then(function (response) {
+                $log.debug("Response in Controller :", response);
+                vm.partData = response;
+            }, function (error) {
+                $log.debug("Error in response :", error);
+            });
+        } else {
+            dataServices.part($stateParams.id).then(function (response) {
+                $log.debug("Response in Controller :", response);
+                vm.partData = response;
+            }, function (error) {
+                $log.debug("Error in response :", error);
+            });
+        }
     }
 }

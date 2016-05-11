@@ -199,7 +199,7 @@ export class SearchBarController {
         }
         else {
             vm.search.searchString = vm.search.searchString.partNumber + ' ' + vm.search.searchString.partDesc;
-            $location.path('/part/' + item.id);
+            $location.path('/part/id/' + item.id);
             vm._blurSrchBox();
         }
     }
