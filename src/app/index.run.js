@@ -1,15 +1,26 @@
-export function runBlock($rootScope, $location, SearchBarService) {
+export function runBlock($rootScope, $location, SearchBarService, $window) {
     'ngInject';
     
-     $rootScope.$on('$locationChangeSuccess', function() {
-        if($rootScope.previousLocation == $location.path()) {
+    $rootScope.$on('$locationChangeSuccess', function() {
+    	
+        if($rootScope.previousLocation == $location.path() && $location.path() == '/search') {
             SearchBarService.backBottonPressed = true;
-            console.log("Back Button Pressed if ",SearchBarService.backBottonPressed);
+            console.log("Back in run if ",SearchBarService.backBottonPressed, sessionStorage.refreshClicked);
         }else{
             SearchBarService.backBottonPressed = false;
-            console.log("Back Button Pressed else ", SearchBarService.backBottonPressed);
+            SearchBarService._clearSession();
+            console.log("Back in run else ", SearchBarService.backBottonPressed, sessionStorage.refreshClicked);
         }
         $rootScope.previousLocation = $rootScope.actualLocation;
         $rootScope.actualLocation = $location.path();
     });
+
+    var windowElement = angular.element($window);
+	windowElement.on('beforeunload', function (event) {
+		if($location.path() == '/search'){
+			sessionStorage.refreshClickedSearch = true;
+		}else{
+			delete sessionStorage.refreshClickedSearch;
+		}
+	});
 }

@@ -8,14 +8,14 @@
         <a class="description" href="/part/id/{{partCard.part.id}}"><span class="name">{{partCard.part.displayName}}</span></a>
         <span class="cart pull-right">
             <!--<span>$150</span>-->
-            <span>Add to Orderlist <span class="caret"></span></span>
-            <span><img src="assets/images/icon_shoppingCart.jpg"></span>
+            <span>Add to Orderlist <!--<span class="caret">--></span></span>
+            <!--<span><img src="assets/images/icon_shoppingCart.jpg"></span>-->
         </span>
         <div class="hrLine"></div>
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-7">
             <a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part.imageUrl)}}"></a>
           </div>
           <div class="col-md-5" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
@@ -30,7 +30,7 @@
               </tr>
             </table>
           </div>
-          <div class="col-md-4">
+         <!-- <div class="col-md-4">
             <img alt="http://placehold.it/30x30" src="assets/images/Vector.png">
             <div>
               <p>MMS<sup>TM</sup>Hub</p>
@@ -40,7 +40,7 @@
                 <li data-ng-repeat="list in partCard.part.innovation.features">{{list}}</li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

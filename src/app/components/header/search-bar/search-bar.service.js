@@ -15,6 +15,7 @@ export class SearchBarService {
     set srchStr(newSrchStr) {
         if (newSrchStr) {
             this._srchStr = newSrchStr;
+            this._saveToSession();
         }
     }
     
@@ -88,6 +89,7 @@ export class SearchBarService {
     }
 
     _retrieveFromSession() {
+        console.log("Back in service _retrieveFromSession");
         this._srchStr = sessionStorage.srchStr;
        /* this._productLine = sessionStorage.productLine;
         this._productCategory = sessionStorage.productCategory;
