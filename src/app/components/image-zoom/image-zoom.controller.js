@@ -70,8 +70,8 @@ export class ImageZoomController {
         let lens = $document[0].getElementById("lens");
         let lensElement = angular.element(lens);
 
-        lensElement.css("height", crossSection.height + 'px');
-        lensElement.css("width", crossSection.width + 'px');
+        lensElement.css("height", (crossSection.height*(vm.zoomLevel/vm.zoomIndex)) + 'px');
+        lensElement.css("width", (crossSection.width*(vm.zoomLevel/vm.zoomIndex)) + 'px');
         lensElement.css("top", lensCenterY + 'px');
         lensElement.css("left", lensCenterX + 'px');
         let activeImg = $document[0].getElementById("active-img");
