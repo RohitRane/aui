@@ -82,6 +82,7 @@ export class SearchBarService {
 
     _saveToSession() {
         sessionStorage.srchStr = this._srchStr;
+        console.log("Back in service ",sessionStorage.srchStr , this._srchStr);
         /*sessionStorage.productLine = this._productLine;
         sessionStorage.productCategory = this._productCategory;
         sessionStorage.typeId = this._typeId;

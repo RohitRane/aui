@@ -137,24 +137,6 @@ class FilterDirectiveController{
             select : false
             });
         });
-        /* if(x.type == "STRING" || x.type == "NUMERIC"){ 
-             angular.forEach(x.buckets, function(obj){
-                vm.tempBuckets.push({
-                key : obj.key,
-                count : obj.count,
-                select : false
-                });
-            });
-         }else if(x.type == "NUMERIC_RANGE"){
-             angular.forEach(x.buckets, function(obj){
-                 console.log("start", obj.start);
-                vm.tempBuckets.push({
-                start: obj.start,
-                end: obj.end,
-                select : false
-                });
-            });
-         }*/
         
         obj = {
             name: x.name,
@@ -176,13 +158,6 @@ class FilterDirectiveController{
       vm.listPristine = [];
       for(let x of vm.list){
         vm.listPristine.push (vm.pushCheckboxData(x));
-        /*if(x.type == "STRING"){
-            vm.listPristine.push (vm.pushCheckboxData(x));
-        }else if(x.type == "NUMERIC_RANGE"){
-             vm.listPristine.push (vm.pushCheckboxData(x));
-        }else if(x.type == "NUMERIC"){
-             vm.listPristine.push (vm.pushCheckboxData(x));
-        }*/
       }  
     }
     
@@ -226,23 +201,13 @@ class FilterDirectiveController{
         $scope.$emit("checkSearch", SearchBarService.srchStr);
          /* put all the selected filters in filterObjectArray */
          for (let x of vm.listPristine) {
-             let filterArray = [];
-             let filterObject = {};
-                 if(x.type == "STRING" || x.type == "NUMERIC"){
-                     for(let obj=0; obj < x.buckets.length; obj++){
-                         x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
-                     }
-                }else{
-                   /* if(x.singleObject){
-                        x.buckets[0].select ? filterArray.push(x.buckets[0].key) : "";
-                    }else{
-                       if(x.minValue > x.options.floor
-                       || x.maxValue < x.options.ceil){
-                           filterArray.push(x.minValue);
-                           filterArray.push(x.maxValue);
-                       }
-                    }*/
-                }
+            let filterArray = [];
+            let filterObject = {};
+
+            for(let obj=0; obj < x.buckets.length; obj++){
+                x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
+            }
+            
             if(filterArray.length){
                 filterObject = {
                 name: x.name,
@@ -254,7 +219,7 @@ class FilterDirectiveController{
             }else{
                 x.bucketChanged = false;
             }
-         }
+        }
         vm.listPreviousFilter = vm.listPristine;
        // $scope.$emit("searchLaunched", filterObjectArray);
         vm.selectedItemsChanged({selectedItems:filterObjectArray});
