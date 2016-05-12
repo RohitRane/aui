@@ -5,11 +5,11 @@ export function runBlock($rootScope, $location, SearchBarService, $window) {
     	
         if($rootScope.previousLocation == $location.path() && $location.path() == '/search') {
             SearchBarService.backBottonPressed = true;
-            console.log("Back in run if ",SearchBarService.backBottonPressed, sessionStorage.refreshClicked);
+            console.log("Back in run if ",SearchBarService.backBottonPressed, sessionStorage.refreshClickedSearch);
         }else{
             SearchBarService.backBottonPressed = false;
             SearchBarService._clearSession();
-            console.log("Back in run else ", SearchBarService.backBottonPressed, sessionStorage.refreshClicked);
+            console.log("Back in run else ", SearchBarService.backBottonPressed, sessionStorage.refreshClickedSearch);
         }
         $rootScope.previousLocation = $rootScope.actualLocation;
         $rootScope.actualLocation = $location.path();

@@ -14,8 +14,9 @@
           <!--<i class="glyphicon-refresh glyphicon-refresh-animate"></i>-->
         </div>
       </div>
-      <div ng-show="!srchRes.results.totalResults">
-        NO RESULTS
+      <div class="no-results" ng-show="!srchRes.results.totalResults">
+        <p>Your Search for "<span class="bold">{{srchRes.searchString}}</span>" has found 0 results</br>
+        Kindly Redefine your search term or explore the parts Via Browse</p>
       </div>
     </div>
     <div class="col-md-2 parts ">

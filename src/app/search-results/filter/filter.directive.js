@@ -129,7 +129,15 @@ class FilterDirectiveController{
         let vm = this;
         let obj = {};
         vm.tempBuckets = [];
-         if(x.type == "STRING" || x.type == "NUMERIC"){ 
+
+        angular.forEach(x.buckets, function(obj){
+            vm.tempBuckets.push({
+            key : obj.key,
+            count : obj.count,
+            select : false
+            });
+        });
+        /* if(x.type == "STRING" || x.type == "NUMERIC"){ 
              angular.forEach(x.buckets, function(obj){
                 vm.tempBuckets.push({
                 key : obj.key,
@@ -146,7 +154,7 @@ class FilterDirectiveController{
                 select : false
                 });
             });
-         }
+         }*/
         
         obj = {
             name: x.name,
@@ -167,36 +175,14 @@ class FilterDirectiveController{
       let {  } = vm.DI();
       vm.listPristine = [];
       for(let x of vm.list){
-        if(x.type == "STRING"){
+        vm.listPristine.push (vm.pushCheckboxData(x));
+        /*if(x.type == "STRING"){
             vm.listPristine.push (vm.pushCheckboxData(x));
         }else if(x.type == "NUMERIC_RANGE"){
              vm.listPristine.push (vm.pushCheckboxData(x));
         }else if(x.type == "NUMERIC"){
              vm.listPristine.push (vm.pushCheckboxData(x));
-            /*if(x.buckets.length == 1){
-                vm.listPristine.push (vm.pushCheckboxData(x));
-            }else{
-                let xVals = x.buckets.map(function(val) { return parseFloat(val.key) * 1000; });
-                vm.listPristine.push({
-                    name: x.name,
-                    type: x.type,
-                    singleObject: false,
-                    minValue: Math.floor(Math.min(...xVals)/1000),
-                    maxValue: Math.ceil(Math.max(...xVals)/1000),
-                    options: {
-                        floor: Math.floor(Math.min(...xVals) / 1000),
-                        ceil:  Math.ceil(Math.max(...xVals) / 1000),
-                        step: 1,
-                        id: x.name,
-                        onChange: function(sliderId, modelValue, highValue){
-                         vm.apicall().then(()=>{
-                                angular.noop();
-                            });
-                        }
-                    }
-                });
-            }*/
-        }
+        }*/
       }  
     }
     

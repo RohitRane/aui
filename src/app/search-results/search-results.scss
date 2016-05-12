@@ -200,4 +200,14 @@
         color:$color_extreme_two;
         border: none;
     }
+    .no-results{
+        margin: 20px auto;
+        font-size: 14px;
+        p{
+            text-align: center;
+            .bold{
+                font-weight: bold;
+            }
+        }
+    }
 }
