@@ -1,4 +1,4 @@
-<h6>SEE ALL CATEGORIES</h6>
+<h6 ng-show="vm.totalCount">SEE ALL CATEGORIES</h6>
 <span class="refine-list">
     <div class="refine-header" data-ng-repeat="category in vm.categoryPristine | orderBy: 'name'">
         <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category)">{{category.name}}</span>
@@ -15,7 +15,7 @@
             </div>  
         </div>
     </div>
-    <hr>
+    <ng-show="vm.totalCount" hr>
     <div class="refine" data-ng-repeat="refine in vm.listPristine | orderBy: ['priority', 'name']">
         <div class="refine-header">
             <span>{{refine.name}}</span>

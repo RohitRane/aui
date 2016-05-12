@@ -14,9 +14,7 @@ export class SearchBarService {
 
     set srchStr(newSrchStr) {
         if (newSrchStr) {
-          console.log(" new Srch Str :",newSrchStr);
             this._srchStr = newSrchStr;
-            this._saveToSession();
         }
     }
     
@@ -26,9 +24,7 @@ export class SearchBarService {
 
     set srchTempStr(newSrchTempStr) {
         if (newSrchTempStr) {
-          console.log(" new Srch Str :",newSrchTempStr);
             this._srchTempStr = newSrchTempStr;
-            this._saveToSession();
         }
     }
 
@@ -40,7 +36,6 @@ export class SearchBarService {
     set productLine(newSrchStr) {
         if (newSrchStr) {
             this._productLine = newSrchStr;
-            this._saveToSession();
         }
     }
 
@@ -50,7 +45,6 @@ export class SearchBarService {
 
     set productCategory(newProductCategory) {
         this._productCategory = newProductCategory;
-        this._saveToSession();
     }
 
     get typeId() {
@@ -60,7 +54,6 @@ export class SearchBarService {
     set typeId(newTypeId) {
         if (newTypeId) {
             this._typeId = newTypeId;
-            this._saveToSession();
         }
     }
 
@@ -71,23 +64,34 @@ export class SearchBarService {
     set filters(newfilters) {
         if (newfilters) {
             this._filters = newfilters;
-            this._saveToSession();
         }
+    }
+
+    get backBottonPressed(){
+        return this._backBottonPressed;
+    }
+
+    set backBottonPressed(flag){
+        this._backBottonPressed = flag;
+    }
+
+    _clearSession(){
+        delete sessionStorage.srchStr;
     }
 
     _saveToSession() {
         sessionStorage.srchStr = this._srchStr;
-        sessionStorage.productLine = this._productLine;
+        /*sessionStorage.productLine = this._productLine;
         sessionStorage.productCategory = this._productCategory;
         sessionStorage.typeId = this._typeId;
-        sessionStorage.filters = this._filters;
+        sessionStorage.filters = this._filters;*/
     }
 
     _retrieveFromSession() {
         this._srchStr = sessionStorage.srchStr;
-        this._productLine = sessionStorage.productLine;
+       /* this._productLine = sessionStorage.productLine;
         this._productCategory = sessionStorage.productCategory;
         this._typeId = sessionStorage.typeId;
-        this._filters = sessionStorage.filters;
+        this._filters = sessionStorage.filters;*/
     }
 }
