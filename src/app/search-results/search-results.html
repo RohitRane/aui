@@ -14,8 +14,8 @@
           <!--<i class="glyphicon-refresh glyphicon-refresh-animate"></i>-->
         </div>
       </div>
-      <div class="no-results" ng-show="!srchRes.results.totalResults">
-        <p>Your search for "<span class="bold">{{srchRes.searchString}}</span>" has found 0 results.</br>
+      <div class="no-results" ng-if="!(srchRes.resultLoading || srchRes.results.totalResults)">
+        <p>Your Search for "<span class="bold">{{srchRes.searchString}}</span>" has found 0 results.</br>
         Kindly redefine your search term or explore the parts via search bar.</p>
       </div>
     </div>
