@@ -5,7 +5,7 @@ export class SearchBarService {
     }*/
     constructor() {
         this._filters = [{}];
-        this._retrieveFromSession();
+        //this._retrieveFromSession();
     }
 
     get srchStr() {
@@ -15,7 +15,8 @@ export class SearchBarService {
     set srchStr(newSrchStr) {
         if (newSrchStr) {
             this._srchStr = newSrchStr;
-            this._saveToSession();
+            sessionStorage.srchStr = this._srchStr;
+            //this._saveToSession();
         }
     }
     
@@ -37,6 +38,8 @@ export class SearchBarService {
     set productLine(newSrchStr) {
         if (newSrchStr) {
             this._productLine = newSrchStr;
+            sessionStorage.productLine = this._productLine;
+            //this._saveToSession();
         }
     }
 
@@ -46,6 +49,7 @@ export class SearchBarService {
 
     set productCategory(newProductCategory) {
         this._productCategory = newProductCategory;
+        sessionStorage.productCategory = this._productCategory;
     }
 
     get typeId() {
@@ -68,6 +72,18 @@ export class SearchBarService {
         }
     }
 
+    get categoryfilters() {
+        return this._categoryfilters;
+    }
+
+    set categoryfilters(newcategoryfilters) {
+        if (newcategoryfilters) {
+            this._categoryfilters = newcategoryfilters;
+            sessionStorage.categoryfilters = angular.toJson(this._categoryfilters);
+            //console.log("Back in " ,sessionStorage.categoryfilters , this._categoryfilters);
+        }
+    }
+
     get backBottonPressed(){
         return this._backBottonPressed;
     }
@@ -77,12 +93,21 @@ export class SearchBarService {
     }
 
     _clearSession(){
-        delete sessionStorage.srchStr;
+        console.log("Back in clear",  sessionStorage.categoryfilters);
+         delete sessionStorage.srchStr;
+         delete sessionStorage.productLine;
+         delete sessionStorage.categoryfilters;
+         delete sessionStorage.productCategory;
+         delete SearchBarService.backBottonPressed;
+         console.log("Back in clear 1", sessionStorage.categoryfilters);
     }
 
     _saveToSession() {
         sessionStorage.srchStr = this._srchStr;
-        console.log("Back in service ",sessionStorage.srchStr , this._srchStr);
+        sessionStorage.productLine = this._productLine;
+        sessionStorage.productCategory = this._productCategory;
+        sessionStorage.categoryfilters = this._categoryfilters;
+        //console.log("Back in service Save ",sessionStorage.categoryfilters);
         /*sessionStorage.productLine = this._productLine;
         sessionStorage.productCategory = this._productCategory;
         sessionStorage.typeId = this._typeId;
@@ -90,8 +115,12 @@ export class SearchBarService {
     }
 
     _retrieveFromSession() {
-        console.log("Back in service _retrieveFromSession");
+      //  console.log("Back in _retrieveFromSession",  sessionStorage.categoryfilters);
         this._srchStr = sessionStorage.srchStr;
+        this._productLine = sessionStorage.productLine;
+        this._productCategory = sessionStorage.productCategory;
+        this._categoryfilters =  angular.fromJson(sessionStorage.categoryfilters);
+        console.log("Back in _retrieveFromSession" ,sessionStorage.productLine);
        /* this._productLine = sessionStorage.productLine;
         this._productCategory = sessionStorage.productCategory;
         this._typeId = sessionStorage.typeId;

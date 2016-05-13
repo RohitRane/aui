@@ -33,8 +33,7 @@ class FilterDirectiveController{
          vm.categoryPristine = [];
         
          /* watch for the change in category */ 
-         $scope.$watch(function(){  
-            console.log("XYXXXXX");
+         $scope.$watch(function(){
              return vm.category;
          },function(){ 
             $timeout(function(){
@@ -70,8 +69,17 @@ class FilterDirectiveController{
     resetCategory(){
       let vm = this;
       let { SearchBarService } = vm.DI();
-      
-      
+
+      /*if(SearchBarService.backBottonPressed){
+          console.log("Back in directive restore category ", vm.categoryPristine, SearchBarService.categoryfilters);
+          
+          vm.categoryPristine = SearchBarService.categoryfilters;
+          SearchBarService.backBottonPressed = false;
+          return;
+      }*/
+      console.log("Back in directive", SearchBarService.categoryfilters);
+      vm.categoryPristine = SearchBarService.categoryfilters;
+
       if(vm.totalCount == 0){
         vm.categoryPristine = [];
       }
@@ -98,7 +106,7 @@ class FilterDirectiveController{
           vm.categoryPristine[0].select = true;
       }
       
-      console.log("vm.category in directive", vm.category, vm.categoryPristine);
+      SearchBarService.categoryfilters = vm.categoryPristine;
     }
     
     /* call api to get the filters for the selected category and selected category should be heighlighted */ 
@@ -154,7 +162,8 @@ class FilterDirectiveController{
     /* categorize the filter based on their types */
     resetList(){ 
       let vm = this;
-      let {  } = vm.DI();
+      let { SearchBarService } = vm.DI();
+      console.log("Back in directive filter ", SearchBarService.backBottonPressed);
       vm.listPristine = [];
       for(let x of vm.list){
         vm.listPristine.push (vm.pushCheckboxData(x));

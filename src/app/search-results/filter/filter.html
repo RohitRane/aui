@@ -1,6 +1,6 @@
 <h6 ng-show="vm.totalCount">SEE ALL CATEGORIES</h6>
 <span class="refine-list">
-    <div class="refine-header" data-ng-repeat="category in vm.categoryPristine | orderBy: 'name'">
+    <div class="refine-header" data-ng-repeat="category in vm.categoryPristine track by $index | orderBy: 'name'">
         <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category)">{{category.name}}</span>
         <div class="refine-options" data-ng-repeat="subcategory in category.subcategory">
             <div class="list">

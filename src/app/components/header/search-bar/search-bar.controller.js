@@ -49,6 +49,18 @@ export class SearchBarController {
             ]
         };
 
+        /* On Refresh string should be retained*/
+        if(sessionStorage.srchStr && $location.path() != "/"){
+            vm.search.searchString = sessionStorage.srchStr;
+            vm.search.searchScope = sessionStorage.productLine;
+        }
+
+        /* On Back button click string should be retained*/
+        $rootScope.$on("backButtonSetSearchString", function () {
+            console.log("Back in backButtonSetSearchString",sessionStorage.productLine);
+            vm.search.searchString = sessionStorage.srchStr;
+        });
+
         dataServices.appInfo().then(response => {
             $log.debug("APP INFO :", response);
             vm.search.categories = response.cats.map(function (cat) {
@@ -167,7 +179,7 @@ export class SearchBarController {
         let {$log, $location, $rootScope, $timeout, SearchBarService, $scope} = vm.DI();
 
         $log.debug("Scope search :", vm.search.searchString);
-
+        SearchBarService.categoryfilters = [];
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -208,6 +220,7 @@ export class SearchBarController {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         vm._blurSrchBox();
+        SearchBarService.categoryfilters = [];
         $scope.$emit("searchbarBlurred");
         $rootScope.$emit("clearCategories");
         SearchBarService.productCategory = "";
