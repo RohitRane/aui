@@ -23,13 +23,14 @@ export function ymmDirective() {
 }
 
 class YMMDirectiveController {
-    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $http) {
+    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $http,YmmService) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({
             $log,
             SearchBarService,
             dataServices,
+            YmmService,
             $scope,
             $rootScope,
             $http
@@ -78,7 +79,7 @@ class YMMDirectiveController {
                             }
                             var textnode = document.createTextNode(hrefContent); // Create a text node
                             innerEl.appendChild(textnode);
-                            innerEl.setAttribute('style', 'color:#0093c6;font-weight:600');
+                            innerEl.setAttribute('style', 'color:#b0b0b0;font-weight:600');
                         }
                     }
                 }
@@ -93,7 +94,7 @@ class YMMDirectiveController {
                         var stringYr = year + "";
                         //checking years with each header Labels, if not matched making grey
                         if (stringYr.substring(0, 3) !== prefixCheck && self.headerLabelArray.indexOf(prefixCheck) == -1) {
-                            innerEl.setAttribute('style', 'color:#0093c6;font-weight:600');
+                            innerEl.setAttribute('style', 'color:#b0b0b0;font-weight:600');
                             // self.headerLabelArray.push(prefixCheck);
 
                         } else {
@@ -107,8 +108,8 @@ class YMMDirectiveController {
             }, vm)
         }, vm);
 
-var yearHolder = angular.element(document.querySelector('#yearHolder'));
-yearHolder.css('top','200px');
+        var yearHolder = angular.element(document.querySelector('#yearHolder'));
+        yearHolder.css('top','200px');
     }
 
     //Display the directive
@@ -118,16 +119,35 @@ yearHolder.css('top','200px');
         let vm = this;
         let {
             $log,
-            $http
+            $http,
+            YmmService,
         } = vm.DI();
 
-        $http({
-            url: "http://52.8.125.250:8080/search-service/api/ymmList",
+        //yearData(q,cats,year,make,model,from,size)
+       YmmService.getYearData('SPL55',["ALL", null, null],null,null,null,null,null).then(
+            function (result) {
+                // promise was fullfilled (regardless of outcome)
+                // checks for information will be peformed here
+                 $log.debug("YMM response :", result);
+                vm.yearList = result.data.APIResponse.yearList;
+                vm.initDirective = true;
+                 var yearSelector = angular.element(document.querySelector('#ymmYearSelector'));
+                 yearSelector.removeClass('disabled');
+            },
+            function (error) {
+                // handle errors here
+                console.log(error.statusText);
+            })
+       
+
+        /* $http({
+            url: "http://54.183.226.9:8080/search-service/api/ymmList",
             method: 'POST',
             data: {
-                "q": "SPL55",
-                "cats": ["ALL", null, null]
+              "q": "SPL55",
+                "cats":["ALL",null ,null]
             }
+
 
         }).then(function(response) {
             $log.debug("YMM response :", response);
@@ -138,7 +158,8 @@ yearHolder.css('top','200px');
 
         }, function(error) {
             //debugger;    
-        });
+        });*/
+
     }
 
     //click handler for year and populate Make
@@ -152,11 +173,32 @@ yearHolder.css('top','200px');
         let {
             $log,
             $http,
-            $scope
+            $scope,
+            YmmService
         } = vm.DI();
 
-        $http({
-            url: "http://52.8.125.250:8080/search-service/api/ymmList",
+
+        //yearData(q,cats,year,make,model,from,size)
+       YmmService.getYearData('SPL55',["ALL", null, null],e.selYear,null,null,null,null).then(
+            function (result) {
+                // promise was fullfilled (regardless of outcome)
+                // checks for information will be peformed here
+                $log.debug("YMM response :", result);
+                vm.makeList = result.data.APIResponse.makeList;
+                e.yearSelected = true;
+                var makeSelector = angular.element(document.querySelector('#ymmMakeSelector'));
+                makeSelector.removeClass('disabled');
+            },
+            function (error) {
+                // handle errors here
+                console.log(error.statusText);
+            })
+
+
+
+
+   /*     $http({
+            url: "http://54.183.226.9:8080/search-service/api/ymmList",
             method: 'POST',
             data: {
                 "q": "SPL55",
@@ -173,10 +215,9 @@ yearHolder.css('top','200px');
 
         }, function(error) {
             //debugger;    
-        });
-
-
+        });*/
     }
+
 
     findMake($event, e) {
         // if($event.target.nodeName =="A"){
@@ -194,7 +235,8 @@ yearHolder.css('top','200px');
         let {
             $log,
             $http,
-            $scope
+            $scope,
+            YmmService
         } = vm.DI();
 
         if ($event.target.nodeName == "A") {
@@ -203,8 +245,25 @@ yearHolder.css('top','200px');
 
         }
 
-        $http({
-            url: "http://52.8.125.250:8080/search-service/api/ymmList",
+          YmmService.getYearData('SPL55',["ALL", null, null],e.selYear,e.ymmMake,null,null,null).then(
+            function (result) {
+                // promise was fullfilled (regardless of outcome)
+                // checks for information will be peformed here
+                  $log.debug("YMM response :", result);
+            vm.modelList = result.data.APIResponse.modelList;
+            vm.makeSelected = true;
+            var modelSelector = angular.element(document.querySelector('#ymmModelSelector'));
+             modelSelector.removeClass('disabled');
+            },
+            function (error) {
+                // handle errors here
+                console.log(error.statusText);
+            })
+
+
+
+     /*   $http({
+             url: "http://54.183.226.9:8080/search-service/api/ymmList",
             method: 'POST',
             data: {
                 "q": "SPL55",
@@ -222,7 +281,7 @@ yearHolder.css('top','200px');
              modelSelector.removeClass('disabled');
         }, function(error) {
             //debugger;    
-        });
+        });*/
 
     }
 
@@ -261,6 +320,7 @@ yearHolder.css('top','200px');
         e.ymmSubmit = true;
         var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
         submitSelector.removeClass('disabled');
+        submitSelector.css('background-color','#0093c6');
     }
 
     searchByYMM($event, e) {

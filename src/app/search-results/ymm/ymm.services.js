@@ -3,14 +3,41 @@ export class YmmService {
     /*constructor(srchStr) {
         this{._srchStr = srchStr;
     }*/
-    constructor() {
-        this._yearSelected ;
-        this._makeSelected;
-        this._modelSelected;
+     
+    constructor($http,$q) {
+        'ngInject';
+            this._yearSelected ;
+            this._makeSelected;
+            this._modelSelected;
+            this.$http = $http;
+            this.$q = $q;
+            this.ymmURL = 'http://52.8.125.250:8080/search-service/api/ymmList';
+            this.method = 'POST';
+            this.params = "";
     }
 
-   
-/*
+    getYearData(q,cats,year,make,model,from,size){
+        let deferred = this.$q.defer();
+         return this.$http({
+            url: "http://54.183.226.9:8080/search-service/api/ymmList",
+            method: 'POST',
+            data: {
+                "q": "SPL55",
+                "cats": ["ALL", null, null],
+                "year":year,
+                'make':make,
+                "model":model,
+                "from":from,
+                "size":size
+            }
+
+        })
+
+    }
+
+
+   /*
+
     get yearSelected() {
         return this._productCategory;
     }

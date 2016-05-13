@@ -1,9 +1,9 @@
-
+<div class="ymm-directive">
    
     <div id="dropdown-scrollable-container" style="height: auto; overflow: auto;margin-top:10px;margin-bottom:10px;" ng-init="vm.displayYMM($event,this)" ng-show="vm.initDirective">
       <div id="dropdown-long-content">
         <div id="dropdown-hidden-container">
-            <label style="font-size:16px;font-weight:600">Filter By</label>
+            <label style="font-size:14px;font-weight:600">Filter By : &nbsp; &nbsp;</label>
 
              <div class="btn-group" uib-dropdown dropdown-append-to-body>
            <button id="ymmYearSelector" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.showYearTable($event,this)">
@@ -49,9 +49,8 @@
              {{ymmMake}}<span class="caret"></span>
             </button>
             <ul class="dropdown-menu atsDDContent" style="width:20%"  id="makeDropDown" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to">
-
+                <span class="arrow_box1" style="width:100px;height:100px;position:none !important"></span>
               <li role="menuitem" ng-click="vm.loadModel($event,this)" ng-repeat="item in vm.makeList"><a href="#">{{item}}</a></li>
-             
             </ul>
           </div>
          
@@ -60,11 +59,12 @@
              {{ymmModel}}<span class="caret"></span>
             </button>
             <ul class="dropdown-menu atsDDContent" style="width:20%" id="modelDropDown" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                 <span class="arrow_box1" style="width:100px;height:100px;position:none !important"></span>
                <li role="menuitem" ng-click="vm.activateSubmit($event,this)" ng-repeat="item in vm.modelList"><a href="#">{{item}}</a></li>
               
             </ul>
           </div>
-           <button id="ymmSubmitSelector" ng-disabled="vm.toggleYMMSubmit($event,this)" type="button" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.searchByYMM($event,this)">
+           <button id="ymmSubmitSelector" ng-disabled="vm.toggleYMMSubmit($event,this)" style="background-color:#aaaaaa !important;border:1px solid #aaaaaa;" type="button" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.searchByYMM($event,this)">
              Go
             </button>
         </div>
@@ -74,4 +74,4 @@
       </div>
     </div>
 
-   
+   </div>
