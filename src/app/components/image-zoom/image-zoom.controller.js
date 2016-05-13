@@ -9,27 +9,35 @@ export class ImageZoomController {
         vm.DI = () => ({ $log, $document });
 
         vm.showZoom = false;
-        
+
         vm.containerDimensions = angular.fromJson(vm.containerDimensions);
-        $log.debug("Container Dimensions x :",vm.containerDimensions.width);
         let activeImg = $document[0].getElementById("active-img");
-        angular.element(activeImg).css("width",vm.containerDimensions.width-8+ "px");
-        angular.element(activeImg).css("height",vm.containerDimensions.height-4+ "px");
+        angular.element(activeImg).css("width", vm.containerDimensions.width - 8 + "px");
+        angular.element(activeImg).css("height", vm.containerDimensions.height - 4 + "px");
+        
+        vm.zoomLevel = vm.zoomIndex;
+
     }
     enlarge(event) {
         let vm = this;
-        let {$document, $log} = vm.DI();
+        let {$document} = vm.DI();
         vm.showZoom = true;
+        console.log("eeeevvvvvvvvvvvttttttttttttttt :", event);
+        if (angular.isUndefined(event)) {
+            console.log("null evnt");
+            event = vm.event;
+        } else {
+            vm.event = event;
+        }
 
         let zoomLevel = vm.zoomIndex;
+        //console.log("z index  in enlarge :", vm.zoomIndex);
         let imgUrl = vm.src;
-        
+
         let activeImg = $document[0].getElementById("active-img");
-        $log.debug("mouse x :" + event.pageY + " " + event.pageX);
         let crossSection = angular.fromJson(vm.lensDimensions);
         crossSection.yOffset = 315;
         crossSection.xOffset = 60;
-        $log.debug("lens dim:", crossSection);
         let lensCenterY = event.pageY - crossSection.yOffset;
         let lensCenterX = event.pageX - crossSection.xOffset;
         vm.lensCenterY = lensCenterY;
@@ -53,17 +61,17 @@ export class ImageZoomController {
         let zoomedImgWdt = activeImg.offsetWidth * zoomLevel;
 
         zoomElement.css("background", generateBgString(imgUrl, startX, startY, zoomedImgHgt, zoomedImgWdt));
+
     }
 
     repositionLens(lensCenterX, lensCenterY, crossSection) {
         let vm = this;
-        let {$document, $log} = vm.DI();
-        $log.debug("lens reposition.", vm.lensDimensions);
+        let {$document} = vm.DI();
         let lens = $document[0].getElementById("lens");
         let lensElement = angular.element(lens);
 
-        lensElement.css("height", crossSection.height + 'px');
-        lensElement.css("width", crossSection.width + 'px');
+        lensElement.css("height", (crossSection.height*(vm.zoomLevel/vm.zoomIndex)) + 'px');
+        lensElement.css("width", (crossSection.width*(vm.zoomLevel/vm.zoomIndex)) + 'px');
         lensElement.css("top", lensCenterY + 'px');
         lensElement.css("left", lensCenterX + 'px');
         let activeImg = $document[0].getElementById("active-img");
@@ -75,6 +83,51 @@ export class ImageZoomController {
     mouseleft() {
         let vm = this;
         vm.showZoom = false;
+    }
+
+    _mouseWheelHandler(e) {
+        e.preventDefault();
+        let vm = this;
+        console.log("V M : ", vm);
+        console.log("Mouse Wheeled ..........................!!!!!!!!!!!!!!!!!!!!!!!1", e.deltaX, e.deltaY);
+        console.log("z index before :", vm.zoomIndex);
+        if (e.deltaY > 0) {
+            vm.zoomIndex++;
+            console.log("z index :", vm.zoomIndex);
+        } else {
+            console.log("z index :", vm.zoomIndex);
+        }
+
+    }
+
+    abd() {
+        //console.log('Muhahahaha');
+        let vm = this;
+        let {$document} = vm.DI();
+        //Mouse wheel event
+        let lens = $document[0].getElementById("lens");
+        angular.element(lens).on("wheel", function (e) {
+            e.preventDefault();
+            //console.log("V M : ", vm);
+            //console.log("Mouse Wheeled ..........................!!!!!!!!!!!!!!!!!!!!!!!1", e.deltaX, e.deltaY);
+            //console.log("z index before :", vm.zoomIndex);
+            if (e.deltaY > 0) {
+                vm.zoomIndex++;
+                //console.log("z index :", vm.zoomIndex);
+            } else {
+                vm.zoomIndex--;
+                //console.log("z index :", vm.zoomIndex);
+            }
+            vm.enlarge();
+        });
+        /*if (lens.addEventListener) {
+            // IE9, Chrome, Safari, Opera
+            lens.addEventListener("mousewheel", vm._mouseWheelHandler(vm), false);
+            // Firefox
+            lens.addEventListener("DOMMouseScroll", vm._mouseWheelHandler, false);
+        }
+        // IE 6/7/8
+        else lens.attachEvent("onmousewheel", vm._mouseWheelHandler);*/
     }
 }
 

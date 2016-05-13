@@ -97,6 +97,9 @@ export class SearchBarController {
             vm.resultSetLimit = response.resultSetLimit;
             response.totalResults === 1 ? vm.search.firstSelect = true : vm.search.firstSelect = false;
 
+            vm.resultSet = response.parts;
+            $log.debug("REsult SET :",vm.resultSet);
+
             let resultSet = response.parts,
                 firstExact = true,
                 firstClose = true,
@@ -136,7 +139,8 @@ export class SearchBarController {
                     firstSuggest = false;
                 }
                 $log.debug($rootScope.firstExactIndex + " " + vm.firstCloseIndex + " " + vm.firstSuggestIndex);
-            })
+            });
+            
             return resultSet.map(function (part) {
                 return part;
             });
@@ -183,7 +187,7 @@ export class SearchBarController {
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
-            SearchBarService.typeId = item.typeId;            
+            SearchBarService.typeId = item.typeId;
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
             $log.debug("Srcchhhh :::", vm.search.searchString);
@@ -225,21 +229,26 @@ export class SearchBarController {
         $rootScope.$emit("clearCategories");
         SearchBarService.productCategory = "";
         if (vm.search.searchString) {
+            $log.debug("Result set :", vm.resultSet);
             $log.debug("vm.search.searchString ", vm.search.searchString);
-            if (vm.search.searchString) {
-                $log.debug("Hello...........");
-                SearchBarService.productLine = vm.search.searchScope;
-                // $rootScope.$emit("searchIconClicked");
-                if ($location.url() === '/search') {
-                    $log.debug("url search ");
-                    $scope.$emit("searchLaunched");
-                    $scope.$emit("searchbarBlurred");
-                } else {
-                    $location.path('/search');
-                }
+            if (vm.resultSet.length === 1) {
+                $location.path('/part/id/' + vm.resultSet[0].id);
             } else {
-                $log.debug("$emit");
-            }
+                if (vm.search.searchString) {
+                    $log.debug("Hello...........");
+                    SearchBarService.productLine = vm.search.searchScope;
+                    // $rootScope.$emit("searchIconClicked");
+                    if ($location.url() === '/search') {
+                        $log.debug("url search ");
+                        $scope.$emit("searchLaunched");
+                        $scope.$emit("searchbarBlurred");
+                    } else {
+                        $location.path('/search');
+                    }
+                } else {
+                    angular.noop();
+                }
+            }            
         }
     }
 
