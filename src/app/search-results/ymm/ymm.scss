@@ -1,0 +1,137 @@
+.atsDDContent ul {
+    position: relative;
+    display: inline-block;
+    list-style: none outside none;
+    text-indent: 0;
+    margin: 0;
+    padding: 0.1em .15em;
+    vertical-align: top;
+    zoom:1;*display: inline
+}
+
+.atsDDContent li {
+    white-space: nowrap;
+    color: #000;
+    margin: 0 4px 0 0;
+    padding: 0 0 5px 0;
+    position: relative
+}
+
+.atsDDContent li a {
+    display: block;
+    margin: 0
+}
+
+.atsDDContent li a,.atsDDContent li a:visited {
+    text-decoration: none;
+    color: #000;
+    background-color: transparent
+}
+
+.atsDDContent li a:active,.atsDDContent li a:hover {
+    text-decoration: none;
+    background-color: #444C55;
+    color: #FFF;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px
+}
+
+.arrow_box {
+    position: relative;
+   
+}
+.arrow_box:after, .arrow_box:before {
+    bottom: 103%;
+    left: 6%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: #0093c6;
+    border-width: 10px;
+    margin-left: -10px;
+}
+.arrow_box:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #0093c6;
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+
+.arrow_box1:after, .arrow_box:before {
+    left: 6%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    pointer-events: none;
+}
+
+.arrow_box1:after {
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: #0093c6;
+    border-width: 10px;
+    margin-left: -10px;
+}
+.arrow_box1:before {
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #0093c6;
+    border-width: 16px;
+    margin-left: -16px;
+}
+
+
+#makeDropDown,#modelDropDown {
+    height: 300px;
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3; /*3 is just placeholder -- can be anything*/
+            li{
+                display: inline-block;
+                padding-bottom: 20px;
+                width:auto;    
+                a{
+                    color: black;
+                    padding:3px 3px !important;
+                    width:auto;
+                    font-size:14px;
+                    font-weight:600;
+                }
+            }
+}
+
+
+.atsDDContent {
+    border-top:5px solid #0093c6;
+    top:100px;
+
+    .asYearSelect-automotive{
+        width:665px;
+        height:290px;
+        ul{
+            li{
+                font-size:12px;
+                h3{
+                    font-size:14px;
+                    font-weight:600;
+                }
+            }
+        }
+
+        .asEmpty {
+            color: #aaa;
+        }
+    }
+
+}
+
+
+
