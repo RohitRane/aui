@@ -27,11 +27,12 @@ export function PartCardDirective() {
 }
 
 class SearchResultDirectiveController {
-    constructor($log, $scope) {
+    constructor($log, $scope, BreadCrumbService) {
         'ngInject';
         this.dI = {
             log: $log,
-            scope: $scope
+            scope: $scope,
+            BreadCrumbService : BreadCrumbService
         };
           
         /* if(this.part.attrs != null){this.dI.log.debug("if");
@@ -62,6 +63,10 @@ class SearchResultDirectiveController {
         let retUrl;
         url ?  retUrl = url : retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
         return retUrl;
+    }
+    
+    showBack(){
+        this.BreadCrumbService.searchToResults = true;
     }
 }
 

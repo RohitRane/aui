@@ -1,9 +1,18 @@
 <!--Author : Rohit Rane-->
 <div class="bread-crumb">
-    <span class="resultBar"><span ng-show="bc.showSubsetInfo(bc.totalResults,bc.resultSetLimit)">1-{{bc.resultLength}} of </span> <!--<span ng-show="bc.totalResults < bc.resultSetLimit">{{bc.totalResults}}</span>-->{{bc.totalResults}} results for<span class="bold"><span data-ng-repeat="cat in bc.cats track by $index" data-ng-show="cat" >&nbsp;{{cat}}&nbsp;:&nbsp;</span><a><span>"</span>{{bc.searchString}}<span>"</span></a>
+  <span data-ng-if="bc.pageState==='searchResults'" class="resultBar">
+    <span ng-show="bc.showSubsetInfo(bc.totalResults,bc.resultSetLimit)">1-{{bc.resultLength}} of </span> {{bc.totalResults}}
+  results for<span class="bold"><span data-ng-repeat="cat in bc.cats track by $index" data-ng-show="cat" >&nbsp;{{cat}}&nbsp;:&nbsp;</span><a><span>"</span>{{bc.searchString}}<span>"</span></a>
   </span>
   </span>
-  <span class="dropdownBar">
+  <span data-ng-if="bc.pageState==='part'" class="resultBar">
+    <span class="back-section" data-ng-if="bc.showBackButton" data-ng-click="bc.goToSearch()">
+      <i class="fa fa-angle-left"></i>&nbsp;&nbsp;Back to search results for <a href="">"{{bc.searchString}}"</a>
+     </span>
+      <span data-ng-repeat="category in bc.categories track by $index" class="bold">&nbsp;{{category}}&nbsp;:&nbsp;</span>
+      <a href="#">{{bc.partNo}}</a>
+  </span>
+  <span data-ng-if="bc.pageState==='searchResults'" class="dropdownBar">
       <div class="btn-group" uib-dropdown is-open="status.isopen">
         <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
                 Relevance <span class="caret"></span>

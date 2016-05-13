@@ -1,15 +1,37 @@
 /*Author:Rohit Rane*/
 
 export class BreadCrumbController {
-    constructor($log, $timeout, $rootScope, SearchBarService) {
+    constructor($log, $timeout, $rootScope, $state, $scope, SearchBarService, BreadCrumbService) {
         'ngInject';
 
         let vm = this;
+        vm.DI = () => ({ $state });
 
-        
+        $scope.$watch(() => {
+            return vm.categories;
+        }, (n, o) => {
+            console.log("categories :", n, o);
+            console.log("VM  HERE :", n);
+        });
+
+
+        if ($state.is('searchResults')) {
+            vm.pageState = 'searchResults';
+            //console.log("In search page");
+        } else if ($state.is('part')) {
+            vm.pageState = 'part';
+            vm.searchString = SearchBarService.srchStr;
+        }
+
         vm.cats = [false, false, false];
         vm.cats[0] = vm.selMainCategory;
 
+
+        if (BreadCrumbService.searchToResults) {
+            vm.showBackButton = true;
+        } else {
+            vm.showBackButton = false;
+        }
 
         console.log("CAts here :", vm.cats);
 
@@ -38,20 +60,7 @@ export class BreadCrumbController {
                     vm.cats[2] = selectedCategory.name;
                 }
             }
-            
-            /*if (vm.cats[1] === null || angular.isUndefined(vm.cats[1])) {
-                vm.cats[1] = selectedCategory.name;
-            } else if (vm.cats[0] === "All") {
-                if (vm.cats[2] === null || angular.isUndefined(vm.cats[2])) {
-                    vm.cats[2] = selectedCategory.name;
-                }
-                else {
-                    vm.cats[2] = selectedCategory.name;
-                }
-            }
-            else {
-                vm.cats[1] = selectedCategory.name;
-            }*/
+
             $log.debug("Cats :", vm.cats);
         });
 
@@ -67,12 +76,19 @@ export class BreadCrumbController {
             deregistrationCallback();
             deregistrationCallback2();
         });
+
     }
 
-    showSubsetInfo(totalResults, resultSetLimit){
+    showSubsetInfo(totalResults, resultSetLimit) {
         let retValue = false;
-        console.log("Type OF :",typeof(totalResults));
-        (Number(totalResults) > Number(resultSetLimit))?retValue = true : retValue = false;
+        console.log("Type OF :", typeof (totalResults));
+        (Number(totalResults) > Number(resultSetLimit)) ? retValue = true : retValue = false;
         return retValue;
+    }
+
+    goToSearch() {
+        let vm = this;
+        let {$state} = vm.DI();
+        $state.go("searchResults");
     }
 }

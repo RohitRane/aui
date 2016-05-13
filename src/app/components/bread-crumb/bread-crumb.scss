@@ -34,4 +34,10 @@
             background-color: $support_color_light_one;
         }
     }
+    
+    .back-section{
+      &:hover{
+        text-decoration: underline
+      }      
+    }
 }

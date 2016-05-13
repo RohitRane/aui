@@ -1,7 +1,7 @@
 <form class="navbar-form navbar-left search-bar" role="search">
   <div class="form-group">
     <input type="text" id="search-box" class="form-control" data-ng-model="searchBar.search.searchString" 
-    typeahead-on-select="searchBar.gotoPartDetails($item, $model, $label, $event)" uib-typeahead="result as result.partNumber+' '+result.lineDesc+' '+result.partDesc for result in searchBar.textTyped($viewValue)" 
+    typeahead-on-select="searchBar.gotoPartDetails($item, $model, $label, $event)" uib-typeahead="result as result.suggestString for result in searchBar.textTyped($viewValue)" 
     placeholder="Search by part number, product type, product line, keyword" typeahead-focus-first="searchBar.search.firstSelect" typeahead-popup-template-url="app/components/header/search-bar/typeahead-popup.html" typeahead-template-url="{{searchBar.search.typeaheadTemplate}}"
     data-ng-focus="searchBar.focus()" data-ng-blur="searchBar.blur()">
   </div>

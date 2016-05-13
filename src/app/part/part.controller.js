@@ -25,7 +25,7 @@ export class PartController {
         vm.lensDimensions = {
             height: 80,
             width: 80
-        };
+        };        
 
         vm.hideForNow = true;
 
@@ -36,7 +36,7 @@ export class PartController {
         let {$log, $stateParams, SearchBarService, dataServices} = vm.DI();
         $log.debug("part no :", $stateParams);
         vm.productLine = SearchBarService.productLine;
-        $log.debug("state type :",$stateParams.type);
+        $log.debug("state type :", $stateParams.type);
         if ($stateParams.type === "partnum") {
             $log.debug("searching by part num.");
             dataServices.partByPartNum($stateParams.val).then(function (response) {

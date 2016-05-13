@@ -1,5 +1,5 @@
 export class MainController {
-    constructor($scope, $timeout, $log, $document, $window) {
+    constructor($scope, $rootScope, $state, $timeout, $log, $document, $window, BreadCrumbService) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({ $scope, $timeout, $log, $document });
@@ -17,19 +17,17 @@ export class MainController {
         if ($window.innerHeight > $window.innerWidth) {
             vm.landscape = false;
         }
-        /*angular.element($window).bind('resize', function () {
-            console.log("resized");
-            console.log($window.innerHeight);
-            console.log($window.innerWidth);
-            if ($window.innerHeight > $window.innerWidth) {
-                console.log("true");
-                vm.landscape = false;
+        $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
+            $log.debug("From : ", from);
+            $log.debug("To : ", to);
+            if (from.name === "searchResults" && to.name === "part" && $state.is('part')) {
+                $log.debug("travelling from search res to part.", vm);
+                BreadCrumbService.searchToResults = true;
+            } else {
+                BreadCrumbService.searchToResults = false;
             }
-            else {
-                vm.landscape = true;
-            }
-            $scope.$apply();
-        })*/
+        });
+
 
     }
 
@@ -46,8 +44,8 @@ export class MainController {
             var overlay = angular.element($document[0].getElementById('overlay'));
             $log.debug(overlay);
             overlay.css("height", mcHeight + 'px');
-        });
-
+        });        
+        
         //});
 
     }

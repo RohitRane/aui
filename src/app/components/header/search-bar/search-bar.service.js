@@ -9,7 +9,9 @@ export class SearchBarService {
     }
 
     get srchStr() {
-        return this._srchStr;        
+      this._srchStr =sessionStorage.srchStr;
+        return this._srchStr;      
+          
     }
 
     set srchStr(newSrchStr) {

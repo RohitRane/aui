@@ -1,11 +1,12 @@
 <div class="partDetails">
-  <div class="breadcrumb-section">
+  <!--<div class="breadcrumb-section">
     <ol class="breadcrumb">
       <li data-ng-repeat="category in part.partData.categories"><a href="#">{{category}} </a></li>
       <li class="active"><a href="#">{{part.partData.partNumber}}</a></li>
     </ol>
-  </div>
-  <div class="panel">
+  </div>-->
+  <bread-crumb categories="part.partData.categories" part-no="{{part.partData.partNumber}}"></bread-crumb>
+  <div class="panel part-panel">
     <div class="panel-heading ">
       <header class="section-title bottom">
         {{part.partData.partNumber}},&nbsp;{{part.partData.partDesc}}

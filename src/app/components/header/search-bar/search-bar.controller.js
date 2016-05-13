@@ -1,13 +1,13 @@
 export class SearchBarController {
 
-    constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService) {
+    constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService, BreadCrumbService) {
 
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, BreadCrumbService, SearchBarService })
 
         let deregistrationCallback = $rootScope.$on("reachedhome", function () {
             vm.search.searchString = null;
@@ -50,14 +50,14 @@ export class SearchBarController {
         };
 
         /* On Refresh string should be retained*/
-        if(sessionStorage.srchStr && $location.path() != "/"){
+        if (sessionStorage.srchStr && $location.path() != "/") {
             vm.search.searchString = sessionStorage.srchStr;
             vm.search.searchScope = sessionStorage.productLine;
         }
 
         /* On Back button click string should be retained*/
         $rootScope.$on("backButtonSetSearchString", function () {
-            console.log("Back in backButtonSetSearchString",sessionStorage.productLine);
+            console.log("Back in backButtonSetSearchString", sessionStorage.productLine);
             vm.search.searchString = sessionStorage.srchStr;
         });
 
@@ -94,39 +94,47 @@ export class SearchBarController {
         return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
             $log.debug("abcd Response in Controller : ", response);
             vm.totalResults = response.totalResults;
+            //vm.displayViewAll = response.displayViewAll;
             vm.resultSetLimit = response.resultSetLimit;
             response.totalResults === 1 ? vm.search.firstSelect = true : vm.search.firstSelect = false;
 
-            vm.resultSet = response.parts;
+            let resultSet = [];
+            angular.forEach(response.partSuggestList, (part) => {
+                
+                if (part.suggestType === "PART_SUGGEST") {
+                    $log.debug("PART >>>>>>>>", part);
+                    part.typeId = 2;
+                    resultSet.push(part);
+                }
+            });
+            $log.debug("r set :", resultSet);
+            
+            vm.resultSet = resultSet;
             $log.debug("REsult SET :",vm.resultSet);
-
-            let resultSet = response.parts,
-                firstExact = true,
+            //let resultSet = response.parts,
+            let firstExact = true,
                 firstClose = true,
                 firstSuggest = true;
-            resultSet = resultSet.map(function (part) {
-                part.typeId = 2;
-                return part;
-            });
-            if (response.totalResults > vm.resultSetLimit) {
+            
+            if (response.displayViewAll) {
+                $log.debug("in here...",resultSet);
                 let obj = {
-                    lineDesc: "View all " + response.totalResults + " matches",
+                    suggestString: "<a>View all " + response.totalResults + " matches</a>",
                     typeId: 3
                 };
                 resultSet.push(obj);
             }
-
-            angular.forEach(response.partCategoryList, function (listItem) {
-                let obj = {
-                    partNumber: searchString + " in ",
-                    lineDesc: "<a>" + listItem + "</a>",
-                    typeId: 4,
-                    productCategory: listItem
-                };
-                resultSet.push(obj);
+            
+            
+            angular.forEach(response.partSuggestList, (part) => {
+                if (part.suggestType === "CAT_SUGGEST") {
+                    $log.debug("CATEGORY >>>>>>>>", part);
+                    part.typeId = 4;
+                    resultSet.push(part);
+                }
             });
-
-            //let resultSet = response.parts.length > vm.search.resultCountUpperLimit ? response.parts.slice(0, vm.search.resultCountUpperLimit) : response.parts;
+            
+            
             angular.forEach(resultSet, function (part) {
                 if (part.typeId === 1 && firstExact) {
                     part.firstExact = true;
@@ -138,8 +146,10 @@ export class SearchBarController {
                     part.firstSuggest = true;
                     firstSuggest = false;
                 }
-                $log.debug($rootScope.firstExactIndex + " " + vm.firstCloseIndex + " " + vm.firstSuggestIndex);
+                //$log.debug($rootScope.firstExactIndex + " " + vm.firstCloseIndex + " " + vm.firstSuggestIndex);
             });
+            
+            $log.debug("Result set :",resultSet);
             
             return resultSet.map(function (part) {
                 return part;
@@ -180,7 +190,7 @@ export class SearchBarController {
 
     gotoPartDetails(item) {
         let vm = this;
-        let {$log, $location, $rootScope, $timeout, SearchBarService, $scope} = vm.DI();
+        let {$log, $location, $rootScope, $timeout, SearchBarService, BreadCrumbService, $scope} = vm.DI();
 
         $log.debug("Scope search :", vm.search.searchString);
         SearchBarService.categoryfilters = [];
@@ -193,13 +203,13 @@ export class SearchBarController {
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
             $log.debug("Srcchhhh :::", vm.search.searchString);
-            item.lineDesc = "";
-            item.partNumber = item.partNumber.replace(" in", "");
+            /*item.lineDesc = "";
+            item.partNumber = item.partNumber.replace(" in", "");*/
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
-            SearchBarService.productCategory = item.productCategory;
+            SearchBarService.productCategory = item.suggestId;
             $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": item.productCategory, "suggestion": true });
+                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
                 SearchBarService.productLine = vm.search.searchScope;
             });
 
@@ -216,15 +226,18 @@ export class SearchBarController {
             vm.searchIconClick();
         }
         else {
-            vm.search.searchString = vm.search.searchString.partNumber + ' ' + vm.search.searchString.partDesc;
-            $location.path('/part/id/' + item.id);
+            vm.search.searchString = vm.search.searchString.suggestString;
+            $timeout(() => {
+                BreadCrumbService.searchToResults = false;
+            });
+            $location.path('/part/id/' + item.suggestId);            
             vm._blurSrchBox();
         }
     }
 
     searchIconClick() {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
+        let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope, $timeout} = vm.DI();
         vm._blurSrchBox();
         SearchBarService.categoryfilters = [];
         SearchBarService.filters = [];
@@ -232,10 +245,14 @@ export class SearchBarController {
         $scope.$emit("searchbarBlurred");
         $rootScope.$emit("clearCategories");
         SearchBarService.productCategory = "";
+        $log.debug("string....... :",vm.search.searchString);
         if (vm.search.searchString) {
-            $log.debug("Result set :", vm.resultSet);
+            $log.debug("icon click Result set :", vm.resultSet);
             $log.debug("vm.search.searchString ", vm.search.searchString);
-            if (vm.resultSet.length === 1) {
+            if (vm.resultSet && vm.resultSet.length === 1) {
+                $timeout(() => {
+                    BreadCrumbService.searchToResults = false;
+                });
                 $location.path('/part/id/' + vm.resultSet[0].id);
             } else {
                 if (vm.search.searchString) {
@@ -252,7 +269,7 @@ export class SearchBarController {
                 } else {
                     angular.noop();
                 }
-            }            
+            }
         }
     }
 
