@@ -100,9 +100,8 @@ export class SearchBarController {
 
             let resultSet = [];
             angular.forEach(response.partSuggestList, (part) => {
-                
-                if (part.suggestType === "PART_SUGGEST") {
-                    $log.debug("PART >>>>>>>>", part);
+                if (part.suggestType === "CAT_SUGGEST") {
+                    $log.debug("CATEGORY >>>>>>>>", part);
                     part.typeId = 2;
                     resultSet.push(part);
                 }
@@ -127,22 +126,22 @@ export class SearchBarController {
             
             
             angular.forEach(response.partSuggestList, (part) => {
-                if (part.suggestType === "CAT_SUGGEST") {
-                    $log.debug("CATEGORY >>>>>>>>", part);
+                
+                if (part.suggestType === "PART_SUGGEST") {
+                    $log.debug("PART >>>>>>>>", part);
                     part.typeId = 4;
                     resultSet.push(part);
                 }
-            });
-            
+            });        
             
             angular.forEach(resultSet, function (part) {
                 if (part.typeId === 1 && firstExact) {
                     part.firstExact = true;
                     firstExact = false;
-                } else if (part.typeId === 2 && firstClose) {
+                } else if (part.typeId === 4 && firstClose) {
                     part.firstClose = true;
                     firstClose = false;
-                } else if (part.typeId === 4 && firstSuggest) {
+                } else if (part.typeId === 2 && firstSuggest) {
                     part.firstSuggest = true;
                     firstSuggest = false;
                 }
@@ -198,7 +197,7 @@ export class SearchBarController {
         SearchBarService.selectdeFilters = [];
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
-        if (item.typeId === 4) {
+        if (item.typeId === 2) {
             SearchBarService.typeId = item.typeId;
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
