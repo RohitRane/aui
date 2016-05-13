@@ -30,7 +30,12 @@ export class SearchResultsController {
             deregistrationCallback2();
         });
         
-        vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
+        if(SearchBarService.backBottonPressed){
+            vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
+        }else{
+            vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
+        }
+        
         /*dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
             vm.results = response;

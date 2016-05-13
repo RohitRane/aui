@@ -184,6 +184,8 @@ export class SearchBarController {
 
         $log.debug("Scope search :", vm.search.searchString);
         SearchBarService.categoryfilters = [];
+        SearchBarService.filters = [];
+        SearchBarService.selectdeFilters = [];
         SearchBarService.productLine = vm.search.searchScope;
         $log.debug("Item :", item);
         if (item.typeId === 4) {
@@ -225,6 +227,8 @@ export class SearchBarController {
         let {$log, $location, $rootScope, SearchBarService, $scope} = vm.DI();
         vm._blurSrchBox();
         SearchBarService.categoryfilters = [];
+        SearchBarService.filters = [];
+        SearchBarService.selectdeFilters = [];
         $scope.$emit("searchbarBlurred");
         $rootScope.$emit("clearCategories");
         SearchBarService.productCategory = "";

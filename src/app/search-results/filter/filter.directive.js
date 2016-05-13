@@ -46,22 +46,28 @@ class FilterDirectiveController{
          $scope.$watch(function(){  
              return vm.list;
          },function(){ 
-             vm.resetList();
-             if(vm.listPreviousFilter.length > 1){
-                 for(let x of vm.listPristine){
-                     x.priority = 2;
-                     for(let y of vm.listPreviousFilter){
-                         if(x.name == y.name){
-                             if(y.bucketChanged){
-                                Object.assign(x, y);
-                                x.priority = 1;
-                             }
-                             break;
-                         }
-                     }
-                 }
+             if(SearchBarService.backBottonPressed){
+                 vm.listPristine = SearchBarService.filters;
+                 SearchBarService.backBottonPressed = false;
+             }else{
+                vm.resetList();
+                if(vm.listPreviousFilter.length > 1){
+                    for(let x of vm.listPristine){
+                        x.priority = 2;
+                        for(let y of vm.listPreviousFilter){
+                            if(x.name == y.name){
+                                if(y.bucketChanged){
+                                    Object.assign(x, y);
+                                    x.priority = 1;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+                SearchBarService.filters = vm.listPristine;
+                vm.listPreviousFilter = [];
              }
-             vm.listPreviousFilter = [];
          });
     } 
     
@@ -83,12 +89,7 @@ class FilterDirectiveController{
       if(vm.totalCount == 0){
         vm.categoryPristine = [];
       }
-      
-      /* In case of typeId == 4 categories should not be retained only filters should be shown*/
-      if(SearchBarService.typeId == 4){
-         //vm.categoryPristine = [];
-      }
-      
+
       /* convert array to object */
       if(vm.category.length > 0){
             vm.categoryPristine = vm.category;
@@ -231,6 +232,7 @@ class FilterDirectiveController{
         }
         vm.listPreviousFilter = vm.listPristine;
        // $scope.$emit("searchLaunched", filterObjectArray);
+        SearchBarService.selectdeFilters = filterObjectArray;
         vm.selectedItemsChanged({selectedItems:filterObjectArray});
         resolve();
         });

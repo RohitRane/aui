@@ -69,6 +69,18 @@ export class SearchBarService {
     set filters(newfilters) {
         if (newfilters) {
             this._filters = newfilters;
+            sessionStorage.filters = angular.toJson(this._filters);
+        }
+    }
+
+    get selectdeFilters(){
+        return this._selectdeFilters;
+    }
+    
+    set selectdeFilters(newselectdefilters){
+        if(newselectdefilters){
+            this._selectdeFilters = newselectdefilters;
+            sessionStorage.selectdeFilters = angular.toJson(this._selectdeFilters);
         }
     }
 
@@ -80,7 +92,6 @@ export class SearchBarService {
         if (newcategoryfilters) {
             this._categoryfilters = newcategoryfilters;
             sessionStorage.categoryfilters = angular.toJson(this._categoryfilters);
-            //console.log("Back in " ,sessionStorage.categoryfilters , this._categoryfilters);
         }
     }
 
@@ -98,6 +109,8 @@ export class SearchBarService {
          delete sessionStorage.productLine;
          delete sessionStorage.categoryfilters;
          delete sessionStorage.productCategory;
+         delete sessionStorage.filters;
+         delete sessionStorage.selectdeFilters;
          delete SearchBarService.backBottonPressed;
          console.log("Back in clear 1", sessionStorage.categoryfilters);
     }
@@ -107,6 +120,8 @@ export class SearchBarService {
         sessionStorage.productLine = this._productLine;
         sessionStorage.productCategory = this._productCategory;
         sessionStorage.categoryfilters = this._categoryfilters;
+        sessionStorage.filters = this._filters;
+        sessionStorage.selectdeFilters = this._selectdeFilters;
         //console.log("Back in service Save ",sessionStorage.categoryfilters);
         /*sessionStorage.productLine = this._productLine;
         sessionStorage.productCategory = this._productCategory;
@@ -120,6 +135,8 @@ export class SearchBarService {
         this._productLine = sessionStorage.productLine;
         this._productCategory = sessionStorage.productCategory;
         this._categoryfilters =  angular.fromJson(sessionStorage.categoryfilters);
+        this._filters = angular.fromJson(sessionStorage.filters);
+        this._selectdeFilters = angular.fromJson(sessionStorage.selectdeFilters);
         console.log("Back in _retrieveFromSession" ,sessionStorage.productLine);
        /* this._productLine = sessionStorage.productLine;
         this._productCategory = sessionStorage.productCategory;
