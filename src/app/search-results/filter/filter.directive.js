@@ -6,6 +6,7 @@ export function FilterDirective() {
         scope: {
             list: '=',
             category: '=',
+            totalCount: '=',
             selectedItemsChanged: '&'
         },
         controller: FilterDirectiveController,
@@ -16,9 +17,13 @@ export function FilterDirective() {
 }
 
 class FilterDirectiveController{ 
-    constructor($log, SearchBarService, dataServices, $scope, $rootScope){
+    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $timeout){
          'ngInject';
          let vm = this;
+         
+         $rootScope.$on("clearCategoryFilter",function(){
+            vm.categoryPristine = [];
+         });
          vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
          /* array which holds the updated attributes list */
          vm.listPristine = [];
@@ -26,12 +31,16 @@ class FilterDirectiveController{
          vm.listPreviousFilter = [];
          /* array which holds the updated attributes category */
          vm.categoryPristine = [];
-         
+        
          /* watch for the change in category */ 
          $scope.$watch(function(){  
+            console.log("XYXXXXX");
              return vm.category;
          },function(){ 
-             vm.resetCategory();
+            $timeout(function(){
+               vm.resetCategory();
+            },200);
+             
          });
         
          /* watch for the change in list */ 
@@ -62,9 +71,14 @@ class FilterDirectiveController{
       let vm = this;
       let { SearchBarService } = vm.DI();
       
+      
+      if(vm.totalCount == 0){
+        vm.categoryPristine = [];
+      }
+      
       /* In case of typeId == 4 categories should not be retained only filters should be shown*/
       if(SearchBarService.typeId == 4){
-          vm.categoryPristine = [];
+         //vm.categoryPristine = [];
       }
       
       /* convert array to object */
@@ -80,8 +94,11 @@ class FilterDirectiveController{
      
       /* In case of only one product line filters should be shown along with the category */
       if(vm.category.length == 1){  
-          vm.categoryFilter(vm.categoryPristine[0]);
+          //vm.categoryFilter(vm.categoryPristine[0]);
+          vm.categoryPristine[0].select = true;
       }
+      
+      console.log("vm.category in directive", vm.category, vm.categoryPristine);
     }
     
     /* call api to get the filters for the selected category and selected category should be heighlighted */ 
@@ -97,10 +114,8 @@ class FilterDirectiveController{
         });
         selectedCategory.select = true;
         if(SearchBarService.productLine == "All"){
-          console.log("test if", SearchBarService.productLine);
            SearchBarService.productLine = selectedCategory.name;
         }else{
-          console.log("test else", SearchBarService.productLine);
            SearchBarService.productCategory = selectedCategory.name;
         }
         //SearchBarService.productCategory = selectedCategory.name;
@@ -114,24 +129,14 @@ class FilterDirectiveController{
         let vm = this;
         let obj = {};
         vm.tempBuckets = [];
-         if(x.type == "STRING" || x.type == "NUMERIC"){ 
-             angular.forEach(x.buckets, function(obj){
-                vm.tempBuckets.push({
-                key : obj.key,
-                count : obj.count,
-                select : false
-                });
+
+        angular.forEach(x.buckets, function(obj){
+            vm.tempBuckets.push({
+            key : obj.key,
+            count : obj.count,
+            select : false
             });
-         }else if(x.type == "NUMERIC_RANGE"){
-             angular.forEach(x.buckets, function(obj){
-                 console.log("start", obj.start);
-                vm.tempBuckets.push({
-                start: obj.start,
-                end: obj.end,
-                select : false
-                });
-            });
-         }
+        });
         
         obj = {
             name: x.name,
@@ -152,36 +157,7 @@ class FilterDirectiveController{
       let {  } = vm.DI();
       vm.listPristine = [];
       for(let x of vm.list){
-        if(x.type == "STRING"){
-            vm.listPristine.push (vm.pushCheckboxData(x));
-        }else if(x.type == "NUMERIC_RANGE"){
-             vm.listPristine.push (vm.pushCheckboxData(x));
-        }else if(x.type == "NUMERIC"){
-             vm.listPristine.push (vm.pushCheckboxData(x));
-            /*if(x.buckets.length == 1){
-                vm.listPristine.push (vm.pushCheckboxData(x));
-            }else{
-                let xVals = x.buckets.map(function(val) { return parseFloat(val.key) * 1000; });
-                vm.listPristine.push({
-                    name: x.name,
-                    type: x.type,
-                    singleObject: false,
-                    minValue: Math.floor(Math.min(...xVals)/1000),
-                    maxValue: Math.ceil(Math.max(...xVals)/1000),
-                    options: {
-                        floor: Math.floor(Math.min(...xVals) / 1000),
-                        ceil:  Math.ceil(Math.max(...xVals) / 1000),
-                        step: 1,
-                        id: x.name,
-                        onChange: function(sliderId, modelValue, highValue){
-                         vm.apicall().then(()=>{
-                                angular.noop();
-                            });
-                        }
-                    }
-                });
-            }*/
-        }
+        vm.listPristine.push (vm.pushCheckboxData(x));
       }  
     }
     
@@ -194,7 +170,7 @@ class FilterDirectiveController{
                 obj.select = false
             });
         }else{
-            list.viewSelect = "Unselect";
+            list.viewSelect = "Unselect All";
             angular.forEach(list.buckets, function(obj){
                 obj.select = true
             });
@@ -225,23 +201,13 @@ class FilterDirectiveController{
         $scope.$emit("checkSearch", SearchBarService.srchStr);
          /* put all the selected filters in filterObjectArray */
          for (let x of vm.listPristine) {
-             let filterArray = [];
-             let filterObject = {};
-                 if(x.type == "STRING" || x.type == "NUMERIC"){
-                     for(let obj=0; obj < x.buckets.length; obj++){
-                         x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
-                     }
-                }else{
-                   /* if(x.singleObject){
-                        x.buckets[0].select ? filterArray.push(x.buckets[0].key) : "";
-                    }else{
-                       if(x.minValue > x.options.floor
-                       || x.maxValue < x.options.ceil){
-                           filterArray.push(x.minValue);
-                           filterArray.push(x.maxValue);
-                       }
-                    }*/
-                }
+            let filterArray = [];
+            let filterObject = {};
+
+            for(let obj=0; obj < x.buckets.length; obj++){
+                x.buckets[obj].select ? filterArray.push(x.buckets[obj].key) : "";
+            }
+            
             if(filterArray.length){
                 filterObject = {
                 name: x.name,
@@ -253,7 +219,7 @@ class FilterDirectiveController{
             }else{
                 x.bucketChanged = false;
             }
-         }
+        }
         vm.listPreviousFilter = vm.listPristine;
        // $scope.$emit("searchLaunched", filterObjectArray);
         vm.selectedItemsChanged({selectedItems:filterObjectArray});

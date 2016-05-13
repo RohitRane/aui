@@ -5,14 +5,20 @@
   
   <div class="row search-results">
     <div class="col-md-2 filter">
-      <filter-directive ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
+      <filter-directive ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
     </div>
     <div class="col-md-8">
-      <h5>Related : <a>{{srchRes.searchString}}</a></h5>
-      <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
-      <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit">
-        <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>
-        <!--<i class="glyphicon-refresh glyphicon-refresh-animate"></i>-->
+      <div ng-show="srchRes.results.totalResults">
+        <h5>Related : <a>{{srchRes.searchString}}</a></h5>
+        <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
+        <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit">
+          <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>
+          <!--<i class="glyphicon-refresh glyphicon-refresh-animate"></i>-->
+        </div>
+      </div>
+      <div class="no-results" ng-if="!(srchRes.resultLoading || srchRes.results.totalResults)">
+        <p>Your Search for "<span class="bold">{{srchRes.searchString}}</span>" has found 0 results.</br>
+        Kindly redefine your search term or explore the parts via search bar.</p>
       </div>
     </div>
     <div class="col-md-2 parts ">

@@ -40,7 +40,7 @@ class SearchResultDirectiveController {
              this.part.attrList =[];
          }*/
 
-        this.specLimit = 4;
+        this.specLimit = 5;
         this.toggle = false;
         this.specToggleName = "Expand";
     }
@@ -49,7 +49,7 @@ class SearchResultDirectiveController {
 
         if (this.toggle) {
             this.specToggleName = "Expand";
-            this.specLimit = 4;
+            this.specLimit = 5;
         }
         else {
             this.specToggleName = "Collapse";

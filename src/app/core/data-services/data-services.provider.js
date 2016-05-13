@@ -20,9 +20,10 @@ export function dataServices() {
             autoSearch: autoSearch(DI),
             catSearch: catSearch(DI),
             part: part(DI),
+            partByPartNum: partByPartNum(DI),
             appInfo: appInfo(DI)
         }
-    }
+    }   
 }
 
 //import your api request files here
@@ -30,4 +31,5 @@ import { partSearch } from './requests/part-search.request';
 import { autoSearch } from './requests/auto-search.request';
 import { catSearch } from './requests/cat-search.request';
 import { part } from './requests/part.request';
+import { partByPartNum } from './requests/part-by-pnum.request';
 import { appInfo } from './requests/app-info.request';

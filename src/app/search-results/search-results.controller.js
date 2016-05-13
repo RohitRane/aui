@@ -18,12 +18,18 @@ export class SearchResultsController {
             $scope.$emit("searchbarBlurred");
         });
 
-        $rootScope.$on('searchLaunched', function (event, payload) {
+        vm.resultLoading = false;
+
+       let deregistrationCallback2 = $rootScope.$on('searchLaunched', function (event, payload) {
             $log.debug("$on", payload);
             vm.resultStartIndex = 0;
             vm.getParts(0, 10, payload);
         });
-
+        
+        $rootScope.$on('$destroy', function () {
+            deregistrationCallback2();
+        });
+        
         vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         /*dataServices.partSearch().then(function (response) {
             $log.debug("Response in Controller :", response);
@@ -156,9 +162,12 @@ export class SearchResultsController {
         /*if (typeId === 4) {*/
         //from ? from : from=0;
         //size ? size : size=10;
+        vm.resultLoading = true;
+        console.log(vm.results.totalResults+ " "+ vm.resultLoading);
         $log.debug("SearchBarService.productCategory:", SearchBarService.productCategory);
         dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload).then(function (response) {
             // $log.debug("Response in Controller :", response);
+            vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
                 vm.results.parts = response.parts;
             } else {
@@ -184,6 +193,7 @@ export class SearchResultsController {
             });
             $log.debug("results :", vm.results);
         }, function (error) {
+            vm.resultLoading = false;
             $log.debug("Error in response :", error);
         });
         /*} else {

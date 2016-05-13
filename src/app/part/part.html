@@ -8,9 +8,7 @@
   <div class="panel">
     <div class="panel-heading ">
       <header class="section-title bottom">
-        <!--1202B N103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)-->
-        {{part.partData.partNumber}},
-        <!--<span data-ng-repeat="category in part.partData.categories">{{category}},</span>-->{{part.partData.partDesc}}
+        {{part.partData.partNumber}},&nbsp;{{part.partData.partDesc}}
       </header>
     </div>
     <div class="panel-body">
@@ -58,7 +56,7 @@
                 </div>
               </div>
             </div>
-            <div class="panel panel-default elearn">
+            <div class="panel panel-default elearn" data-ng-hide="part.hideForNow">
               <div class="panel-body">
                 <div class="row">
                   <div class="col-sm-12">
@@ -92,10 +90,7 @@
               <div class="panel-body resetPadding">
                 <div class='poster' style="display:none"></div>
                 <div class='partDetails'>
-                  <label data-ng-hide="part.hideForNow" class="partDesc">
-                    Spicer@ E-Series Medium-Duty Steer Axles improve vehicle performance for on-highway, city delivery, and bus applications
-                    The exclusive combination of our parented Dana Technologies and designs ensures long service life, reducedmaintenance,
-                    and overall, highly durable products.
+                  <label data-ng-if="part.partData.longDesc" class="partDesc" data-ng-bind="part.partData.longDesc">                    
                   </label>
                   <label class="partDetailsTabDesc">Specification</label>
                   <table class="table">
@@ -124,9 +119,9 @@
                   </table>
                   <div class="panel learn partResultsBM">
                     <ul>
-                      <li><a href="#">Identify your part</a></li>
+                      <!--<li><a href="#">Identify your part</a></li>
                       <li><a href="#">Exploded View</a></li>
-                      <li><a href="#">Discussions</a></li>
+                      <li><a href="#">Discussions</a></li>-->
                     </ul>
                   </div>
                   <div data-ng-hide="part.hideForNow" class="panel">
@@ -193,7 +188,7 @@
   <!--/row-->
   <!--/row-->
   <!-- thumbnail for PAIRS With -->
-  <div class="row pairCarousel">
+  <div data-ng-hide="part.hideForNow" class="row pairCarousel">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="panel panel-default part-panel">
         <div class="panel-header top-bottom-gap">
@@ -255,7 +250,7 @@
   </div>
   <!-- thumbnail You also bought -->
   <!-- thumbnail for PAIRS With -->
-  <div class="row pairCarousel">
+  <div data-ng-hide="part.hideForNow" class="row pairCarousel">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="panel panel-default part-panel">
         <div class="panel-header top-bottom-gap">
@@ -317,7 +312,7 @@
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a></div>
     </div>
   </div>
-  <div class="">
+  <div data-ng-hide="part.hideForNow" class="">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
         <div class="section-title bottom top-bottom-gap">Identify your part</hr>
@@ -326,7 +321,7 @@
       </div>
     </div>
   </div>
-  <div class="">
+  <div data-ng-hide="part.hideForNow" class="">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
         <div class="row bottom top-bottom-gap">
@@ -344,7 +339,7 @@
       </div>
     </div>
   </div>
-  <div class="">
+  <div data-ng-if="part.partData.bom.length>0" class="">
     <div class="panel panel-default">
       <div class="panel-body">
         <table class="table">
@@ -360,7 +355,7 @@
             <tr data-ng-repeat="bom in part.partData.bom">
               <td data-ng-bind="bom.no"></td>
               <td data-ng-bind="bom.level"></td>
-              <td><a href="#" data-ng-bind="bom.partNumber"></a></td>
+              <td><a href="/part/partnum/?val={{bom.partNumber}}" data-ng-bind="bom.partNumber"></a></td>
               <td data-ng-bind="bom.quantity"></td>
             </tr>
             <!--<tr>
@@ -386,7 +381,7 @@
       </div>
     </div>
   </div>
-  <div class="">
+  <div data-ng-hide="part.hideForNow" class="">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
         <div class="row bottom top-bottom-gap">

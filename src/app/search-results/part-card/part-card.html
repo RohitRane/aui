@@ -5,20 +5,20 @@
       <div class="panel-heading">
         <!--<span><img src="assets/images/icon_feature.jpg" alt="http://placehold.it/50x50"></span>-->
        
-        <a class="description" href="/part/{{partCard.part.id}}"><span class="name">{{partCard.part.displayName}}</span></a>
+        <a class="description" href="/part/id/{{partCard.part.id}}"><span class="name">{{partCard.part.displayName}}</span></a>
         <span class="cart pull-right">
             <!--<span>$150</span>-->
-            <span>Add to Orderlist <span class="caret"></span></span>
-            <span><img src="assets/images/icon_shoppingCart.jpg"></span>
+            <span>Add to Orderlist <!--<span class="caret">--></span></span>
+            <!--<span><img src="assets/images/icon_shoppingCart.jpg"></span>-->
         </span>
         <div class="hrLine"></div>
       </div>
       <div class="panel-body">
         <div class="row">
-          <div class="col-md-3">
-            <a href="/part/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part.imageUrl)}}"></a>
+          <div class="col-md-4">
+            <a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part.imageUrl)}}"></a>
           </div>
-          <div class="col-md-5" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
+          <div class="col-md-8" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
             <ul ng-show="partCard.part.attrList.length">
               <li>Specifications</li>
               <li data-ng-click="partCard.toggleSpecs()"><a>{{partCard.specToggleName}}</a></li>
@@ -30,7 +30,7 @@
               </tr>
             </table>
           </div>
-          <div class="col-md-4">
+         <!-- <div class="col-md-4">
             <img alt="http://placehold.it/30x30" src="assets/images/Vector.png">
             <div>
               <p>MMS<sup>TM</sup>Hub</p>
@@ -40,7 +40,7 @@
                 <li data-ng-repeat="list in partCard.part.innovation.features">{{list}}</li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

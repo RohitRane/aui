@@ -6,7 +6,7 @@ export class BreadCrumbController {
 
         let vm = this;
 
-
+        
         vm.cats = [false, false, false];
         vm.cats[0] = vm.selMainCategory;
 
@@ -22,7 +22,7 @@ export class BreadCrumbController {
                     console.log("Hurray");
                     vm.cats = [false, false, false];
                     vm.cats[0] = selectedCategory.name;
-                }else{
+                } else {
                     console.log("Hip hip");
                     vm.cats = [false, false, false];
                     vm.cats[0] = vm.selMainCategory;
@@ -67,5 +67,12 @@ export class BreadCrumbController {
             deregistrationCallback();
             deregistrationCallback2();
         });
+    }
+
+    showSubsetInfo(totalResults, resultSetLimit){
+        let retValue = false;
+        console.log("Type OF :",typeof(totalResults));
+        (Number(totalResults) > Number(resultSetLimit))?retValue = true : retValue = false;
+        return retValue;
     }
 }
