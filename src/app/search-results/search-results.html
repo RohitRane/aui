@@ -1,5 +1,5 @@
 <div style="background-color:white;">
-  <ymm-directive></ymm-directive>
+  <ymm-directive ng-show="srchRes.productLine == 'Automotive'"></ymm-directive>
   <bread-crumb result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}"
   sel-main-category="{{srchRes.productLine}}" search-string="{{srchRes.searchString}}"></bread-crumb>
   
@@ -9,7 +9,8 @@
     </div>
     <div class="col-md-8">
       <div ng-show="srchRes.results.totalResults">
-        <h5>Related : <a>{{srchRes.searchString}}</a></h5>
+        <!--<h5>Related : <a>{{srchRes.searchString}}</a></h5>-->
+        <h5></h5>
         <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
         <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit">
           <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>
