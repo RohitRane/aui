@@ -47,8 +47,11 @@ class FilterDirectiveController{
              return vm.list;
          },function(){ 
              if(SearchBarService.backBottonPressed){
-                 vm.listPristine = SearchBarService.filters;
-                 SearchBarService.backBottonPressed = false;
+                vm.listPristine = SearchBarService.filters;
+                SearchBarService.backBottonPressed = false;
+             }else if(sessionStorage.refreshClickedSearch){
+                vm.listPristine = SearchBarService.filters;
+                delete sessionStorage.refreshClickedSearch;
              }else{
                 vm.resetList();
                 if(vm.listPreviousFilter.length > 1){

@@ -32,6 +32,8 @@ export class SearchResultsController {
         
         if(SearchBarService.backBottonPressed){
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
+        }else if(sessionStorage.refreshClickedSearch){
+            vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
         }else{
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
