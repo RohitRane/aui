@@ -176,3 +176,8 @@
             margin: 0px !important;
         }
     }
+
+    /* overriding the background of odd tr*/
+    .table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: #dbdbdb;
+    }
