@@ -107,33 +107,33 @@ export class SearchBarController {
                 }
             });
             $log.debug("r set :", resultSet);
-            
+
             vm.resultSet = resultSet;
-            $log.debug("REsult SET :",vm.resultSet);
+            $log.debug("REsult SET :", vm.resultSet);
             //let resultSet = response.parts,
             let firstExact = true,
                 firstClose = true,
                 firstSuggest = true;
-            
+
             if (response.displayViewAll) {
-                $log.debug("in here...",resultSet);
+                $log.debug("in here...", resultSet);
                 let obj = {
                     suggestString: "<a>View all " + response.totalResults + " matches</a>",
                     typeId: 3
                 };
                 resultSet.push(obj);
             }
-            
-            
+
+
             angular.forEach(response.partSuggestList, (part) => {
-                
+
                 if (part.suggestType === "PART_SUGGEST") {
                     $log.debug("PART >>>>>>>>", part);
                     part.typeId = 4;
                     resultSet.push(part);
                 }
-            });        
-            
+            });
+
             angular.forEach(resultSet, function (part) {
                 if (part.typeId === 1 && firstExact) {
                     part.firstExact = true;
@@ -147,9 +147,9 @@ export class SearchBarController {
                 }
                 //$log.debug($rootScope.firstExactIndex + " " + vm.firstCloseIndex + " " + vm.firstSuggestIndex);
             });
-            
-            $log.debug("Result set :",resultSet);
-            
+
+            $log.debug("Result set :", resultSet);
+
             return resultSet.map(function (part) {
                 return part;
             });
@@ -226,10 +226,14 @@ export class SearchBarController {
         }
         else {
             vm.search.searchString = vm.search.searchString.suggestString;
+            let icIndex = vm.search.searchString.indexOf("<interchange>");
+            if (icIndex !== -1) {
+                vm.search.searchString = vm.search.searchString.substring(0, icIndex);
+            }
             $timeout(() => {
                 BreadCrumbService.searchToResults = false;
             });
-            $location.path('/part/id/' + item.suggestId);            
+            $location.path('/part/id/' + item.suggestId);
             vm._blurSrchBox();
         }
     }
@@ -244,7 +248,7 @@ export class SearchBarController {
         $scope.$emit("searchbarBlurred");
         $rootScope.$emit("clearCategories");
         SearchBarService.productCategory = "";
-        $log.debug("string....... :",vm.search.searchString);
+        $log.debug("string....... :", vm.search.searchString);
         if (vm.search.searchString) {
             $log.debug("icon click Result set :", vm.resultSet);
             $log.debug("vm.search.searchString ", vm.search.searchString);
