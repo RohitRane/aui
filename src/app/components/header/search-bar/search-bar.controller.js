@@ -100,7 +100,7 @@ export class SearchBarController {
 
             let resultSet = [];
             angular.forEach(response.partSuggestList, (part) => {
-                if (part.suggestType === "CAT_SUGGEST") {
+                if (part.suggestType === "CAT_SUGGEST" || part.suggestType === "YMM_SUGGEST") {
                     $log.debug("CATEGORY >>>>>>>>", part);
                     part.typeId = 2;
                     resultSet.push(part);
@@ -206,7 +206,10 @@ export class SearchBarController {
             item.partNumber = item.partNumber.replace(" in", "");*/
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
-            SearchBarService.productCategory = item.suggestId;
+            if(item.suggestType === "CAT_SUGGEST"){
+                SearchBarService.productCategory = item.suggestId;
+            }
+            
             $timeout(() => {
                 $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
                 SearchBarService.productLine = vm.search.searchScope;
