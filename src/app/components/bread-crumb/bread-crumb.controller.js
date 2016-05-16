@@ -1,12 +1,14 @@
 /*Author:Rohit Rane*/
 
 export class BreadCrumbController {
-    constructor($log, $timeout, $rootScope, $state, $scope, SearchBarService, BreadCrumbService) {
+    constructor($log, $timeout, $rootScope, $state, $scope, $window, $document, SearchBarService, BreadCrumbService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $state });
+        vm.DI = () => ({ $state, $window, $document });
 
+        vm._resizeBreadCrumb();
+        
         $scope.$watch(() => {
             return vm.categories;
         }, (n, o) => {
@@ -14,6 +16,9 @@ export class BreadCrumbController {
             console.log("VM  HERE :", n);
         });
 
+        angular.element($window).bind('resize', () => {
+            vm._resizeBreadCrumb();
+        });
 
         if ($state.is('searchResults')) {
             vm.pageState = 'searchResults';
@@ -26,7 +31,7 @@ export class BreadCrumbController {
         vm.cats = [false, false, false];
         vm.cats[0] = vm.selMainCategory;
 
-        $log.debug("BreadCrumbService.searchToResults",BreadCrumbService.searchToResults);
+        $log.debug("BreadCrumbService.searchToResults", BreadCrumbService.searchToResults);
 
         if (BreadCrumbService.searchToResults) {
             vm.showBackButton = true;
@@ -91,5 +96,21 @@ export class BreadCrumbController {
         let vm = this;
         let {$state} = vm.DI();
         $state.go("searchResults");
+    }
+
+    _resizeBreadCrumb() {
+        let vm = this;
+        let {$window, $document} = vm.DI();
+
+        console.log("Resizing the Breadrumb", $window.innerWidth);
+        if ($window.innerWidth > 1440) {
+            let mgn = -1 * (($window.innerWidth - 1440) / 2);
+            let pdng = -1 * mgn;
+            let bdcmb = ($document[0].getElementsByClassName('bread-crumb'))[0];
+            angular.element(bdcmb).css("margin-left",mgn+"px");
+            angular.element(bdcmb).css("margin-right",mgn+"px");
+             angular.element(bdcmb).css("padding-left",pdng+"px");
+            angular.element(bdcmb).css("padding-right",pdng+"px");
+        }
     }
 }

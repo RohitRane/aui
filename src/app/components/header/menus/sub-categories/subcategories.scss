@@ -45,7 +45,7 @@ div#subcategories {
             // position: absolute;
             left: 120px;
             margin-top: 10px;
-            margin-left: 120px;
+            margin-left: 120px;            
             dl {
                 line-height: 1.3em;
                 display: inline-block;
@@ -54,7 +54,7 @@ div#subcategories {
                 font-size: 16px;
                 width: 200px;
                 vertical-align: top;
-                font-weight: bold;
+                font-weight: bold;                
                 dd {
                     font-size: 12px;
                     display: inline-block;
@@ -63,6 +63,7 @@ div#subcategories {
                     line-height: 0.4em;
                     font-weight: 600;
                     margin-top: 10px;
+                    
                     /* negate the DL line-height */
                     a {
                         // color:#323232;

@@ -64,6 +64,19 @@ class CategoryMenuController {
         dataServices.appInfo().then(response => {
             $log.debug("APP INFO :", response);
             vm.categories= response.cats;
+            angular.forEach(vm.categories,(cat)=>{
+                angular.forEach(cat.children,(child,index)=>{                    
+                    angular.forEach(child.children,(gChild,index)=>{
+                        if(index===0){
+                        child.gChildCount = 0;
+                    }
+                        child.gChildCount++;
+                    });
+                    $log.debug("G C Count :",child.gChildCount);
+                });
+                
+            });
+            
             /*vm.search.categories = response.cats.map(function (cat) {
                 return cat.name;
             });*/
