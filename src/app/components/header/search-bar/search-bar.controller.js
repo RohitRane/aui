@@ -62,7 +62,6 @@ export class SearchBarController {
         });
 
         dataServices.appInfo().then(response => {
-            $log.debug("APP INFO :", response);
             vm.search.categories = response.cats.map(function (cat) {
                 return cat.name;
             });
