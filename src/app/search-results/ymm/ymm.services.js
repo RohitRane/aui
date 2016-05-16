@@ -4,8 +4,14 @@ export class YmmService {
         this{._srchStr = srchStr;
     }*/
      
-    constructor($http,$q) {
+    constructor($http,$q,SearchBarService) {
         'ngInject';
+        let vm = this;
+        vm.DI = () => ({
+            $http,
+            $q,
+            SearchBarService
+        });
             this._yearSelected ;
             this._makeSelected;
             this._modelSelected;
@@ -17,22 +23,27 @@ export class YmmService {
     }
 
     getYearData(q,cats,year,make,model,from,size){
+        let vm = this;
+        let {
+            $http,
+            $q,
+            SearchBarService
+        } = vm.DI();
+
         let deferred = this.$q.defer();
          return this.$http({
             url: "http://54.183.226.9:8080/search-service/api/ymmList",
             method: 'POST',
             data: {
-                "q": "SPL55",
-                "cats": ["ALL", null, null],
+                "q": SearchBarService.srchStr,
+                "cats": [SearchBarService.productLine, null, SearchBarService.productCategory],
                 "year":year,
                 'make':make,
                 "model":model,
                 "from":from,
                 "size":size
             }
-
         })
-
     }
 
 
