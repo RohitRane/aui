@@ -185,5 +185,8 @@
 
     /* overriding the background of odd tr*/
     .table-striped > tbody > tr:nth-of-type(odd) {
-        background-color: #dbdbdb;
+        background-color: #eaeaea;
+    }
+    .table-striped > tbody > tr:nth-of-type(even) {
+        background-color: #fafafa;
     }
