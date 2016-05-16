@@ -1,13 +1,13 @@
 <div class="ymm-directive">
-    <div id="dropdown-scrollable-container" style="height: auto; overflow: auto;margin-top:10px;margin-bottom:10px;" ng-init="vm.displayYMM($event,this)" ng-show="vm.initDirective">
+    <div id="dropdown-scrollable-container" class="scrollable-container-box" ng-init="vm.displayYMM($event,this)" ng-show="vm.initDirective">
         <div id="dropdown-long-content">
             <div id="dropdown-hidden-container">
-                <label style="font-size:14px;font-weight:600">Filter By : &nbsp; &nbsp;</label>
-                <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                <label>Filter By : &nbsp;</label>
+                <div class="btn-group btn-box" uib-dropdown dropdown-append-to-body>
                     <button id="ymmYearSelector" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.showYearTable($event,this)">
                         {{selYear}}<span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu atsDDContent" id="yearHolder" uib-dropdown-menu role="menu" style="top:100px" aria-labelledby="btn-append-to-to-body">
+                    <ul class="dropdown-menu atsDDContent" id="yearHolder" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-to-body">
                         <li role="menuitem" class="arrow_box">
                             <div class="asYearSelect asYearSelect-automotive" id="yearSelectorTable" style="margin-left:20px;" ng-click="vm.findYear($event,this)">
                                 <ul>
@@ -188,7 +188,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="btn-group" uib-dropdown keyboard-nav dropdown-append-to-body>
+                <div class="btn-group btn-box" uib-dropdown keyboard-nav dropdown-append-to-body>
                     <button id="ymmMakeSelector" type="button" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.findMake($event,this)" ng-disabled="vm.toggleDisable($event,this)">
                         {{ymmMake}}<span class="caret"></span>
                     </button>
@@ -197,7 +197,7 @@
                         <li role="menuitem" ng-click="vm.loadModel($event,this)" ng-repeat="item in vm.makeList"><a href="#">{{item}}</a></li>
                     </ul>
                 </div>
-                <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                <div class="btn-group btn-box" uib-dropdown dropdown-append-to-body>
                     <button id="ymmModelSelector" ng-click="vm.findModel($event,this)" type="button" class="btn btn-default disabled" uib-dropdown-toggle ng-disabled="vm.toggleDisableModel($event,this)">
                         {{ymmModel}}<span class="caret"></span>
                     </button>

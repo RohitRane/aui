@@ -109,7 +109,7 @@ class YMMDirectiveController {
         }, vm);
 
         var yearHolder = angular.element(document.querySelector('#yearHolder'));
-        yearHolder.css('top','200px');
+        yearHolder.css('top','193px');
     }
 
     //Display the directive

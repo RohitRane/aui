@@ -1,88 +1,93 @@
-
-.ymm-directive{
-    padding: 0px 10px;
+.ymm-directive {
+    padding: 0px 20px;
     background-color: white;
     margin: 0px -10px;
-    height:50px;
-    border:1px solid white;
-    .disabled{
-        background-color:#f7f7f7 !important;
+    height: 50px;
+    border: 1px solid white;
+    .scrollable-container-box{
+        height: auto; 
+        overflow: auto;
+        margin-top:10px;
+        margin-bottom:10px;
+    }
+    .disabled {
+        background-color: #f7f7f7 !important;
+    }
+    .btn-box{
+        margin-right: 6px;
+    }
+    label{
+        font-size:13px;
+        font-weight:600;
     }
 }
 
-.atsDDContent
-    { 
-        border-top:5px solid #0093c6;
-        top:100px;
-
-        .asYearSelect-automotive{
-            width:665px;
-            height:290px;
-            ul{
-                li{
-                    font-size:12px;
-                    h3{
-                        font-size:14px;
-                        font-weight:600;
-                    }
+.atsDDContent {
+    border-top: 5px solid #0093c6;
+    top: 100px;
+    .asYearSelect-automotive {
+        width: 665px;
+        height: 290px;
+        ul {
+            li {
+                font-size: 12px;
+                h3 {
+                    font-size: 14px;
+                    font-weight: 600;
                 }
             }
-
-            .asEmpty {
-                color: #aaa;
+        }
+        .asEmpty {
+            color: #aaa;
+        }
+    }
+    ul {
+        position: relative;
+        display: inline-block;
+        list-style: none outside none;
+        text-indent: 0;
+        margin: 0;
+        padding: 0.1em .15em;
+        vertical-align: top;
+        zoom: 1;
+        *display: inline;
+        li {
+            white-space: nowrap;
+            color: #000;
+            margin: 0 4px 0 0;
+            padding: 0 0 5px 0;
+            position: relative;
+            a {
+                display: block;
+                font-size: 12px !important;
+                font-weight: 600 !important;
+                margin: 0;
+                color: #000;
+                font-weight: 600;
+            }
+            a:visited {
+                text-decoration: none;
+                color: #000;
+                background-color: transparent
+            }
+            a:hover {
+                text-decoration: none;
+                background-color: #444C55;
+                color: #FFF;
+                border-radius: 3px;
+                -moz-border-radius: 3px;
+                -webkit-border-radius: 3px
             }
         }
-
-
-
-        ul {
-            position: relative;
-            display: inline-block;
-            list-style: none outside none;
-            text-indent: 0;
-            margin: 0;
-            padding: 0.1em .15em;
-            vertical-align: top;
-            zoom:1;
-            *display: inline;
-            li {
-                white-space: nowrap;
-                color: #000;
-                margin: 0 4px 0 0;
-                padding: 0 0 5px 0;
-                position: relative;
-                    a {
-                        display: block;
-                        font-size:12px !important;
-                        font-weight:600 !important;
-                        margin: 0;
-                        color: #000;
-                        font-weight:600;
-                    }
-                     a:visited {
-                        text-decoration: none;
-                        color: #000;
-                        background-color: transparent
-                    }
-                    a:hover {
-                        text-decoration: none;
-                        background-color: #444C55;
-                        color: #FFF;
-                        border-radius: 3px;
-                        -moz-border-radius: 3px;
-                        -webkit-border-radius: 3px
-                    }
-            }
     }
-
 }
-
 
 .arrow_box {
     position: relative;
-   
 }
-.arrow_box:after, .arrow_box:before {
+
+.arrow_box:after,
+.arrow_box:before {
     bottom: 103%;
     left: 6%;
     border: solid transparent;
@@ -99,6 +104,7 @@
     border-width: 10px;
     margin-left: -10px;
 }
+
 .arrow_box:before {
     border-color: rgba(194, 225, 245, 0);
     border-bottom-color: #0093c6;
@@ -106,14 +112,13 @@
     margin-left: -16px;
 }
 
+.arrow_box1 {}
 
-.arrow_box1 {
-   
-}
-.arrow_box1:after, .arrow_box:before {
+.arrow_box1:after,
+.arrow_box:before {
     bottom: 103%;
     left: 20%;
-    top:-8%;
+    top: -8%;
     border: solid transparent;
     content: " ";
     height: 0;
@@ -128,6 +133,7 @@
     border-width: 10px;
     margin-left: -10px;
 }
+
 .arrow_box1:before {
     border-color: rgba(194, 225, 245, 0);
     border-bottom-color: #0093c6;
@@ -135,48 +141,39 @@
     margin-left: -16px;
 }
 
-
-
-#makeDropDown,#modelDropDown {
+#makeDropDown,
+#modelDropDown {
     height: 300px;
     -webkit-column-count: 3;
     -moz-column-count: 3;
-    column-count: 3; /*3 is just placeholder -- can be anything*/
+    column-count: 3;
+    /*3 is just placeholder -- can be anything*/
     -moz-column-width: 100px;
     -webkit-column-width: 100px;
     column-width: 100px;
-    ul{
-        li{
-                display: inline-block;
-                padding-bottom: 3px;
-                width:auto;    
+    ul {
+        li {
+            display: inline-block;
+            padding-bottom: 3px;
+            width: auto;
+            a {
+                padding: 3px 3px !important;
+                width: auto;
+                font-size: 12px !important;
+                font-weight: 600 !important;
+                margin: 0;
+            }
+        }
+    }
+    .dropdown-menu {
+        ul {
+            li {
                 a {
-                    
-                    padding:3px 3px !important;
-                    width:auto;
-                    font-size:12px !important;
-                    font-weight:600 !important;
+                    font-size: 12px !important;
+                    font-weight: 600 !important;
                     margin: 0;
-                    
                 }
             }
-    }
-
-    .dropdown-menu {
-        ul{
-            li{
-            a{
-                 font-size:12px !important;
-                    font-weight:600 !important;
-                    margin: 0;
-            }
         }
-        }
-        
-
     }
-
-           
 }
-
-
