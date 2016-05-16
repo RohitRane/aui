@@ -129,7 +129,7 @@ export let apiConfig = {
                     "cid": "1",
                     "from":from,
                     "size":size,
-                    "cats":[scope, null ,productCategory],
+                    "cats":[scope?scope:null, null ,productCategory?productCategory:null],
                     "filter":filterObjectArray
            }
         },

@@ -26,6 +26,7 @@ export class BreadCrumbController {
         vm.cats = [false, false, false];
         vm.cats[0] = vm.selMainCategory;
 
+        $log.debug("BreadCrumbService.searchToResults",BreadCrumbService.searchToResults);
 
         if (BreadCrumbService.searchToResults) {
             vm.showBackButton = true;

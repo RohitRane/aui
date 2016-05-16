@@ -17,7 +17,7 @@ export class MainController {
         if ($window.innerHeight > $window.innerWidth) {
             vm.landscape = false;
         }
-        $rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
+        /*$rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
             $log.debug("From : ", from);
             $log.debug("To : ", to);
             if (from.name === "searchResults" && to.name === "part" && $state.is('part')) {
@@ -26,7 +26,7 @@ export class MainController {
             } else {
                 BreadCrumbService.searchToResults = false;
             }
-        });
+        });*/
 
 
     }
