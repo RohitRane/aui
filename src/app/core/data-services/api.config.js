@@ -113,7 +113,7 @@ export let apiConfig = {
             this.url = apiBaseUrl + '/suggest';
             this.data = {
               "q": param,
-              "cats":[category]
+              "cats":[category,null,null]
             }
         },
         'method': 'POST',
@@ -121,7 +121,7 @@ export let apiConfig = {
     },
     'CAT_SEARCH': {
         'url': '',
-        'setUrl': function (param, scope, from, size, productCategory, filterObjectArray) {
+        'setUrl': function (param, scope, from, size, productCategory, filterObjectArray, ymm) {
            this.url = apiBaseUrl + '/result';
            scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
                 this.data = {
@@ -130,7 +130,8 @@ export let apiConfig = {
                     "from":from,
                     "size":size,
                     "cats":[scope?scope:null, null ,productCategory?productCategory:null],
-                    "filter":filterObjectArray
+                    "filter":filterObjectArray,
+                    "ymm":ymm
            }
         },
         'method': 'POST',

@@ -20,21 +20,21 @@ export class SearchResultsController {
 
         vm.resultLoading = false;
 
-       let deregistrationCallback2 = $rootScope.$on('searchLaunched', function (event, payload) {
+        let deregistrationCallback2 = $rootScope.$on('searchLaunched', function (event, payload) {
             $log.debug("$on", payload);
             vm.resultStartIndex = 0;
             vm.getParts(0, 10, payload);
         });
-        
+
         $rootScope.$on('$destroy', function () {
             deregistrationCallback2();
         });
-        
-        if(SearchBarService.backBottonPressed){
+
+        if (SearchBarService.backBottonPressed) {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
-        }else if(sessionStorage.refreshClickedSearch){
+        } else if (sessionStorage.refreshClickedSearch) {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
-        }else{
+        } else {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
         
@@ -170,9 +170,14 @@ export class SearchResultsController {
         //from ? from : from=0;
         //size ? size : size=10;
         vm.resultLoading = true;
-        console.log(vm.results.totalResults+ " "+ vm.resultLoading);
+        console.log(vm.results.totalResults + " " + vm.resultLoading);
         $log.debug("SearchBarService.productCategory:", SearchBarService.productCategory);
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload).then(function (response) {
+        let ymm = null;
+        if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
+            $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
+            ymm = SearchBarService.autoSuggestItem.suggestId;
+        }
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, ymm).then(function (response) {
             // $log.debug("Response in Controller :", response);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {

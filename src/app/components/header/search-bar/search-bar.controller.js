@@ -211,6 +211,7 @@ export class SearchBarController {
             item.partNumber = item.partNumber.replace(" in", "");*/
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
+            SearchBarService.autoSuggestItem = item;
             if (item.suggestType === "CAT_SUGGEST") {
                 SearchBarService.productCategory = item.suggestId;
                 $timeout(() => {
@@ -219,7 +220,8 @@ export class SearchBarController {
                 });
             }
             else if (item.suggestType === "YMM_SUGGEST") {
-                SearchBarService.productCategory = "All";
+                //SearchBarService.productCategory = "All";
+                //SearchBarService.productCategory = null;                
             }
 
             vm._blurSrchBox();
@@ -248,8 +250,9 @@ export class SearchBarController {
 
     searchIconClick() {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope, $timeout} = vm.DI();
+        let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope} = vm.DI();
         vm._blurSrchBox();
+        SearchBarService.autoSuggestItem = null;
         BreadCrumbService.searchToResults = true;
         SearchBarService.categoryfilters = [];
         SearchBarService.filters = [];
