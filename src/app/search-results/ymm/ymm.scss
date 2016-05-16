@@ -15,10 +15,17 @@
     }
     .btn-box{
         margin-right: 6px;
+        span{
+            margin-left: 10px;
+
+        }
     }
     label{
         font-size:13px;
         font-weight:600;
+    }
+    .btn-go{
+        color:#ffffff;
     }
 }
 
