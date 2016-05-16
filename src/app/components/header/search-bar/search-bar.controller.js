@@ -125,8 +125,8 @@ export class SearchBarController {
             }
 
             vm.parts = {
-                count : 0,
-                id : ''
+                count: 0,
+                id: ''
             };
             angular.forEach(response.partSuggestList, (part) => {
 
@@ -213,12 +213,14 @@ export class SearchBarController {
             SearchBarService.productLine = vm.search.searchScope;
             if (item.suggestType === "CAT_SUGGEST") {
                 SearchBarService.productCategory = item.suggestId;
+                $timeout(() => {
+                    $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
+                    SearchBarService.productLine = vm.search.searchScope;
+                });
             }
-
-            $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
-                SearchBarService.productLine = vm.search.searchScope;
-            });
+            else if (item.suggestType === "YMM_SUGGEST") {
+                SearchBarService.productCategory = "All";
+            }
 
             vm._blurSrchBox();
             if ($location.url() === '/search') {
