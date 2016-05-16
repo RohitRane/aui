@@ -104,12 +104,15 @@
                          padding-left: 0px;
                        li{
                          display: inline-block;
-                         font-weight: bold;
-                         font-size: 13px;
+                         // font-weight: bold;
+                         // font-size: 13px;
+                         font-weight: 600;
+                         font-size: 12px;
                          a{
-                           font-size: 10px;
+                           font-size: 9px;
                            &:hover{
                              cursor:pointer;
+                             text-decoration: none;
                            }
                          }
                        }
