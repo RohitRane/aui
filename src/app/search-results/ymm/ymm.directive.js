@@ -120,6 +120,7 @@ class YMMDirectiveController {
         let {
             $log,
             $http,
+            $scope,
             YmmService,
         } = vm.DI();
 
@@ -130,36 +131,18 @@ class YMMDirectiveController {
                 // checks for information will be peformed here
                  $log.debug("YMM response :", result);
                 vm.yearList = result.data.APIResponse.yearList;
-                vm.initDirective = true;
-                 var yearSelector = angular.element(document.querySelector('#ymmYearSelector'));
-                 yearSelector.removeClass('disabled');
+                if(vm.yearList.length>0){
+                    vm.initDirective = true;                
+                    var yearSelector = angular.element(document.querySelector('#ymmYearSelector'));
+                    yearSelector.removeClass('disabled');
+                }
+               
             },
             function (error) {
                 // handle errors here
                 console.log(error.statusText);
             })
        
-
-        /* $http({
-            url: "http://54.183.226.9:8080/search-service/api/ymmList",
-            method: 'POST',
-            data: {
-              "q": "SPL55",
-                "cats":["ALL",null ,null]
-            }
-
-
-        }).then(function(response) {
-            $log.debug("YMM response :", response);
-            vm.yearList = response.data.APIResponse.yearList;
-            vm.initDirective = true;
-             var yearSelector = angular.element(document.querySelector('#ymmYearSelector'));
-             yearSelector.removeClass('disabled');
-
-        }, function(error) {
-            //debugger;    
-        });*/
-
     }
 
     //click handler for year and populate Make
