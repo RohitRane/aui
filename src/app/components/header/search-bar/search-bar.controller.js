@@ -263,7 +263,7 @@ export class SearchBarController {
         if (vm.search.searchString) {
             $log.debug("icon click Result set :", vm.resultSet);
             $log.debug("vm.search.searchString ", vm.search.searchString);
-            if (vm.parts.count === 1) {
+            if (vm.parts && vm.parts.count === 1) {
                 $log.debug("Only one part");
                 BreadCrumbService.searchToResults = false;
                 $location.path('/part/id/' + vm.parts.id);

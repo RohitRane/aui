@@ -1,4 +1,4 @@
-export function pageHeaderDirective($log, $window) {
+export function pageHeaderDirective($log, $window, $rootScope) {
     'ngInject';
 
     let directive = {
@@ -15,9 +15,14 @@ export function pageHeaderDirective($log, $window) {
             let navbarOriginalHgt = navbar.offsetHeight;
             angular.element($window).bind("scroll", function () {
                 if (this.pageYOffset >= navbarOriginalHgt) {
+                    if (!scope.sticky) {
+                        $rootScope.$emit("isHeaderSticky", { state: true });
+                    }
                     scope.sticky = true;
+
                 } else {
                     scope.sticky = false;
+                    $rootScope.$emit("isHeaderSticky", { state: false });
                 }
                 scope.$apply();
             });

@@ -1,5 +1,5 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, $scope, $timeout, $window, dataServices, SearchBarService) {
+    constructor($log, $rootScope, $scope, $timeout, $window, $document, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
@@ -26,8 +26,34 @@ export class SearchResultsController {
             vm.getParts(0, 10, payload);
         });
 
+        vm.stickyAd = false;
+        let deregistrationCallback = $rootScope.$on("isHeaderSticky", (evt, isHeaderSticky) => {
+            $log.debug("isHeaderSticky", isHeaderSticky);
+            //isHeaderSticky.state ? vm.stickyAd = true : vm.stickyAd = false;
+            let adSec = $document[0].getElementById("ad-section");
+            if (isHeaderSticky.state) {
+                vm.stickyAd = true;
+                if (angular.isDefined(isHeaderSticky.bottomOffset)) {
+                    console.log("bottomOffset is defined.");
+                    //vm.stickyAd = false;
+                    console.log("Bottom Offset :",isHeaderSticky.bottomOffset);
+                    /*angular.element(adSec).css("position", "fixed");
+                    angular.element(adSec).css("top", 70+"px");
+                    angular.element(adSec).css("bottom", 100+"px");
+                    angular.element(adSec).css("right", "0px");*/
+                }
+            } else {
+                vm.stickyAd = false;
+                //angular.element(adSec).css("position", 'static');
+                angular.element(adSec).css("bottom", 'auto');
+                //angular.element(adSec).css("right", 'auto');
+            }
+
+        });
+
         $rootScope.$on('$destroy', function () {
             deregistrationCallback2();
+            deregistrationCallback();
         });
 
         if (SearchBarService.backBottonPressed) {
@@ -37,18 +63,8 @@ export class SearchResultsController {
         } else {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
-        
-        /*dataServices.partSearch().then(function (response) {
-            $log.debug("Response in Controller :", response);
-            vm.results = response;
-            vm.results.parts = vm.results.parts.map(function (part) {
-                part.displayName = part.sku + ' ' + part.name;
-                return part;
-            });
-            $log.debug("results :", vm.results);
-        }, function (error) {
-            $log.debug("Error in response :", error);
-        });*/
+
+
 
         this.sortType = [
             "Relevance",

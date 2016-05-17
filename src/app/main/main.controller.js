@@ -17,16 +17,17 @@ export class MainController {
         if ($window.innerHeight > $window.innerWidth) {
             vm.landscape = false;
         }
-        /*$rootScope.$on('$stateChangeSuccess', function (ev, to, toParams, from, fromParams) {
-            $log.debug("From : ", from);
-            $log.debug("To : ", to);
-            if (from.name === "searchResults" && to.name === "part" && $state.is('part')) {
-                $log.debug("travelling from search res to part.", vm);
-                BreadCrumbService.searchToResults = true;
+        $window.onscroll = function (ev) {
+            console.log("Scrolling");
+            if (($window.innerHeight + $window.scrollY) >= $document[0].body.offsetHeight - 90) {
+                // you're at the bottom of the page
+                console.log("reaching  bottom");
+                let bottomOffset = $document[0].body.offsetHeight - ($window.innerHeight + $window.scrollY);
+                $rootScope.$emit("isHeaderSticky", { bottomOffset: bottomOffset, state: true });
             } else {
-                BreadCrumbService.searchToResults = false;
+                $rootScope.$emit("isHeaderSticky", { state: true });
             }
-        });*/
+        };
 
 
     }

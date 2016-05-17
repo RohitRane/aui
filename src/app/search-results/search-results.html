@@ -5,6 +5,7 @@
   
   <div class="row search-results">
     <div class="col-md-2 filter">
+        <!--data-ng-class="{'affix-filters':srchRes.stickyAd === true}"-->
       <filter-directive ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
     </div>
     <div class="col-md-8">
@@ -22,7 +23,7 @@
         Kindly redefine your search term or explore the parts via search bar.</p>
       </div>
     </div>
-    <div class="col-md-2 parts ">
+    <div class="col-md-2 parts" id="ad-section" data-ng-class="{'affix-ads':srchRes.stickyAd === true}">
       <!--<div class="part1 ">
             <img src="http://placehold.it/100x100 ">
             <p><span>THE PREMIUM CHOICE FOR COMMERCIAL VECHILE.</span></p>
@@ -39,7 +40,7 @@
                 </div>
             </div>
         </div>-->
-      <img src="assets/images/VectorImg.png">
+      <img src="assets/images/Commercial.png">
     </div>
   </div>
 </div>
