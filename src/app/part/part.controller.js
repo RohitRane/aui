@@ -25,7 +25,7 @@ export class PartController {
         vm.lensDimensions = {
             height: 80,
             width: 80
-        };        
+        };
 
         vm.hideForNow = true;
 
@@ -54,11 +54,14 @@ export class PartController {
             });
         }
     }
-    
-    hasSpecification(attrs){
-        if(Object.keys(attrs).length === 0){
+
+    hasSpecification(attrs) {
+        if (attrs) {
+            let attrsArr = Object.keys(attrs);
+            if (attrsArr.length === 0) {
                 return false;
-        }
-        else return true;
+            }
+            else return true
+        } else return false;
     }
 }

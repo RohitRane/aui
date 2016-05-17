@@ -1,10 +1,10 @@
 
 var devServer = "http://52.8.125.250:8080",
-    qaServer =  "http://54.183.226.9:8080",
+    qaServer = "http://54.183.226.9:8080",
 
     activeAPIBase = devServer,
     //activeAPIBase = qaServer,
-    apiBaseUrl = activeAPIBase+'/search-service/api';
+    apiBaseUrl = activeAPIBase + '/search-service/api';
 
 
 
@@ -23,16 +23,16 @@ export let apiConfig = {
 
     'YMM_SEARCH': {
         'url': '',
-        'setUrl': function (searchString, category,prodLine,year,make,model,from, size) {
+        'setUrl': function (searchString, category, prodLine, year, make, model, from, size) {
             this.url = apiBaseUrl + '/result';
             this.data = {
-              "q": searchString,
-              "cats":[category, null, prodLine],
-              "year":year,
-              "make":make,
-              "model":model,
-              "from":from,
-              "size":size
+                "q": searchString,
+                "cats": [category, null, prodLine],
+                "year": year,
+                "make": make,
+                "model": model,
+                "from": from,
+                "size": size
             }
         },
         'method': 'POST',
@@ -46,8 +46,8 @@ export let apiConfig = {
         'setUrl': function (param, category) {
             this.url = apiBaseUrl + '/suggest';
             this.data = {
-              "q": param,
-              "cats":[category,null,null]
+                "q": param,
+                "cats": [category, null, null]
             }
         },
         'method': 'POST',
@@ -56,18 +56,18 @@ export let apiConfig = {
     'CAT_SEARCH': {
         'url': '',
         'setUrl': function (param, scope, from, size, productCategory, filterObjectArray, ymm) {
-           this.url = apiBaseUrl + '/result';
-           //scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
-           //productCategory === 
-                this.data = {
-                    "q": param,
-                    "cid": "1",
-                    "from":from,
-                    "size":size,
-                    "cats":[scope?scope:null, null ,productCategory?productCategory:null],
-                    "filter":filterObjectArray,
-                    "ymm":ymm
-           }
+            this.url = apiBaseUrl + '/result';
+            //scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
+            //productCategory === 
+            this.data = {
+                "q": param,
+                "cid": "1",
+                "from": from,
+                "size": size,
+                "cats": [scope ? scope : null, null, productCategory ? productCategory : null],
+                "filter": filterObjectArray,
+                "ymm": ymm
+            }
         },
         'method': 'POST',
         'data': {}
@@ -83,14 +83,14 @@ export let apiConfig = {
     'PART_BY_PNUM': {
         'url': '',
         'setUrl': function (param) {
-            console.log("PARAM :::::",param);
+            console.log("PARAM :::::", param);
             this.url = apiBaseUrl + '/part/partnumber/' + param;
         },
         'method': 'GET',
         'data': {}
     },
-    'APPINFO':{
+    'APPINFO': {
         'url': apiBaseUrl + '/appInfo',
-        'method':'GET'
+        'method': 'GET'
     }
 }
