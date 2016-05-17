@@ -100,7 +100,8 @@ export class ImageZoomController {
 
     }
 
-    abd() {
+    /*Attach the below function to ng-mouseover event*/
+    zoomInOrOut() {
         //console.log('Muhahahaha');
         let vm = this;
         let {$document} = vm.DI();
