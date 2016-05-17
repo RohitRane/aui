@@ -122,7 +122,11 @@
     margin-left: -16px;
 }
 
-.arrow_box1 {}
+.arrow_box1 {
+    // width:100px;
+    // height:100px;
+    // position:none !important;
+}
 
 .arrow_box1:after,
 .arrow_box:before {
