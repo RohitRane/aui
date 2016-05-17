@@ -9,9 +9,9 @@ export class SearchBarService {
     }
 
     get srchStr() {
-      this._srchStr =sessionStorage.srchStr;
-        return this._srchStr;      
-          
+        this._srchStr = sessionStorage.srchStr;
+        return this._srchStr;
+
     }
 
     set srchStr(newSrchStr) {
@@ -21,9 +21,9 @@ export class SearchBarService {
             //this._saveToSession();
         }
     }
-    
+
     get srchTempStr() {
-        return this._srchTempStr;        
+        return this._srchTempStr;
     }
 
     set srchTempStr(newSrchTempStr) {
@@ -34,6 +34,7 @@ export class SearchBarService {
 
 
     get productLine() {
+        this._productLine = sessionStorage.productLine;
         return this._productLine;
     }
 
@@ -46,6 +47,7 @@ export class SearchBarService {
     }
 
     get productCategory() {
+        this._productCategory = sessionStorage.productCategory;
         return this._productCategory;
     }
 
@@ -75,12 +77,12 @@ export class SearchBarService {
         }
     }
 
-    get selectdeFilters(){
+    get selectdeFilters() {
         return this._selectdeFilters;
     }
-    
-    set selectdeFilters(newselectdefilters){
-        if(newselectdefilters){
+
+    set selectdeFilters(newselectdefilters) {
+        if (newselectdefilters) {
             this._selectdeFilters = newselectdefilters;
             sessionStorage.selectdeFilters = angular.toJson(this._selectdeFilters);
         }
@@ -97,34 +99,35 @@ export class SearchBarService {
         }
     }
 
-    get backBottonPressed(){
+    get backBottonPressed() {
         return this._backBottonPressed;
     }
 
-    set backBottonPressed(flag){
+    set backBottonPressed(flag) {
         this._backBottonPressed = flag;
     }
 
-    get autoSuggestItem(){
-        this._autoSuggestItem =  angular.fromJson(sessionStorage.autoSuggestItem);
-        return this._autoSuggestItem;        
+    get autoSuggestItem() {
+        this._autoSuggestItem = angular.fromJson(sessionStorage.autoSuggestItem);
+        return this._autoSuggestItem;
     }
 
-    set autoSuggestItem(obj){
+    set autoSuggestItem(obj) {
         this._autoSuggestItem = obj;
         sessionStorage.autoSuggestItem = angular.toJson(this._autoSuggestItem);
     }
 
-    _clearSession(){
-        console.log("Back in clear",  sessionStorage.categoryfilters);
-         delete sessionStorage.srchStr;
-         delete sessionStorage.productLine;
-         delete sessionStorage.categoryfilters;
-         delete sessionStorage.productCategory;
-         delete sessionStorage.filters;
-         delete sessionStorage.selectdeFilters;
-         delete SearchBarService.backBottonPressed;
-         console.log("Back in clear 1", sessionStorage.categoryfilters);
+    clearSession() {
+        console.log("Back in clear", sessionStorage.categoryfilters);
+        delete sessionStorage.srchStr;
+        delete sessionStorage.productLine;
+        delete sessionStorage.categoryfilters;
+        delete sessionStorage.productCategory;
+        delete sessionStorage.filters;
+        delete sessionStorage.selectdeFilters;
+        delete SearchBarService.backBottonPressed;
+        delete sessionStorage.autoSuggestItem;
+        console.log("Back in clear 1", sessionStorage.categoryfilters);
     }
 
     _saveToSession() {
@@ -142,17 +145,17 @@ export class SearchBarService {
     }
 
     _retrieveFromSession() {
-      //  console.log("Back in _retrieveFromSession",  sessionStorage.categoryfilters);
+        //  console.log("Back in _retrieveFromSession",  sessionStorage.categoryfilters);
         this._srchStr = sessionStorage.srchStr;
         this._productLine = sessionStorage.productLine;
         this._productCategory = sessionStorage.productCategory;
-        this._categoryfilters =  angular.fromJson(sessionStorage.categoryfilters);
+        this._categoryfilters = angular.fromJson(sessionStorage.categoryfilters);
         this._filters = angular.fromJson(sessionStorage.filters);
         this._selectdeFilters = angular.fromJson(sessionStorage.selectdeFilters);
-        console.log("Back in _retrieveFromSession" ,sessionStorage.productLine);
-       /* this._productLine = sessionStorage.productLine;
-        this._productCategory = sessionStorage.productCategory;
-        this._typeId = sessionStorage.typeId;
-        this._filters = sessionStorage.filters;*/
+        console.log("Back in _retrieveFromSession", sessionStorage.productLine);
+        /* this._productLine = sessionStorage.productLine;
+         this._productCategory = sessionStorage.productCategory;
+         this._typeId = sessionStorage.typeId;
+         this._filters = sessionStorage.filters;*/
     }
 }

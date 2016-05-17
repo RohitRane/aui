@@ -99,7 +99,7 @@ export class SearchBarController {
 
             let resultSet = [];
             angular.forEach(response.partSuggestList, (part) => {
-                if (part.suggestType === "CAT_SUGGEST" || part.suggestType === "YMM_SUGGEST") {
+                if (part.suggestType === "CAT_SUGGEST") {
                     $log.debug("CATEGORY >>>>>>>>", part);
                     part.typeId = 2;
                     resultSet.push(part);
@@ -135,6 +135,13 @@ export class SearchBarController {
                     resultSet.push(part);
                     vm.parts.count++;
                     vm.parts.id = part.suggestId;
+                }
+            });
+            angular.forEach(response.partSuggestList, (part) => {
+                if (part.suggestType === "YMM_SUGGEST") {
+                    $log.debug("YMM >>>>>>>>", part);
+                    part.typeId = 5;
+                    resultSet.push(part);
                 }
             });
 
@@ -211,17 +218,10 @@ export class SearchBarController {
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
-            if (item.suggestType === "CAT_SUGGEST") {
-                SearchBarService.productCategory = item.suggestId;
-                $timeout(() => {
-                    $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
-                    SearchBarService.productLine = vm.search.searchScope;
-                });
-            }
-            else if (item.suggestType === "YMM_SUGGEST") {
-                //SearchBarService.productCategory = "All";
-                //SearchBarService.productCategory = null;                
-            }
+            $timeout(() => {
+                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
+                SearchBarService.productLine = vm.search.searchScope;
+            });
 
             vm._blurSrchBox();
             if ($location.url() === '/search') {
@@ -234,6 +234,28 @@ export class SearchBarController {
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
             vm.searchIconClick();
+        }
+        else if(item.typeId === 5){
+            SearchBarService.srchStr = SearchBarService.srchTempStr;
+            vm.search.searchString = item.suggestId;
+            $log.debug("YMM :::", vm.search.searchString);
+            /*item.lineDesc = "";
+            item.partNumber = item.partNumber.replace(" in", "");*/
+            $rootScope.$emit("clearCategoryFilter");
+            //SearchBarService.productLine = vm.search.searchScope;
+            SearchBarService.autoSuggestItem = item;
+            $timeout(() => {
+                $rootScope.$broadcast("categoryFilterApplied", { "name": vm.search.searchScope, "suggestion": true });
+                //SearchBarService.productLine = vm.search.searchScope;
+            });
+
+            vm._blurSrchBox();
+            if ($location.url() === '/search') {
+                $scope.$emit("searchbarBlurred");
+                $scope.$emit("searchLaunched");
+            } else {
+                $location.path('/search');
+            }
         }
         else {
             vm.search.searchString = vm.search.searchString.suggestString;

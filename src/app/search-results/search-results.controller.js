@@ -110,6 +110,10 @@ export class SearchResultsController {
             $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
             ymm = SearchBarService.autoSuggestItem.suggestId;
         }
+        
+        $log.debug("PL :",SearchBarService.productLine);
+        $log.debug("PC :",SearchBarService.productCategory);
+        
         dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, ymm).then(function (response) {
             // $log.debug("Response in Controller :", response);
             vm.resultLoading = false;

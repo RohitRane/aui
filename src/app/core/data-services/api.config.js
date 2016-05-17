@@ -57,7 +57,8 @@ export let apiConfig = {
         'url': '',
         'setUrl': function (param, scope, from, size, productCategory, filterObjectArray, ymm) {
            this.url = apiBaseUrl + '/result';
-           scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
+           //scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
+           //productCategory === 
                 this.data = {
                     "q": param,
                     "cid": "1",
