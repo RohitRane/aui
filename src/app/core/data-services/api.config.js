@@ -23,82 +23,16 @@ export let apiConfig = {
 
     'YMM_SEARCH': {
         'url': '',
-        'setUrl': function (param, category) {
+        'setUrl': function (searchString, category,prodLine,year,make,model,from, size) {
             this.url = apiBaseUrl + '/ymmList';
             this.data = {
-              "q": param,
-              "cats":[category]
-            }
-        },
-        'method': 'POST',
-        'data': {}
-    },
-
-
-     'YMM_SEARCH_YEAR': {
-        'url': '',
-        'setUrl': function (param, category,year) {
-            this.url = apiBaseUrl + '/ymmList';
-            this.data = {
-              "q": param,
-              "cats":[category],
-              "year":year
-            }
-        },
-        'method': 'POST',
-        'data': {}
-    },
-
-
-     'YMM_SEARCH_MAKE': {
-        'url': '',
-        'setUrl': function (param, category,year,make) {
-            this.url = apiBaseUrl + '/ymmList';
-            this.data = {
-              "q": param,
-              "cats":[category],
-              "year":year,
-              "make":make
-
-            }
-        },
-        'method': 'POST',
-        'data': {}
-    },
-
-    'YMM_SEARCH_MODEL': {
-        'url': '',
-        'setUrl': function (param, category,year,make,model) {
-            this.url = apiBaseUrl + '/ymmList';
-            this.data = {
-              "q": param,
-              "cats":[category],
+              "q": searchString,
+              "cats":[category, null, prodLine],
               "year":year,
               "make":make,
-              "model":model
-
-
-            }
-        },
-        'method': 'POST',
-        'data': {}
-    },
-
-
-    'YMM_FULL_SEARCH': {
-        'url': '',
-        'setUrl': function (param, from,size,category,year,make,model) {
-            this.url = apiBaseUrl + '/ymmList';
-            this.data = {
-              "q": param,
+              "model":model,
               "from":from,
-              "size":size,
-              "cats":[category],
-              "year":year,
-              "make":make,
-              "model":model
-
-
+              "size":size
             }
         },
         'method': 'POST',

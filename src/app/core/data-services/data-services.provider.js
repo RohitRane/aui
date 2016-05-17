@@ -21,7 +21,8 @@ export function dataServices() {
             catSearch: catSearch(DI),
             part: part(DI),
             partByPartNum: partByPartNum(DI),
-            appInfo: appInfo(DI)
+            appInfo: appInfo(DI),
+            ymmSearch: ymmSearch(DI)
         }
     }   
 }
@@ -33,3 +34,4 @@ import { catSearch } from './requests/cat-search.request';
 import { part } from './requests/part.request';
 import { partByPartNum } from './requests/part-by-pnum.request';
 import { appInfo } from './requests/app-info.request';
+import { ymmSearch } from './requests/ymm-search.request';

@@ -23,7 +23,7 @@ export function ymmDirective() {
 }
 
 class YMMDirectiveController {
-    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $http,YmmService) {
+    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $http, YmmService) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({
@@ -109,7 +109,7 @@ class YMMDirectiveController {
         }, vm);
 
         var yearHolder = angular.element(document.querySelector('#yearHolder'));
-        yearHolder.css('top','195px');
+        yearHolder.css('top', '195px');
     }
 
     //Display the directive
@@ -125,24 +125,24 @@ class YMMDirectiveController {
         } = vm.DI();
 
         //yearData(q,cats,year,make,model,from,size)
-       YmmService.getYearData('SPL55',["ALL", null, null],null,null,null,null,null).then(
-            function (result) {
+        YmmService.getYearData('SPL55', ["ALL", null, null], null, null, null, null, null).then(
+            function(result) {
                 // promise was fullfilled (regardless of outcome)
                 // checks for information will be peformed here
-                 $log.debug("YMM response :", result);
+                $log.debug("YMM response :", result);
                 vm.yearList = result.data.APIResponse.yearList;
-                if(vm.yearList.length>0){
-                    vm.initDirective = true;                
+                if (vm.yearList.length > 0) {
+                    vm.initDirective = true;
                     var yearSelector = angular.element(document.querySelector('#ymmYearSelector'));
                     yearSelector.removeClass('disabled');
                 }
-               
+
             },
-            function (error) {
+            function(error) {
                 // handle errors here
                 console.log(error.statusText);
             })
-       
+
     }
 
     //click handler for year and populate Make
@@ -162,8 +162,8 @@ class YMMDirectiveController {
 
 
         //yearData(q,cats,year,make,model,from,size)
-       YmmService.getYearData('SPL55',["ALL", null, null],e.selYear,null,null,null,null).then(
-            function (result) {
+        YmmService.getYearData('SPL55', ["ALL", null, null], e.selYear, null, null, null, null).then(
+            function(result) {
                 // promise was fullfilled (regardless of outcome)
                 // checks for information will be peformed here
                 $log.debug("YMM response :", result);
@@ -172,7 +172,7 @@ class YMMDirectiveController {
                 var makeSelector = angular.element(document.querySelector('#ymmMakeSelector'));
                 makeSelector.removeClass('disabled');
             },
-            function (error) {
+            function(error) {
                 // handle errors here
                 console.log(error.statusText);
             })
@@ -180,25 +180,25 @@ class YMMDirectiveController {
 
 
 
-   /*     $http({
-            url: "http://54.183.226.9:8080/search-service/api/ymmList",
-            method: 'POST',
-            data: {
-                "q": "SPL55",
-                "cats": ["ALL", null, null],
-                "year": e.selYear
-            }
+        /*     $http({
+                 url: "http://54.183.226.9:8080/search-service/api/ymmList",
+                 method: 'POST',
+                 data: {
+                     "q": "SPL55",
+                     "cats": ["ALL", null, null],
+                     "year": e.selYear
+                 }
 
-        }).then(function(response) {
-            $log.debug("YMM response :", response);
-            vm.makeList = response.data.APIResponse.makeList;
-            e.yearSelected = true;
-             var makeSelector = angular.element(document.querySelector('#ymmMakeSelector'));
-             makeSelector.removeClass('disabled');
+             }).then(function(response) {
+                 $log.debug("YMM response :", response);
+                 vm.makeList = response.data.APIResponse.makeList;
+                 e.yearSelected = true;
+                  var makeSelector = angular.element(document.querySelector('#ymmMakeSelector'));
+                  makeSelector.removeClass('disabled');
 
-        }, function(error) {
-            //debugger;    
-        });*/
+             }, function(error) {
+                 //debugger;    
+             });*/
     }
 
 
@@ -206,7 +206,7 @@ class YMMDirectiveController {
         // if($event.target.nodeName =="A"){
         e.makeSelected = true;
         var makeHolder = angular.element(document.querySelector('#makeDropDown'));
-        makeHolder.css('top','200px');
+        makeHolder.css('top', '200px');
         // }
     }
 
@@ -228,51 +228,51 @@ class YMMDirectiveController {
 
         }
 
-          YmmService.getYearData('SPL55',["ALL", null, null],e.selYear,e.ymmMake,null,null,null).then(
-            function (result) {
+        YmmService.getYearData('SPL55', ["ALL", null, null], e.selYear, e.ymmMake, null, null, null).then(
+            function(result) {
                 // promise was fullfilled (regardless of outcome)
                 // checks for information will be peformed here
-                  $log.debug("YMM response :", result);
-            vm.modelList = result.data.APIResponse.modelList;
-            vm.makeSelected = true;
-            var modelSelector = angular.element(document.querySelector('#ymmModelSelector'));
-             modelSelector.removeClass('disabled');
+                $log.debug("YMM response :", result);
+                vm.modelList = result.data.APIResponse.modelList;
+                vm.makeSelected = true;
+                var modelSelector = angular.element(document.querySelector('#ymmModelSelector'));
+                modelSelector.removeClass('disabled');
             },
-            function (error) {
+            function(error) {
                 // handle errors here
                 console.log(error.statusText);
             })
 
 
 
-     /*   $http({
-             url: "http://54.183.226.9:8080/search-service/api/ymmList",
-            method: 'POST',
-            data: {
-                "q": "SPL55",
-                "cats": ["ALL", null, null],
-                "year": e.selYear,
-                "make": e.ymmMake
+        /*   $http({
+                url: "http://54.183.226.9:8080/search-service/api/ymmList",
+               method: 'POST',
+               data: {
+                   "q": "SPL55",
+                   "cats": ["ALL", null, null],
+                   "year": e.selYear,
+                   "make": e.ymmMake
 
-            }
+               }
 
-        }).then(function(response) {
-            $log.debug("YMM response :", response);
-            vm.modelList = response.data.APIResponse.modelList;
-            vm.makeSelected = true;
-            var modelSelector = angular.element(document.querySelector('#ymmModelSelector'));
-             modelSelector.removeClass('disabled');
-        }, function(error) {
-            //debugger;    
-        });*/
+           }).then(function(response) {
+               $log.debug("YMM response :", response);
+               vm.modelList = response.data.APIResponse.modelList;
+               vm.makeSelected = true;
+               var modelSelector = angular.element(document.querySelector('#ymmModelSelector'));
+                modelSelector.removeClass('disabled');
+           }, function(error) {
+               //debugger;    
+           });*/
 
     }
 
     findModel($event, e) {
         // if($event.target.nodeName =="A"){
         e.ymmSubmit = true;
-         var modelHolder = angular.element(document.querySelector('#modelDropDown'));
-        modelHolder.css('top','200px');
+        var modelHolder = angular.element(document.querySelector('#modelDropDown'));
+        modelHolder.css('top', '200px');
         // }
     }
 
@@ -303,42 +303,44 @@ class YMMDirectiveController {
         e.ymmSubmit = true;
         var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
         submitSelector.removeClass('disabled');
-        submitSelector.css('background-color','#0093c6');
+        submitSelector.css('background-color', '#0093c6');
     }
 
     searchByYMM($event, e) {
-        let vm = this;
-        let {
-            $log,
-            $http,
-            $scope
-        } = vm.DI();
+            let vm = this;
+            let {
+                $log,
+                $http,
+                $scope,
+                dataServices,
+                SearchBarService
+            } = vm.DI();
+            dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
+                .then(function(response) {
 
-        $http({
-            url: "http://52.8.125.250:8080/search-service/api/ymmList",
-            method: 'POST',
-            data: {
-                "q": "SPL55",
-                "from": 0,
-                "size": 10,
-                "cats": ["ALL", null, null],
-                "year": e.selYear,
-                "make": e.ymmMake,
-                "model": e.ymmModel
-            }
+                }, function(error) {
 
-        }).then(function(response) {
-            $log.debug("YMM response :", response);
-            vm.modelList = response.data.APIResponse.modelList;
-            vm.makeSelected = true;
-        }, function(error) {
-            //debugger;    
-        });
+                });
+            /*$http({
+                url: "http://52.8.125.250:8080/search-service/api/ymmList",
+                method: 'POST',
+                data: {
+                    "q": "SPL55",
+                    "from": 0,
+                    "size": 10,
+                    "cats": ["ALL", null, null],
+                    "year": e.selYear,
+                    "make": e.ymmMake,
+                    "model": e.ymmModel
+                }
 
-
-
-    }
-
-
-    //Controller ends here
+            }).then(function(response) {
+                $log.debug("YMM response :", response);
+                vm.modelList = response.data.APIResponse.modelList;
+                vm.makeSelected = true;
+            }, function(error) {
+                //debugger;    
+            });*/
+        }
+        //Controller ends here
 }
