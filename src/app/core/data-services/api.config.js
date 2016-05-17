@@ -24,7 +24,7 @@ export let apiConfig = {
     'YMM_SEARCH': {
         'url': '',
         'setUrl': function (searchString, category,prodLine,year,make,model,from, size) {
-            this.url = apiBaseUrl + '/ymmList';
+            this.url = apiBaseUrl + '/result';
             this.data = {
               "q": searchString,
               "cats":[category, null, prodLine],

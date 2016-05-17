@@ -64,8 +64,6 @@ export class SearchResultsController {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
 
-
-
         this.sortType = [
             "Relevance",
             "Featured",
@@ -73,100 +71,19 @@ export class SearchResultsController {
             "Part Number",
             "Brand Name"
         ];
-        
-        /* this.category =[
-             "Relevance",
-             "Featured",
-             "New Launch",
-             "Part Number",
-             "Brand Name"
-         ];
-         
-         this.filters = [{
-             "name": "Greasable",
-             "type": "STRING",
-             "id": "id1",
-             "buckets": [{
-                 "key": "Y",
-                 "count": 38
-             }, {
-                     "key": "N",
-                     "count": 8
-                 }]
-         }, {
-                 "name": "Type",
-                 "type": "STRING",
-                 "id": "id2",
-                 "buckets": [{
-                     "key": "ISR Style",
-                     "count": 15
-                 }, {
-                         "key": "OSR Style",
-                         "count": 12
-                     }, {
-                         "key": "WB Style",
-                         "count": 6
-                     },{
-                         "key": "OSR/ISR Style21",
-                         "count": 1
-                     },{
-                         "key": "WB Style56",
-                         "count": 6
-                     },{
-                         "key": "OSR/ISR Style78",
-                         "count": 1
-                     }]
-             }, {
-                 "name": "brand",
-                 "type": "STRING",
-                 "id": "id3",
-                 "buckets": [{
-                     "key": "Spicer",
-                     "count": 24
-                 }, {
-                         "key": "SVL By Dana",
-                         "count": 22
-                     }]
-             },
-              {
-                 "name": "TEST Single",
-                 "type": "NUMERIC",
-                 "buckets": [{
-                     "key": "Spicer",
-                     "count": 24
-                 }]
-             },
-             {
-                 "name": "AXEL",
-                 "type": "NUMERIC",
-                 "buckets": [{
-                     "key": "n1",
-                     "count": 25
-                 }, {
-                         "key": "n2",
-                         "count": 8
-                     }, {
-                         "key": "n3",
-                         "count": 10
-                     }, {
-                         "key": "n4",
-                         "count": 20
-                     }]
-             }, {
-                     "name": "NUMERIC_RANGE",
-                     "type": "NUMERIC_RANGE",
-                     "buckets": [{
-                         "key": "7.547",
-                         "start": 1,
-                         "end": 10,
-                         "count": 2
-                     },{
-                         "key": "7.547",
-                         "start": 11,
-                         "end": 20,
-                         "count": 2
-                     }]
-         }];*/
+    }
+
+    ymmSearch(year, make, model){
+        console.log("ymm");
+        let vm = this;
+        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
+        dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, year, make, model, 0, 10)
+        .then(function(response) {
+            vm.filters = response.filter;
+            vm.category = response.partCategoryList;
+        }, function(error) {
+
+        });
     }
 
     change(action) {
@@ -224,27 +141,6 @@ export class SearchResultsController {
             vm.resultLoading = false;
             $log.debug("Error in response :", error);
         });
-        /*} else {
-            dataServices.partSearch(SearchBarService.srchStr).then(function (response) {
-                $log.debug("Response in Controller else:", response);
-                vm.results = response;
-                vm.resultSetLimit = response.resultSetLimit;
-               // vm.filters = response.filter;
-                //$log.debug("vm.filters :", vm.filters);
-                vm.results.parts = vm.results.parts.map(function (part) {
-                    part.displayName = part.partNumber + ' ' + part.partDesc;
-                    if (part.attrs != null) {
-                        part.attrList = Object.keys(part.attrs);
-                    } else {
-                        part.attrList = [];
-                    }
-                    return part;
-                });
-                $log.debug("results :", vm.results);
-            }, function (error) {
-                $log.debug("Error in response :", error);
-            });
-        }*/
     }
 
     loadMore() {

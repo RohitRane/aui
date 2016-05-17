@@ -4,9 +4,7 @@ export function ymmDirective() {
         restrict: 'E',
         templateUrl: 'app/search-results/ymm/ymm.html',
         scope: {
-            list: '=',
-            category: '=',
-            selectedItemsChanged: '&'
+            ymmSearch: '&'
         },
         controller: YMMDirectiveController,
         controllerAs: 'vm',
@@ -307,40 +305,15 @@ class YMMDirectiveController {
     }
 
     searchByYMM($event, e) {
-            let vm = this;
-            let {
-                $log,
-                $http,
-                $scope,
-                dataServices,
-                SearchBarService
-            } = vm.DI();
-            dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
-                .then(function(response) {
+        let vm = this;
+        let {
+            $log,
+            $http,
+            $scope,
+            dataServices,
+            SearchBarService
+        } = vm.DI();
 
-                }, function(error) {
-
-                });
-            /*$http({
-                url: "http://52.8.125.250:8080/search-service/api/ymmList",
-                method: 'POST',
-                data: {
-                    "q": "SPL55",
-                    "from": 0,
-                    "size": 10,
-                    "cats": ["ALL", null, null],
-                    "year": e.selYear,
-                    "make": e.ymmMake,
-                    "model": e.ymmModel
-                }
-
-            }).then(function(response) {
-                $log.debug("YMM response :", response);
-                vm.modelList = response.data.APIResponse.modelList;
-                vm.makeSelected = true;
-            }, function(error) {
-                //debugger;    
-            });*/
-        }
-        //Controller ends here
+        vm.ymmSearch({year:e.selYear, make:e.ymmMake, model:e.ymmModel});
+    }
 }
