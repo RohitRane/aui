@@ -54,4 +54,11 @@ export class PartController {
             });
         }
     }
+    
+    hasSpecification(attrs){
+        if(Object.keys(attrs).length === 0){
+                return false;
+        }
+        else return true;
+    }
 }

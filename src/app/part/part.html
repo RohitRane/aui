@@ -91,9 +91,10 @@
               <div class="panel-body resetPadding">
                 <div class='poster' style="display:none"></div>
                 <div class='partDetails'>
+                  <label data-ng-if="part.partData.longDesc" class="partDetailsTabDesc">Description</label>
                   <label data-ng-if="part.partData.longDesc" class="partDesc" data-ng-bind="part.partData.longDesc">                    
                   </label>
-                  <label class="partDetailsTabDesc">Specification</label>
+                  <label data-ng-if="part.hasSpecification(part.partData.attrs)" class="partDetailsTabDesc">Specification</label>
                   <table class="table">
                     <tbody>
                       <tr data-ng-repeat="(key,val) in part.partData.attrs">
