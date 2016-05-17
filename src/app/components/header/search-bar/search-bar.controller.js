@@ -62,7 +62,6 @@ export class SearchBarController {
         });
 
         dataServices.appInfo().then(response => {
-            $log.debug("APP INFO :", response);
             vm.search.categories = response.cats.map(function (cat) {
                 return cat.name;
             });
@@ -125,8 +124,8 @@ export class SearchBarController {
             }
 
             vm.parts = {
-                count : 0,
-                id : ''
+                count: 0,
+                id: ''
             };
             angular.forEach(response.partSuggestList, (part) => {
 
@@ -211,14 +210,18 @@ export class SearchBarController {
             item.partNumber = item.partNumber.replace(" in", "");*/
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
+            SearchBarService.autoSuggestItem = item;
             if (item.suggestType === "CAT_SUGGEST") {
                 SearchBarService.productCategory = item.suggestId;
+                $timeout(() => {
+                    $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
+                    SearchBarService.productLine = vm.search.searchScope;
+                });
             }
-
-            $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
-                SearchBarService.productLine = vm.search.searchScope;
-            });
+            else if (item.suggestType === "YMM_SUGGEST") {
+                //SearchBarService.productCategory = "All";
+                //SearchBarService.productCategory = null;                
+            }
 
             vm._blurSrchBox();
             if ($location.url() === '/search') {
@@ -246,8 +249,9 @@ export class SearchBarController {
 
     searchIconClick() {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope, $timeout} = vm.DI();
+        let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope} = vm.DI();
         vm._blurSrchBox();
+        SearchBarService.autoSuggestItem = null;
         BreadCrumbService.searchToResults = true;
         SearchBarService.categoryfilters = [];
         SearchBarService.filters = [];

@@ -122,13 +122,21 @@ class FilterDirectiveController{
         
         vm.count = true;
         angular.forEach(vm.categoryPristine, function(obj){ 
+          if(selectedCategory.name == obj.name){
+            selectedCategory.select = !selectedCategory.select;
+          }else{
             obj.select = false;
+          }
         });
-        selectedCategory.select = true;
+       
         if(SearchBarService.productLine == "All"){
            SearchBarService.productLine = selectedCategory.name;
         }else{
+          if(selectedCategory.select){
            SearchBarService.productCategory = selectedCategory.name;
+          }else{
+           SearchBarService.productCategory = null; 
+          }
         }
         //SearchBarService.productCategory = selectedCategory.name;
         vm.listPreviousFilter = [];

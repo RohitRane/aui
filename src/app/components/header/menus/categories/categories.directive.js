@@ -48,7 +48,7 @@ export function categoryMenuDirective() {
 }
 
 class CategoryMenuController {
-    constructor($scope, $log, $document, $timeout, $window) {
+    constructor($scope, $log, $document, $timeout, $window, dataServices) {
         'ngInject';
 
         let vm = this;
@@ -58,8 +58,33 @@ class CategoryMenuController {
         angular.element($window).bind('resize', () => {
             vm._sizeMegaMenuPopover();
         });
+        
+        vm.categories = [];
 
-        vm.data = {
+        dataServices.appInfo().then(response => {
+            $log.debug("APP INFO :", response);
+            vm.categories= response.cats;
+            angular.forEach(vm.categories,(cat)=>{
+                angular.forEach(cat.children,(child,index)=>{                    
+                    angular.forEach(child.children,(gChild,index)=>{
+                        if(index===0){
+                        child.gChildCount = 0;
+                    }
+                        child.gChildCount++;
+                    });
+                    $log.debug("G C Count :",child.gChildCount);
+                });
+                
+            });
+            
+            /*vm.search.categories = response.cats.map(function (cat) {
+                return cat.name;
+            });*/
+        }, error => {
+
+        });
+
+        /*vm.data = {
             "categories": [{
                 "name": "Commercial Vehicle",
                 "link": "1",
@@ -157,9 +182,9 @@ class CategoryMenuController {
                     "link": "6",
                     "sub": ""
                 }]
-        };
+        };*/
 
-        vm.categories = [];
+        
 
         $scope.currentIndex = "";
         $scope.setCurrentIndex = function (index) {
@@ -173,16 +198,16 @@ class CategoryMenuController {
         }
 
 
-        vm.init = function () {
+/*        vm.init = function () {
             vm.categories = vm.data.categories.map(function (item) {
                 item.open = false;
                 return item;
                 //var temp= {}; temp.name = item.name;temp.link=item.link; return temp
             });
 
-        };
+        };*/
 
-        vm.init();
+        //vm.init();
 
     }
 

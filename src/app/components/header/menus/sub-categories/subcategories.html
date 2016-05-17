@@ -3,12 +3,12 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="popover-content">
                 <div class="sample">
-                    <dl data-ng-repeat="obj in category.sub">
+                    <dl data-ng-repeat="child in category.children">
                         <dt>
-                            <a href="">{{obj.name|uppercase}}</a>
+                            <a href="">{{child.name|uppercase}}</a>
                         </dt>
-                        <dd data-ng-repeat="temp in obj.sub">
-                            <a href="">{{temp.name}}</a>
+                        <dd data-ng-repeat="gChild in child.children">
+                            <a href="">{{gChild.name}}</a>
                         </dd>
                     </dl>
                 </div>

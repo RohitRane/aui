@@ -105,6 +105,16 @@ export class SearchBarService {
         this._backBottonPressed = flag;
     }
 
+    get autoSuggestItem(){
+        this._autoSuggestItem =  angular.fromJson(sessionStorage.autoSuggestItem);
+        return this._autoSuggestItem;        
+    }
+
+    set autoSuggestItem(obj){
+        this._autoSuggestItem = obj;
+        sessionStorage.autoSuggestItem = angular.toJson(this._autoSuggestItem);
+    }
+
     _clearSession(){
         console.log("Back in clear",  sessionStorage.categoryfilters);
          delete sessionStorage.srchStr;
