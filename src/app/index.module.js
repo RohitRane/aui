@@ -16,6 +16,7 @@ angular.module('aftermarket',
         'aftermarket.part',
         'aftermarket.category',
         'aftermarket.core',
+        'aftermarket.orderList',
         'aftermarket.footer'
         ]
     )
