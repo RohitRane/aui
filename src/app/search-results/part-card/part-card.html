@@ -16,9 +16,10 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3">
-            <a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part.imageUrl)}}"></a>
+            <!--<a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part.imageUrl)}}"></a>-->
+            <a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part)}}"></a>
           </div>
-          <div class="col-md-6" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
+          <div class="col-md-8" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
             <ul ng-show="partCard.part.attrList.length">
               <li>Specifications</li>
               <li data-ng-click="partCard.toggleSpecs()"><a>{{partCard.specToggleName}}</a></li>

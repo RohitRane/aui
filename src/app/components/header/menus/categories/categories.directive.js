@@ -58,23 +58,28 @@ class CategoryMenuController {
         angular.element($window).bind('resize', () => {
             vm._sizeMegaMenuPopover();
         });
-        
+
         vm.categories = [];
 
         dataServices.appInfo().then(response => {
             $log.debug("APP INFO :", response);
-            vm.categories= response.cats;
-            angular.forEach(vm.categories,(cat)=>{
-                angular.forEach(cat.children,(child,index)=>{                    
-                    angular.forEach(child.children,(gChild,index)=>{
-                        if(index===0){
-                        child.gChildCount = 0;
-                    }
-                        child.gChildCount++;
+            vm.categories = response.cats;
+            angular.forEach(vm.categories, (cat) => {
+                angular.forEach(cat.children, (child, index) => {
+                    child.displayChildren = [];
+                    child.displayChildren[0] = [];
+                    let colCnt = 0;
+                    angular.forEach(child.children, (gChild, index) => {
+                        child.displayChildren[colCnt].push(gChild);
+                        if (index % 10 === 0 && index/10 >=1) {
+                            //child.gChildCount = 0;
+                            colCnt++;
+                            child.displayChildren[colCnt] = [];
+                        }
                     });
-                    $log.debug("G C Count :",child.gChildCount);
+                    $log.debug(child.name, "displayChildren :", child.displayChildren);
                 });
-                
+
             });
             
             /*vm.search.categories = response.cats.map(function (cat) {
@@ -184,7 +189,7 @@ class CategoryMenuController {
                 }]
         };*/
 
-        
+
 
         $scope.currentIndex = "";
         $scope.setCurrentIndex = function (index) {
@@ -198,14 +203,14 @@ class CategoryMenuController {
         }
 
 
-/*        vm.init = function () {
-            vm.categories = vm.data.categories.map(function (item) {
-                item.open = false;
-                return item;
-                //var temp= {}; temp.name = item.name;temp.link=item.link; return temp
-            });
-
-        };*/
+        /*        vm.init = function () {
+                    vm.categories = vm.data.categories.map(function (item) {
+                        item.open = false;
+                        return item;
+                        //var temp= {}; temp.name = item.name;temp.link=item.link; return temp
+                    });
+        
+                };*/
 
         //vm.init();
 
@@ -256,6 +261,10 @@ class CategoryMenuController {
         angular.element(subCatList).css("width", subCatWidth + "px");
         let subCatMarginLeft = $window.innerWidth < 1440 ? 0 : ($window.innerWidth - 1440) / 2;
         angular.element(subCatList).css("margin-left", subCatMarginLeft + "px");
+    }
+    
+    setTop(index, parent){
+        console.log("Elem :",index);
     }
 
 }

@@ -34,7 +34,7 @@ export class SearchBarService {
 
 
     get productLine() {
-        this._productLine = sessionStorage.productLine;
+       // this._productLine = sessionStorage.productLine;
         return this._productLine;
     }
 
@@ -47,7 +47,7 @@ export class SearchBarService {
     }
 
     get productCategory() {
-        this._productCategory = sessionStorage.productCategory;
+        //this._productCategory = sessionStorage.productCategory;
         return this._productCategory;
     }
 

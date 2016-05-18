@@ -66,6 +66,15 @@ export class BreadCrumbController {
                     vm.cats[2] = selectedCategory.name;
                 }
             }
+            
+            //console.log("Cats :",cats);
+            
+            if(vm.cats[0]===vm.cats[1]){
+                vm.cats[1]=null;                
+            }
+            if(vm.cats[1]===vm.cats[2]){
+                vm.cats[2]=null;                
+            }
 
             $log.debug("Cats :", vm.cats);
         });

@@ -218,10 +218,14 @@ export class SearchBarController {
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
-            $timeout(() => {
+            if(SearchBarService.productLine === "All"){
+                SearchBarService.productLine = item.suggestId;
+            }else SearchBarService.productCategory = item.suggestId;
+            
+            $timeout(() => {                
                 $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
                 SearchBarService.productLine = vm.search.searchScope;
-            });
+            },100);
 
             vm._blurSrchBox();
             if ($location.url() === '/search') {

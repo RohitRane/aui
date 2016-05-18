@@ -1,21 +1,21 @@
-<div  id="subcategories" data-ng-mouseenter="category.open=true" data-ng-mouseleave="categoryMenu.catLeave(category)">
+<div id="subcategories" data-ng-mouseenter="category.open=true" data-ng-mouseleave="categoryMenu.catLeave(category)">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="popover-content">
                 <div class="sample">
-                    <div data-ng-repeat="child in category.children">
-                        <div>
+                    <!--<dl data-ng-repeat="child in category.children">-->
+                    <span data-ng-repeat="child in category.children" id="cat_{{child.name}}">
+                    <dl data-ng-repeat="gChildArr in child.displayChildren" id="{{child.name}}_col_{{$index}}" data-ng-init="categoryMenu.setTop($index,child.name)" data-ng-if="gChildArr.length>0">
+                        <dt data-ng-show="$index===0" >
                             <a href="">{{child.name|uppercase}}</a>
-                        </div>
-                        <div data-ng-repeat="gChild in child.children|limitTo:10">
+                        </dt>                        
+                        <dd data-ng-repeat="gChild in gChildArr">
                             <a href="">{{gChild.name}}</a>
-                        </div>
+                        </dd>
                     </dl>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-         
