@@ -16,7 +16,8 @@ angular.module('aftermarket',
         'aftermarket.part',
         'aftermarket.category',
         'aftermarket.core',
-        'aftermarket.footer'
+        'aftermarket.footer',
+        'aftermarket.orderList'
         ]
     )
     .constant('AftermarketConstants', appConstants)
