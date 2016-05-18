@@ -3,7 +3,7 @@ export function routeConfig($stateProvider){
 	'ngInject';
 	$stateProvider
 		.state('orderList', {
-			url: '/orderlist',
+			url: '/orderList',
 			parent: 'aftermarket',
 			templateUrl: 'app/orderList/orderList.html',
 			controller:'OrderListController',
