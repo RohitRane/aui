@@ -22,7 +22,7 @@ export class ImageZoomController {
         let vm = this;
         let {$document} = vm.DI();
         vm.showZoom = true;
-        //console.log("eeeevvvvvvvvvvvttttttttttttttt :", event);
+        console.log("eeeevvvvvvvvvvvttttttttttttttt :", event);
         if (angular.isUndefined(event)) {
             console.log("null evnt");
             event = vm.event;
@@ -133,5 +133,8 @@ export class ImageZoomController {
 }
 
 function generateBgString(imgUrl, startX, startY, zoomedImgHgt, zoomedImgWdt) {
+    console.log("Generating Bg");
+    let bgStr = "url(" + imgUrl + ") " + startX + "px" + " " + startY + "px/" + zoomedImgWdt + "px " + zoomedImgHgt + "px " + "no-repeat";
+    console.log("Bg String :",bgStr);
     return "url(" + imgUrl + ") " + startX + "px" + " " + startY + "px/" + zoomedImgWdt + "px " + zoomedImgHgt + "px " + "no-repeat";
 }
