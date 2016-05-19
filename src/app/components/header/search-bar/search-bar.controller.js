@@ -7,7 +7,7 @@ export class SearchBarController {
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, BreadCrumbService, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, BreadCrumbService, SearchBarService });
 
         let deregistrationCallback = $rootScope.$on("reachedhome", function () {
             vm.search.searchString = null;
@@ -48,6 +48,18 @@ export class SearchBarController {
                 'Industrial'*/
             ]
         };
+
+        let stateChangeEvt = $rootScope.$on('$stateChangeSuccess',
+            function (event, toState, toParams, fromState, fromParams) {
+                if (toState.name === 'home') {
+                    vm.search.searchScope = 'All';
+                    $timeout(() => {
+                        vm._setWidthSearchBox();
+                    }, 50);
+                }
+            });
+
+
 
         /* On Refresh string should be retained*/
         if (sessionStorage.srchStr && $location.path() != "/") {
@@ -218,14 +230,14 @@ export class SearchBarController {
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
-            if(SearchBarService.productLine === "All"){
+            if (SearchBarService.productLine === "All") {
                 SearchBarService.productLine = item.suggestId;
-            }else SearchBarService.productCategory = item.suggestId;
-            
-            $timeout(() => {                
+            } else SearchBarService.productCategory = item.suggestId;
+
+            $timeout(() => {
                 $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
                 SearchBarService.productLine = vm.search.searchScope;
-            },100);
+            }, 100);
 
             vm._blurSrchBox();
             if ($location.url() === '/search') {
@@ -239,7 +251,7 @@ export class SearchBarController {
             vm.search.searchString = SearchBarService.srchStr;
             vm.searchIconClick();
         }
-        else if(item.typeId === 5){
+        else if (item.typeId === 5) {
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = item.suggestId;
             $log.debug("YMM :::", vm.search.searchString);

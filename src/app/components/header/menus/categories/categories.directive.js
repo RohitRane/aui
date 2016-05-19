@@ -264,7 +264,7 @@ class CategoryMenuController {
     }
     
     setTop(index, parent){
-        console.log("Elem :",index);
+        console.log("Elem :",index, parent);
     }
 
 }
