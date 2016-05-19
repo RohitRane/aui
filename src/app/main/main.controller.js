@@ -50,4 +50,9 @@ export class MainController {
         //});
 
     }
+    
+    clearOpaqueOverlay(){
+        let vm = this;
+        vm.putOverlay = false;
+    }
 }
