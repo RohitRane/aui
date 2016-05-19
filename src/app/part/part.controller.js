@@ -27,6 +27,40 @@ export class PartController {
             width: 80
         };
 
+        vm.ymmCompatibility = [
+            {
+                'year': 2007,
+                'make': 'Ford',
+                'model': 'E-150'
+            },
+            {
+                'year': 2006,
+                'make': 'Ford',
+                'model': 'E-250'
+            },
+            {
+                'year': 2008,
+                'make': 'Ford',
+                'model': 'E-150'
+            },
+            {
+                'year': 2009,
+                'make': 'Ford',
+                'model': 'E-250'
+            },
+            {
+                'year': 1979,
+                'make': 'Chevrolet',
+                'model': 'P30'
+            }
+        ];
+
+        vm.ymmCompatibilityTab1 = [], vm.ymmCompatibilityTab2 = [];
+
+        angular.forEach(vm.ymmCompatibility, (ymm, index, compArr) => {
+            (index < Math.ceil(compArr.length / 2)) ? vm.ymmCompatibilityTab1.push(ymm) : vm.ymmCompatibilityTab2.push(ymm);
+        });
+
         vm.hideForNow = true;
 
     }

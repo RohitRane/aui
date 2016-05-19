@@ -323,6 +323,53 @@
       </div>
     </div>
   </div>
+  
+  <div class="" data-ng-if="part.partData.categories[0]==='Automotive'">
+    <div class="panel panel-default">
+      <div class="panel-body part-panel">
+        <div class="section-title bottom top-bottom-gap">Compatible With</hr>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Make</th>
+              <th>Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab1">
+              <td data-ng-bind="ymm.year"></td>
+              <td data-ng-bind="ymm.make"></td>
+              <td data-ng-bind="ymm.model"></td>
+            </tr>            
+          </tbody>
+        </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Make</th>
+              <th>Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab2">
+              <td data-ng-bind="ymm.year"></td>
+              <td data-ng-bind="ymm.make"></td>
+              <td data-ng-bind="ymm.model"></td>
+            </tr>            
+          </tbody>
+        </table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
   <div data-ng-hide="part.hideForNow" class="">
     <div class="panel panel-default">
       <div class="panel-body part-panel">

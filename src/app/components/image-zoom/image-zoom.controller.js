@@ -133,8 +133,5 @@ export class ImageZoomController {
 }
 
 function generateBgString(imgUrl, startX, startY, zoomedImgHgt, zoomedImgWdt) {
-    console.log("Generating Bg");
-    let bgStr = "url(" + imgUrl + ") " + startX + "px" + " " + startY + "px/" + zoomedImgWdt + "px " + zoomedImgHgt + "px " + "no-repeat";
-    console.log("Bg String :",bgStr);
     return "url(" + imgUrl + ") " + startX + "px" + " " + startY + "px/" + zoomedImgWdt + "px " + zoomedImgHgt + "px " + "no-repeat";
 }
