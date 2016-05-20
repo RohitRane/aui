@@ -4,10 +4,14 @@ export function ymmDirective() {
         restrict: 'E',
         templateUrl: 'app/search-results/ymm/ymm.html',
         scope: {
+<<<<<<< HEAD
             list: '=',
             category: '=',
             selectedItemsChanged: '&',
             currentCategory:'@'
+=======
+            ymmSearch: '&'
+>>>>>>> 1795c26a836afcc1be0ef706cdb55bd46ae085be
         },
         controller: YMMDirectiveController,
         controllerAs: 'vm',
@@ -360,6 +364,7 @@ class YMMDirectiveController {
     }
 
     searchByYMM($event, e) {
+<<<<<<< HEAD
             let vm = this;
             let {
                 $log,
@@ -391,14 +396,17 @@ class YMMDirectiveController {
                     "make": e.ymmMake,
                     "model": e.ymmModel
                 }
+=======
+        let vm = this;
+        let {
+            $log,
+            $http,
+            $scope,
+            dataServices,
+            SearchBarService
+        } = vm.DI();
+>>>>>>> 1795c26a836afcc1be0ef706cdb55bd46ae085be
 
-            }).then(function(response) {
-                $log.debug("YMM response :", response);
-                vm.modelList = response.data.APIResponse.modelList;
-                vm.makeSelected = true;
-            }, function(error) {
-                //debugger;    
-            });*/
-        }
-        //Controller ends here
+        vm.ymmSearch({year:e.selYear, make:e.ymmMake, model:e.ymmModel});
+    }
 }

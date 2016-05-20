@@ -22,7 +22,7 @@
                   <a href="#" class="">
                     <!-- <img src="assets/images/part-details/machine_main.jpg" alt="125x125" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"> -->
                     <!--<img src="assets/images/part-details/machine_main.jpg" alt="125x125" >-->
-                    <image-zoom src="assets/images/u-joint.jpg" zoom-index="5" lens-dimensions="{{part.lensDimensions}}" container-dimensions="{{part.containerDimensions}}"></image-zoom>
+                    <image-zoom src="{{part.partData.imageUrl}}" zoom-index="5" lens-dimensions="{{part.lensDimensions}}" container-dimensions="{{part.containerDimensions}}"></image-zoom>
                   </a>
                 </div>
               </div>
@@ -91,9 +91,10 @@
               <div class="panel-body resetPadding">
                 <div class='poster' style="display:none"></div>
                 <div class='partDetails'>
+                  <label data-ng-if="part.partData.longDesc" class="partDetailsTabDesc">Description</label>
                   <label data-ng-if="part.partData.longDesc" class="partDesc" data-ng-bind="part.partData.longDesc">                    
                   </label>
-                  <label class="partDetailsTabDesc">Specification</label>
+                  <label data-ng-if="part.hasSpecification(part.partData.attrs)" class="partDetailsTabDesc">Specification</label>
                   <table class="table">
                     <tbody>
                       <tr data-ng-repeat="(key,val) in part.partData.attrs">
@@ -154,7 +155,7 @@
               <div class="panel-body ">
                 <div class="row">
                   <div class="dropdown text-center wishlist">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add to Orderlist
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add to Order List
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                       <li><a href="#">HTML</a></li>
@@ -322,6 +323,53 @@
       </div>
     </div>
   </div>
+  
+  <div class="comp-table" data-ng-if="part.partData.categories[0]==='Automotive'">
+    <div class="panel panel-default">
+      <div class="panel-body part-panel">
+        <div class="section-title bottom top-bottom-gap">Compatible With</hr>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Make</th>
+              <th>Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab1">
+              <td data-ng-bind="ymm.year"></td>
+              <td data-ng-bind="ymm.make"></td>
+              <td data-ng-bind="ymm.model"></td>
+            </tr>            
+          </tbody>
+        </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Make</th>
+              <th>Model</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab2">
+              <td data-ng-bind="ymm.year"></td>
+              <td data-ng-bind="ymm.make"></td>
+              <td data-ng-bind="ymm.model"></td>
+            </tr>            
+          </tbody>
+        </table>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
   <div data-ng-hide="part.hideForNow" class="">
     <div class="panel panel-default">
       <div class="panel-body part-panel">

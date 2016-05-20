@@ -1,5 +1,5 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, $scope, $timeout, $window, dataServices, SearchBarService) {
+    constructor($log, $rootScope, $scope, $timeout, $window, $document, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
@@ -26,8 +26,34 @@ export class SearchResultsController {
             vm.getParts(0, 10, payload);
         });
 
+        vm.stickyAd = false;
+        let deregistrationCallback = $rootScope.$on("isHeaderSticky", (evt, isHeaderSticky) => {
+            $log.debug("isHeaderSticky", isHeaderSticky);
+            //isHeaderSticky.state ? vm.stickyAd = true : vm.stickyAd = false;
+            let adSec = $document[0].getElementById("ad-section");
+            if (isHeaderSticky.state) {
+                vm.stickyAd = true;
+                if (angular.isDefined(isHeaderSticky.bottomOffset)) {
+                    console.log("bottomOffset is defined.");
+                    //vm.stickyAd = false;
+                    console.log("Bottom Offset :",isHeaderSticky.bottomOffset);
+                    /*angular.element(adSec).css("position", "fixed");
+                    angular.element(adSec).css("top", 70+"px");
+                    angular.element(adSec).css("bottom", 100+"px");
+                    angular.element(adSec).css("right", "0px");*/
+                }
+            } else {
+                vm.stickyAd = false;
+                //angular.element(adSec).css("position", 'static');
+                angular.element(adSec).css("bottom", 'auto');
+                //angular.element(adSec).css("right", 'auto');
+            }
+
+        });
+
         $rootScope.$on('$destroy', function () {
             deregistrationCallback2();
+            deregistrationCallback();
         });
 
         if (SearchBarService.backBottonPressed) {
@@ -37,18 +63,6 @@ export class SearchResultsController {
         } else {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
-        
-        /*dataServices.partSearch().then(function (response) {
-            $log.debug("Response in Controller :", response);
-            vm.results = response;
-            vm.results.parts = vm.results.parts.map(function (part) {
-                part.displayName = part.sku + ' ' + part.name;
-                return part;
-            });
-            $log.debug("results :", vm.results);
-        }, function (error) {
-            $log.debug("Error in response :", error);
-        });*/
 
         this.sortType = [
             "Relevance",
@@ -57,100 +71,19 @@ export class SearchResultsController {
             "Part Number",
             "Brand Name"
         ];
-        
-        /* this.category =[
-             "Relevance",
-             "Featured",
-             "New Launch",
-             "Part Number",
-             "Brand Name"
-         ];
-         
-         this.filters = [{
-             "name": "Greasable",
-             "type": "STRING",
-             "id": "id1",
-             "buckets": [{
-                 "key": "Y",
-                 "count": 38
-             }, {
-                     "key": "N",
-                     "count": 8
-                 }]
-         }, {
-                 "name": "Type",
-                 "type": "STRING",
-                 "id": "id2",
-                 "buckets": [{
-                     "key": "ISR Style",
-                     "count": 15
-                 }, {
-                         "key": "OSR Style",
-                         "count": 12
-                     }, {
-                         "key": "WB Style",
-                         "count": 6
-                     },{
-                         "key": "OSR/ISR Style21",
-                         "count": 1
-                     },{
-                         "key": "WB Style56",
-                         "count": 6
-                     },{
-                         "key": "OSR/ISR Style78",
-                         "count": 1
-                     }]
-             }, {
-                 "name": "brand",
-                 "type": "STRING",
-                 "id": "id3",
-                 "buckets": [{
-                     "key": "Spicer",
-                     "count": 24
-                 }, {
-                         "key": "SVL By Dana",
-                         "count": 22
-                     }]
-             },
-              {
-                 "name": "TEST Single",
-                 "type": "NUMERIC",
-                 "buckets": [{
-                     "key": "Spicer",
-                     "count": 24
-                 }]
-             },
-             {
-                 "name": "AXEL",
-                 "type": "NUMERIC",
-                 "buckets": [{
-                     "key": "n1",
-                     "count": 25
-                 }, {
-                         "key": "n2",
-                         "count": 8
-                     }, {
-                         "key": "n3",
-                         "count": 10
-                     }, {
-                         "key": "n4",
-                         "count": 20
-                     }]
-             }, {
-                     "name": "NUMERIC_RANGE",
-                     "type": "NUMERIC_RANGE",
-                     "buckets": [{
-                         "key": "7.547",
-                         "start": 1,
-                         "end": 10,
-                         "count": 2
-                     },{
-                         "key": "7.547",
-                         "start": 11,
-                         "end": 20,
-                         "count": 2
-                     }]
-         }];*/
+    }
+
+    ymmSearch(year, make, model){
+        console.log("ymm");
+        let vm = this;
+        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
+        dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, year, make, model, 0, 10)
+        .then(function(response) {
+            vm.filters = response.filter;
+            vm.category = response.partCategoryList;
+        }, function(error) {
+
+        });
     }
 
     change(action) {
@@ -165,18 +98,15 @@ export class SearchResultsController {
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine;
-        //let typeId = SearchBarService.typeId;
-        /*if (typeId === 4) {*/
-        //from ? from : from=0;
-        //size ? size : size=10;
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);
-        $log.debug("SearchBarService.productCategory:", SearchBarService.productCategory);
         let ymm = null;
         if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
             $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
             ymm = SearchBarService.autoSuggestItem.suggestId;
         }
+
+        $scope.$emit("showLoading", true);
         dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, ymm).then(function (response) {
             // $log.debug("Response in Controller :", response);
             vm.resultLoading = false;
@@ -191,8 +121,7 @@ export class SearchResultsController {
 
             vm.filters = response.filter;
             vm.category = response.partCategoryList;
-            $log.debug("response.filter:", response.filter);
-            $log.debug("response.CategoryList", vm.category);
+            vm.sortAttributes = response.filter.slice(0,3);
 
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber + ' ' + part.partDesc;
@@ -203,32 +132,11 @@ export class SearchResultsController {
                 }
                 return part;
             });
-            $log.debug("results :", vm.results);
+            $scope.$emit("showLoading", false);
         }, function (error) {
             vm.resultLoading = false;
-            $log.debug("Error in response :", error);
+            $scope.$emit("showLoading", false);
         });
-        /*} else {
-            dataServices.partSearch(SearchBarService.srchStr).then(function (response) {
-                $log.debug("Response in Controller else:", response);
-                vm.results = response;
-                vm.resultSetLimit = response.resultSetLimit;
-               // vm.filters = response.filter;
-                //$log.debug("vm.filters :", vm.filters);
-                vm.results.parts = vm.results.parts.map(function (part) {
-                    part.displayName = part.partNumber + ' ' + part.partDesc;
-                    if (part.attrs != null) {
-                        part.attrList = Object.keys(part.attrs);
-                    } else {
-                        part.attrList = [];
-                    }
-                    return part;
-                });
-                $log.debug("results :", vm.results);
-            }, function (error) {
-                $log.debug("Error in response :", error);
-            });
-        }*/
     }
 
     loadMore() {

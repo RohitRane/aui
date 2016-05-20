@@ -93,7 +93,7 @@
                  .rghtBorder{
                           /* border-right:1px solid #AAAAAA; */
                  }
-                 .col-md-6{
+                 .col-md-8{
                      @media only screen and (device-width: 768px) {
                          border-right: 0px;
                      }
@@ -106,8 +106,8 @@
                          display: inline-block;
                          // font-weight: bold;
                          // font-size: 13px;
-                         font-weight: 600;
-                         font-size: 12px;
+                         font-weight: bold;
+                         font-size: 14px;
                          a{
                            font-size: 9px;
                            &:hover{
@@ -127,7 +127,7 @@
                                 height: 25px;
                                 vertical-align: middle;
                                 padding: 0px 10px !important;
-                                font-weight: 500;
+                                font-weight: 600;
                                 line-height: 2.2;
                             }
                         }

@@ -19,7 +19,7 @@
   </button>
   <ul class="pull-right" uib-dropdown-menu role="menu " aria-labelledby="single-button ">
     <li role="menuitem">
-      <a href="#" ng-click="srchRes.change(action)" ng-repeat="action in srchRes.sortType">{{action}}</a>
+      <a href="#" ng-click="bc.sortAction(action)" ng-repeat="action in bc.sortAttributes">{{action.name}}</a>
     </li>
   </ul>
 </div>

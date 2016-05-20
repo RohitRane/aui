@@ -10,13 +10,15 @@ angular.module('aftermarket',
         'imageZoom',
         'rzModule',
         'breadCrumb',
+        'loading',
         'aftermarket.header',
         'aftermarket.home',
         'aftermarket.searchResults',
         'aftermarket.part',
         'aftermarket.category',
         'aftermarket.core',
-        'aftermarket.footer'
+        'aftermarket.footer',
+        'aftermarket.orderList'
         ]
     )
     .constant('AftermarketConstants', appConstants)

@@ -7,7 +7,7 @@ export class SearchBarController {
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, BreadCrumbService, SearchBarService })
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, BreadCrumbService, SearchBarService });
 
         let deregistrationCallback = $rootScope.$on("reachedhome", function () {
             vm.search.searchString = null;
@@ -48,6 +48,18 @@ export class SearchBarController {
                 'Industrial'*/
             ]
         };
+
+        let stateChangeEvt = $rootScope.$on('$stateChangeSuccess',
+            function (event, toState, toParams, fromState, fromParams) {
+                if (toState.name === 'home') {
+                    vm.search.searchScope = 'All';
+                    $timeout(() => {
+                        vm._setWidthSearchBox();
+                    }, 50);
+                }
+            });
+
+
 
         /* On Refresh string should be retained*/
         if (sessionStorage.srchStr && $location.path() != "/") {
@@ -99,7 +111,7 @@ export class SearchBarController {
 
             let resultSet = [];
             angular.forEach(response.partSuggestList, (part) => {
-                if (part.suggestType === "CAT_SUGGEST" || part.suggestType === "YMM_SUGGEST") {
+                if (part.suggestType === "CAT_SUGGEST") {
                     $log.debug("CATEGORY >>>>>>>>", part);
                     part.typeId = 2;
                     resultSet.push(part);
@@ -135,6 +147,13 @@ export class SearchBarController {
                     resultSet.push(part);
                     vm.parts.count++;
                     vm.parts.id = part.suggestId;
+                }
+            });
+            angular.forEach(response.partSuggestList, (part) => {
+                if (part.suggestType === "YMM_SUGGEST") {
+                    $log.debug("YMM >>>>>>>>", part);
+                    part.typeId = 5;
+                    resultSet.push(part);
                 }
             });
 
@@ -211,17 +230,14 @@ export class SearchBarController {
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
-            if (item.suggestType === "CAT_SUGGEST") {
-                SearchBarService.productCategory = item.suggestId;
-                $timeout(() => {
-                    $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
-                    SearchBarService.productLine = vm.search.searchScope;
-                });
-            }
-            else if (item.suggestType === "YMM_SUGGEST") {
-                //SearchBarService.productCategory = "All";
-                //SearchBarService.productCategory = null;                
-            }
+            if (SearchBarService.productLine === "All") {
+                SearchBarService.productLine = item.suggestId;
+            } else SearchBarService.productCategory = item.suggestId;
+
+            $timeout(() => {
+                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
+                SearchBarService.productLine = vm.search.searchScope;
+            }, 100);
 
             vm._blurSrchBox();
             if ($location.url() === '/search') {
@@ -234,6 +250,28 @@ export class SearchBarController {
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
             vm.searchIconClick();
+        }
+        else if (item.typeId === 5) {
+            SearchBarService.srchStr = SearchBarService.srchTempStr;
+            vm.search.searchString = item.suggestId;
+            $log.debug("YMM :::", vm.search.searchString);
+            /*item.lineDesc = "";
+            item.partNumber = item.partNumber.replace(" in", "");*/
+            $rootScope.$emit("clearCategoryFilter");
+            //SearchBarService.productLine = vm.search.searchScope;
+            SearchBarService.autoSuggestItem = item;
+            $timeout(() => {
+                $rootScope.$broadcast("categoryFilterApplied", { "name": vm.search.searchScope, "suggestion": true });
+                //SearchBarService.productLine = vm.search.searchScope;
+            });
+
+            vm._blurSrchBox();
+            if ($location.url() === '/search') {
+                $scope.$emit("searchbarBlurred");
+                $scope.$emit("searchLaunched");
+            } else {
+                $location.path('/search');
+            }
         }
         else {
             vm.search.searchString = vm.search.searchString.suggestString;
@@ -263,7 +301,7 @@ export class SearchBarController {
         if (vm.search.searchString) {
             $log.debug("icon click Result set :", vm.resultSet);
             $log.debug("vm.search.searchString ", vm.search.searchString);
-            if (vm.parts.count === 1) {
+            if (vm.parts && vm.parts.count === 1) {
                 $log.debug("Only one part");
                 BreadCrumbService.searchToResults = false;
                 $location.path('/part/id/' + vm.parts.id);

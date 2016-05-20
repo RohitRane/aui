@@ -66,6 +66,15 @@ export class BreadCrumbController {
                     vm.cats[2] = selectedCategory.name;
                 }
             }
+            
+            //console.log("Cats :",cats);
+            
+            if(vm.cats[0]===vm.cats[1]){
+                vm.cats[1]=null;                
+            }
+            if(vm.cats[1]===vm.cats[2]){
+                vm.cats[2]=null;                
+            }
 
             $log.debug("Cats :", vm.cats);
         });
@@ -112,5 +121,11 @@ export class BreadCrumbController {
              angular.element(bdcmb).css("padding-left",pdng+"px");
             angular.element(bdcmb).css("padding-right",pdng+"px");
         }
+    }
+
+     sortAction(sortObj){
+        let vm = this;
+        let {SearchBarService} = vm.DI();
+       // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});
     }
 }

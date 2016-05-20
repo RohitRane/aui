@@ -32,7 +32,7 @@ class SearchResultDirectiveController {
         this.dI = {
             log: $log,
             scope: $scope,
-            BreadCrumbService : BreadCrumbService
+            BreadCrumbService: BreadCrumbService
         };
           
         /* if(this.part.attrs != null){this.dI.log.debug("if");
@@ -59,13 +59,23 @@ class SearchResultDirectiveController {
         this.toggle = !this.toggle;
     }
 
-    getImageUrl(url) {      
-        let retUrl;
-        url ?  retUrl = url : retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
+    getImageUrl(part) {
+        console.log("part :", part);
+        let retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
+        //url ?  retUrl = url : retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
+        console.log("Categories :", part.categories[2]);
+        switch (part.categories[2]) {
+            case 'Flanges': console.log("It's a flanges"); retUrl = "/assets/images/flange.png"; break;
+            case 'Universal Joints': console.log("It's a Universal Jt"); retUrl = "/assets/images/u-joint.jpg"; break;
+            case 'Flange Yoke': console.log("It's a flange yoke"); retUrl = "/assets/images/flange_yoke.jpg"; break;
+            case 'Flange Yokes': console.log("It's a flange yoke"); retUrl = "/assets/images/flange_yoke.jpg"; break;
+            case 'Ring and Pinions': console.log("It's a Universal Jt"); retUrl = "/assets/images/rangeNpinion.jpg"; break;
+            default: angular.noop();
+        };
         return retUrl;
     }
-    
-    showBack(){
+
+    showBack() {
         this.BreadCrumbService.searchToResults = true;
     }
 }

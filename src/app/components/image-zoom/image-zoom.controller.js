@@ -22,7 +22,7 @@ export class ImageZoomController {
         let vm = this;
         let {$document} = vm.DI();
         vm.showZoom = true;
-        //console.log("eeeevvvvvvvvvvvttttttttttttttt :", event);
+        console.log("eeeevvvvvvvvvvvttttttttttttttt :", event);
         if (angular.isUndefined(event)) {
             console.log("null evnt");
             event = vm.event;
@@ -100,7 +100,8 @@ export class ImageZoomController {
 
     }
 
-    abd() {
+    /*Attach the below function to ng-mouseover event*/
+    zoomInOrOut() {
         //console.log('Muhahahaha');
         let vm = this;
         let {$document} = vm.DI();

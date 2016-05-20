@@ -31,5 +31,16 @@
     interchange{
         color:$accent_color;
         font-size: 11px;
+        &:before{
+            font-family: FontAwesome;
+            content: "\f178";
+            font-weight: normal;
+            font-style: normal;
+            display: inline-block;
+            text-decoration: inherit;
+            font-size: 14px;
+            margin-left: 10px;
+            margin-right: 5px;
+        }
     }
 }

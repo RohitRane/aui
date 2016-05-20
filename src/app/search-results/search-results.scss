@@ -210,4 +210,17 @@
             }
         }
     }
+    .affix-div{
+        position:fixed;
+        top: 70px;
+    }
+    
+    .affix-ads{
+        @extend .affix-div;
+        right: 0px;
+    }
+    .affix-filters{
+        @extend .affix-div;
+        // left: 10px;
+    }
 }
