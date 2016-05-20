@@ -1,7 +1,8 @@
-<div class="ymm-directive">
-    <div id="dropdown-scrollable-container" class="scrollable-container-box" ng-init="vm.displayYMM($event,this)" ng-show="vm.initDirective">
+<div class="ymm-directive" ng-init="vm.checkInited($event,this)" currentCategory="{{currentCategory}}" >
+    <div id="dropdown-scrollable-container" class="scrollable-container-box" ng-show="vm.initDirective">
         <div id="dropdown-long-content">
             <div id="dropdown-hidden-container">
+                <label>{{rivan}}</label>
                 <label>Filter By : &nbsp;</label>
                 <div class="btn-group btn-box" uib-dropdown dropdown-append-to-body>
                     <button id="ymmYearSelector" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.showYearTable($event,this)">

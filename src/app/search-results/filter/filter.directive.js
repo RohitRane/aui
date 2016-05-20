@@ -39,7 +39,6 @@ class FilterDirectiveController{
             $timeout(function(){
                vm.resetCategory();
             },200);
-             
          });
         
          /* watch for the change in list */ 
@@ -77,7 +76,7 @@ class FilterDirectiveController{
     /* convert categorty to object and put it in categoryPristine */
     resetCategory(){
       let vm = this;
-      let { SearchBarService } = vm.DI();
+      let { SearchBarService,$rootScope } = vm.DI();
 
       /*if(SearchBarService.backBottonPressed){
           console.log("Back in directive restore category ", vm.categoryPristine, SearchBarService.categoryfilters);
@@ -111,6 +110,8 @@ class FilterDirectiveController{
       }
       
       SearchBarService.categoryfilters = vm.categoryPristine;
+      $rootScope.$broadcast("eventForYMM",{'prodLine':SearchBarService.productLine,
+                                            'prodCategory':SearchBarService.productCategory});
     }
     
     /* call api to get the filters for the selected category and selected category should be heighlighted */ 

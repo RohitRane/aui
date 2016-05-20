@@ -6,18 +6,23 @@ export function ymmDirective() {
         scope: {
             list: '=',
             category: '=',
-            selectedItemsChanged: '&'
+            selectedItemsChanged: '&',
+            currentCategory:'@'
         },
         controller: YMMDirectiveController,
         controllerAs: 'vm',
         bindToController: true,
 
-        link: function(scope, element, attributes) {
-            var i, list = angular.element(element);
-            element.on("click", function(el) {
-                // debugger; 
-            })
-        }
+        link: function(scope, el, attr) {
+          console.log('am in ymm directive link function');
+        },
+
+        compile: function(tElement, tAttrs, transclude) {
+            return function($scope, tElement) {
+                $scope.directiveContent = true;;
+                console.log('inside compile function');
+            };
+        },
     };
     return directive;
 }
@@ -39,20 +44,86 @@ class YMMDirectiveController {
         $scope.yearList = "";
         $scope.makeList = "";
         $scope.modelList = "";
+        $scope.directiveContent = "";
 
         $scope.showYMM = true;
         $scope.initDirective = false;
         $scope.headerLabelArray = [];
 
-        $scope.selYear = 'Year';
+
         $scope.yearSelected = false;
         $scope.makeSelected = false;
         $scope.ymmSubmit = false;
 
+        $scope.selYear = 'Year';
         $scope.ymmModel = "Model";
         $scope.ymmMake = "Make";
+
+        $scope.catChanged = false;
+
+
+        $scope.$on("eventForYMM", function(evt, cat) {
+            vm.currentCategory = cat.prodCategory;
+            vm.displayYMM(evt, cat);
+        });
     }
 
+    checkInited(evt,cxt){
+         let vm = this;
+        let {
+            $log,
+            $scope
+        } = vm.DI();
+        $scope.initDirective=true;
+    }
+
+    resetTable(){
+        let vm = this;
+        let {
+            $log,
+            $scope
+        } = vm.DI();
+
+        vm.headerLabelArray = [];
+        
+        var tableElement = angular.element(document.querySelector('#yearSelectorTable'));
+      
+        Array.prototype.forEach.call(tableElement.children(), function(el) {
+            Array.prototype.forEach.call(el.childNodes, function(innerEl) {
+                if (innerEl.textContent.indexOf('s') == -1) {
+                    if (innerEl.nodeType == 1 && innerEl.children.length==0 && innerEl.nodeName == 'LI') {
+                        var yrContent = Number(innerEl.textContent);
+
+                            var a = document.createElement('a');
+                            var linkText = document.createTextNode(innerEl.textContent);
+                            a.appendChild(linkText);
+                            a.title = "my title text";
+                            a.name = innerEl.textContent;
+                            a.href = "#";
+                            innerEl.innerHTML ="";
+                            innerEl.appendChild(a);
+                            innerEl.setAttribute('style', 'color:red;font-weight:600');
+                        
+                    }
+                }
+
+                //Checking for currScope.yearList against first 
+                if (innerEl.textContent.indexOf('s') !== -1) {
+                    var prefixCheck = innerEl.textContent.substring(0, 3);
+                    var self = this;
+
+                    vm.yearList.forEach(function(year) {
+                        var stringYr = year + "";
+                        innerEl.setAttribute('style', 'color:#b0b0b0;font-weight:600');
+                    }, self)
+                }
+            }, vm)
+        }, vm);
+
+        var yearHolder = angular.element(document.querySelector('#yearHolder'));
+        yearHolder.css('top', '195px');
+       
+    }
 
     showYearTable($event, e) {
         let vm = this;
@@ -61,13 +132,18 @@ class YMMDirectiveController {
             $scope
         } = vm.DI();
 
-
         vm.headerLabelArray = [];
+        
         var tableElement = angular.element(document.querySelector('#yearSelectorTable'));
+        if($scope.catChanged == true ){
+            $scope.selYear = 'Year';
+            $scope.ymmModel = "Model";
+            $scope.ymmMake = "Make";
+            vm.resetTable();
+            $scope.catChanged = false;
+        }
         Array.prototype.forEach.call(tableElement.children(), function(el) {
             Array.prototype.forEach.call(el.childNodes, function(innerEl) {
-
-                //
                 if (innerEl.textContent.indexOf('s') == -1) {
                     if (innerEl.nodeType == 1) {
                         var yrContent = Number(innerEl.textContent);
@@ -84,8 +160,7 @@ class YMMDirectiveController {
                     }
                 }
 
-                ///Checking for currScope.yearList against first 
-
+                //Checking for currScope.yearList against first 
                 if (innerEl.textContent.indexOf('s') !== -1) {
                     var prefixCheck = innerEl.textContent.substring(0, 3);
                     var self = this;
@@ -112,8 +187,8 @@ class YMMDirectiveController {
         yearHolder.css('top', '195px');
     }
 
-    //Display the directive
 
+    //Display the directive
     displayYMM($event, e) {
         // if(e.initDirective==true)return;
         let vm = this;
@@ -125,23 +200,26 @@ class YMMDirectiveController {
         } = vm.DI();
 
         //yearData(q,cats,year,make,model,from,size)
+        vm.selYear = $scope.selYear;
         YmmService.getYearData('SPL55', ["ALL", null, null], null, null, null, null, null).then(
             function(result) {
                 // promise was fullfilled (regardless of outcome)
                 // checks for information will be peformed here
-                $log.debug("YMM response :", result);
+                let {$scope}= vm.DI();
                 vm.yearList = result.data.APIResponse.yearList;
+                $log.debug("YMM response :", vm.yearList);
                 if (vm.yearList.length > 0) {
                     vm.initDirective = true;
                     var yearSelector = angular.element(document.querySelector('#ymmYearSelector'));
                     yearSelector.removeClass('disabled');
+                    $scope.selYear = "Year";
+                    $scope.catChanged = true;
                 }
-
             },
             function(error) {
                 // handle errors here
                 console.log(error.statusText);
-            })
+            }).bind(this);
 
     }
 
@@ -149,7 +227,6 @@ class YMMDirectiveController {
     findYear($event, e) {
         if ($event.target.nodeName == "A") {
             e.selYear = $event.target.name;
-
         }
 
         let vm = this;
@@ -177,28 +254,6 @@ class YMMDirectiveController {
                 console.log(error.statusText);
             })
 
-
-
-
-        /*     $http({
-                 url: "http://54.183.226.9:8080/search-service/api/ymmList",
-                 method: 'POST',
-                 data: {
-                     "q": "SPL55",
-                     "cats": ["ALL", null, null],
-                     "year": e.selYear
-                 }
-
-             }).then(function(response) {
-                 $log.debug("YMM response :", response);
-                 vm.makeList = response.data.APIResponse.makeList;
-                 e.yearSelected = true;
-                  var makeSelector = angular.element(document.querySelector('#ymmMakeSelector'));
-                  makeSelector.removeClass('disabled');
-
-             }, function(error) {
-                 //debugger;    
-             });*/
     }
 
 
@@ -212,8 +267,6 @@ class YMMDirectiveController {
 
     //cllick handler for make and populate Model
     loadModel($event, e) {
-
-
         let vm = this;
         let {
             $log,
@@ -317,6 +370,11 @@ class YMMDirectiveController {
             } = vm.DI();
             dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
                 .then(function(response) {
+
+                    let {$scope}= vm.DI();
+                    $scope.selYear="Year";
+                    $scope.selMake="Make";
+                    $scope.selModel="Model";
 
                 }, function(error) {
 
