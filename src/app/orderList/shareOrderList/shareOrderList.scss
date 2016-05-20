@@ -4,9 +4,7 @@
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
         border-bottom: 1px solid #e5e5e5;
-        .bg-success {
-            background-color: f6fafe;
-        }
+        
         h4 {
             margin-top: 2px;
             margin-bottom: 4px;
@@ -14,6 +12,9 @@
             font-weight: 600;
         }
     }
+    .bg-success {
+            background-color: #f6fafe;
+        }
     .modal-body {
         padding-top: 30px;
         padding-bottom: 50px;
@@ -36,6 +37,7 @@
         background-color: #0093c6;
         border-color: transparent;
         color: white;
+        padding:8px 40px;
         &:hover {
             border-color: transparent;
         }
@@ -51,7 +53,7 @@
 .my-modal-popup {
     @media (min-width: 1280px) {
         .modal-dialog {
-            margin-top: 150px;
+            margin-top: 200px;
         }
     }
 }
