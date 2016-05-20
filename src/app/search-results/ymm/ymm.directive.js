@@ -7,7 +7,8 @@ export function ymmDirective() {
             list: '=',
             category: '=',
             selectedItemsChanged: '&',
-            currentCategory:'@'
+            ymmSearch:'&'
+            
         },
         controller: YMMDirectiveController,
         controllerAs: 'vm',
@@ -19,10 +20,10 @@ export function ymmDirective() {
 
         compile: function(tElement, tAttrs, transclude) {
             return function($scope, tElement) {
-                $scope.directiveContent = true;;
+                $scope.directiveContent = true;
                 console.log('inside compile function');
             };
-        },
+        }
     };
     return directive;
 }
@@ -297,28 +298,6 @@ class YMMDirectiveController {
             })
 
 
-
-        /*   $http({
-                url: "http://54.183.226.9:8080/search-service/api/ymmList",
-               method: 'POST',
-               data: {
-                   "q": "SPL55",
-                   "cats": ["ALL", null, null],
-                   "year": e.selYear,
-                   "make": e.ymmMake
-
-               }
-
-           }).then(function(response) {
-               $log.debug("YMM response :", response);
-               vm.modelList = response.data.APIResponse.modelList;
-               vm.makeSelected = true;
-               var modelSelector = angular.element(document.querySelector('#ymmModelSelector'));
-                modelSelector.removeClass('disabled');
-           }, function(error) {
-               //debugger;    
-           });*/
-
     }
 
     findModel($event, e) {
@@ -379,26 +358,6 @@ class YMMDirectiveController {
                 }, function(error) {
 
                 });
-            /*$http({
-                url: "http://52.8.125.250:8080/search-service/api/ymmList",
-                method: 'POST',
-                data: {
-                    "q": "SPL55",
-                    "from": 0,
-                    "size": 10,
-                    "cats": ["ALL", null, null],
-                    "year": e.selYear,
-                    "make": e.ymmMake,
-                    "model": e.ymmModel
-                }
-
-            }).then(function(response) {
-                $log.debug("YMM response :", response);
-                vm.modelList = response.data.APIResponse.modelList;
-                vm.makeSelected = true;
-            }, function(error) {
-                //debugger;    
-            });*/
         }
         //Controller ends here
 }

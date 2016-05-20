@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-<div style="background-color:white;"><div></div>
-  <ymm-directive  ng-show="srchRes.productLine == 'Automotive'"></ymm-directive>
-=======
 <div style="background-color:white;">
   <ymm-directive ng-show="srchRes.productLine == 'Automotive'" ymm-search="srchRes.ymmSearch(year, make, model)"></ymm-directive>
->>>>>>> 1795c26a836afcc1be0ef706cdb55bd46ae085be
   <bread-crumb result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}"
   sel-main-category="{{srchRes.productLine}}" search-string="{{srchRes.searchString}}"
   sort-attributes="srchRes.sortAttributes" sort-item-changed="srchRes.getParts(0,10,selectedFilters,sortItem)"></bread-crumb>
