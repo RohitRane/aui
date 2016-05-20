@@ -1,10 +1,12 @@
 /*Author : Shaifali Jaiswal*/
-import{ OrderListController } from './orderList.controller';
-import{ routeConfig } from './orderList.route'
 
-angular.module('aftermarket.orderList', [])
-	.config(routeConfig)
-	.controller('OrderListController', OrderListController);
 
-	
-	
+import { routeConfig } from './orderList.route';
+import { OrderListController } from './orderList.controller';
+import { ShareOrderlistController } from './shareOrderList/shareOrderList.controller';
+
+angular.module('aftermarket.orderList',[])
+    .controller('OrderListController',OrderListController)
+    .controller('ShareOrderlistController',ShareOrderlistController)
+    .config(routeConfig);
+   
