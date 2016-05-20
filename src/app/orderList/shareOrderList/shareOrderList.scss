@@ -2,8 +2,34 @@
 	.modal-wrapper{
 		margin-top: auto;
 	}
-	.model-header{
-		padding: 5px 15px 3px;
+	.modal-header{
+		padding:15px 15px 5px;
+		border-top-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-bottom: 1px solid #e5e5e5;
+		.bg-success{
+			background-color: f6fafe;
+		}
+		h4{
+			margin-top: 2px;
+			margin-bottom: 4px;
+			font-size: 16px;
+			font-weight: 600;
+		}
+	}
+	.modal-body{
+		padding-top: 30px;
+		padding-bottom: 50px;
+		.glyphicon-ok-circle{
+			color:green;
+			margin-top: 10px;
+			margin-bottom: 10px;
+
+		}
+	}
+	.modal-footer{
+		border-bottom-left-radius: 3px !important;
+		border-bottom-right-radius: 3px !important;
 	}
     .btn {
         color: white;
