@@ -49,9 +49,36 @@
                     // color: $accent_color; 
                     font-weight: 700;
                    font-size: 12px;
-                   
-
                 }
+                .interchange{
+                    width: 150px;
+                    background: black;
+                    height: 20px;
+                    display:table;
+                    position: relative;
+                    margin: -5px 0px 5px 10px;
+                    span{
+                        color: white;
+                        font-weight: bold;
+                        font-size: 11px;
+                        display:table-cell;
+                        vertical-align:middle;
+                        text-align: center;
+                        margin-left: 5px;
+                    }
+                    &:after{
+                      content: "";
+                      position: absolute;
+                      right: 0;
+                      bottom: 0;
+                      width: 0;
+                      height: 0;
+                      border-right: 10px solid white;
+                      border-top: 10px solid transparent;
+                      border-bottom: 10px solid transparent;
+                    }
+                }
+                
                 .cart{
                     padding: 0px 0px;
                   span{

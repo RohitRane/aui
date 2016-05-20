@@ -12,6 +12,12 @@
         //shaifali code
         li.active {
             background-color: $support_color_light_one;
+            interchange{
+                border-left: 5px solid #dbdbdb;
+                &:after{
+                    border-right: 5px solid #dbdbdb;
+                }
+            }
         }
     }
     
