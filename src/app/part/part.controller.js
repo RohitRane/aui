@@ -44,6 +44,7 @@ export class PartController {
                 $log.debug("Response in Controller :", response);
                 vm.partData = response;
                 vm._createCompatibilityTab();
+                vm._createInterchangesTab();
                 $scope.$emit("showLoading", false);
             }, function (error) {
                 $scope.$emit("showLoading", false);
@@ -60,6 +61,7 @@ export class PartController {
                     default: vm.partData.imageUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
                 };
                 vm._createCompatibilityTab();
+                vm._createInterchangesTab();
                 $scope.$emit("showLoading", false);
             }, function (error) {
                 $scope.$emit("showLoading", false);
@@ -79,40 +81,21 @@ export class PartController {
 
     _createCompatibilityTab() {
         let vm = this;
-        vm.ymmCompatibility = [
-            {
-                'year': 2007,
-                'make': 'Ford',
-                'model': 'E-150'
-            },
-            {
-                'year': 2006,
-                'make': 'Ford',
-                'model': 'E-250'
-            },
-            {
-                'year': 2008,
-                'make': 'Ford',
-                'model': 'E-150'
-            },
-            {
-                'year': 2009,
-                'make': 'Ford',
-                'model': 'E-250'
-            },
-            {
-                'year': 1979,
-                'make': 'Chevrolet',
-                'model': 'P30'
-            }
-        ];
-
+        
         vm.ymmCompatibilityTab1 = [], vm.ymmCompatibilityTab2 = [];
-
-        console.log("part dta :", vm.partData.apps);
 
         angular.forEach(vm.partData.apps, (ymm, index, compArr) => {
             (index < Math.ceil(compArr.length / 2)) ? vm.ymmCompatibilityTab1.push(ymm) : vm.ymmCompatibilityTab2.push(ymm);
+        });
+    }
+    
+    _createInterchangesTab() {
+        let vm = this;
+        
+        vm.ymmInterTab1 = [], vm.ymmInterTab2 = [];
+
+        angular.forEach(vm.partData.interchanges, (ymm, index, compArr) => {
+            (index < Math.ceil(compArr.length / 2)) ? vm.ymmInterTab1.push(ymm) : vm.ymmInterTab2.push(ymm);
         });
     }
 }

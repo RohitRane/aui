@@ -8,16 +8,16 @@
   <bread-crumb categories="part.partData.categories" part-no="{{part.partData.partNumber}}"></bread-crumb>
   <div class="panel part-panel">
     <div class="panel-heading ">
-      <header class="section-title bottom">
+      <!--<header class="section-title bottom">
         {{part.partData.partNumber}},&nbsp;{{part.partData.partDesc}}
-      </header>
+      </header>-->
     </div>
     <div class="panel-body">
-      <div class="row">
+      <div class="row top-section-row">
         <div class="col-md-4">
           <div class="custom">
-            <div class="row">
-              <div class="col-sm-12">
+            <div class="">
+              <div class="">
                 <div id="active-pic" class="thumbnail">
                   <a href="#" class="">
                     <!-- <img src="assets/images/part-details/machine_main.jpg" alt="125x125" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"> -->
@@ -91,34 +91,21 @@
               <div class="panel-body resetPadding">
                 <div class='poster' style="display:none"></div>
                 <div class='partDetails'>
+                  <header class="section-title">
+                    {{part.partData.partNumber}},&nbsp;{{part.partData.partDesc}}
+                  </header>
                   <label data-ng-if="part.partData.longDesc" class="partDetailsTabDesc">Description</label>
                   <label data-ng-if="part.partData.longDesc" class="partDesc" data-ng-bind="part.partData.longDesc">                    
                   </label>
-                  <label data-ng-if="part.hasSpecification(part.partData.attrs)" class="partDetailsTabDesc">Specification</label>
+                  <!--<label data-ng-if="part.hasSpecification(part.partData.attrs)" class="partDetailsTabDesc">Specification</label>
                   <table class="table">
                     <tbody>
                       <tr data-ng-repeat="(key,val) in part.partData.attrs">
                         <td>{{key}}</td>
                         <td>{{val}}</td>
                       </tr>
-                      <!--<tr>
-                                                <td>GAWR</td>
-                                                <td>10000 lbs</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kingpinter intersection</td>
-                                                <td>71 inches</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Spring pad drop</td>
-                                                <td>3.5 inch</td>
-                                            </tr>
-                                            <tr>
-                                                <td>center drop</td>
-                                                <td>1.25 inch</td>
-                                            </tr>-->
                     </tbody>
-                  </table>
+                  </table>-->
                   <div class="panel learn partResultsBM">
                     <ul>
                       <!--<li><a href="#">Identify your part</a></li>
@@ -150,11 +137,13 @@
           </div>
         </div>
         <div class="col-md-3">
-          <div class="row col-md-12">
-            <div class="panel  elearn well warranty">
+          <div class="">
+            <div class="panel  elearn well warranty add-to-order">
               <div class="panel-body ">
                 <div class="row">
-                  <div class="dropdown text-center wishlist">
+                  <h5>ADD TO ORDER LIST</h5>
+                  <input type="text" placeholder="QTY"/> <button class="btn">Add</button>
+                  <!--<div class="dropdown text-center wishlist">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add to Order List
                       <span class="caret"></span></button>
                     <ul class="dropdown-menu">
@@ -162,17 +151,17 @@
                       <li><a href="#">CSS</a></li>
                       <li><a href="#">JavaScript</a></li>
                     </ul>
-                  </div>
+                  </div>-->
                 </div>
               </div>
             </div>
           </div>
-          <div class="row col-md-12 warranty">
+          <div class=" warranty">
             <div class="panel  elearn well">
               <div class="panel-body">
                 <div class="row">
                   <div class="Warranty-Matrix">
-                    <h5>Warranty:</h5>
+                    <h5>WARRANTY:</h5>
                     <div data-ng-hide="part.hideForNow">
                       3 years / 350,000 miles (560,000 kilometers)
                     </div>
@@ -182,6 +171,24 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="row top-section-row">
+        <label data-ng-if="part.partData.longDesc" class="partDetailsTabDesc">Model Diagram & Specifications</label>
+        <div class="container-fluid spec-n-model">
+          <div class="col-md-5 spec-section">
+            <table class="table">
+              <tbody>
+                <tr data-ng-repeat="(key,val) in part.partData.attrs">
+                  <td>{{key}}</td>
+                  <td>{{val}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-7 model-section">
+            <img src="assets/images/model_diagram.png" alt="">
           </div>
         </div>
       </div>
@@ -323,7 +330,53 @@
       </div>
     </div>
   </div>
-  
+
+<div class="comp-table" data-ng-if="part.partData.categories[0]==='Automotive'">
+    <div class="panel panel-default">
+      <div class="panel-body part-panel">
+        <div class="section-title bottom top-bottom-gap">Interchanges</hr>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Part Number</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="ymm in part.ymmInterTab1">
+                <td data-ng-bind="ymm.name"></td>
+                <td data-ng-bind="ymm.partNumber"></td>
+                <td data-ng-bind="ymm.interchangeType"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Part Number</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="ymm in part.ymmInterTab2">
+                <td data-ng-bind="ymm.name"></td>
+                <td data-ng-bind="ymm.partNumber"></td>
+                <td data-ng-bind="ymm.interchangeType"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <div class="comp-table" data-ng-if="part.partData.categories[0]==='Automotive'">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
@@ -331,45 +384,45 @@
         </div>
         <div class="col-md-6">
           <table class="table">
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th>Make</th>
-              <th>Model</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab1">
-              <td data-ng-bind="ymm.year"></td>
-              <td data-ng-bind="ymm.make"></td>
-              <td data-ng-bind="ymm.model"></td>
-            </tr>            
-          </tbody>
-        </table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="ymm in part.ymmCompatibilityTab1">
+                <td data-ng-bind="ymm.year"></td>
+                <td data-ng-bind="ymm.make"></td>
+                <td data-ng-bind="ymm.model"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="col-md-6">
           <table class="table">
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th>Make</th>
-              <th>Model</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab2">
-              <td data-ng-bind="ymm.year"></td>
-              <td data-ng-bind="ymm.make"></td>
-              <td data-ng-bind="ymm.model"></td>
-            </tr>            
-          </tbody>
-        </table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Make</th>
+                <th>Model</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-ng-repeat="ymm in part.ymmCompatibilityTab2">
+                <td data-ng-bind="ymm.year"></td>
+                <td data-ng-bind="ymm.make"></td>
+                <td data-ng-bind="ymm.model"></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        
+
       </div>
     </div>
   </div>
-  
+
   <div data-ng-hide="part.hideForNow" class="">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
@@ -404,7 +457,9 @@
             <tr data-ng-repeat="bom in part.partData.bom">
               <td data-ng-bind="bom.no"></td>
               <td data-ng-bind="bom.level"></td>
-              <td><a href="/part/partnum/?val={{bom.partNumber}}" data-ng-bind="bom.partNumber"></a></td>
+              <td>
+                <a href="/part/partnum/?val={{bom.partNumber}}" data-ng-bind="bom.partNumber"></a>
+              </td>
               <td data-ng-bind="bom.quantity"></td>
             </tr>
             <!--<tr>
@@ -447,8 +502,7 @@
               <p class="section-title">Is this the right choice for my on-highway fleet? </p>
               <p>Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
                 BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look
-                <span
-                class="readmore"><a>Read More...</a></span>
+                <span class="readmore"><a>Read More...</a></span>
               </p>
               <p class="Answered-by">Answered by <a href="#">blackw900</a>, 7 days ago</p>
             </div>
@@ -456,8 +510,7 @@
               <p class="section-title">Is this the right choice for my on-highway fleet? </p>
               <p>Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
                 BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look
-                <span
-                class="readmore"><a>Read More...</a></span>
+                <span class="readmore"><a>Read More...</a></span>
               </p>
               <p class="Answered-by">Answered by <a href="#">blackw900</a>, 7 days ago</p>
             </div>
