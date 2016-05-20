@@ -6,7 +6,7 @@ export class ShareOrderlistController {
 
         vm.DI = () => ({$uibModalInstance});
 
-        vm.items = items;
+        // vm.items = items;
         /*vm.selected = {
             item: vm.items[0]
         }*/
@@ -23,6 +23,6 @@ export class ShareOrderlistController {
     cancel() {
       let vm = this,
       {$uibModalInstance} = vm.DI();
-        $uibModalInstance.dismiss('cancel');
+        $uibModalInstance.close();
     }
 }

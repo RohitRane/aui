@@ -5,7 +5,7 @@ export class OrderListController {
         let vm = this;
         vm.DI = () => ({ $uibModal, $log });
 
-        vm.items = ['item1', 'item2', 'item3'];
+        // vm.items = ['item1', 'item2', 'item3'];
    	}
 
    	open(){
@@ -23,10 +23,10 @@ export class OrderListController {
                 }
             });
 
-            modalInstance.result.then(function(selectedItem) {
-                vm.selected = selectedItem;
-            }, function() {
-                $log.info('Modal dismissed at: ' + new Date());
-            });
+            // modalInstance.result.then(function(selectedItem) {
+            //     vm.selected = selectedItem;
+            // }, function() {
+            //     $log.info('Modal dismissed at: ' + new Date());
+            // });
    	}
 }

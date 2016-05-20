@@ -1,5 +1,5 @@
 #shareOrderlistModal {
-	.modal-header {
+    .modal-header {
         padding: 15px 15px 5px;
         border-top-left-radius: 3px;
         border-top-right-radius: 3px;
@@ -36,8 +36,18 @@
         background-color: #0093c6;
         border-color: transparent;
         color: white;
+        &:hover {
+            border-color: transparent;
+        }
+        &:active,
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            outline-offset: none;
+        }
     }
 }
+
 .my-modal-popup {
     @media (min-width: 1280px) {
         .modal-dialog {
