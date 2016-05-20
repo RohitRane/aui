@@ -122,4 +122,10 @@ export class BreadCrumbController {
             angular.element(bdcmb).css("padding-right",pdng+"px");
         }
     }
+
+     sortAction(sortObj){
+        let vm = this;
+        let {SearchBarService} = vm.DI();
+       // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});
+    }
 }

@@ -4,7 +4,7 @@ export class PartController {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $document, $stateParams, SearchBarService, dataServices });
+        vm.DI = () => ({ $log, $document, $scope, $stateParams, SearchBarService, dataServices });
 
         $window.scrollTo(0, 0);
 
@@ -67,17 +67,19 @@ export class PartController {
 
     getPart() {
         let vm = this;
-        let {$log, $stateParams, SearchBarService, dataServices} = vm.DI();
+        let {$log, $stateParams, $scope, SearchBarService, dataServices} = vm.DI();
         $log.debug("part no :", $stateParams);
         vm.productLine = SearchBarService.productLine;
         $log.debug("state type :", $stateParams.type);
+        $scope.$emit("showLoading", true);
         if ($stateParams.type === "partnum") {
             $log.debug("searching by part num.");
             dataServices.partByPartNum($stateParams.val).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.partData = response;
+                $scope.$emit("showLoading", false);
             }, function (error) {
-                $log.debug("Error in response :", error);
+                $scope.$emit("showLoading", false);
             });
         } else {
             dataServices.part($stateParams.id).then(function (response) {
@@ -90,8 +92,9 @@ export class PartController {
                     case 'Ring and Pinions': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/rangeNpinion.jpg"; break;
                     default: vm.partData.imageUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
                 };
+                $scope.$emit("showLoading", false);
             }, function (error) {
-                $log.debug("Error in response :", error);
+                $scope.$emit("showLoading", false);
             });
         }
     }

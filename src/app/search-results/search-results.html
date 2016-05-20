@@ -1,7 +1,8 @@
 <div style="background-color:white;">
   <ymm-directive ng-show="srchRes.productLine == 'Automotive'" ymm-search="srchRes.ymmSearch(year, make, model)"></ymm-directive>
   <bread-crumb result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}"
-  sel-main-category="{{srchRes.productLine}}" search-string="{{srchRes.searchString}}"></bread-crumb>
+  sel-main-category="{{srchRes.productLine}}" search-string="{{srchRes.searchString}}"
+  sort-attributes="srchRes.sortAttributes" sort-item-changed="srchRes.getParts(0,10,selectedFilters,sortItem)"></bread-crumb>
   
   <div class="row search-results">
     <div class="col-md-2 filter">

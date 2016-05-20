@@ -98,22 +98,15 @@ export class SearchResultsController {
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine;
-        //let typeId = SearchBarService.typeId;
-        /*if (typeId === 4) {*/
-        //from ? from : from=0;
-        //size ? size : size=10;
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);
-        $log.debug("SearchBarService.productCategory:", SearchBarService.productCategory);
         let ymm = null;
         if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
             $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
             ymm = SearchBarService.autoSuggestItem.suggestId;
         }
-        
-        $log.debug("PL :",SearchBarService.productLine);
-        $log.debug("PC :",SearchBarService.productCategory);
-        
+
+        $scope.$emit("showLoading", true);
         dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, ymm).then(function (response) {
             // $log.debug("Response in Controller :", response);
             vm.resultLoading = false;
@@ -128,8 +121,7 @@ export class SearchResultsController {
 
             vm.filters = response.filter;
             vm.category = response.partCategoryList;
-            $log.debug("response.filter:", response.filter);
-            $log.debug("response.CategoryList", vm.category);
+            vm.sortAttributes = response.filter.slice(0,3);
 
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber + ' ' + part.partDesc;
@@ -140,10 +132,10 @@ export class SearchResultsController {
                 }
                 return part;
             });
-            $log.debug("results :", vm.results);
+            $scope.$emit("showLoading", false);
         }, function (error) {
             vm.resultLoading = false;
-            $log.debug("Error in response :", error);
+            $scope.$emit("showLoading", false);
         });
     }
 

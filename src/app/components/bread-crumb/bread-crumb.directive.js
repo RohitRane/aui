@@ -13,7 +13,9 @@ export function breadCrumbDirective() {
             selMainCategory: '@selMainCategory',
             searchString: '@searchString',
             categories: '=categories',
-            partNo:'@partNo'
+            partNo:'@partNo',
+            sortAttributes: '=',
+            sortItemChanged: '&'
         },
         controller: 'BreadCrumbController',
         controllerAs: 'bc',
