@@ -92,7 +92,7 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
-    getParts(from, size, payload) {
+    getParts(from, size, payload, year, make, model) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
@@ -107,8 +107,8 @@ export class SearchResultsController {
         }
 
         $scope.$emit("showLoading", true);
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, ymm).then(function (response) {
-            // $log.debug("Response in Controller :", response);
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, year, make, model, ymm).then(function (response) {
+             $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
                 vm.results.parts = response.parts;

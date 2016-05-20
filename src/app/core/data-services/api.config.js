@@ -55,11 +55,11 @@ export let apiConfig = {
     },
     'CAT_SEARCH': {
         'url': '',
-        'setUrl': function (param, scope, from, size, productCategory, filterObjectArray, ymm) {
+        'setUrl': function (param, scope, from, size, productCategory, filterObjectArray, year, make, model, ymm) {
             this.url = apiBaseUrl + '/result';
             //scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
             //productCategory === 
-            console.log("prod cat :",productCategory);
+            console.log("getParts :",year, make, model);
             this.data = {
                 "q": param,
                 "cid": "1",
@@ -67,6 +67,9 @@ export let apiConfig = {
                 "size": size,
                 "cats": [scope ? scope : null, null, productCategory ? productCategory : null],
                 "filter": filterObjectArray,
+                "year": year,
+                "make": make,
+                "model": model,
                 "ymm": ymm
             }
         },

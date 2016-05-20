@@ -347,7 +347,8 @@ class YMMDirectiveController {
                 dataServices,
                 SearchBarService
             } = vm.DI();
-            dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
+            vm.ymmSearch({selectedFilters:SearchBarService.selectdeFilters, year:e.selYear, make:e.ymmMake, model:e.ymmModel});
+            /*dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
                 .then(function(response) {
 
                     let {$scope}= vm.DI();
@@ -357,7 +358,7 @@ class YMMDirectiveController {
 
                 }, function(error) {
 
-                });
+                });*/
         }
         //Controller ends here
 }
