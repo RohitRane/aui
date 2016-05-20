@@ -15,6 +15,7 @@ export class OrderListController {
                 templateUrl: 'app/orderList/shareorderlist/shareorderlist.html',
                 controller: 'ShareOrderlistController',
                 size: size,
+                windowClass: 'my-modal-popup',
                 resolve: {
                     items: function() {
                         return vm.items;
