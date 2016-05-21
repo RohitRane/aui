@@ -6,11 +6,18 @@
   </span>
   </span>
   <span data-ng-if="bc.pageState==='part'" class="resultBar">
-    <span class="back-section" data-ng-if="bc.showBackButton" data-ng-click="bc.goToSearch()">
+    <span data-ng-if="bc.showBackButton">
+    <span  class="back-section" data-ng-if="!bc.showPathCats" data-ng-click="bc.goToSearch()">
       <i class="fa fa-angle-left"></i>&nbsp;&nbsp;Back to search results for <a href="">"{{bc.searchString}}"</a>
      </span>
-      <span data-ng-repeat="category in bc.categories track by $index" class="bold">&nbsp;{{category}}&nbsp;:&nbsp;</span>
-      <a href="#">{{bc.partNo}}</a>
+  <span data-ng-show="bc.showPathCats" class="bold"><span data-ng-repeat="cat in bc.cats track by $index" data-ng-show="cat" >&nbsp;{{cat}}&nbsp;:&nbsp;</span><a><span>"</span>{{bc.searchString}}<span>"</span></a>
+  </span>
+  </span>
+  <span data-ng-if="!bc.showBackButton">
+        <span data-ng-repeat="category in bc.categories track by $index" class="bold">&nbsp;{{category}}&nbsp;:&nbsp;</span>
+  <a href="#">{{bc.partNo}}</a>
+  </span>
+
   </span>
   <span data-ng-if="bc.pageState==='searchResults'" class="dropdownBar">
       <div class="btn-group" uib-dropdown is-open="status.isopen">

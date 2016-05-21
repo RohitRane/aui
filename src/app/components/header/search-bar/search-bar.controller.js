@@ -235,7 +235,7 @@ export class SearchBarController {
             } else SearchBarService.productCategory = item.suggestId;
 
             $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true });
+                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true, "catFilter":false });
                 SearchBarService.productLine = vm.search.searchScope;
             }, 100);
 
@@ -261,7 +261,7 @@ export class SearchBarController {
             //SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
             $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": vm.search.searchScope, "suggestion": true });
+                $rootScope.$broadcast("categoryFilterApplied", { "name": vm.search.searchScope, "suggestion": true, "catFilter":false });
                 //SearchBarService.productLine = vm.search.searchScope;
             });
 
@@ -291,6 +291,7 @@ export class SearchBarController {
         vm._blurSrchBox();
         SearchBarService.autoSuggestItem = null;
         BreadCrumbService.searchToResults = true;
+        BreadCrumbService.showOnlyTree = false;
         SearchBarService.categoryfilters = [];
         SearchBarService.filters = [];
         SearchBarService.selectdeFilters = [];

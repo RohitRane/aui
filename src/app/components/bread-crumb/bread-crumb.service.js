@@ -16,19 +16,26 @@ export class BreadCrumbService {
         console.log("Set BCrumb ::::::::::::::", status);
         this._status = status;
         sessionStorage.breadCrumbBBStatus = angular.toJson(this._status);
-    }    
-    
-    get fromSearchBar() {
-        this._fromSrch = angular.fromJson(sessionStorage.breadCrumbFromSrch);
-        console.log("BCrumb :::::::::", this._fromSrch);
-        return this._fromSrch;
     }
 
-    set fromSearchBar(status) {
-        console.log("Set BCrumb ::::::::::::::", status);
-        this._fromSrch = status;
-        sessionStorage.breadCrumbFromSrch = angular.toJson(this._fromSrch);
+    get showOnlyTree() {
+        this._showOnlyTree = angular.fromJson(sessionStorage.showOnlyTree);
+        return this._showOnlyTree;
     }
 
+    set showOnlyTree(status) {
+        this._showOnlyTree = status;
+        sessionStorage.showOnlyTree = angular.toJson(this._showOnlyTree);
+    }
+
+    get cats() {
+        this._cats = angular.fromJson(sessionStorage.cats);
+        return this._cats;
+    }
+
+    set cats(cats) {
+        this._cats = cats;
+        sessionStorage.cats = angular.toJson(this._cats);
+    }
 
 }

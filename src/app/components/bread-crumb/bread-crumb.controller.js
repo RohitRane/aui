@@ -8,7 +8,7 @@ export class BreadCrumbController {
         vm.DI = () => ({ $state, $window, $document });
 
         vm._resizeBreadCrumb();
-        
+
         $scope.$watch(() => {
             return vm.categories;
         }, (n, o) => {
@@ -22,21 +22,31 @@ export class BreadCrumbController {
 
         if ($state.is('searchResults')) {
             vm.pageState = 'searchResults';
+            vm.cats = [false, false, false];
+            vm.cats[0] = vm.selMainCategory;
             //console.log("In search page");
         } else if ($state.is('part')) {
             vm.pageState = 'part';
             vm.searchString = SearchBarService.srchStr;
+            vm.cats = BreadCrumbService.cats;
+            $log.debug("Retained Cats :", vm.cats);
         }
 
-        vm.cats = [false, false, false];
-        vm.cats[0] = vm.selMainCategory;
+
 
         $log.debug("BreadCrumbService.searchToResults", BreadCrumbService.searchToResults);
 
         if (BreadCrumbService.searchToResults) {
             vm.showBackButton = true;
+            console.log('show bb', vm.showBackButton);
         } else {
             vm.showBackButton = false;
+        }
+        if (BreadCrumbService.showOnlyTree) {
+            vm.showPathCats = true;
+            console.log('show only tree', vm.showPathCats);
+        } else {
+            vm.showPathCats = false;
         }
 
         console.log("CAts here :", vm.cats);
@@ -45,13 +55,18 @@ export class BreadCrumbController {
             $log.debug("Cats before:", vm.cats);
             $log.debug("Cat Fill :", selectedCategory);
             //$log.debug("sel Cat :", vm.selectedCategory);
+            if (selectedCategory.catFilter) {
+                $log.debug("Ct fill applie");
+                BreadCrumbService.showOnlyTree = true;
+            } else {
+                console.log("Show filter tree false");
+                BreadCrumbService.showOnlyTree = false;
+            }
             if (selectedCategory.suggestion) {
                 if (vm.selMainCategory === "All") {
-                    console.log("Hurray");
                     vm.cats = [false, false, false];
                     vm.cats[0] = selectedCategory.name;
                 } else {
-                    console.log("Hip hip");
                     vm.cats = [false, false, false];
                     vm.cats[0] = vm.selMainCategory;
                     vm.cats[1] = selectedCategory.name;
@@ -66,17 +81,18 @@ export class BreadCrumbController {
                     vm.cats[2] = selectedCategory.name;
                 }
             }
-            
+
             //console.log("Cats :",cats);
-            
-            if(vm.cats[0]===vm.cats[1]){
-                vm.cats[1]=null;                
+
+            if (vm.cats[0] === vm.cats[1]) {
+                vm.cats[1] = null;
             }
-            if(vm.cats[1]===vm.cats[2]){
-                vm.cats[2]=null;                
+            if (vm.cats[1] === vm.cats[2]) {
+                vm.cats[2] = null;
             }
 
             $log.debug("Cats :", vm.cats);
+            BreadCrumbService.cats = vm.cats;
         });
 
 
@@ -116,16 +132,16 @@ export class BreadCrumbController {
             let mgn = -1 * (($window.innerWidth - 1440) / 2);
             let pdng = -1 * mgn;
             let bdcmb = ($document[0].getElementsByClassName('bread-crumb'))[0];
-            angular.element(bdcmb).css("margin-left",mgn+"px");
-            angular.element(bdcmb).css("margin-right",mgn+"px");
-             angular.element(bdcmb).css("padding-left",pdng+"px");
-            angular.element(bdcmb).css("padding-right",pdng+"px");
+            angular.element(bdcmb).css("margin-left", mgn + "px");
+            angular.element(bdcmb).css("margin-right", mgn + "px");
+            angular.element(bdcmb).css("padding-left", pdng + "px");
+            angular.element(bdcmb).css("padding-right", pdng + "px");
         }
     }
 
-     sortAction(sortObj){
+    sortAction(sortObj) {
         let vm = this;
         let {SearchBarService} = vm.DI();
-       // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});
+        // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});
     }
 }
