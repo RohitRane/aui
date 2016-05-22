@@ -103,6 +103,11 @@ export class BreadCrumbController {
             }, 100);
         });
 
+        let ymmEvent = $rootScope.$on("ymmFiltersApplied", (evt, ymm) => {
+            vm.ymm = ymm;
+            $log.debug("YMM IS :", vm.ymm);
+        });
+
         $rootScope.$on('$destroy', function () {
             deregistrationCallback();
             deregistrationCallback2();

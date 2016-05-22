@@ -344,9 +344,13 @@ class YMMDirectiveController {
                 $log,
                 $http,
                 $scope,
+                $rootScope,
                 dataServices,
                 SearchBarService
             } = vm.DI();
+            
+            $rootScope.$emit("ymmFiltersApplied",{"year":e.selYear, "make":e.ymmMake, "model":e.ymmModel});
+            
             vm.ymmSearch({selectedFilters:SearchBarService.selectdeFilters, year:e.selYear, make:e.ymmMake, model:e.ymmModel});
             /*dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
                 .then(function(response) {
