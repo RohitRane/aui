@@ -1,5 +1,5 @@
 <div style="background-color:white;">
-  <ymm-directive ng-show="srchRes.productLine == 'Automotive'" ymm-search="srchRes.getParts(0,10,selectedFilters, year, make, model)"></ymm-directive>
+  
   <bread-crumb result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}"
   sel-main-category="{{srchRes.productLine}}" search-string="{{srchRes.searchString}}"
   sort-attributes="srchRes.sortAttributes" sort-item-changed="srchRes.getParts(0,10,selectedFilters,sortItem)"></bread-crumb>
@@ -10,6 +10,7 @@
       <filter-directive ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
     </div>
     <div class="col-md-8">
+      <ymm-directive ng-show="srchRes.productLine == 'Automotive'" ymm-search="srchRes.getParts(0,10,selectedFilters, year, make, model)"></ymm-directive>
       <div ng-show="srchRes.results.totalResults">
         <!--<h5>Related : <a>{{srchRes.searchString}}</a></h5>-->
         <h5></h5>
