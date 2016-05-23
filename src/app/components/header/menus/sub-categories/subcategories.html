@@ -5,11 +5,11 @@
                 <div class="sample">
                     <!--<dl data-ng-repeat="child in category.children">-->
                     <span data-ng-repeat="child in category.children" id="cat_{{child.name}}">
-                    <dl data-ng-repeat="gChildArr in child.displayChildren" id="{{child.name}}_col_{{$index}}" data-ng-init="categoryMenu.setTop($index,child.name)" data-ng-if="gChildArr.length>0">
-                        <dt data-ng-show="$index===0" >
+                    <dl data-ng-repeat="gChildArr in child.displayChildren" data-ng-init="categoryMenu.setTop($index,child.name)" data-ng-if="gChildArr.length>0">
+                        <dt data-ng-show="$index===0" id="cat_header_{{child.name}}">
                             <a href="">{{child.name|uppercase}}</a>
                         </dt>                        
-                        <dd data-ng-repeat="gChild in gChildArr">
+                        <dd data-ng-repeat="gChild in gChildArr" id="{{child.name}}_col_{{$parent.$index}}" data-ng-class="{'first-row':$index===0}">
                             <a href="">{{gChild.name}}</a>
                         </dd>
                     </dl>

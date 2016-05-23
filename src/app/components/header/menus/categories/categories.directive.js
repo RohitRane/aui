@@ -71,7 +71,7 @@ class CategoryMenuController {
                     let colCnt = 0;
                     angular.forEach(child.children, (gChild, index) => {
                         child.displayChildren[colCnt].push(gChild);
-                        if (index % 10 === 0 && index/10 >=1) {
+                        if (index % 10 === 0 && index / 10 >= 1) {
                             //child.gChildCount = 0;
                             colCnt++;
                             child.displayChildren[colCnt] = [];
@@ -81,7 +81,7 @@ class CategoryMenuController {
                 });
 
             });
-            
+
             /*vm.search.categories = response.cats.map(function (cat) {
                 return cat.name;
             });*/
@@ -262,9 +262,24 @@ class CategoryMenuController {
         let subCatMarginLeft = $window.innerWidth < 1440 ? 0 : ($window.innerWidth - 1440) / 2;
         angular.element(subCatList).css("margin-left", subCatMarginLeft + "px");
     }
-    
-    setTop(index, parent){
-        console.log("Elem :",index, parent);
+
+    setTop(index, parent) {
+        let vm = this, { $document, $timeout } = vm.DI();
+        console.log("Elem :", index, parent);
+        if (index > 0) {
+            $timeout(() => {
+                let hdrStr = "cat_header_" + parent;
+                console.log("Hdr str :", hdrStr);
+                let hdr = $document[0].getElementById(hdrStr);
+                console.log("ele height :", hdr.offsetHeight);
+                let colStr = parent + "_col_" + index;
+                let col = $document[0].getElementById(colStr);
+                if (parent === "Industrial") {
+                    angular.element(col).css("margin-top", hdr.offsetHeight +3+ "px");
+                } else
+                    angular.element(col).css("margin-top", hdr.offsetHeight + "px");
+            });
+        }
     }
 
 }
