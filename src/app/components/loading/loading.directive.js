@@ -1,18 +1,16 @@
-export function LoadingDirective() {
+export function LoadingDirective($rootScope) {
     'ngInject';
     let directive = {
         restrict: 'E',
         templateUrl: 'app/components/loading/loading.html',
-        scope: {
-            loading: '='
-        },
+        scope: {},
         controller: "LoadingController",
         controllerAs: 'vm',
         replace: true,
-        link: function (scope, element, attr) {
-          console.log("loading link");
-              scope.$watch('loading', function (val) {
-              });
+        link: function (scope, element, attrm, vm) {
+            $rootScope.$on('showLoading', function(event, flag){
+                vm.loading = flag;
+            });
         }
     };
     return directive;

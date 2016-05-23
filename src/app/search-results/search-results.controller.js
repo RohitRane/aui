@@ -52,7 +52,8 @@ export class SearchResultsController {
 
         });
 
-        $rootScope.$on('$destroy', function () {
+        $scope.$on('$destroy', function () {
+            console.log("destroy");
             deregistrationCallback2();
             deregistrationCallback();
         });

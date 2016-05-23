@@ -102,6 +102,7 @@ export class SearchBarController {
         }
         //SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
+        $scope.$emit("showLoading", true);
         return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
             $log.debug("abcd Response in Controller : ", response);
             vm.totalResults = response.totalResults;
@@ -172,12 +173,14 @@ export class SearchBarController {
             });
 
             $log.debug("Result set :", resultSet);
-
+            
+            $scope.$emit("showLoading", false);
             return resultSet.map(function (part) {
                 return part;
             });
         }, function (error) {
             $log.debug("Error in response :", error);
+            $scope.$emit("showLoading", false);
         });
     }
 
