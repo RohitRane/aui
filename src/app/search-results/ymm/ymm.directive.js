@@ -220,7 +220,7 @@ class YMMDirectiveController {
             function(error) {
                 // handle errors here
                 console.log(error.statusText);
-            }).bind(this);
+            });
 
     }
 
