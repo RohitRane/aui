@@ -1,6 +1,6 @@
 <div style="background-color:white;">
   <ymm-directive ng-show="srchRes.productLine == 'Automotive'" ymm-search="srchRes.getParts(0,10,selectedFilters, year, make, model)"></ymm-directive>
-  <bread-crumb result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}"
+  <bread-crumb result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}" current-page="{{srchRes.currentPage}}"
   sel-main-category="{{srchRes.productLine}}" search-string="{{srchRes.searchString}}"
   sort-attributes="srchRes.sortAttributes" sort-item-changed="srchRes.getParts(0,10,selectedFilters,sortItem)"></bread-crumb>
   
@@ -15,7 +15,9 @@
         <h5></h5>
         <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
         <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit">
-          <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>
+         <!-- <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>-->
+          <uib-pagination ng-model="srchRes.currentPage" total-items="srchRes.results.totalResults" max-size="5" class="pagination-sm" boundary-links="true" force-ellipses="true" data-ng-change="srchRes.loadMore()"></uib-pagination>
+          {{srchRes.currentPage}}
           <!--<i class="glyphicon-refresh glyphicon-refresh-animate"></i>-->
         </div>
       </div>

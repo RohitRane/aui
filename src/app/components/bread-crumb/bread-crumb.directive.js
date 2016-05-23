@@ -12,6 +12,7 @@ export function breadCrumbDirective() {
             resultLength: '@resultLength',
             selMainCategory: '@selMainCategory',
             searchString: '@searchString',
+            currentPage: '@currentPage',
             categories: '=categories',
             partNo:'@partNo',
             sortAttributes: '=',

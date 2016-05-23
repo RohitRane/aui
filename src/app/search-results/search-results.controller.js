@@ -7,6 +7,7 @@ export class SearchResultsController {
 
         $window.scrollTo(0, 0);
 
+        vm.currentPage = 1;
         vm.searchString = "";
         vm.results = {
             parts: [],
@@ -143,10 +144,7 @@ export class SearchResultsController {
         let vm = this;
         let { $log } = vm.DI();
         vm.resultStartIndex = vm.resultStartIndex + vm.resultSetLimit;
-        $log.debug("load more clicked." + vm.resultStartIndex + " : " + vm.results.totalResults);
-        $log.debug("Truth part 1 :", vm.results.totalResults > vm.resultStartIndex + vm.resultSetLimit);
-        $log.debug("Truth part 2 :", vm.results.totalResults > vm.resultSetLimit);
-        $log.debug("Truth : ", vm.results.totalResults > vm.resultStartIndex && vm.results.totalResults > vm.resultSetLimit);
+        $log.debug("load more clicked." + vm.resultStartIndex + " : " + vm.currentPage);
         vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
     }
 }
