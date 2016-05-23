@@ -66,6 +66,12 @@ div#subcategories {
                     line-height: 0.4em;
                     font-weight: 600;
                     margin-top: 10px;
+                    &.first-row{
+                        margin-top: 0px;
+                        padding-top: 10px;
+                        border-top: 0.5px solid $support_color_light_one;
+                    }
+                    
                     
                     /* negate the DL line-height */
                     a {
@@ -84,7 +90,7 @@ div#subcategories {
                     width: 110px;
                     line-height: 1;
                     // border-bottom: 0.5px solid grey;
-                    border-bottom: 0.5px solid $support_color_light_one;
+                    //border-bottom: 0.5px solid $support_color_light_one;
                     padding-bottom: 10px;
                     a {
                         // color:#323232;

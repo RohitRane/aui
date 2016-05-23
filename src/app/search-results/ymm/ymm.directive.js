@@ -137,9 +137,7 @@ class YMMDirectiveController {
         
         var tableElement = angular.element(document.querySelector('#yearSelectorTable'));
         if($scope.catChanged == true ){
-            $scope.selYear = 'Year';
-            $scope.ymmModel = "Model";
-            $scope.ymmMake = "Make";
+           
             vm.resetTable();
             $scope.catChanged = false;
         }
@@ -210,17 +208,29 @@ class YMMDirectiveController {
                 vm.yearList = result.data.APIResponse.yearList;
                 $log.debug("YMM response :", vm.yearList);
                 if (vm.yearList.length > 0) {
-                    vm.initDirective = true;
+                    console.log("year list"+vm.yearList.length );
+                    var directiveSelector =  angular.element(document.querySelector(".ymm-directive"));
+                    directiveSelector.css('height','50px');
+                   vm.initDirective = true;
                     var yearSelector = angular.element(document.querySelector('#ymmYearSelector'));
                     yearSelector.removeClass('disabled');
-                    $scope.selYear = "Year";
-                    $scope.catChanged = true;
+                     $scope.catChanged = true;
+                    
+                     $scope.selYear = 'Year';
+                    $scope.ymmModel = "Model";
+                    $scope.ymmMake = "Make";
+                }
+                else{
+                     vm.initDirective = false;
+                     $scope.catChanged = false;
+                    var directiveSelector =  angular.element(document.querySelector(".ymm-directive"));
+                    directiveSelector.css('height','0px');
                 }
             },
             function(error) {
                 // handle errors here
                 console.log(error.statusText);
-            }).bind(this);
+            });
 
     }
 
