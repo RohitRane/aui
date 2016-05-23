@@ -20,7 +20,6 @@
         <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit">
          <!-- <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>-->
           <uib-pagination ng-model="srchRes.currentPage" total-items="srchRes.results.totalResults" max-size="5" class="pagination-sm" boundary-links="true" force-ellipses="true" data-ng-change="srchRes.loadMore()"></uib-pagination>
-          {{srchRes.currentPage}}
           <!--<i class="glyphicon-refresh glyphicon-refresh-animate"></i>-->
         </div>
       </div>
