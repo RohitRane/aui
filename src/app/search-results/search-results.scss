@@ -63,10 +63,20 @@
                 }
                 span{
                     margin-left: 10px;
+                    display: inline-block;
+                    width: 120px;
+                    word-wrap: break-word;
+                    @media only screen and (min-device-width : 800px) and (max-device-width : 1024px) {
+                        margin-left: 5px !important;
+                        display: inline-block !important;
+                        width: 90px !important;
+                        word-wrap: break-word !important;
+                    }
                 }
                 a{
                     font-size: 10px;
                     cursor: pointer;
+                    margin-top: 3px;
                 }
                 .expander{
                     float: right;
@@ -78,8 +88,14 @@
                  padding-left: 0px;  
                 }
                 .list{
+                    @media only screen and (min-device-width : 800px) and (max-device-width : 1024px) {
+                        margin-left: 10px; 
+                    }
                     margin-left: 25px; 
                     .search-text{
+                        @media only screen and (min-device-width : 800px) and (max-device-width : 1024px) {
+                            margin-left: -5px;
+                        }
                         margin-left: -14px;
                         margin-top: 10px;
                     }
