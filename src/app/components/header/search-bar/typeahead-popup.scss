@@ -43,8 +43,7 @@
             margin-right: 5px;
         }
     }*/
-    interchange{
-       // width: 80px;
+    /*interchange{
         background: black;
         height: 12px;
         display:table;
@@ -70,6 +69,23 @@
           border-right: 5px solid white;
           border-top: 6px solid transparent;
           border-bottom: 6px solid transparent;
+        }
+    }*/
+    
+    interchange{
+        //color:$accent_color;
+        //font-size: 11px;
+        &:before{
+           // content: "\f178";
+            color:black;
+            content: ",";
+            font-weight: normal;
+            font-style: normal;
+            display: inline-block;
+            text-decoration: inherit;
+            font-size: 14px;
+            //margin-left: 10px;
+            //margin-right: 5px;
         }
     }
 }

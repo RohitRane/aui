@@ -9,6 +9,41 @@
 				margin-top: 15px;
 		}
 	}  
+	
+	.mid-sections{
+		margin-top: 20px;
+		padding-left: 20px;
+	}
+	
+	.data-sheet{
+		@extend .mid-sections;
+		.task{
+			display: inline-block;
+			margin-left: 30px;
+			position: relative;
+			&:first-of-type{
+				margin-left: 0px;
+			}
+			.fa{
+				font-size: 20px;
+				vertical-align: middle;
+				color: #87d912
+			}
+		}
+	}
+	
+	.scroll-to-btns{		
+		@extend .mid-sections;
+		.btn{
+			color: $support_color_primary;
+			background-color: #fafafa;
+			border-left:1px solid #eee;
+			&:first-child{
+				border-left:0px
+			}
+		}
+		
+	}
   
 	.add-to-order{
 		input{
@@ -70,7 +105,9 @@
 	
   #active-pic{
         padding: 0px 4px !important;
-        height: 400px;
+				//width:300px;
+				width: 100%;
+				border: 1px solid #ddd;
       }
   .breadcrumb-section{
   	margin-top:0px !important;
@@ -486,6 +523,7 @@ div.comment .section-title{
 
 .partResultsBM ul {
 	margin:0px;
+	// margin: auto;
 	padding:0px;
 	background-color:#fafafa;
 }

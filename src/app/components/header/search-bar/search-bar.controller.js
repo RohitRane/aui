@@ -282,6 +282,10 @@ export class SearchBarController {
             if (icIndex !== -1) {
                 vm.search.searchString = vm.search.searchString.substring(0, icIndex);
             }
+            let ymmIndex = vm.search.searchString.indexOf("<ymm>");
+            if (ymmIndex !== -1) {
+                vm.search.searchString = vm.search.searchString.substring(0, ymmIndex);
+            }
             BreadCrumbService.searchToResults = false;
             $location.path('/part/id/' + item.suggestId);
             vm._blurSrchBox();

@@ -14,11 +14,11 @@
     </div>
     <div class="panel-body">
       <div class="row top-section-row">
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="custom">
             <div class="">
               <div class="">
-                <div id="active-pic" class="thumbnail">
+                <div id="active-pic">
                   <a href="#" class="">
                     <!-- <img src="assets/images/part-details/machine_main.jpg" alt="125x125" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"> -->
                     <!--<img src="assets/images/part-details/machine_main.jpg" alt="125x125" >-->
@@ -85,7 +85,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
           <div class="withoutBorder">
             <div class="panel panel-default elearn" style="border:none">
               <div class="panel-body resetPadding">
@@ -106,13 +106,33 @@
                       </tr>
                     </tbody>
                   </table>-->
-                  <div class="panel learn partResultsBM">
-                    <ul>
-                      <!--<li><a href="#">Identify your part</a></li>
-                      <li><a href="#">Exploded View</a></li>
-                      <li><a href="#">Discussions</a></li>-->
-                    </ul>
+                  <div class="btn-group scroll-to-btns">
+                    <button class="btn" data-ng-click="part.goToSection('interchanges')" data-ng-if="part.hasInterchanges(part.partData.interchanges)">Interchanges</button>
+                    <button class="btn" data-ng-click="part.goToSection('compatibility')" data-ng-if="part.hasCompatibility(part.partData.apps)">Compatibility Table</button>
+                    <button class="btn" data-ng-click="part.goToSection('exploded-section')" data-ng-if="false">Exploded View</button>
+                    <button class="btn" data-ng-click="part.goToSection('bom-table')" data-ng-if="part.partData.bom.length>0">BOM Components</button>
                   </div>
+                  <div class="data-sheet">
+                    <div class="task">
+                      <img src="assets/images/icon-download-PDF.GIF" alt="">
+                      <a href="#">Download Part DataSheet</a>
+                    </div>
+                    <div class="task">
+                      <i class="fa fa-envelope"></i>
+                      <a href="#">Email</a>
+                    </div>
+                    <div class="task">
+                      <i class="fa fa-print"></i>
+                      <a href="#">Print</a>
+                    </div>
+                  </div>
+                  <!--<div class="panel learn partResultsBM">
+                    <ul>
+                      <li data-ng-if="part.hasCompatibility(part.partData.apps)"><a href="#">Compatibility Table</a></li>
+                      <li><a href="#">Exploded View</a></li>
+                      <li><a href="#">BOM Components</a></li>
+                    </ul>
+                  </div>-->
                   <div data-ng-hide="part.hideForNow" class="panel">
                     <img src="assets/images/part-details/icon_partDetails.jpg" />
                     <ul class="lmsHub">
@@ -142,7 +162,7 @@
               <div class="panel-body ">
                 <div class="row">
                   <h5>ADD TO ORDER LIST</h5>
-                  <input type="text" placeholder="QTY"/> <button class="btn">Add</button>
+                  <input type="text" placeholder="QTY" /> <button class="btn">Add</button>
                   <!--<div class="dropdown text-center wishlist">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Add to Order List
                       <span class="caret"></span></button>
@@ -331,7 +351,7 @@
     </div>
   </div>
 
-<div class="comp-table" data-ng-if="part.partData.categories[0]==='Automotive'">
+  <div id="interchanges" class="comp-table" data-ng-if="part.hasInterchanges(part.partData.interchanges)">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
         <div class="section-title bottom top-bottom-gap">Interchanges</hr>
@@ -377,7 +397,7 @@
     </div>
   </div>
 
-  <div class="comp-table" data-ng-if="part.partData.categories[0]==='Automotive'">
+  <div id="compatibility" class="comp-table" data-ng-if="part.hasCompatibility(part.partData.apps)">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
         <div class="section-title bottom top-bottom-gap">Compatible With</hr>
@@ -423,7 +443,7 @@
     </div>
   </div>
 
-  <div data-ng-hide="part.hideForNow" class="">
+  <div data-ng-hide="part.hideForNow" class="" id="exploded-section">
     <div class="panel panel-default">
       <div class="panel-body part-panel">
         <div class="row bottom top-bottom-gap">
@@ -441,7 +461,7 @@
       </div>
     </div>
   </div>
-  <div data-ng-if="part.partData.bom.length>0" class="">
+  <div id="bom-table" data-ng-if="part.partData.bom.length>0" class="">
     <div class="panel panel-default">
       <div class="panel-body">
         <table class="table">

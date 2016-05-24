@@ -21,7 +21,7 @@
         }
     }
     
-    @for $i from 1024 to 1440 {
+    @for $i from 1023 to 1440 {
         @media(min-width: + $i*1px) {
             .search-bar {
                 width: ($i+656-1024)*1px;

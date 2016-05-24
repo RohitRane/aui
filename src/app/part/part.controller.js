@@ -1,10 +1,10 @@
 /*Author:Rohit Rane*/
 export class PartController {
-    constructor($log, $document, $stateParams, $scope, $timeout, $window, SearchBarService, dataServices) {
+    constructor($log, $document, $stateParams, $scope, $timeout, $window, SearchBarService, dataServices, SmoothScrollService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $document, $scope, $stateParams, SearchBarService, dataServices });
+        vm.DI = () => ({ $log, $document, $scope, $stateParams, SearchBarService, dataServices, SmoothScrollService });
 
         $window.scrollTo(0, 0);
 
@@ -79,19 +79,44 @@ export class PartController {
         } else return false;
     }
 
+    hasCompatibility(apps) {
+        if (apps) {
+            let attrsArr = Object.keys(apps);
+            if (attrsArr.length === 0) {
+                return false;
+            }
+            else return true
+        } else return false;
+    }
+
+    hasInterchanges(apps) {
+        if (apps) {
+            let attrsArr = Object.keys(apps);
+            if (attrsArr.length === 0) {
+                return false;
+            }
+            else return true
+        } else return false;
+    }
+
+    goToSection(name) {
+        let vm = this, {SmoothScrollService, $document} = vm.DI();
+        SmoothScrollService.scrollTo(name);
+    }
+
     _createCompatibilityTab() {
         let vm = this;
-        
+
         vm.ymmCompatibilityTab1 = [], vm.ymmCompatibilityTab2 = [];
 
         angular.forEach(vm.partData.apps, (ymm, index, compArr) => {
             (index < Math.ceil(compArr.length / 2)) ? vm.ymmCompatibilityTab1.push(ymm) : vm.ymmCompatibilityTab2.push(ymm);
         });
     }
-    
+
     _createInterchangesTab() {
         let vm = this;
-        
+
         vm.ymmInterTab1 = [], vm.ymmInterTab2 = [];
 
         angular.forEach(vm.partData.interchanges, (ymm, index, compArr) => {
