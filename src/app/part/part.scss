@@ -3,6 +3,10 @@
   .part-panel{
       margin-top:20px; 
   }
+  
+  .warranty{
+	  width: 80%;
+  }
 	
 	.comp-table{
 		table{
@@ -12,11 +16,11 @@
 	
 	.mid-sections{
 		margin-top: 20px;
-		padding-left: 20px;
+		//padding-left: 20px;
 	}
 	
 	.data-sheet{
-		@extend .mid-sections;
+		margin-top: 20px;
 		.task{
 			display: inline-block;
 			margin-left: 30px;
@@ -65,13 +69,13 @@
 	}
 	
 	.top-section-row{
-		padding: 0px 15px;
+		padding: 25px 15px 15px 0px;
 		label{
-			padding-left: 20px;
+			//padding-left: 20px;
 		}
 		.spec-n-model{
 			margin: 0 10px 20px 10px;
-			border: 2px solid $support_color_light_one;
+			//border: 2px solid $support_color_light_one;
 			border-radius: 2px;
 			padding: 0px;
 			.col-md-5,.col-md-7{
@@ -83,9 +87,9 @@
 					border-right: 1px solid $support_color_light_one;
 				}
 			}
-			img{
-					margin: 0 25%
-				}
+			.col-md-7{
+				text-align: center;
+			}
 		/*	-webkit-column-count: 2; 
     -moz-column-count: 2; 
     column-count: 2;
@@ -107,7 +111,7 @@
         padding: 0px 4px !important;
 				//width:300px;
 				width: 100%;
-				border: 1px solid #ddd;
+				//border: 1px solid #ddd;
       }
   .breadcrumb-section{
   	margin-top:0px !important;

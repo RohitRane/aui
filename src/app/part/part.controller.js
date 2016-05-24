@@ -55,7 +55,7 @@ export class PartController {
                 vm.partData = response;
                 switch (vm.partData.categories[2]) {
                     case 'Flanges': console.log("It's a flanges"); vm.partData.imageUrl = "/assets/images/flange.png"; break;
-                    case 'Universal Joints': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/u-joint.jpg"; break;
+                    case 'Universal Joints': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/u-joint.jpg"; vm.partData.modelDiagram = "assets/images/model_diagram.gif"; break;
                     case 'Flange Yoke': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/flange_yoke.jpg"; break;
                     case 'Ring and Pinions': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/rangeNpinion.jpg"; break;
                     default: vm.partData.imageUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
