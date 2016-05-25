@@ -67,14 +67,13 @@ export class SearchResultsController {
             hierarchySearch();
         });
 
-        if (SearchBarService.backBottonPressed) {
+        if ($stateParams.mode && $stateParams.mode === "hierarchy")
+                angular.noop();
+        else if (SearchBarService.backBottonPressed) {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
         } else if (sessionStorage.refreshClickedSearch) {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
         } else {
-            if ($stateParams.mode && $stateParams.mode === "hierarchy")
-                angular.noop();
-            else
                 vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
 
@@ -169,6 +168,6 @@ export class SearchResultsController {
         SearchBarService.srchStr = null;
         SearchBarService.productLine = $stateParams.cat1;
         SearchBarService.productCategory = $stateParams.cat3;
-        vm.getParts(0, 10, null, null, null, null, $stateParams.cat2);
+        vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null, $stateParams.cat2);
     }
 }

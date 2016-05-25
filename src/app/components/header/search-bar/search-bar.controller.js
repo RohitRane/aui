@@ -14,6 +14,14 @@ export class SearchBarController {
         });
         $rootScope.$on('$destroy', deregistrationCallback);
 
+        let applyHierarchyScope = $rootScope.$on("applyHierarchyScope", (evt, cat) => {
+            vm.search.searchScope = cat;
+            $timeout(() => {
+                vm._setWidthSearchBox();
+            }, 50);
+        });
+        $rootScope.$on('$destroy', applyHierarchyScope);
+
         let deregistrationCallback2 = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
             $log.debug("Cat Fill :", selectedCategory);
             if (vm.search.searchScope === 'All') {
@@ -62,15 +70,18 @@ export class SearchBarController {
 
 
         /* On Refresh string should be retained*/
-        if (sessionStorage.srchStr && $location.path() != "/") {
-            vm.search.searchString = sessionStorage.srchStr;
-            vm.search.searchScope = sessionStorage.productLine;
+        if (SearchBarService.srchStr && $location.path() != "/") {
+            $timeout(() => {
+                vm.search.searchString = SearchBarService.srchStr;
+                vm.search.searchScope = SearchBarService.productLine;
+            }, 100);
+
         }
 
         /* On Back button click string should be retained*/
         $rootScope.$on("backButtonSetSearchString", function () {
-            console.log("Back in backButtonSetSearchString", sessionStorage.productLine);
-            vm.search.searchString = sessionStorage.srchStr;
+            console.log("Back in backButtonSetSearchString", SearchBarService.productLine);
+            vm.search.searchString = SearchBarService.srchStr;
         });
 
         let intervalObj = $interval(() => {
