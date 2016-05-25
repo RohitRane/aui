@@ -12,7 +12,7 @@ export class OrderListController {
    		let vm = this, size ="md";
    		let {$log, $uibModal} = vm.DI();
    		var modalInstance = $uibModal.open({
-                templateUrl: 'app/orderList/shareorderlist/shareorderlist.html',
+                templateUrl: 'app/orderList/shareOrderList/shareOrderList.html',
                 controller: 'ShareOrderlistController',
                 size: size,
                 windowClass: 'my-modal-popup',
