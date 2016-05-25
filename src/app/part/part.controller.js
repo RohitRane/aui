@@ -4,7 +4,7 @@ export class PartController {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $document, $scope, $stateParams, SearchBarService, dataServices, SmoothScrollService });
+        vm.DI = () => ({ $log, $document, $scope, $stateParams, $window, SearchBarService, dataServices, SmoothScrollService });
 
         $window.scrollTo(0, 0);
 
@@ -28,6 +28,10 @@ export class PartController {
         };
 
         vm.hideForNow = true;
+        
+        angular.element($window).bind('resize', () => {
+            vm._resizeImage();
+        });
 
     }
 
@@ -122,5 +126,20 @@ export class PartController {
         angular.forEach(vm.partData.interchanges, (ymm, index, compArr) => {
             (index < Math.ceil(compArr.length / 2)) ? vm.ymmInterTab1.push(ymm) : vm.ymmInterTab2.push(ymm);
         });
+    }
+    _resizeImage(){
+        let vm = this,
+        { $document } = vm.DI();
+        let actvPic = $document[0].getElementById("active-pic");
+        
+        console.log("Resizing image");
+
+        vm.containerDimensions = {
+            height: actvPic.offsetHeight,
+            width: actvPic.offsetWidth
+        }
+        
+        console.log("container Dimensions :",vm.containerDimensions);
+        
     }
 }
