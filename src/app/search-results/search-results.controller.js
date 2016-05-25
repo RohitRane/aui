@@ -1,9 +1,9 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, $scope, $timeout, $window, $document, dataServices, SearchBarService) {
+    constructor($log, $rootScope, $scope, $timeout, $window, $document, $stateParams, dataServices, SearchBarService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $scope, $timeout, dataServices, SearchBarService });
+        vm.DI = () => ({ $log, $scope, $timeout, $stateParams, dataServices, SearchBarService });
 
         $window.scrollTo(0, 0);
 
@@ -18,6 +18,10 @@ export class SearchResultsController {
         $timeout(function () {
             $scope.$emit("searchbarBlurred");
         });
+
+        if ($stateParams.mode && $stateParams.mode === "hierarchy") {
+            vm._hierarchyNavigation();
+        }
 
         vm.resultLoading = false;
 
@@ -37,7 +41,7 @@ export class SearchResultsController {
                 if (angular.isDefined(isHeaderSticky.bottomOffset)) {
                     console.log("bottomOffset is defined.");
                     //vm.stickyAd = false;
-                    console.log("Bottom Offset :",isHeaderSticky.bottomOffset);
+                    console.log("Bottom Offset :", isHeaderSticky.bottomOffset);
                     /*angular.element(adSec).css("position", "fixed");
                     angular.element(adSec).css("top", 70+"px");
                     angular.element(adSec).css("bottom", 100+"px");
@@ -52,10 +56,15 @@ export class SearchResultsController {
 
         });
 
+        let hierarchySearch = $rootScope.$on("hierarchySearch", (evt) => {
+            vm._hierarchyNavigation();
+        });
+
         $scope.$on('$destroy', function () {
             console.log("destroy");
             deregistrationCallback2();
             deregistrationCallback();
+            hierarchySearch();
         });
 
         if (SearchBarService.backBottonPressed) {
@@ -63,7 +72,10 @@ export class SearchResultsController {
         } else if (sessionStorage.refreshClickedSearch) {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
         } else {
-            vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
+            if ($stateParams.mode && $stateParams.mode === "hierarchy")
+                angular.noop();
+            else
+                vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
 
         this.sortType = [
@@ -75,17 +87,17 @@ export class SearchResultsController {
         ];
     }
 
-    ymmSearch(year, make, model){
+    ymmSearch(year, make, model) {
         console.log("ymm");
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, year, make, model, 0, 10)
-        .then(function(response) {
-            vm.filters = response.filter;
-            vm.category = response.partCategoryList;
-        }, function(error) {
+            .then(function (response) {
+                vm.filters = response.filter;
+                vm.category = response.partCategoryList;
+            }, function (error) {
 
-        });
+            });
     }
 
     change(action) {
@@ -94,7 +106,7 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
-    getParts(from, size, payload, year, make, model) {
+    getParts(from, size, payload, year, make, model, cat2) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
@@ -108,9 +120,11 @@ export class SearchResultsController {
             ymm = SearchBarService.autoSuggestItem.suggestId;
         }
 
+        $log.debug("Srch Str ::", SearchBarService.srchStr);
+
         $scope.$emit("showLoading", true);
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, year, make, model, ymm).then(function (response) {
-             $log.debug("getParts :", payload, year, make, model);
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, year, make, model, ymm, cat2).then(function (response) {
+            $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
                 vm.results.parts = response.parts;
@@ -123,7 +137,7 @@ export class SearchResultsController {
 
             vm.filters = response.filter;
             vm.category = response.partCategoryList;
-            vm.sortAttributes = response.filter.slice(0,3);
+            vm.sortAttributes = response.filter.slice(0, 3);
 
             vm.results.parts = vm.results.parts.map(function (part) {
                 part.displayName = part.partNumber + ' ' + part.partDesc;
@@ -147,5 +161,14 @@ export class SearchResultsController {
         vm.resultStartIndex = vm.resultStartIndex + vm.resultSetLimit;
         $log.debug("load more clicked." + vm.resultStartIndex + " : " + vm.currentPage);
         vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
+    }
+
+    _hierarchyNavigation() {
+        console.log("Hierarchy nav");
+        let vm = this, {SearchBarService, $stateParams} = vm.DI();
+        SearchBarService.srchStr = null;
+        SearchBarService.productLine = $stateParams.cat1;
+        SearchBarService.productCategory = $stateParams.cat3;
+        vm.getParts(0, 10, null, null, null, null, $stateParams.cat2);
     }
 }

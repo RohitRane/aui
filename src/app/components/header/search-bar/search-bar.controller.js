@@ -1,13 +1,13 @@
 export class SearchBarController {
 
-    constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, SearchBarService, BreadCrumbService) {
+    constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, $interval, $state, dataServices, SearchBarService, BreadCrumbService, appInfoService) {
 
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, dataServices, BreadCrumbService, SearchBarService });
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, $state, dataServices, BreadCrumbService, SearchBarService });
 
         let deregistrationCallback = $rootScope.$on("reachedhome", function () {
             vm.search.searchString = null;
@@ -73,13 +73,14 @@ export class SearchBarController {
             vm.search.searchString = sessionStorage.srchStr;
         });
 
-        dataServices.appInfo().then(response => {
-            vm.search.categories = response.cats.map(function (cat) {
-                return cat.name;
-            });
-        }, error => {
-
-        });
+        let intervalObj = $interval(() => {
+            if (angular.isDefined(appInfoService.appInfo.cats)) {
+                $interval.cancel(intervalObj);
+                vm.search.categories = appInfoService.appInfo.cats.map(function (cat) {
+                    return cat.name;
+                });
+            }
+        }, 200);
 
         $timeout(() => {
             vm._setWidthSearchBox();
@@ -173,7 +174,7 @@ export class SearchBarController {
             });
 
             $log.debug("Result set :", resultSet);
-            
+
             $scope.$emit("showLoading", false);
             return resultSet.map(function (part) {
                 return part;
@@ -215,7 +216,7 @@ export class SearchBarController {
 
     gotoPartDetails(item) {
         let vm = this;
-        let {$log, $location, $rootScope, $timeout, SearchBarService, BreadCrumbService, $scope} = vm.DI();
+        let {$log, $location, $rootScope, $timeout, SearchBarService, BreadCrumbService, $scope, $state} = vm.DI();
 
         $log.debug("Scope search :", vm.search.searchString);
         SearchBarService.categoryfilters = [];
@@ -238,12 +239,13 @@ export class SearchBarController {
             } else SearchBarService.productCategory = item.suggestId;
 
             $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true, "catFilter":false });
+                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true, "catFilter": false });
                 SearchBarService.productLine = vm.search.searchScope;
             }, 100);
 
             vm._blurSrchBox();
-            if ($location.url() === '/search') {
+            $log.debug("Inside search results :", $state.is("searchResults"));
+            if ($state.is("searchResults")) {
                 $scope.$emit("searchbarBlurred");
                 $scope.$emit("searchLaunched");
             } else {
@@ -264,11 +266,12 @@ export class SearchBarController {
             //SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
             $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": vm.search.searchScope, "suggestion": true, "catFilter":false });
+                $rootScope.$broadcast("categoryFilterApplied", { "name": vm.search.searchScope, "suggestion": true, "catFilter": false });
                 //SearchBarService.productLine = vm.search.searchScope;
             });
 
             vm._blurSrchBox();
+            $log.debug("Inside search results :", $state.is("searchResults"));
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 $scope.$emit("searchLaunched");
@@ -294,7 +297,7 @@ export class SearchBarController {
 
     searchIconClick() {
         let vm = this;
-        let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope} = vm.DI();
+        let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope, $state} = vm.DI();
         vm._blurSrchBox();
         SearchBarService.autoSuggestItem = null;
         BreadCrumbService.searchToResults = true;
@@ -318,7 +321,7 @@ export class SearchBarController {
                     $log.debug("Hello...........");
                     SearchBarService.productLine = vm.search.searchScope;
                     // $rootScope.$emit("searchIconClicked");
-                    if ($location.url() === '/search') {
+                    if ($state.is("searchResults")) {
                         $log.debug("url search ");
                         $scope.$emit("searchLaunched");
                         $scope.$emit("searchbarBlurred");

@@ -75,16 +75,14 @@ class SearchResultDirectiveController {
     }
 
     getImageUrl(part) {
-        console.log("part :", part);
         let retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
         //url ?  retUrl = url : retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
-        console.log("Categories :", part.categories[2]);
         switch (part.categories[2]) {
-            case 'Flanges': console.log("It's a flanges"); retUrl = "/assets/images/flange.png"; break;
-            case 'Universal Joints': console.log("It's a Universal Jt"); retUrl = "/assets/images/u-joint.jpg"; break;
-            case 'Flange Yoke': console.log("It's a flange yoke"); retUrl = "/assets/images/flange_yoke.jpg"; break;
-            case 'Flange Yokes': console.log("It's a flange yoke"); retUrl = "/assets/images/flange_yoke.jpg"; break;
-            case 'Ring and Pinions': console.log("It's a Universal Jt"); retUrl = "/assets/images/rangeNpinion.jpg"; break;
+            case 'Flanges':  retUrl = "/assets/images/flange.png"; break;
+            case 'Universal Joints':  retUrl = "/assets/images/u-joint.jpg"; break;
+            case 'Flange Yoke':  retUrl = "/assets/images/flange_yoke.jpg"; break;
+            case 'Flange Yokes':  retUrl = "/assets/images/flange_yoke.jpg"; break;
+            case 'Ring and Pinions': retUrl = "/assets/images/rangeNpinion.jpg"; break;
             default: angular.noop();
         };
         return retUrl;

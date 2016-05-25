@@ -7,10 +7,10 @@
                     <span data-ng-repeat="child in category.children" id="cat_{{child.name}}">
                     <dl data-ng-repeat="gChildArr in child.displayChildren" data-ng-init="categoryMenu.setTop($index,child.name)" data-ng-if="gChildArr.length>0">
                         <dt data-ng-show="$index===0" id="cat_header_{{child.name}}">
-                            <a href="">{{child.name|uppercase}}</a>
+                            <a data-ng-click="categoryMenu.search(category.name, child.name, null)" href="">{{child.name|uppercase}}</a>
                         </dt>                        
                         <dd data-ng-repeat="gChild in gChildArr" id="{{child.name}}_col_{{$parent.$index}}" data-ng-class="{'first-row':$index===0}">
-                            <a href="">{{gChild.name}}</a>
+                            <a data-ng-click="categoryMenu.search(category.name, child.name, gChild.name)" href="">{{gChild.name}}</a>
                         </dd>
                     </dl>
                     </span>

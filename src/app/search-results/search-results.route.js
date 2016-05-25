@@ -2,7 +2,7 @@ export function routerConfig($stateProvider) {
     'ngInject';
     $stateProvider
         .state('searchResults', {
-            url: '/search',
+            url: '/search?mode&cat1&cat2&cat3',
             parent: 'aftermarket',
             templateUrl: 'app/search-results/search-results.html',
             controller: 'SearchResultsController',

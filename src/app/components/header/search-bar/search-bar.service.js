@@ -1,5 +1,5 @@
 export class SearchBarService {
-    
+
     /*constructor(srchStr) {
         this{._srchStr = srchStr;
     }*/
@@ -10,16 +10,14 @@ export class SearchBarService {
 
     get srchStr() {
         this._srchStr = sessionStorage.srchStr;
-        return this._srchStr;
+        if (this._srchStr === "null") return null;
+        else return this._srchStr;
 
     }
 
     set srchStr(newSrchStr) {
-        if (newSrchStr) {
-            this._srchStr = newSrchStr;
-            sessionStorage.srchStr = this._srchStr;
-            //this._saveToSession();
-        }
+        this._srchStr = newSrchStr;
+        sessionStorage.srchStr = this._srchStr;
     }
 
     get srchTempStr() {
@@ -34,7 +32,7 @@ export class SearchBarService {
 
 
     get productLine() {
-       // this._productLine = sessionStorage.productLine;
+        // this._productLine = sessionStorage.productLine;
         return this._productLine;
     }
 

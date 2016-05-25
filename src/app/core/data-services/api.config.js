@@ -2,7 +2,7 @@
 var devServer = "http://52.8.125.250:8080",
     qaServer = "http://54.183.226.9:8080",
 
-   
+
 
     //activeAPIBase = devServer,
     activeAPIBase = qaServer,
@@ -57,17 +57,17 @@ export let apiConfig = {
     },
     'CAT_SEARCH': {
         'url': '',
-        'setUrl': function (param, scope, from, size, productCategory, filterObjectArray, year, make, model, ymm) {
+        'setUrl': function (param, scope, from, size, productCategory, filterObjectArray, year, make, model, ymm, cat2) {
             this.url = apiBaseUrl + '/result';
             //scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
             //productCategory === 
-            console.log("getParts :",year, make, model);
+            console.log("getParts :", year, make, model, cat2);
             this.data = {
                 "q": param,
                 "cid": "1",
                 "from": from,
                 "size": size,
-                "cats": [scope ? scope : null, null, productCategory ? productCategory : null],
+                "cats": [scope ? scope : null, cat2 ? cat2 : null, productCategory ? productCategory : null],
                 "filter": filterObjectArray,
                 "year": year,
                 "make": make,

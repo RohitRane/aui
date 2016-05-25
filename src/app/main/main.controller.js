@@ -1,5 +1,5 @@
 export class MainController {
-    constructor($scope, $rootScope, $state, $timeout, $log, $document, $window, BreadCrumbService) {
+    constructor($scope, $rootScope, $state, $timeout, $log, $document, $window, BreadCrumbService, dataServices,appInfoService) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({ $scope, $timeout, $log, $document });
@@ -28,6 +28,18 @@ export class MainController {
                 $rootScope.$emit("isHeaderSticky", { state: true });
             }
         };
+        
+        dataServices.appInfo().then(response => {
+            $log.debug("APP INFO :", response);
+            appInfoService.appInfo = response;
+
+            /*vm.search.categories = response.cats.map(function (cat) {
+                return cat.name;
+            });*/
+        }, error => {
+
+        });
+
 
 
     }

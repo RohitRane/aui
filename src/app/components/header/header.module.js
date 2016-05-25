@@ -9,6 +9,7 @@ import { helpNFaqDirective } from './menus/help-n-faq/help-n-faq.directive';
 import { profileMenuDirective } from './menus/profile/profile.directive';
 import { orderMenuDirective } from './menus/order/order.directive';
 import { categoryMenuDirective } from './menus/categories/categories.directive';
+import {CategoryMenuController} from './menus/categories/categories.controller';
 //import { subcategoryMenuDirective } from './menus/sub-categories/subcategories.directive';
 import { searchBarDirective } from './search-bar/search-bar.directive';
 import { SearchBarController } from './search-bar/search-bar.controller';
@@ -21,6 +22,7 @@ angular.module('aftermarket.header', ['aftermarket.core'])
     .directive('profileMenu',profileMenuDirective)
     .directive('orderMenu',orderMenuDirective)
     .directive('categoryMenu',categoryMenuDirective)
+    .controller('CategoryMenuController',CategoryMenuController)
     //.directive('subcategoryMenu',subcategoryMenuDirective)
     .directive('searchBar',searchBarDirective)
     .controller('SearchBarController',SearchBarController)
