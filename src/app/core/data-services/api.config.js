@@ -63,7 +63,7 @@ export let apiConfig = {
             //productCategory === 
             console.log("getParts :", year, make, model, cat2);
             this.data = {
-                "q": param ? param : null,
+                "q": param,
                 "from": from,
                 "size": size,
                 "cats": [scope ? scope : 0, cat2 ? cat2 : 0, productCategory ? productCategory : 0],

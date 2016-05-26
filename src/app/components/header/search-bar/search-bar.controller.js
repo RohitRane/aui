@@ -18,7 +18,7 @@ export class SearchBarController {
         $rootScope.$on('$destroy', deregistrationCallback);
 
         let applyHierarchyScope = $rootScope.$on("applyHierarchyScope", (evt, cat) => {
-            vm.search.searchScope = cat;
+            vm.search.searchScope = cat.name;
             $timeout(() => {
                 vm._setWidthSearchBox();
             }, 50);
@@ -44,26 +44,26 @@ export class SearchBarController {
             vm.search.searchString = previousSearchString;
         });
 
-        vm.search = {
-            searchScope: 'All',
-            typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
-            typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
-            resultCountUpperLimit: 8,
-            firstSelect: false,
-            categories: [
-                /*'Commercial Vehicle',
-                'Automotive',
-                'Off-Highway',
-                'High Performance',
-                'Military/Defense',
-                'Industrial'*/
-            ]
-        };
+        let intObj = $interval(() => {
+            console.log("Hierarchy nav", appInfoService.appInfo);
+            if (angular.isDefined(appInfoService.appInfo) && angular.isDefined(appInfoService.appInfo.cats)) {
+                $interval.cancel(intObj);
+                vm.search = {
+                    searchScope: appInfoService.getCat(0),
+                    typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
+                    typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
+                    resultCountUpperLimit: 8,
+                    firstSelect: false,
+                    categories: []
+                };
+            }
+        }, 100);
+
 
         let stateChangeEvt = $rootScope.$on('$stateChangeSuccess',
             function (event, toState, toParams, fromState, fromParams) {
                 if (toState.name === 'home') {
-                    vm.search.searchScope = 'All';
+                    vm.search.searchScope = appInfoService.getCat(0);
                     $timeout(() => {
                         vm._setWidthSearchBox();
                     }, 50);
@@ -88,7 +88,7 @@ export class SearchBarController {
         });
 
         let intervalObj = $interval(() => {
-            if (angular.isDefined(appInfoService.appInfo.cats)) {
+            if (angular.isDefined(appInfoService.appInfo && appInfoService.appInfo.cats)) {
                 $interval.cancel(intervalObj);
                 vm.search.categories = appInfoService.appInfo.cats.map(function (cat) {
                     return cat;
@@ -348,9 +348,9 @@ export class SearchBarController {
                     angular.noop();
                 }
             }
-        }else{
-            if(vm.search.searchScope == 'All'){
-            }else{
+        } else {
+            if (vm.search.searchScope == 'All') {
+            } else {
                 SearchBarService.productLine = vm.search.searchScope;
                 $location.path('/search');
             }

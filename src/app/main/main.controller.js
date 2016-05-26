@@ -32,13 +32,10 @@ export class MainController {
         dataServices.appInfo().then(response => {
             $log.debug("APP INFO :", response);
             appInfoService.appInfo = response;
-
-            /*vm.search.categories = response.cats.map(function (cat) {
-                return cat.name;
-            });*/
         }, error => {
 
         });
+        
 
 
 

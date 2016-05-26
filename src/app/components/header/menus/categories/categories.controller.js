@@ -11,7 +11,7 @@ export class CategoryMenuController {
         });
 
         let intervalObj = $interval(() => {
-            if (angular.isDefined(appInfoService.appInfo.cats)) {
+            if (angular.isDefined(appInfoService.appInfo) && angular.isDefined(appInfoService.appInfo.cats)) {
                 $interval.cancel(intervalObj);
                 vm.categories = appInfoService.appInfo.cats;
                 angular.forEach(vm.categories, (cat) => {
@@ -116,11 +116,11 @@ export class CategoryMenuController {
     search(cat1, cat2, cat3) {
         let vm = this, {$state, $rootScope} = vm.DI();
         console.log("Cat-e-gory", cat1, cat2, cat3);
-        let paramObj = { 'mode': 'hierarchy', 'cat1': cat1, 'cat2': cat2, 'cat3': cat3 };
-        $rootScope.$emit("applyHierarchyScope",cat1);
+        let paramObj = { 'mode': 'hierarchy', 'cat1': cat1 ? cat1.id : null, 'cat2': cat2 ? cat2.id : null, 'cat3': cat3 ? cat3.id : null };
+        $rootScope.$emit("applyHierarchyScope", cat1);
         if ($state.is("searchResults")) {
             $rootScope.$emit("hierarchySearch");
-        } 
+        }
         $state.go("searchResults", paramObj);
     }
 

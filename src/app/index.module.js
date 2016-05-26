@@ -3,6 +3,7 @@ import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { appConstants } from './index.constants';
 import { MainController } from './main/main.controller';
+import { mainConfig } from './main/main.config';
 
 angular.module('aftermarket',
     ['ui.router',
@@ -20,12 +21,13 @@ angular.module('aftermarket',
         'aftermarket.core',
         'aftermarket.footer',
         'aftermarket.orderList'
-        ]
-    )
+    ]
+)
     .constant('AftermarketConstants', appConstants)
     .config(config)
     .config(routerConfig)
     .run(runBlock)
-    .controller('MainController', MainController);
+    .controller('MainController', MainController)
+    .config(mainConfig);
 
 //Main module.

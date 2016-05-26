@@ -1,9 +1,9 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, $scope, $timeout, $window, $document, $stateParams, dataServices, SearchBarService) {
+    constructor($log, $rootScope, $scope, $timeout, $window, $document, $stateParams, $interval, dataServices, SearchBarService, appInfoService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $scope, $timeout, $stateParams, dataServices, SearchBarService });
+        vm.DI = () => ({ $log, $scope, $timeout, $stateParams, $interval, dataServices, SearchBarService, appInfoService });
 
         $window.scrollTo(0, 0);
 
@@ -68,13 +68,13 @@ export class SearchResultsController {
         });
 
         if ($stateParams.mode && $stateParams.mode === "hierarchy")
-                angular.noop();
+            angular.noop();
         else if (SearchBarService.backBottonPressed) {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
         } else if (sessionStorage.refreshClickedSearch) {
             vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters);
         } else {
-                vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
+            vm.getParts(vm.resultStartIndex, vm.resultSetLimit);
         }
 
         this.sortType = [
@@ -122,7 +122,7 @@ export class SearchResultsController {
         $log.debug("Srch Str ::", SearchBarService.srchStr);
 
         $scope.$emit("showLoading", true);
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, year, make, model, ymm, cat2).then(function (response) {
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine.id, from, size, SearchBarService.productCategory.id, payload, year, make, model, ymm, cat2 ? cat2.id : null).then(function (response) {
             $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
@@ -165,11 +165,23 @@ export class SearchResultsController {
     }
 
     _hierarchyNavigation() {
-        console.log("Hierarchy nav");
-        let vm = this, {SearchBarService, $stateParams} = vm.DI();
-        SearchBarService.srchStr = null;
-        SearchBarService.productLine = $stateParams.cat1;
-        SearchBarService.productCategory = $stateParams.cat3;
-        vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null, $stateParams.cat2);
+        let vm = this, {SearchBarService, $stateParams, $timeout, $interval, appInfoService} = vm.DI();
+        let intObj = $interval(() => {
+            console.log("Hierarchy nav", appInfoService.appInfo);
+            if (angular.isDefined(appInfoService.appInfo) && angular.isDefined(appInfoService.appInfo.cats)) {
+                $interval.cancel(intObj);
+                SearchBarService.srchStr = "";
+                console.log("CAT 1 :", $stateParams.cat1);
+                SearchBarService.productLine = appInfoService.getCat($stateParams.cat1);
+
+                console.log("prod line :", SearchBarService.productLine);
+                SearchBarService.productCategory = appInfoService.getCat($stateParams.cat3);
+                console.log("prod cat :", SearchBarService.productCategory);
+
+                vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null, appInfoService.getCat($stateParams.cat2));
+            }
+        }, 100);
+
+
     }
 }

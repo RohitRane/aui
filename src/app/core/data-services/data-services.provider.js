@@ -24,7 +24,7 @@ export function dataServices() {
             appInfo: appInfo(DI),
             ymmSearch: ymmSearch(DI)
         }
-    }   
+    } 
 }
 
 //import your api request files here
