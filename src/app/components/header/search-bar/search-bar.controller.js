@@ -2,12 +2,15 @@ export class SearchBarController {
 
     constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, $interval, $state, dataServices, SearchBarService, BreadCrumbService, appInfoService) {
 
+
         'ngInject';
 
         let vm = this;
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
+
         vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, $state, dataServices, BreadCrumbService, SearchBarService });
+
 
         let deregistrationCallback = $rootScope.$on("reachedhome", function () {
             vm.search.searchString = null;
@@ -88,10 +91,11 @@ export class SearchBarController {
             if (angular.isDefined(appInfoService.appInfo.cats)) {
                 $interval.cancel(intervalObj);
                 vm.search.categories = appInfoService.appInfo.cats.map(function (cat) {
-                    return cat.name;
+                    return cat;
                 });
             }
         }, 200);
+
 
         $timeout(() => {
             vm._setWidthSearchBox();
@@ -216,7 +220,7 @@ export class SearchBarController {
         let { $document, $timeout } = vm.DI();
         let sBox = $document[0].getElementById('search-box');
         var ngModel = angular.element(sBox).controller('ngModel');
-        ngModel.$setViewValue("ABC");
+        ngModel.$setViewValue("");
         angular.element(sBox).triggerHandler('input');
         //vm.textTyped(vm.search.searchString);
         $timeout(function () {
@@ -309,6 +313,7 @@ export class SearchBarController {
     searchIconClick() {
         let vm = this;
         let {$log, $location, $rootScope, SearchBarService, BreadCrumbService, $scope, $state} = vm.DI();
+
         vm._blurSrchBox();
         SearchBarService.autoSuggestItem = null;
         BreadCrumbService.searchToResults = true;
@@ -342,6 +347,12 @@ export class SearchBarController {
                 } else {
                     angular.noop();
                 }
+            }
+        }else{
+            if(vm.search.searchScope == 'All'){
+            }else{
+                SearchBarService.productLine = vm.search.searchScope;
+                $location.path('/search');
             }
         }
     }

@@ -63,11 +63,10 @@ export let apiConfig = {
             //productCategory === 
             console.log("getParts :", year, make, model, cat2);
             this.data = {
-                "q": param,
-                "cid": "1",
+                "q": param ? param : null,
                 "from": from,
                 "size": size,
-                "cats": [scope ? scope : null, cat2 ? cat2 : null, productCategory ? productCategory : null],
+                "cats": [scope ? scope : 0, cat2 ? cat2 : 0, productCategory ? productCategory : 0],
                 "filter": filterObjectArray,
                 "year": year,
                 "make": make,
