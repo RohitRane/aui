@@ -20,9 +20,37 @@ export class YmmService {
             this.ymmURL = 'http://52.8.125.250:8080/search-service/api/ymmList';
             this.method = 'POST';
             this.params = "";
+            this.currYMMOrder = [];
+            this.level=[];
+            
     }
 
-    getYearData(q,cats,year,make,model,from,size){
+    getYearData(q,cats,lvl1,lvl2,lvl3,from,size){
+        let vm = this;
+        let {
+            $http,
+            $q,
+            SearchBarService
+        } = vm.DI();
+
+        let deferred = this.$q.defer();
+        return this.$http({
+            url: "http://54.183.226.9:8080/search-service/api/ymmList",
+            method: 'POST',
+            data: {
+                "q": SearchBarService.srchStr,
+                "cats": [SearchBarService.productLine, null, SearchBarService.productCategory],
+                "lvl1":this.level[0],
+                'lvl2':this.level[1],
+                "lvl3":this.level[2],
+                "from":from,
+                "size":size
+            }
+        })
+    }
+
+
+    getAPIConfigDataForYMM(q,cats,year,make,model,from,size){
         let vm = this;
         let {
             $http,
@@ -32,20 +60,17 @@ export class YmmService {
 
         let deferred = this.$q.defer();
          return this.$http({
-            url: "http://54.183.226.9:8080/search-service/api/ymmList",
-            method: 'POST',
-            data: {
-                "q": SearchBarService.srchStr,
-                "cats": [SearchBarService.productLine, null, SearchBarService.productCategory],
-                "year":year,
-                'make':make,
-                "model":model,
-                "from":from,
-                "size":size
-            }
+            url: "http://54.183.226.9:8080/search-service/api/configData",
+            method: 'GET'
         })
     }
 
+    setLevelData(param,data){
+
+        this.level.push(data);
+    }
+
+  
 
    /*
 
@@ -72,10 +97,7 @@ export class YmmService {
         return this._modelSelected;
     }
 
-    set modelSelected(model) {
-        this._modelSelected = model;
-        this._saveToSession();
-    }
+   
 
     get ymmData(){
         return this._ymmObject;

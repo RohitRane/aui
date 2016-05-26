@@ -110,8 +110,12 @@ class FilterDirectiveController{
       }
       
       SearchBarService.categoryfilters = vm.categoryPristine;
-      $rootScope.$broadcast("eventForYMM",{'prodLine':SearchBarService.productLine,
-                                            'prodCategory':SearchBarService.productCategory});
+      
+        if(SearchBarService.productLine=="Automotive"){
+           $rootScope.$broadcast("eventForYMM",{'prodLine':SearchBarService.productLine,
+                                              'prodCategory':SearchBarService.productCategory});
+        }
+     
     }
     
     /* call api to get the filters for the selected category and selected category should be heighlighted */ 
