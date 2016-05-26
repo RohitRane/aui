@@ -1,22 +1,17 @@
 <div class="null-other">
     <div class="cardsSection">
         <div class="catBlocks">
-            <div class="panel panel-default panel-box" ng-repeat="res in srchRes.category">
+            <div class="panel panel-default panel-box" ng-repeat="category in srchRes.category">
                 <div class="panel-body catItems">
-                    <label>{{res}}</label>
+                    <label>{{category.name}}</label>
                     <label>
                         <div>
-                            <p><a href="">Driveshaft</a></p>
-                            <p><a href="">U-joints</a></p>
-                            <p><a href="">Driveshaft Assembly</a></p>
-                            <p><a href="">Central Brearing Assemblies</a></p>
+                            <p ng-repeat="subCategory in category.children"><a href="">{{subCategory.name}}</a>
+                            </p>
                         </div>
                     </label>
                 </div>
             </div>
-        </div>
-        <div class="catSectionHead">
-            <h3>Browse by Brand</h3>
         </div>
     </div>
 </div>

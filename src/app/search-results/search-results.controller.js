@@ -137,16 +137,18 @@ export class SearchResultsController {
             vm.filters = response.filter;
             vm.category = response.partCategoryList;
             vm.sortAttributes = response.filter.slice(0, 3);
-
-            vm.results.parts = vm.results.parts.map(function (part) {
-                part.displayName = part.partNumber + ' ' + part.partDesc;
-                if (part.attrs != null) {
-                    part.attrList = Object.keys(part.attrs);
-                } else {
-                    part.attrList = [];
-                }
-                return part;
-            });
+            if(vm.results.parts){
+                vm.results.parts = vm.results.parts.map(function (part) {
+                    part.displayName = part.partNumber + ' ' + part.partDesc;
+                    if (part.attrs != null) {
+                        part.attrList = Object.keys(part.attrs);
+                    } else {
+                        part.attrList = [];
+                    }
+                    return part;
+                });
+            }
+            
             $scope.$emit("showLoading", false);
         }, function (error) {
             vm.resultLoading = false;

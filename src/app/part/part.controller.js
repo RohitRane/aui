@@ -27,7 +27,7 @@ export class PartController {
             width: 80
         };
 
-        vm.hideForNow = true;
+        vm.hideForNow = false;
         
         angular.element($window).bind('resize', () => {
             vm._resizeImage();

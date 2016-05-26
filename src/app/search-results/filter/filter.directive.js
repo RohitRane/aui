@@ -95,10 +95,19 @@ class FilterDirectiveController{
       /* convert array to object */
       if(vm.category.length > 0){
             vm.categoryPristine = vm.category;
-            vm.categoryPristine = vm.categoryPristine.map(function(name){
+            vm.categoryPristine = vm.categoryPristine.map(function(obj){
+                let tempChildren = obj.children.map(function(sub){
+                    return{
+                      name: sub.name,
+                      select: false,
+                      id: sub.id
+                    }
+                });
                 return {
-                    name:name,
-                    select:false
+                    name: obj.name,
+                    select: false,
+                    id: obj.id,
+                    children: tempChildren
                 };
             });
       }
@@ -129,6 +138,9 @@ class FilterDirectiveController{
         angular.forEach(vm.categoryPristine, function(obj){ 
           if(selectedCategory.name == obj.name){
             selectedCategory.select = !selectedCategory.select;
+            angular.forEach(obj.children, function(children){
+              children.select = false;
+            });
           }else{
             obj.select = false;
           }
@@ -138,7 +150,7 @@ class FilterDirectiveController{
            SearchBarService.productLine = selectedCategory.name;
         }else{
           if(selectedCategory.select){
-           SearchBarService.productCategory = selectedCategory.name;
+           SearchBarService.productCategory = selectedCategory.id;
           }else{
            SearchBarService.productCategory = null; 
           }
@@ -147,6 +159,20 @@ class FilterDirectiveController{
         vm.listPreviousFilter = [];
         $scope.$emit("checkSearch", SearchBarService.srchStr);
         $scope.$emit("searchLaunched");
+    }
+
+    /* call api to get the filters for the selected subcategory and selected subcategory should be heighlighted */ 
+    subCategoryFilter(category, selectedSubCategory){  
+        let vm = this;
+        let { $rootScope, $scope, SearchBarService } = vm.DI();
+
+        angular.forEach(category.children, function(obj){ 
+          if(selectedSubCategory.id == obj.id){
+            selectedSubCategory.select = !selectedSubCategory.select;
+          }else{
+            obj.select = false;
+          }
+        });
     }
     
     /* add extra properties to list and put in listPristine  */

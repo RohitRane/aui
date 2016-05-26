@@ -16,7 +16,7 @@
         <!--<h5>Related : <a>{{srchRes.searchString}}</a></h5>-->
         <h5></h5>
         <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
-        <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit">
+        <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit && srchRes.results.parts.length"">
           <button class="btn btn-default load-more" data-ng-click="srchRes.loadMore()">Load More ...</button>
           <!--<uib-pagination ng-model="srchRes.currentPage" total-items="srchRes.results.totalResults" max-size="5" class="pagination-sm" boundary-links="true" force-ellipses="true" data-ng-change="srchRes.loadMore()"></uib-pagination>-->
           <!--<i class="glyphicon-refresh glyphicon-refresh-animate"></i>-->
@@ -28,9 +28,9 @@
         <!-- <ng-clude='' ng-show="all">
         <ng-include=''  ng-show="otrher">
          -->
-        <div ng-include="'app/search-results/null-search/other.html'"></div>
-        
       </div>
+      <div ng-if="!srchRes.results.parts.length" ng-include="'app/search-results/null-search/other.html'"></div>
+        
     </div>
     <div class="col-md-2 parts" id="ad-section" data-ng-class="{'affix-ads':srchRes.stickyAd === true}">
       <!--<div class="part1 ">

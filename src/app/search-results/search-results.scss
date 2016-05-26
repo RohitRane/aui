@@ -53,33 +53,20 @@
                 margin-bottom: 20px;
             }
             .refine-header{
-                font-weight: 600;
+                font-weight: 500;
                 font-size: 13px;
                 .blue{
-                    color: $accent_color;
+                    //color: $accent_color;
+                    font-weight: 600;
                 }
                 .category:hover{
                     cursor: pointer;
                 }
-                span{
+                .subcategory{
                     margin-left: 10px;
-                    display: inline-block;
-                    //width: 120px;
-                    word-wrap: break-word;
-                    @media only screen and (min-device-width : 800px) and (max-device-width : 1024px) {
-                        margin-left: 5px !important;
-                        display: inline-block !important;
-                        width: 90px !important;
-                        word-wrap: break-word !important;
+                    &:hover{
+                        cursor: pointer;
                     }
-                }
-                a{
-                    font-size: 10px;
-                    cursor: pointer;
-                    margin-top: 3px;
-                }
-                .expander{
-                    float: right;
                 }
             }
             .refine-options{
