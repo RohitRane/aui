@@ -44,6 +44,21 @@ class SearchResultDirectiveController {
         this.specLimit = 5;
         this.toggle = false;
         this.specToggleName = "Expand";
+        this.shwOrdrTxt = true;
+        this.shwQty = false;
+        this.shwMsg = false;
+    }
+
+    change(msg){
+      if(msg == "shwQty"){
+        this.shwOrdrTxt = false;
+        this.shwQty = true;
+      }else if(msg == "shwMsg"){
+        this.shwQty = false;
+        this.shwMsg = true;
+      }else{
+
+      }
     }
 
     toggleSpecs() {

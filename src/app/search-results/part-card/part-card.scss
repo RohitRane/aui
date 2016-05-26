@@ -3,7 +3,7 @@
         .result-card{
             .panel{
                 border-radius: 0px !important;
-                padding: 15px 15px;
+                padding: 10px 15px 15px 15px;
                 border: none;
                 .col-md-6, .col-md-3{
                     padding: 0;
@@ -36,20 +36,53 @@
                 }
                 .panel-heading{
                 background: white !important;
-                height: 40px;
                 padding: 0px 0px;
                 border-bottom: none;
-                .description{
-                    padding: 10px 10px;
-                    text-decoration: none;
+                div{
+                    .dispName{
+                        display: inline-block;
+                    }
+                    .cart{
+                        text-align: right;
+                      span{
+                            a{
+                                cursor: pointer;
+                            }
+                            .shwQty{
+                                input{
+                                    width: 20%;
+                                    height: 20px;
+                                    text-align: center;
+                                }
+                                .btnAdd{
+                                    background: #dbdbdb;
+                                    font-size: 10px;
+                                    padding: 3px;
+                                    font-weight: bold;
+                                    &:hover{
+                                        cursor:pointer;
+                                    }
+                                }
+                            }
+                      }
+                      /*span:nth-child(1){
+                        font-weight: 600;
+                        font-size: 12px;
+                      }
+                      span:nth-child(2){
+                        border-left: 1px solid $support_color_light_one;
+                        border-right: 1px solid $support_color_light_one;
+                        padding: 0px 5px;
+                        margin: 0px;
+                        font-weight: 600;
+                        font-size: 12px;
+                      }
+                        .glyphicon-shopping-cart{
+                            color: $accent_color;
+                        }*/
+                    }
                 }
-                .name{
-                    font-family: Open Sans;
-                    // font-size: 16px;
-                    // color: $accent_color; 
-                    font-weight: 700;
-                   font-size: 12px;
-                }
+                
                 .interchange{
                     width: 150px;
                     background: black;
@@ -79,31 +112,11 @@
                     }
                 }
                 
-                .cart{
-                    padding: 0px 0px;
-                  span{
-                    margin: 0px 5px;
-                  }
-                  span:nth-child(1){
-                    font-weight: 600;
-                    font-size: 12px;
-                  }
-                  span:nth-child(2){
-                    border-left: 1px solid $support_color_light_one;
-                    border-right: 1px solid $support_color_light_one;
-                    padding: 0px 5px;
-                    margin: 0px;
-                    font-weight: 600;
-                    font-size: 12px;
-                  }
-                    .glyphicon-shopping-cart{
-                        color: $accent_color;
-                    }
-                }
+                
                 .hrLine{
                     border: 1px solid #dbdbdb;
                     /*margin: -5px 5px 0px 30px;*/
-                    margin: 10px 5px 0px 10px
+                    margin: 10px 0px 0px;
                 }
              }
              .panel-body{
