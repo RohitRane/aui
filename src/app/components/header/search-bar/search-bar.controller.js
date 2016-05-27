@@ -120,7 +120,7 @@ export class SearchBarController {
         //SearchBarService.srchStr = searchString;
         SearchBarService.typeId = 2;
         $scope.$emit("showLoading", true);
-        return dataServices.autoSearch(searchString, vm.search.searchScope).then(function (response) {
+        return dataServices.autoSearch(searchString, vm.search.searchScope.id).then(function (response) {
             $log.debug("abcd Response in Controller : ", response);
             vm.totalResults = response.totalResults;
             //vm.displayViewAll = response.displayViewAll;

@@ -120,7 +120,7 @@ class FilterDirectiveController{
       
       SearchBarService.categoryfilters = vm.categoryPristine;
       
-        if(SearchBarService.productLine=="Automotive"){
+        if(SearchBarService.productLine.id ==2 ){
            $rootScope.$broadcast("eventForYMM",{'prodLine':SearchBarService.productLine,
                                               'prodCategory':SearchBarService.productCategory});
         }
