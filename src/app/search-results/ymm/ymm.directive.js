@@ -14,12 +14,12 @@ export function ymmDirective() {
         controllerAs: 'vm',
         bindToController: true,
 
-        link: function(scope, el, attr) {
+        link: function (scope, el, attr) {
             console.log('am in ymm directive link function');
         },
 
-        compile: function(tElement, tAttrs, transclude) {
-            return function($scope, tElement) {
+        compile: function (tElement, tAttrs, transclude) {
+            return function ($scope, tElement) {
                 $scope.directiveContent = true;
                 console.log('inside compile function');
             };
@@ -64,15 +64,15 @@ class YMMDirectiveController {
         $scope.ymmParent = 'Year';
         $scope.ymmFirstChild = "Make";
         $scope.ymmSecondChild = "Model";
-        $scope.currentYMMOrder =['YEAR','MAKE','MODEL'];
+        $scope.currentYMMOrder = ['YEAR', 'MAKE', 'MODEL'];
 
         $scope.catChanged = false;
 
 
-        $scope.$on("eventForYMM", function(evt, cat) {
+        $scope.$on("eventForYMM", function (evt, cat) {
             //Call for API config to know about parent 
 
-            YmmService.getAPIConfigDataForYMM()
+            /*YmmService.getAPIConfigDataForYMM()
                 .then(function(response) {
                     let {
                         $scope
@@ -90,8 +90,32 @@ class YMMDirectiveController {
                 });
 
             vm.currentCategory = cat.prodCategory;
-            vm.displayYMM(evt, cat);
+            vm.displayYMM(evt, cat);*/
         });
+    }
+
+    initializeYMM() {
+        let vm = this;
+        let {YmmService} = vm.DI();
+        YmmService.getAPIConfigDataForYMM()
+            .then(function (response) {
+                let {
+                    $scope
+                } = vm.DI();
+
+                let ymmConfig = response.data.APIResponse.ymmConfig;
+                $scope.currentYMMOrder = ymmConfig;
+                $scope.ymmParent = ymmConfig[0];
+                $scope.ymmFirstChild = ymmConfig[1];
+                $scope.ymmSecondChild = ymmConfig[2];
+
+
+            }, function (error) {
+
+            });
+
+        //vm.currentCategory = cat.prodCategory;
+        vm.displayYMM({}, {});
     }
 
     checkInited(evt, cxt) {
@@ -114,8 +138,8 @@ class YMMDirectiveController {
 
         var tableElement = angular.element(document.querySelector('#yearSelectorTable'));
 
-        Array.prototype.forEach.call(tableElement.children(), function(el) {
-            Array.prototype.forEach.call(el.childNodes, function(innerEl) {
+        Array.prototype.forEach.call(tableElement.children(), function (el) {
+            Array.prototype.forEach.call(el.childNodes, function (innerEl) {
                 if (innerEl.textContent.indexOf('s') == -1) {
                     if (innerEl.nodeType == 1 && innerEl.children.length == 0 && innerEl.nodeName == 'LI') {
                         //var yrContent = Number(innerEl.textContent);
@@ -138,7 +162,7 @@ class YMMDirectiveController {
                     var prefixCheck = innerEl.textContent.substring(0, 3);
                     var self = this;
 
-                    vm.yearList.forEach(function(year) {
+                    vm.yearList.forEach(function (year) {
                         var stringYr = year + "";
                         innerEl.setAttribute('style', 'color:#b0b0b0;font-weight:600');
                     }, self)
@@ -158,10 +182,10 @@ class YMMDirectiveController {
             $scope
         } = vm.DI();
 
-if ($event.target.nodeName == "A") {
+        if ($event.target.nodeName == "A") {
             $scope.selYear = $event.target.firstChild.data;
-            YmmService.setLevelData($scope.currentYMMOrder.indexOf('YEAR'),$event.target.firstChild.data);
-        } 
+            YmmService.setLevelData($scope.currentYMMOrder.indexOf('YEAR'), $event.target.firstChild.data);
+        }
 
         vm.headerLabelArray = [];
 
@@ -171,12 +195,12 @@ if ($event.target.nodeName == "A") {
             vm.resetTable();
             $scope.catChanged = false;
         }
-        Array.prototype.forEach.call(tableElement.children(), function(el) {
-            Array.prototype.forEach.call(el.childNodes, function(innerEl) {
+        Array.prototype.forEach.call(tableElement.children(), function (el) {
+            Array.prototype.forEach.call(el.childNodes, function (innerEl) {
                 if (innerEl.textContent.indexOf('s') == -1) {
                     if (innerEl.nodeType == 1) {
                         //var yrContent = Number(innerEl.textContent);
-                         var yrContent = innerEl.textContent;
+                        var yrContent = innerEl.textContent;
                         if (vm.yearList.indexOf(yrContent) == -1) {
                             var hrefContent = innerEl.textContent;
                             while (innerEl.firstChild) {
@@ -194,7 +218,7 @@ if ($event.target.nodeName == "A") {
                     var prefixCheck = innerEl.textContent.substring(0, 3);
                     var self = this;
 
-                    vm.yearList.forEach(function(year) {
+                    vm.yearList.forEach(function (year) {
                         var stringYr = year + "";
                         //checking years with each header Labels, if not matched making grey
                         if (stringYr.substring(0, 3) !== prefixCheck && self.headerLabelArray.indexOf(prefixCheck) == -1) {
@@ -231,7 +255,7 @@ if ($event.target.nodeName == "A") {
         //yearData(q,cats,year,make,model,from,size)
         vm.selYear = $scope.selYear;
         YmmService.getYearData('SPL55', ["ALL", null, null], null, null, null, null, null).then(
-            function(result) {
+            function (result) {
                 let {
                     $scope
                 } = vm.DI();
@@ -240,62 +264,62 @@ if ($event.target.nodeName == "A") {
                 let currChild1 = $scope.ymmFirstChild.charAt(0).toUpperCase() + $scope.ymmFirstChild.slice(1).toLowerCase();
                 let currChild2 = $scope.ymmSecondChild.charAt(0).toUpperCase() + $scope.ymmSecondChild.slice(1).toLowerCase();
 
-                let yearPlaceHolder =document.querySelector(".yearSelector");
-                let makePlaceholder=document.querySelector(".makeSelector");
-                let modelPlaceholder =document.querySelector(".modelSelector");
+                let yearPlaceHolder = document.querySelector(".yearSelector");
+                let makePlaceholder = document.querySelector(".makeSelector");
+                let modelPlaceholder = document.querySelector(".modelSelector");
 
-                if(currParent =='Year'){
-                     vm.yearList = result.data.APIResponse.lvl1_list;
-                     $log.debug("YMM response :", vm.yearList);
+                if (currParent == 'Year') {
+                    vm.yearList = result.data.APIResponse.lvl1_list;
+                    $log.debug("YMM response :", vm.yearList);
                 }
-                else if(currParent =='Make'){
-                     vm.makeList = result.data.APIResponse.lvl1_list;
-                      $log.debug("YMM response :", vm.makeList);
+                else if (currParent == 'Make') {
+                    vm.makeList = result.data.APIResponse.lvl1_list;
+                    $log.debug("YMM response :", vm.makeList);
                 }
-                else{
-                     vm.modelList = result.data.APIResponse.lvl1_list;
-                      $log.debug("YMM response :", vm.modelList);
+                else {
+                    vm.modelList = result.data.APIResponse.lvl1_list;
+                    $log.debug("YMM response :", vm.modelList);
                 }
 
                 let container = yearPlaceHolder.parentNode;
                 let oldParentItem = container.childNodes[3];
-                if(currParent =="Make"){
-                    
-                    container.insertBefore(makePlaceholder,oldParentItem);
+                if (currParent == "Make") {
+
+                    container.insertBefore(makePlaceholder, oldParentItem);
                 }
-                else if(currParent =="Model"){
+                else if (currParent == "Model") {
                     //container.append(modelPlaceholder);
-                    
-                    container.insertBefore(modelPlaceholder,oldParentItem);
+
+                    container.insertBefore(modelPlaceholder, oldParentItem);
                 }
-                else{
+                else {
                     console.log('year is the default parent');
                 }
 
                 let oldFirstChildItem = container.childNodes[4];
-                if(currChild1=="Year"){
-                     container.insertBefore(yearPlaceholder,oldFirstChildItem);
+                if (currChild1 == "Year") {
+                    container.insertBefore(yearPlaceholder, oldFirstChildItem);
                 }
-                else if(currChild1=="Make"){
-                    container.insertBefore(makePlaceholder,oldFirstChildItem);
-                   
+                else if (currChild1 == "Make") {
+                    container.insertBefore(makePlaceholder, oldFirstChildItem);
+
                 }
-                else{
+                else {
                     console.log('inside last ');
-                    container.insertBefore(modelPlaceholder,oldFirstChildItem);
+                    container.insertBefore(modelPlaceholder, oldFirstChildItem);
                 }
 
 
-                if (vm.yearList !== undefined || vm.makeList  !== undefined|| vm.modelList  !== undefined) {
-                    
+                if (vm.yearList !== undefined || vm.makeList !== undefined || vm.modelList !== undefined) {
+
                     var directiveSelector = angular.element(document.querySelector(".ymm-directive"));
                     directiveSelector.css('height', '50px');
                     vm.initDirective = true;
 
 
-                    var currLevelSelector = angular.element(document.querySelector('#ymm'+currParent+'Selector'));
+                    var currLevelSelector = angular.element(document.querySelector('#ymm' + currParent + 'Selector'));
                     currLevelSelector.removeClass('disabled');
-                    currLevelSelector.attr('disabled',false);
+                    currLevelSelector.attr('disabled', false);
                     $scope.catChanged = true;
 
                     $scope.selYear = 'Year';
@@ -308,7 +332,7 @@ if ($event.target.nodeName == "A") {
                     directiveSelector.css('height', '0px');
                 }
             },
-            function(error) {
+            function (error) {
                 // handle errors here
                 console.log(error.statusText);
             });
@@ -317,7 +341,7 @@ if ($event.target.nodeName == "A") {
 
     //click handler for year and populate Make
     yearHandler($event, e) {
-       let vm = this;
+        let vm = this;
         let {
             $log,
             $http,
@@ -328,45 +352,45 @@ if ($event.target.nodeName == "A") {
         if ($event.target.nodeName == "A") {
             $scope.selYear = $event.target.firstChild.data;
             e.yearSelected = true;
-            YmmService.setLevelData($scope.currentYMMOrder.indexOf('YEAR'),$event.target.firstChild.data);
-        } 
-         YmmService.getYearData('SPL55', ["ALL", null, null], e.selYear, e.ymmMake, null, null, null).then(
-            function(result) {
+            YmmService.setLevelData($scope.currentYMMOrder.indexOf('YEAR'), $event.target.firstChild.data);
+        }
+        YmmService.getYearData('SPL55', ["ALL", null, null], e.selYear, e.ymmMake, null, null, null).then(
+            function (result) {
                 // promise was fullfilled (regardless of outcome)
                 // checks for information will be peformed here
                 $log.debug("YMM response :", result);
-                
-                var nextLevelItem ="";
-                if($scope.ymmParent=="YEAR"){
-                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('YEAR')+1];
+
+                var nextLevelItem = "";
+                if ($scope.ymmParent == "YEAR") {
+                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('YEAR') + 1];
                 }
-                else if($scope.ymmFirstChild=="YEAR"){
-                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('YEAR')+1];
+                else if ($scope.ymmFirstChild == "YEAR") {
+                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('YEAR') + 1];
                 }
-                else{
-                    nextLevelItem =null;
+                else {
+                    nextLevelItem = null;
                 }
 
-                let nextParam = "" ;
-                if($scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('YEAR')+1] !== undefined){
-                    nextParam = $scope.currentYMMOrder.indexOf('YEAR')+2;
+                let nextParam = "";
+                if ($scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('YEAR') + 1] !== undefined) {
+                    nextParam = $scope.currentYMMOrder.indexOf('YEAR') + 2;
 
                     let nextItem = nextLevelItem.toLowerCase();
                     //  vm+'.'+ nextItem + 'List' = result.data.APIResponse.lvl+nextParam +_list;
-                    var nextLevel = 'lvl'+nextParam +'_list';
-                    vm[nextItem+'List'] = result.data.APIResponse[""+nextLevel];
+                    var nextLevel = 'lvl' + nextParam + '_list';
+                    vm[nextItem + 'List'] = result.data.APIResponse["" + nextLevel];
                     vm.makeSelected = true;
 
-                    var nxtItem  = nextItem.charAt(0).toUpperCase() + nextItem.slice(1).toLowerCase();
+                    var nxtItem = nextItem.charAt(0).toUpperCase() + nextItem.slice(1).toLowerCase();
 
-                    var modelSelector = angular.element(document.querySelector('#ymm'+nxtItem+'Selector'));
+                    var modelSelector = angular.element(document.querySelector('#ymm' + nxtItem + 'Selector'));
                     modelSelector.removeClass('disabled');
                 }
-                else{
+                else {
                     vm.activateSubmit($event, e);
                 }
-                 },
-            function(error) {
+            },
+            function (error) {
                 // handle errors here
                 console.log(error.statusText);
             })
@@ -383,7 +407,7 @@ if ($event.target.nodeName == "A") {
     }
 
     //cllick handler for make and populate Model
-     makeHandler($event, e) {
+    makeHandler($event, e) {
         let vm = this;
         let {
             $log,
@@ -394,47 +418,47 @@ if ($event.target.nodeName == "A") {
 
         if ($event.target.nodeName == "A") {
             $scope.ymmMake = $event.target.firstChild.data;
-            YmmService.setLevelData($scope.currentYMMOrder.indexOf('MAKE'),$event.target.firstChild.data);
-        } 
+            YmmService.setLevelData($scope.currentYMMOrder.indexOf('MAKE'), $event.target.firstChild.data);
+        }
 
         YmmService.getYearData('SPL55', ["ALL", null, null], e.selYear, e.ymmMake, null, null, null).then(
-            function(result) {
+            function (result) {
                 // promise was fullfilled (regardless of outcome)
                 // checks for information will be peformed here
                 $log.debug("YMM response :", result);
-                
-                var nextLevelItem ="";
-                if($scope.ymmParent=="MAKE"){
-                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MAKE')+1];
+
+                var nextLevelItem = "";
+                if ($scope.ymmParent == "MAKE") {
+                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MAKE') + 1];
                 }
-                else if($scope.ymmFirstChild=="MAKE"){
-                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MAKE')+1];
+                else if ($scope.ymmFirstChild == "MAKE") {
+                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MAKE') + 1];
                 }
-                else{
-                    nextLevelItem =null;
+                else {
+                    nextLevelItem = null;
                 }
 
-                let nextParam = "" ;
-                if($scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MAKE')+1] !== undefined){
-                    nextParam = $scope.currentYMMOrder.indexOf('MAKE')+2;
+                let nextParam = "";
+                if ($scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MAKE') + 1] !== undefined) {
+                    nextParam = $scope.currentYMMOrder.indexOf('MAKE') + 2;
 
                     let nextItem = nextLevelItem.toLowerCase();
                     //  vm+'.'+ nextItem + 'List' = result.data.APIResponse.lvl+nextParam +_list;
-                    var nextLevel = 'lvl'+nextParam +'_list';
-                    vm[nextItem+'List'] = result.data.APIResponse[""+nextLevel];
+                    var nextLevel = 'lvl' + nextParam + '_list';
+                    vm[nextItem + 'List'] = result.data.APIResponse["" + nextLevel];
                     vm.makeSelected = true;
 
-                    var nxtItem  = nextItem.charAt(0).toUpperCase() + nextItem.slice(1).toLowerCase();
+                    var nxtItem = nextItem.charAt(0).toUpperCase() + nextItem.slice(1).toLowerCase();
 
-                    var modelSelector = angular.element(document.querySelector('#ymm'+nxtItem+'Selector'));
+                    var modelSelector = angular.element(document.querySelector('#ymm' + nxtItem + 'Selector'));
                     modelSelector.removeClass('disabled');
                 }
-                else{
+                else {
                     activateSubmit($event, e);
                 }
-                 
+
             },
-            function(error) {
+            function (error) {
                 // handle errors here
                 console.log(error.statusText);
             })
@@ -452,7 +476,7 @@ if ($event.target.nodeName == "A") {
         return !e.yearSelected;
     }
 
-     toggleDisableMake($event, e) {
+    toggleDisableMake($event, e) {
         return !e.makeSelected;
     }
 
@@ -464,8 +488,8 @@ if ($event.target.nodeName == "A") {
         return !e.ymmSubmit;
     }
 
-    modelHandler($event,e){
-         let vm = this;
+    modelHandler($event, e) {
+        let vm = this;
         let {
             $log,
             $http,
@@ -475,46 +499,46 @@ if ($event.target.nodeName == "A") {
 
         if ($event.target.nodeName == "A") {
             $scope.ymmModel = $event.target.firstChild.data;
-            YmmService.setLevelData($scope.currentYMMOrder.indexOf('MODEL'),$event.target.firstChild.data);
-        } 
+            YmmService.setLevelData($scope.currentYMMOrder.indexOf('MODEL'), $event.target.firstChild.data);
+        }
 
         YmmService.getYearData('SPL55', ["ALL", null, null], e.selYear, e.ymmMake, null, null, null).then(
-            function(result) {
+            function (result) {
                 // promise was fullfilled (regardless of outcome)
                 // checks for information will be peformed here
                 $log.debug("YMM response :", result);
-                
-                var nextLevelItem ="";
-                if($scope.ymmParent=="MODEL"){
-                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MODEL')+1];
+
+                var nextLevelItem = "";
+                if ($scope.ymmParent == "MODEL") {
+                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MODEL') + 1];
                 }
-                else if($scope.ymmFirstChild=="MODEL"){
-                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MODEL')+1];
+                else if ($scope.ymmFirstChild == "MODEL") {
+                    nextLevelItem = $scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MODEL') + 1];
                 }
-                else{
-                    nextLevelItem =null;
+                else {
+                    nextLevelItem = null;
                 }
 
-                let nextParam = "" ;
-                if($scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MODEL')+1] !== undefined){
-                    nextParam = $scope.currentYMMOrder.indexOf('MODEL')+2;
+                let nextParam = "";
+                if ($scope.currentYMMOrder[$scope.currentYMMOrder.indexOf('MODEL') + 1] !== undefined) {
+                    nextParam = $scope.currentYMMOrder.indexOf('MODEL') + 2;
 
                     let nextItem = nextLevelItem.toLowerCase();
                     //  vm+'.'+ nextItem + 'List' = result.data.APIResponse.lvl+nextParam +_list;
-                    var nextLevel = 'lvl'+nextParam +'_list';
-                    vm[nextItem+'List'] = result.data.APIResponse[""+nextLevel];
+                    var nextLevel = 'lvl' + nextParam + '_list';
+                    vm[nextItem + 'List'] = result.data.APIResponse["" + nextLevel];
                     vm.modelSelected = true;
-                     var nxtItem  = nextItem.charAt(0).toUpperCase() + nextItem.slice(1).toLowerCase();
+                    var nxtItem = nextItem.charAt(0).toUpperCase() + nextItem.slice(1).toLowerCase();
 
-                    var modelSelector = angular.element(document.querySelector('#ymm'+nxtItem+'Selector'));
+                    var modelSelector = angular.element(document.querySelector('#ymm' + nxtItem + 'Selector'));
                     modelSelector.removeClass('disabled');
                 }
-                else{
+                else {
                     activateSubmit($event, e);
                 }
-                 
+
             },
-            function(error) {
+            function (error) {
                 // handle errors here
                 console.log(error.statusText);
             }).bind(this);
@@ -530,7 +554,7 @@ if ($event.target.nodeName == "A") {
         } = vm.DI();
 
         if ($event.target.nodeName == "A") {
-           // $scope.ymmModel = $event.target.firstChild.data;
+            // $scope.ymmModel = $event.target.firstChild.data;
         }
         e.ymmSubmit = true;
         var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
@@ -539,39 +563,39 @@ if ($event.target.nodeName == "A") {
     }
 
     searchByYMM($event, e) {
-            let vm = this;
-            let {
-                $log,
-                $http,
-                $scope,
-                $rootScope,
-                dataServices,
-                SearchBarService
-            } = vm.DI();
+        let vm = this;
+        let {
+            $log,
+            $http,
+            $scope,
+            $rootScope,
+            dataServices,
+            SearchBarService
+        } = vm.DI();
 
-            $rootScope.$emit("ymmFiltersApplied", {
-                "year": e.selYear,
-                "make": e.ymmMake,
-                "model": e.ymmModel
-            });
+        $rootScope.$emit("ymmFiltersApplied", {
+            "year": e.selYear,
+            "make": e.ymmMake,
+            "model": e.ymmModel
+        });
+        
+        let ymm = e.selYear+' '+e.ymmMake+' '+e.ymmModel;
 
-            vm.ymmSearch({
-                selectedFilters: SearchBarService.selectdeFilters,
-                year: e.selYear,
-                make: e.ymmMake,
-                model: e.ymmModel
-            });
-            /*dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
-                .then(function(response) {
+        vm.ymmSearch({
+            selectedFilters: SearchBarService.selectdeFilters,
+            ymm:ymm
+        });
+        /*dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
+            .then(function(response) {
 
-                    let {$scope}= vm.DI();
-                    $scope.selYear="Year";
-                    $scope.selMake="Make";
-                    $scope.selModel="Model";
+                let {$scope}= vm.DI();
+                $scope.selYear="Year";
+                $scope.selMake="Make";
+                $scope.selModel="Model";
 
-                }, function(error) {
+            }, function(error) {
 
-                });*/
-        }
-        //Controller ends here
+            });*/
+    }
+    //Controller ends here
 }

@@ -105,7 +105,7 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
-    getParts(from, size, payload, year, make, model) {
+    getParts(from, size, payload, year, make, model, ymm) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
@@ -113,7 +113,6 @@ export class SearchResultsController {
         vm.productLine = SearchBarService.productLine;
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);
-        let ymm = null;
         if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
             $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
             ymm = SearchBarService.autoSuggestItem.suggestId;
