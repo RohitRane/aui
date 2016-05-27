@@ -14,6 +14,7 @@ export class SearchBarController {
 
         let deregistrationCallback = $rootScope.$on("reachedhome", function () {
             vm.search.searchString = null;
+            SearchBarService.ymmFilter = null;
         });
         $rootScope.$on('$destroy', deregistrationCallback);
 
