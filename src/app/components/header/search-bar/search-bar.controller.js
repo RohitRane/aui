@@ -323,7 +323,8 @@ export class SearchBarController {
         SearchBarService.selectdeFilters = [];
         $scope.$emit("searchbarBlurred");
         $rootScope.$emit("clearCategories");
-        SearchBarService.productCategory = "";
+        SearchBarService.productCategory = 0;
+        SearchBarService.productClass = 0;
         $log.debug("string....... :", vm.search.searchString);
         if (vm.search.searchString) {
             $log.debug("icon click Result set :", vm.resultSet);

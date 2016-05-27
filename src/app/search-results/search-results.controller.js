@@ -105,7 +105,7 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
-    getParts(from, size, payload, year, make, model, cat2) {
+    getParts(from, size, payload, year, make, model) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
@@ -122,7 +122,8 @@ export class SearchResultsController {
         $log.debug("Srch Str ::", SearchBarService.srchStr);
 
         $scope.$emit("showLoading", true);
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, year, make, model, ymm, cat2).then(function (response) {
+        
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, year, make, model, ymm, SearchBarService.productClass).then(function (response) {
             $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
@@ -170,6 +171,7 @@ export class SearchResultsController {
         SearchBarService.srchStr = null;
         SearchBarService.productLine = $stateParams.cat1;
         SearchBarService.productCategory = $stateParams.cat3;
-        vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null, $stateParams.cat2);
+        SearchBarService.productClass = $stateParams.cat2;
+        vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null);
     }
 }
