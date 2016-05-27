@@ -124,7 +124,8 @@ export class SearchResultsController {
         $scope.$emit("showLoading", true);
 
 
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine, from, size, SearchBarService.productCategory, payload, year, make, model, ymm, SearchBarService.productClass).then(function (response) {
+
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine.id, from, size, SearchBarService.productCategory.id, payload, year, make, model, ymm, SearchBarService.productClass ? SearchBarService.productClass.id: null).then(function (response) {
             $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
@@ -179,8 +180,9 @@ export class SearchResultsController {
                 console.log("prod line :", SearchBarService.productLine);
                 SearchBarService.productCategory = appInfoService.getCat($stateParams.cat3);
                 console.log("prod cat :", SearchBarService.productCategory);
+                SearchBarService.productClass = appInfoService.getCat($stateParams.cat2);
 
-                vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null, appInfoService.getCat($stateParams.cat2));
+                vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null);
             }
         }, 100);
     }

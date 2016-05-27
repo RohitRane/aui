@@ -18,7 +18,8 @@ export class SearchBarController {
         $rootScope.$on('$destroy', deregistrationCallback);
 
         let applyHierarchyScope = $rootScope.$on("applyHierarchyScope", (evt, cat) => {
-            vm.search.searchScope = cat.name;
+            console.log("hierarchy scope",cat);
+            vm.search.searchScope = cat;
             $timeout(() => {
                 vm._setWidthSearchBox();
             }, 50);
@@ -27,7 +28,7 @@ export class SearchBarController {
 
         let deregistrationCallback2 = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
             $log.debug("Cat Fill :", selectedCategory);
-            if (vm.search.searchScope === 'All') {
+            if (vm.search.searchScope === 0) {
                 vm.search.searchScope = selectedCategory.name;
                 $timeout(() => {
                     vm._setWidthSearchBox();

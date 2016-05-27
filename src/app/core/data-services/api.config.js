@@ -61,6 +61,8 @@ export let apiConfig = {
             this.url = apiBaseUrl + '/result';
             //scope == "All" && productCategory ?  ( scope = productCategory, productCategory = null) : '';
             //productCategory === 
+            
+            console.log("Inside seturl");
             console.log("getParts :", year, make, model, cat2);
             this.data = {
                 "q": param,
