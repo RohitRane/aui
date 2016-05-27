@@ -27,9 +27,9 @@ export class SearchBarController {
         $rootScope.$on('$destroy', applyHierarchyScope);
 
         let deregistrationCallback2 = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
-            $log.debug("Cat Fill :", selectedCategory);
-            if (vm.search.searchScope === 0) {
-                vm.search.searchScope = selectedCategory.name;
+            $log.debug("Cat Fill :", selectedCategory, vm.search.searchScope);
+            if (vm.search.searchScope.id === 0) {
+                vm.search.searchScope = selectedCategory;
                 $timeout(() => {
                     vm._setWidthSearchBox();
                 }, 50);
@@ -351,7 +351,7 @@ export class SearchBarController {
                 }
             }
         } else {
-            if (vm.search.searchScope == 'All') {
+            if (vm.search.searchScope.id == 0) {
             } else {
                 SearchBarService.productLine = vm.search.searchScope;
                 $location.path('/search');

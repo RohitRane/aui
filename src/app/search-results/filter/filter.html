@@ -2,7 +2,7 @@
 <span class="refine-list">
     <div class="refine-header" data-ng-repeat="category in vm.categoryPristine track by $index | orderBy: 'name'">
         <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category)">{{category.name}}</span>
-        <div class="subcategory" ng-show="category.select" data-ng-repeat="subcategory in category.children">
+        <div class="subcategory"  data-ng-repeat="subcategory in category.children">
             <span ng-class=" subcategory.select ? 'blue': '' " class=
             "subcategory" ng-click="vm.subCategoryFilter(category, subcategory)">{{subcategory.name}}</span>
         </div>

@@ -131,7 +131,7 @@ class FilterDirectiveController{
     categoryFilter(selectedCategory){  
         let vm = this;
         let { $rootScope, $scope, SearchBarService } = vm.DI();
-        
+        console.debug("Cat Fill Filter:");
         $rootScope.$broadcast("categoryFilterApplied",{name :selectedCategory.name, catFilter:true});
         
         vm.count = true;
@@ -145,11 +145,11 @@ class FilterDirectiveController{
             obj.select = false;
           }
         });
-        if(SearchBarService.productLine == "All"){
-           SearchBarService.productLine = selectedCategory.name;
+        if(SearchBarService.productLine.id == 0){
+           SearchBarService.productLine = selectedCategory;
         }else{
           if(selectedCategory.select){
-           SearchBarService.productClass = selectedCategory.id;
+           SearchBarService.productClass = selectedCategory;
           }else{
            SearchBarService.productClass = 0; 
           }
@@ -175,7 +175,7 @@ class FilterDirectiveController{
         });
 
         if(selectedSubCategory.select){
-          SearchBarService.productCategory = selectedSubCategory.id;
+          SearchBarService.productCategory = selectedSubCategory;
         }else{
           SearchBarService.productCategory = 0;
         }
