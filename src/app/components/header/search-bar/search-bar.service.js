@@ -124,6 +124,16 @@ export class SearchBarService {
         this._autoSuggestItem = obj;
         sessionStorage.autoSuggestItem = angular.toJson(this._autoSuggestItem);
     }
+    
+    set ymmFilter(ymm){
+        this._ymm = ymm;
+        sessionStorage.ymm = angular.toJson(this._ymm);
+    }
+    
+    get ymmFilter(){
+        this._ymm = angular.fromJson(sessionStorage.ymm);
+        return this._ymm;
+    }
 
     clearSession() {
         console.log("Back in clear", sessionStorage.categoryfilters);

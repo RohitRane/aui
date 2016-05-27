@@ -39,7 +39,7 @@ export class YmmService {
             method: 'POST',
             data: {
                 "q": SearchBarService.srchStr,
-                "cats": [SearchBarService.productLine, null, SearchBarService.productCategory],
+                "cats": [SearchBarService.productLine.id, null, SearchBarService.productCategory.id],
                 "lvl1":this.level[0],
                 'lvl2':this.level[1],
                 "lvl3":this.level[2],
@@ -69,8 +69,6 @@ export class YmmService {
 
         this.level.push(data);
     }
-
-  
 
    /*
 

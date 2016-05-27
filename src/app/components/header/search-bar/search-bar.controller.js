@@ -50,7 +50,7 @@ export class SearchBarController {
             if (angular.isDefined(appInfoService.appInfo) && angular.isDefined(appInfoService.appInfo.cats)) {
                 $interval.cancel(intObj);
                 vm.search = {
-                    searchScope: appInfoService.getCat(0),
+                    searchScope: appInfoService.getCat1(0),
                     typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
                     typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
                     resultCountUpperLimit: 8,

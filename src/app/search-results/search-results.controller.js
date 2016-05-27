@@ -105,7 +105,7 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
-    getParts(from, size, payload, year, make, model) {
+    getParts(from, size, payload, year, make, model, ymmObj) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
@@ -114,7 +114,12 @@ export class SearchResultsController {
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);
         let ymm = null;
-        if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
+        //SearchBarService.ymm = null;
+        if (ymmObj) {
+            ymm = ymmObj.year + ' ' + ymmObj.make + ' ' + ymmObj.model;
+            SearchBarService.ymmFilter = ymmObj;
+        }
+        else if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
             $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
             ymm = SearchBarService.autoSuggestItem.suggestId;
         }
@@ -125,7 +130,7 @@ export class SearchResultsController {
 
 
 
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine.id, from, size, SearchBarService.productCategory.id, payload, year, make, model, ymm, SearchBarService.productClass ? SearchBarService.productClass.id: null).then(function (response) {
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine.id, from, size, SearchBarService.productCategory.id, payload, year, make, model, ymm, SearchBarService.productClass ? SearchBarService.productClass.id : null).then(function (response) {
             $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
@@ -175,12 +180,12 @@ export class SearchResultsController {
                 $interval.cancel(intObj);
                 SearchBarService.srchStr = "";
                 console.log("CAT 1 :", $stateParams.cat1);
-                SearchBarService.productLine = appInfoService.getCat($stateParams.cat1);
+                SearchBarService.productLine = appInfoService.getCat1($stateParams.cat1);
 
                 console.log("prod line :", SearchBarService.productLine);
-                SearchBarService.productCategory = appInfoService.getCat($stateParams.cat3);
+                SearchBarService.productCategory = appInfoService.getCat3($stateParams.cat1,$stateParams.cat2, $stateParams.cat3);
                 console.log("prod cat :", SearchBarService.productCategory);
-                SearchBarService.productClass = appInfoService.getCat($stateParams.cat2);
+                SearchBarService.productClass = appInfoService.getCat2($stateParams.cat1, $stateParams.cat2);
 
                 vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null);
             }

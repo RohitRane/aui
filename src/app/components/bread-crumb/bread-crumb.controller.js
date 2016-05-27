@@ -116,6 +116,7 @@ export class BreadCrumbController {
         });
 
         let ymmEvent = $rootScope.$on("ymmFiltersApplied", (evt, ymm) => {
+            //debugger;
             vm.ymm = ymm;
             $log.debug("YMM IS :", vm.ymm);
         });
