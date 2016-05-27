@@ -1,41 +1,85 @@
+
+
 .null-other {
+
     margin-top: 35px;
+
     .cardsSection {
-        div.catBlocks {
-            // overflow: auto;
-            .panel-box {
-                width: 32%;
+
+        .col-md-4 {
+
+            padding-left: 5px;
+
+            padding-right: 5px;
+
+            div.catBlocks {
+
+                background-color: #fff;
+
                 min-height: 150px;
-                float: left;
-                margin-right: 1%;
-                .catItems {
-                    label:nth-child(1) {
-                        font-size: 14px;
-                        display:block;
-                    }
-                    label:nth-child(2) {
-                        font-weight: 600;
-                        font-size: 12px;
-                        display:block;
-                        color: $support_color_primary;
-                        p {
-                            font-weight: 600;
-                            font-size: 12px;
-                            color: $support_color_primary;
-                            margin-bottom: 0px;
-                            text-align: left;
-                            a {
-                                text-decoration: none;
-                                color: $support_color_primary;
-                                &:hover,
-                                &:focus {
-                                    color: $support_color_primary;
-                                }
-                            }
-                        }
-                    }
+
+                padding: 15px 20px;
+
+                border-radius: 1px;
+
+                label:nth-child(1) {
+
+                    font-weight: 600;
+
+                    font-size: 18px;
+
+                    display: block;
+
                 }
+
+                label:nth-child(2) {
+
+                    p {
+
+                        margin-bottom: 0px;
+
+                        text-align: left;
+
+                        a {
+
+                            font-weight: 600;
+
+                            font-size: 13px;
+
+                            text-decoration: none;
+
+                            color: $support_color_primary;
+
+                            &:hover,
+
+                            &:focus {
+
+                                color: $support_color_primary;
+
+                            }
+
+                        }
+
+                        span {
+
+                           font-size: 9px;
+
+                            margin-left: 3px;
+
+                            font-weight: 500;
+
+                            color: #000;
+
+                        }
+
+                    }
+
+                }
+
             }
+
         }
+
     }
+
 }
