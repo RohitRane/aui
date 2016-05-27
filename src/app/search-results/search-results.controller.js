@@ -105,6 +105,24 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
+    nullSearchCategory(category){
+        let vm = this;
+        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
+        SearchBarService.nullSearch = true;
+        SearchBarService.productClass = category;
+        SearchBarService.productCategory = 0;
+        vm.getParts(0, 10, null, null, null, null);
+    }
+
+    nullSearchSubCategory(subCategory){
+        let vm = this;
+        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
+        SearchBarService.nullSearch = true;
+        SearchBarService.productClass = 0;
+        SearchBarService.productCategory = subCategory;
+        vm.getParts(0, 10, null, null, null, null, null);
+    }
+
     getParts(from, size, payload, year, make, model, ymmObj) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();

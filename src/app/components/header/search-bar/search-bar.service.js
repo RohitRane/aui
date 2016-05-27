@@ -30,6 +30,14 @@ export class SearchBarService {
         }
     }
 
+    get nullSearch() {
+        return this._nullSearch;
+    }
+
+    set nullSearch(flag) {
+        this._nullSearch = flag;
+    }
+
 
     get productLine() {
         // this._productLine = sessionStorage.productLine;
