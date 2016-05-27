@@ -56,9 +56,9 @@ class YMMDirectiveController {
         $scope.makeSelected = false;
         $scope.ymmSubmit = false;
 
-        $scope.selYear = 'Year';
-        $scope.ymmModel = "Model";
-        $scope.ymmMake = "Make";
+        vm.selYear = 'Year';
+        vm.ymmModel = "Model";
+        vm.ymmMake = "Make";
 
 
         $scope.ymmParent = 'Year';
@@ -97,6 +97,7 @@ class YMMDirectiveController {
     initializeYMM() {
         let vm = this;
         let {YmmService} = vm.DI();
+
         YmmService.getAPIConfigDataForYMM()
             .then(function (response) {
                 let {
@@ -250,6 +251,7 @@ class YMMDirectiveController {
             $http,
             $scope,
             YmmService,
+            SearchBarService
         } = vm.DI();
 
         //yearData(q,cats,year,make,model,from,size)
@@ -322,20 +324,28 @@ class YMMDirectiveController {
                     currLevelSelector.attr('disabled', false);
                     $scope.catChanged = true;
 
-                    $scope.selYear = 'Year';
-                    $scope.ymmModel = "Model";
-                    $scope.ymmMake = "Make";
+                    vm.selYear = 'Year';
+                    vm.ymmModel = "Model";
+                    vm.ymmMake = "Make";
                 } else {
                     vm.initDirective = false;
                     $scope.catChanged = false;
                     var directiveSelector = angular.element(document.querySelector(".ymm-directive"));
                     directiveSelector.css('height', '0px');
                 }
+
+                if (SearchBarService.ymmFilter) {
+                    vm.selYear = SearchBarService.ymmFilter.year;
+                    vm.ymmMake = SearchBarService.ymmFilter.make;
+                    vm.ymmModel = SearchBarService.ymmFilter.model;
+                }
             },
             function (error) {
                 // handle errors here
                 console.log(error.statusText);
             });
+
+
 
     }
 
@@ -350,7 +360,7 @@ class YMMDirectiveController {
         } = vm.DI();
 
         if ($event.target.nodeName == "A") {
-            $scope.selYear = $event.target.firstChild.data;
+            vm.selYear = $event.target.firstChild.data;
             e.yearSelected = true;
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('YEAR'), $event.target.firstChild.data);
         }
@@ -417,7 +427,7 @@ class YMMDirectiveController {
         } = vm.DI();
 
         if ($event.target.nodeName == "A") {
-            $scope.ymmMake = $event.target.firstChild.data;
+            vm.ymmMake = $event.target.firstChild.data;
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('MAKE'), $event.target.firstChild.data);
         }
 
@@ -498,7 +508,7 @@ class YMMDirectiveController {
         } = vm.DI();
 
         if ($event.target.nodeName == "A") {
-            $scope.ymmModel = $event.target.firstChild.data;
+            vm.ymmModel = $event.target.firstChild.data;
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('MODEL'), $event.target.firstChild.data);
         }
 
@@ -574,16 +584,18 @@ class YMMDirectiveController {
         } = vm.DI();
 
         $rootScope.$emit("ymmFiltersApplied", {
-            "year": e.selYear,
-            "make": e.ymmMake,
-            "model": e.ymmModel
+            "year": vm.selYear,
+            "make": vm.ymmMake,
+            "model": vm.ymmModel
         });
-        
-        let ymm = e.selYear+' '+e.ymmMake+' '+e.ymmModel;
 
         vm.ymmSearch({
             selectedFilters: SearchBarService.selectdeFilters,
-            ymm:ymm
+            ymm: {
+                "year": vm.selYear,
+                "make": vm.ymmMake,
+                "model": vm.ymmModel
+            }
         });
         /*dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
             .then(function(response) {

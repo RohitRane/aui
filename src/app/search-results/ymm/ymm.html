@@ -5,7 +5,7 @@
                 <label>Automotive Filters : &nbsp;</label>
                 <div class="btn-group btn-box yearSelector" uib-dropdown dropdown-append-to-body>
                     <button id="ymmYearSelector" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.showYearTable($event,this)">
-                        {{selYear}}<span class="caret"></span>
+                        {{vm.selYear}}<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu atsDDContent" id="yearHolder" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-to-body">
                         <li role="menuitem" class="arrow_box">
@@ -200,7 +200,7 @@
 
                 <div class="btn-group btn-box makeSelector" uib-dropdown keyboard-nav dropdown-append-to-body>
                     <button id="ymmMakeSelector" type="button" class="btn btn-default disabled" uib-dropdown-toggle ng-click="vm.findMake($event,this)" >
-                        {{ymmMake}}<span class="caret"></span>
+                        {{vm.ymmMake}}<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu atsDDContent" id="makeDropDown" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-to-body">
                         <span class="arrow_box1"></span>
@@ -210,7 +210,7 @@
 
                 <div class="btn-group btn-box modelSelector" uib-dropdown dropdown-append-to-body>
                     <button id="ymmModelSelector" ng-click="vm.findModel($event,this)" type="button" class="btn btn-default disabled" uib-dropdown-toggle ng-disabled="vm.toggleDisableModel($event,this)">
-                        {{ymmModel}}<span class="caret"></span>
+                        {{vm.ymmModel}}<span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu atsDDContent" id="modelDropDown" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
                         <span class="arrow_box1"></span>

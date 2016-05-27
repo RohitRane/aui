@@ -1,20 +1,20 @@
-export class ymmController{
-    constructor($log) {
-        'ngInject';
+export class ymmController {
+  constructor($log) {
+    'ngInject';
 
-       									
-  $scope.status = {
-    isopen: false
-  };
 
-  $scope.toggled = function(open) {
-    $log.log('Dropdown is now: ', open);
-  };
+    $scope.status = {
+      isopen: false
+    };
 
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
-    }
+    $scope.toggled = function (open) {
+      $log.log('Dropdown is now: ', open);
+    };
+
+    $scope.toggleDropdown = function ($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+      $scope.status.isopen = !$scope.status.isopen;
+    };
+  }
 }

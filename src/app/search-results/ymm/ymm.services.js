@@ -70,8 +70,6 @@ export class YmmService {
         this.level.push(data);
     }
 
-  
-
    /*
 
     get yearSelected() {
