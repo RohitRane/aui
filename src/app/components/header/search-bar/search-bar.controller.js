@@ -58,8 +58,9 @@ export class SearchBarController {
                     firstSelect: false,
                     categories: []
                 };
-                
-                vm._setWidthSearchBox();
+                $timeout(() => {
+                    vm._setWidthSearchBox();
+                }, 50);                
             }
         }, 100);
 
