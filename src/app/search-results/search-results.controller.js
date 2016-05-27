@@ -110,7 +110,7 @@ export class SearchResultsController {
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
-        vm.productLine = SearchBarService.productLine;
+        vm.productLine = SearchBarService.productLine.id;
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);
         let ymm = null;

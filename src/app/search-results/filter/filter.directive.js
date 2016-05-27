@@ -136,13 +136,13 @@ class FilterDirectiveController{
         
         vm.count = true;
         angular.forEach(vm.categoryPristine, function(obj){ 
-          if(selectedCategory.name == obj.name){
+          if(selectedCategory.id == obj.id){
             selectedCategory.select = !selectedCategory.select;
-            angular.forEach(obj.children, function(children){
-              children.select = false;
-            });
           }else{
             obj.select = false;
+            angular.forEach(obj.children, function(child){
+              child.select = false;
+            });
           }
         });
         if(SearchBarService.productLine.id == 0){
@@ -150,10 +150,12 @@ class FilterDirectiveController{
         }else{
           if(selectedCategory.select){
            SearchBarService.productClass = selectedCategory;
+           SearchBarService.productCategory = 0; 
           }else{
            SearchBarService.productClass = 0; 
           }
         }
+       
         console.log("SearchBarService.productClass ", SearchBarService.productClass);
         //SearchBarService.productCategory = selectedCategory.name;
         vm.listPreviousFilter = [];
@@ -171,6 +173,16 @@ class FilterDirectiveController{
             selectedSubCategory.select = !selectedSubCategory.select;
           }else{
             obj.select = false;
+          }
+        });
+
+        angular.forEach(vm.categoryPristine, function(obj){ 
+          if(category.id == obj.id){
+          }else{
+            obj.select = false;
+            angular.forEach(obj.children, function(child){
+              child.select = false;
+            });
           }
         });
 

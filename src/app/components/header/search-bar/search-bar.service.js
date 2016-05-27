@@ -39,7 +39,7 @@ export class SearchBarService {
     set productLine(newSrchStr) {
         if (newSrchStr) {
             this._productLine = newSrchStr;
-            sessionStorage.productLine = this._productLine;
+            sessionStorage.productLine = angular.toJson(this._productLine);
             //this._saveToSession();
         }
     }
@@ -51,7 +51,7 @@ export class SearchBarService {
 
     set productClass(newSrchStr) {
             this._productClass = newSrchStr;
-            sessionStorage.productClass = this._productClass;
+            sessionStorage.productClass = angular.toJson(this._productClass);
     }
 
     get productCategory() {
@@ -61,7 +61,7 @@ export class SearchBarService {
 
     set productCategory(newProductCategory) {
         this._productCategory = newProductCategory;
-        sessionStorage.productCategory = this._productCategory;
+        sessionStorage.productCategory = angular.toJson(this._productCategory);
     }
 
     get typeId() {
@@ -156,9 +156,9 @@ export class SearchBarService {
     _retrieveFromSession() {
         //  console.log("Back in _retrieveFromSession",  sessionStorage.categoryfilters);
         this._srchStr = sessionStorage.srchStr;
-        this._productLine = sessionStorage.productLine;
-        this._productClass = sessionStorage.productClass;
-        this._productCategory = sessionStorage.productCategory;
+        this._productLine = angular.fromJson(sessionStorage.productLine);
+        this._productClass = angular.fromJson(sessionStorage.productClass);
+        this._productCategory = angular.fromJson(sessionStorage.productCategory);
         this._categoryfilters = angular.fromJson(sessionStorage.categoryfilters);
         this._filters = angular.fromJson(sessionStorage.filters);
         this._selectdeFilters = angular.fromJson(sessionStorage.selectdeFilters);
