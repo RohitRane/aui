@@ -114,12 +114,20 @@ export class SearchResultsController {
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);
         let ymm = null;
-        //SearchBarService.ymm = null;
+                
         if (ymmObj) {
             ymm = ymmObj.year + ' ' + ymmObj.make + ' ' + ymmObj.model;
             SearchBarService.ymmFilter = ymmObj;
         }
-        else if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
+        else if(SearchBarService.productLine.id==2 && SearchBarService.ymmFilter){
+            ymm = SearchBarService.ymmFilter.year + ' ' + SearchBarService.ymmFilter.make + ' ' + SearchBarService.ymmFilter.model;
+        }
+        else{
+            ymm = null;
+            SearchBarService.ymmFilter = null;
+        }
+        
+        if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
             $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
             ymm = SearchBarService.autoSuggestItem.suggestId;
         }
