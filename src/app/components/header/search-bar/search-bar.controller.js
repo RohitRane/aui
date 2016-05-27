@@ -57,6 +57,8 @@ export class SearchBarController {
                     firstSelect: false,
                     categories: []
                 };
+                
+                vm._setWidthSearchBox();
             }
         }, 100);
 
@@ -64,7 +66,7 @@ export class SearchBarController {
         let stateChangeEvt = $rootScope.$on('$stateChangeSuccess',
             function (event, toState, toParams, fromState, fromParams) {
                 if (toState.name === 'home') {
-                    vm.search.searchScope = appInfoService.getCat(0);
+                    vm.search.searchScope = appInfoService.getCat1(0);
                     $timeout(() => {
                         vm._setWidthSearchBox();
                     }, 50);
