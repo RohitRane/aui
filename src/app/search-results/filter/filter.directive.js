@@ -145,16 +145,16 @@ class FilterDirectiveController{
             obj.select = false;
           }
         });
-       
         if(SearchBarService.productLine == "All"){
            SearchBarService.productLine = selectedCategory.name;
         }else{
           if(selectedCategory.select){
-           SearchBarService.productCategory = selectedCategory.id;
+           SearchBarService.productClass = selectedCategory.id;
           }else{
-           SearchBarService.productCategory = null; 
+           SearchBarService.productClass = 0; 
           }
         }
+        console.log("SearchBarService.productClass ", SearchBarService.productClass);
         //SearchBarService.productCategory = selectedCategory.name;
         vm.listPreviousFilter = [];
         $scope.$emit("checkSearch", SearchBarService.srchStr);
@@ -173,6 +173,14 @@ class FilterDirectiveController{
             obj.select = false;
           }
         });
+
+        if(selectedSubCategory.select){
+          SearchBarService.productCategory = selectedSubCategory.id;
+        }else{
+          SearchBarService.productCategory = 0;
+        }
+        
+        $scope.$emit("searchLaunched");
     }
     
     /* add extra properties to list and put in listPristine  */
