@@ -40,9 +40,9 @@ export class YmmService {
             data: {
                 "q": SearchBarService.srchStr,
                 "cats": [SearchBarService.productLine.id, null, SearchBarService.productCategory.id],
-                "lvl1":this.level[0],
-                'lvl2':this.level[1],
-                "lvl3":this.level[2],
+                "lvl1":this.level[1],
+                'lvl2':this.level[2],
+                "lvl3":this.level[3],
                 "from":from,
                 "size":size
             }
@@ -66,8 +66,13 @@ export class YmmService {
     }
 
     setLevelData(param,data){
+        this.level[param+1] = data;
+        //this.level.push(data);
+    }
 
-        this.level.push(data);
+    emptyLevelData(){
+        this.level=[];
+
     }
 
    /*
