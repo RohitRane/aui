@@ -30,7 +30,7 @@ export class SearchBarController {
         let deregistrationCallback2 = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
             $log.debug("Cat Fill :", selectedCategory, vm.search.searchScope);
             if (vm.search.searchScope.id === 0) {
-                vm.search.searchScope = selectedCategory;
+                vm.search.searchScope = appInfoService.getCat1(selectedCategory.id);
                 $timeout(() => {
                     vm._setWidthSearchBox();
                 }, 50);
@@ -259,7 +259,7 @@ export class SearchBarController {
             } else SearchBarService.productCategory = item.suggestId;
 
             $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "name": item.suggestId, "suggestion": true, "catFilter": false });
+                $rootScope.$broadcast("categoryFilterApplied", { "id": item.suggestId, "suggestion": true, "catFilter": false });
                 SearchBarService.productLine = vm.search.searchScope;
             }, 100);
 

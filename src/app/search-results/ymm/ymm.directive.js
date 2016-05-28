@@ -362,6 +362,12 @@ class YMMDirectiveController {
         if ($event.target.nodeName == "A") {
             vm.selYear = $event.target.firstChild.data;
             e.yearSelected = true;
+             if($scope.currentYMMOrder.indexOf('YEAR')==0){
+                YmmService.emptyLevelData();
+            }
+            else if($scope.currentYMMOrder.indexOf('YEAR')==1){
+                YmmService.level[2]=null;   
+            }
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('YEAR'), $event.target.firstChild.data);
         }
         YmmService.getYearData('SPL55', ["ALL", null, null], e.selYear, e.ymmMake, null, null, null).then(
@@ -428,6 +434,13 @@ class YMMDirectiveController {
 
         if ($event.target.nodeName == "A") {
             vm.ymmMake = $event.target.firstChild.data;
+            e.makeSelected = true;
+             if($scope.currentYMMOrder.indexOf('MAKE')==0){
+                YmmService.emptyLevelData();
+            }
+            else if($scope.currentYMMOrder.indexOf('MAKE')==1){
+                YmmService.level[2]=null;   
+            }
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('MAKE'), $event.target.firstChild.data);
         }
 
@@ -509,6 +522,13 @@ class YMMDirectiveController {
 
         if ($event.target.nodeName == "A") {
             vm.ymmModel = $event.target.firstChild.data;
+            e.modelSelected = true;
+            if($scope.currentYMMOrder.indexOf('MODEL')==0){
+                YmmService.emptyLevelData();
+            }
+            else if($scope.currentYMMOrder.indexOf('MODEL')==1){
+                YmmService.level[2]=null;   
+            }
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('MODEL'), $event.target.firstChild.data);
         }
 
@@ -551,7 +571,7 @@ class YMMDirectiveController {
             function (error) {
                 // handle errors here
                 console.log(error.statusText);
-            }).bind(this);
+            });
 
     }
 
@@ -580,6 +600,7 @@ class YMMDirectiveController {
             $scope,
             $rootScope,
             dataServices,
+            YmmService,
             SearchBarService
         } = vm.DI();
 
@@ -597,17 +618,8 @@ class YMMDirectiveController {
                 "model": vm.ymmModel
             }
         });
-        /*dataServices.ymmSearch(SearchBarService.srchStr, SearchBarService.productLine, SearchBarService.productCategory, e.selYear, e.ymmMake, e.ymmModel, 0, 10)
-            .then(function(response) {
-
-                let {$scope}= vm.DI();
-                $scope.selYear="Year";
-                $scope.selMake="Make";
-                $scope.selModel="Model";
-
-            }, function(error) {
-
-            });*/
+      
+      YmmService.emptyLevelData();
     }
     //Controller ends here
 }
