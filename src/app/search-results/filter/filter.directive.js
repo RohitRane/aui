@@ -143,7 +143,7 @@ class FilterDirectiveController{
       /* In case of only one product line filters should be shown along with the category */
       if(vm.category.length == 1){  
           //vm.categoryFilter(vm.categoryPristine[0]);
-          vm.categoryPristine[0].select = true;
+          //vm.categoryPristine[0].select = true;
       }
       
      
@@ -203,6 +203,10 @@ class FilterDirectiveController{
 
         angular.forEach(vm.categoryPristine, function(obj){ 
           if(category.id == obj.id){
+            if(category.select){
+            }else{
+              SearchBarService.productClass = 0; 
+            }
             angular.forEach(obj.children, function(child){ 
             if(selectedSubCategory.id == child.id){
               selectedSubCategory.select = !selectedSubCategory.select;
