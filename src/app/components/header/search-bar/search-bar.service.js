@@ -5,6 +5,10 @@ export class SearchBarService {
     }*/
     constructor() {
         this._filters = [{}];
+        this.nullSearch = {
+            flag: false,
+            category: ""
+        };
         //this._retrieveFromSession();
     }
 
@@ -34,8 +38,9 @@ export class SearchBarService {
         return this._nullSearch;
     }
 
-    set nullSearch(flag) {
-        this._nullSearch = flag;
+    set nullSearch(newSrchStr) {
+        this._nullSearch = newSrchStr;
+        sessionStorage.nullSearch = angular.toJson(this._nullSearch);
     }
 
 

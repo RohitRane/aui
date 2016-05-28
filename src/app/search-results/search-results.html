@@ -8,7 +8,7 @@
   <div class="row search-results">
     <div class="col-md-2 filter">
         <!--data-ng-class="{'affix-filters':srchRes.stickyAd === true}"-->
-      <filter-directive ng-if="srchRes.filters"  category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
+      <filter-directive ng-show="srchRes.results.parts.length" ng-if="srchRes.filters"  category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
     </div>
     <div class="col-md-8">
       <ymm-directive ng-if="srchRes.productLine == 2" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>

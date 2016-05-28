@@ -24,6 +24,33 @@ class FilterDirectiveController{
          $rootScope.$on("clearCategoryFilter",function(){
             vm.categoryPristine = [];
          });
+         $rootScope.$on("nullSearchCategory",function(event, category){
+            let tempChildren = category.children.map(function(sub){
+              return{
+                name: sub.name,
+                select: false,
+                id: sub.id
+              }
+            });
+            let selectedCategory = {
+                name: category.name,
+                select: false,
+                id: category.id,
+                children: tempChildren
+            }
+            vm.categoryFilter(selectedCategory);
+         });
+         $rootScope.$on("nullSearchSubCategory",function(event,category, subcategory){
+            let selectedCategory = {
+                id: category.id
+            };
+            let selectedSubCategory = {
+                name: subcategory.name,
+                select: false,
+                id: subcategory.id
+            };
+            vm.subCategoryFilter(selectedCategory, selectedSubCategory);
+         });
          vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
          /* array which holds the updated attributes list */
          vm.listPristine = [];
@@ -85,6 +112,7 @@ class FilterDirectiveController{
           SearchBarService.backBottonPressed = false;
           return;
       }*/
+      
       console.log("Back in directive", SearchBarService.categoryfilters);
       vm.categoryPristine = SearchBarService.categoryfilters;
 
@@ -118,13 +146,9 @@ class FilterDirectiveController{
           vm.categoryPristine[0].select = true;
       }
       
+     
       SearchBarService.categoryfilters = vm.categoryPristine;
       
-        if(SearchBarService.productLine.id ==2 ){
-           $rootScope.$broadcast("eventForYMM",{'prodLine':SearchBarService.productLine,
-                                              'prodCategory':SearchBarService.productCategory});
-        }
-     
     }
     
     /* call api to get the filters for the selected category and selected category should be heighlighted */ 
@@ -135,10 +159,11 @@ class FilterDirectiveController{
         $rootScope.$broadcast("categoryFilterApplied",{name :selectedCategory.name, catFilter:true});
         
         vm.count = true;
-        angular.forEach(vm.categoryPristine, function(obj){ 
-          if(selectedCategory.id == obj.id){
+        angular.forEach(vm.categoryPristine, function(obj){
+          if(selectedCategory.id == obj.id){ console.log("Back in directive if", obj); 
             selectedCategory.select = !selectedCategory.select;
-          }else{
+            obj.select = selectedCategory.select;
+          }else{ console.log("Back in directive else", obj); 
             obj.select = false;
             angular.forEach(obj.children, function(child){
               child.select = false;
@@ -168,16 +193,24 @@ class FilterDirectiveController{
         let vm = this;
         let { $rootScope, $scope, SearchBarService } = vm.DI();
 
-        angular.forEach(category.children, function(obj){ 
+       /* angular.forEach(category.children, function(obj){ 
           if(selectedSubCategory.id == obj.id){
             selectedSubCategory.select = !selectedSubCategory.select;
           }else{
             obj.select = false;
           }
-        });
+        });*/
 
         angular.forEach(vm.categoryPristine, function(obj){ 
           if(category.id == obj.id){
+            angular.forEach(obj.children, function(child){ 
+            if(selectedSubCategory.id == child.id){
+              selectedSubCategory.select = !selectedSubCategory.select;
+              child.select = selectedSubCategory.select;
+            }else{
+              child.select = false;
+            }
+          });
           }else{
             obj.select = false;
             angular.forEach(obj.children, function(child){

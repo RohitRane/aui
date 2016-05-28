@@ -331,6 +331,7 @@ export class SearchBarController {
         SearchBarService.productCategory = 0;
         SearchBarService.productClass = 0;
         $log.debug("string....... :", vm.search.searchString);
+        //debugger;
         if (vm.search.searchString) {
             $log.debug("icon click Result set :", vm.resultSet);
             $log.debug("vm.search.searchString ", vm.search.searchString);
@@ -340,11 +341,9 @@ export class SearchBarController {
                 $location.path('/part/id/' + vm.parts.id);
             } else {
                 if (vm.search.searchString) {
-                    $log.debug("Hello...........");
                     SearchBarService.productLine = vm.search.searchScope;
                     // $rootScope.$emit("searchIconClicked");
                     if ($state.is("searchResults")) {
-                        $log.debug("url search ");
                         $scope.$emit("searchLaunched");
                         $scope.$emit("searchbarBlurred");
                     } else {
@@ -355,10 +354,15 @@ export class SearchBarController {
                 }
             }
         } else {
+            SearchBarService.productLine = vm.search.searchScope;
             if (vm.search.searchScope.id == 0) {
+                $location.path('/');
             } else {
-                SearchBarService.productLine = vm.search.searchScope;
-                $location.path('/search');
+                if ($state.is("searchResults")) {
+                    $scope.$emit("searchLaunched");
+                }else{
+                    $location.path('/search');
+                }
             }
         }
     }
@@ -366,7 +370,6 @@ export class SearchBarController {
     scopeSelClicked() {
         let vm = this;
         let { $scope } = vm.DI();
-        //alert("Hi");
         $scope.$emit("searchbarFocussed");
     }
 

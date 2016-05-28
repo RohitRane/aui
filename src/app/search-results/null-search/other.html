@@ -6,7 +6,7 @@
                     <label ng-click="srchRes.nullSearchCategory(category)">{{category.name}}</label>
                     <label>
                         <div>
-                            <p ng-click="srchRes.nullSearchSubCategory(subCategory)" ng-repeat="subCategory in category.children"><a href="">{{subCategory.name}}</a>
+                            <p ng-click="srchRes.nullSearchSubCategory(category,subCategory)" ng-repeat="subCategory in category.children"><a href="">{{subCategory.name}}</a>
                             </p>
                         </div>
                     </label>
