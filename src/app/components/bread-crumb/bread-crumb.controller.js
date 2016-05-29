@@ -1,7 +1,7 @@
 /*Author:Rohit Rane*/
 
 export class BreadCrumbController {
-    constructor($log, $timeout, $rootScope, $state, $scope, $window, $document, $stateParams, SearchBarService, BreadCrumbService) {
+    constructor($log, $timeout, $rootScope, $state, $scope, $window, $document, $stateParams, SearchBarService, BreadCrumbService, appInfoService) {
         'ngInject';
 
         let vm = this;
@@ -24,11 +24,11 @@ export class BreadCrumbController {
             vm.pageState = 'searchResults';
             if ($stateParams.mode && $stateParams.mode === "hierarchy") {
                 console.log("STATE PARAMS :", $stateParams);
-                vm.cats = [$stateParams.cat1 ? $stateParams.cat1 : false, $stateParams.cat2 ? $stateParams.cat2 : false, $stateParams.cat3 ? $stateParams.cat3 : false];
+                vm.cats = [$stateParams.cat1 ? appInfoService.getCat1($stateParams.cat1) : false, $stateParams.cat2 ? appInfoService.getCat2($stateParams.cat1, $stateParams.cat2) : false, $stateParams.cat3 ? appInfoService.getCat3($stateParams.cat1, $stateParams.cat2, $stateParams.cat3) : false];
                 console.log("vm.cats", vm.cats);
             } else {
                 vm.cats = [false, false, false];
-                vm.cats[0] = vm.selMainCategory;
+                vm.cats[0] = angular.fromJson(vm.selMainCategory);
             }
 
             //console.log("In search page");
@@ -102,7 +102,7 @@ export class BreadCrumbController {
                 $log.debug("Cats :", vm.cats);
                 BreadCrumbService.cats = vm.cats;
             }
-            else{
+            else {
                 vm.cats[2] = selectedCategory.name;
             }
         });
@@ -162,12 +162,12 @@ export class BreadCrumbController {
         let {SearchBarService} = vm.DI();
         // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});
     }
-    
-    showColon(index, cats){
-        let vm =this;
-        if(index === cats.length-1 && vm.searchString === ""){
+
+    showColon(index, cats) {
+        let vm = this;
+        if (index === cats.length - 1 && vm.searchString === "") {
             return false;
-        }else if(!cats[index+1] && !cats[index+2] && vm.searchString === ""){
+        } else if (!cats[index + 1] && !cats[index + 2] && vm.searchString === "") {
             return false;
         }
         else return true;

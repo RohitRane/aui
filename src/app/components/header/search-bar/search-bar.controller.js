@@ -9,7 +9,7 @@ export class SearchBarController {
         //Add all the DI this the vm model so that u can use them in the controller functions.
 
 
-        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, $state, dataServices, BreadCrumbService, SearchBarService });
+        vm.DI = () => ({ $log, $scope, $location, $rootScope, $document, $timeout, $window, $state, dataServices, BreadCrumbService, SearchBarService, appInfoService });
 
 
         let deregistrationCallback = $rootScope.$on("reachedhome", function () {
@@ -19,7 +19,7 @@ export class SearchBarController {
         $rootScope.$on('$destroy', deregistrationCallback);
 
         let applyHierarchyScope = $rootScope.$on("applyHierarchyScope", (evt, cat) => {
-            console.log("hierarchy scope",cat);
+            console.log("hierarchy scope", cat);
             vm.search.searchScope = cat;
             $timeout(() => {
                 vm._setWidthSearchBox();
@@ -60,7 +60,7 @@ export class SearchBarController {
                 };
                 $timeout(() => {
                     vm._setWidthSearchBox();
-                }, 50);                
+                }, 50);
             }
         }, 100);
 
@@ -236,7 +236,7 @@ export class SearchBarController {
 
     gotoPartDetails(item) {
         let vm = this;
-        let {$log, $location, $rootScope, $timeout, SearchBarService, BreadCrumbService, $scope, $state} = vm.DI();
+        let {$log, $location, $rootScope, $timeout, SearchBarService, BreadCrumbService, appInfoService, $scope, $state} = vm.DI();
 
         $log.debug("Scope search :", vm.search.searchString);
         SearchBarService.categoryfilters = [];
@@ -254,9 +254,11 @@ export class SearchBarController {
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
-            if (SearchBarService.productLine === "All") {
-                SearchBarService.productLine = item.suggestId;
-            } else SearchBarService.productCategory = item.suggestId;
+            if (SearchBarService.productLine.id === 0) {
+                SearchBarService.productLine = appInfoService.getCat1(item.suggestId);
+            } else {
+                SearchBarService.productCategory = appInfoService.getCat3(SearchBarService.productLine.id, null, item.suggestId);
+            }
 
             $timeout(() => {
                 $rootScope.$broadcast("categoryFilterApplied", { "id": item.suggestId, "suggestion": true, "catFilter": false });
@@ -360,7 +362,7 @@ export class SearchBarController {
             } else {
                 if ($state.is("searchResults")) {
                     $scope.$emit("searchLaunched");
-                }else{
+                } else {
                     $location.path('/search');
                 }
             }

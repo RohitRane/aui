@@ -2,7 +2,7 @@
 <div class="bread-crumb">
   <span data-ng-if="bc.pageState==='searchResults'" class="resultBar">
     <span ng-show="bc.showSubsetInfo(bc.totalResults,bc.resultSetLimit)">1-{{bc.resultLength}} of </span> {{bc.totalResults}}
-  results for<span class="bold"><span data-ng-repeat="cat in bc.cats track by $index" data-ng-show="cat" >&nbsp;{{cat}}<span data-ng-if="bc.showColon($index,bc.cats)">&nbsp;:&nbsp;</span></span><span data-ng-if="bc.ymm && bc.selMainCategory==='Automotive'">{{bc.ymm.year}}&nbsp;{{bc.ymm.make}}&nbsp;{{bc.ymm.model}}&nbsp;:&nbsp;</span><a data-ng-if="bc.searchString"><span>"</span>{{bc.searchString}}<span>"</span></a>
+  results for<span class="bold"><span data-ng-repeat="cat in bc.cats track by $index" data-ng-show="cat" >&nbsp;{{cat.name}}<span data-ng-if="bc.showColon($index,bc.cats)">&nbsp;:&nbsp;</span></span><span data-ng-if="bc.ymm && bc.selMainCategory==='Automotive'">{{bc.ymm.year}}&nbsp;{{bc.ymm.make}}&nbsp;{{bc.ymm.model}}&nbsp;:&nbsp;</span><a data-ng-if="bc.searchString"><span>"</span>{{bc.searchString}}<span>"</span></a>
   </span>
   </span>
   <span data-ng-if="bc.pageState==='part'" class="resultBar">

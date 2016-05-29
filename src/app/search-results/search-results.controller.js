@@ -105,13 +105,13 @@ export class SearchResultsController {
         $log.debug("Action", action);
     }
 
-    nullSearchCategory(category){
+    nullSearchCategory(category) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("nullSearchCategory", category);
     }
 
-    nullSearchSubCategory(category, subCategory){
+    nullSearchSubCategory(category, subCategory) {
         let vm = this;
         let {$log, dataServices, SearchBarService, $scope} = vm.DI();
         $scope.$emit("nullSearchSubCategory", category, subCategory);
@@ -123,22 +123,23 @@ export class SearchResultsController {
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine.id;
+        vm.cat1 = SearchBarService.productLine;
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);
         let ymm = null;
-                
+
         if (ymmObj) {
             ymm = ymmObj.year + ' ' + ymmObj.make + ' ' + ymmObj.model;
             SearchBarService.ymmFilter = ymmObj;
         }
-        else if(SearchBarService.productLine.id==2 && SearchBarService.ymmFilter){
+        else if (SearchBarService.productLine.id == 2 && SearchBarService.ymmFilter) {
             ymm = SearchBarService.ymmFilter.year + ' ' + SearchBarService.ymmFilter.make + ' ' + SearchBarService.ymmFilter.model;
         }
-        else{
+        else {
             ymm = null;
             SearchBarService.ymmFilter = null;
         }
-        
+
         if (SearchBarService.autoSuggestItem && SearchBarService.autoSuggestItem.suggestType === "YMM_SUGGEST") {
             $log.debug("YMM Suggest ..", SearchBarService.autoSuggestItem);
             ymm = SearchBarService.autoSuggestItem.suggestId;
@@ -150,7 +151,7 @@ export class SearchResultsController {
 
 
 
-        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine.id, from, size, SearchBarService.productCategory.id, payload, year, make, model, ymm, SearchBarService.productClass ? SearchBarService.productClass.id : null).then(function (response) {
+        dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine.id, from, size, SearchBarService.productCategory ? SearchBarService.productCategory.id : null, payload, year, make, model, ymm, SearchBarService.productClass ? SearchBarService.productClass.id : null).then(function (response) {
             $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             if (vm.resultStartIndex === 0) {
@@ -203,7 +204,7 @@ export class SearchResultsController {
                 SearchBarService.productLine = appInfoService.getCat1($stateParams.cat1);
 
                 console.log("prod line :", SearchBarService.productLine);
-                SearchBarService.productCategory = appInfoService.getCat3($stateParams.cat1,$stateParams.cat2, $stateParams.cat3);
+                SearchBarService.productCategory = appInfoService.getCat3($stateParams.cat1, $stateParams.cat2, $stateParams.cat3);
                 console.log("prod cat :", SearchBarService.productCategory);
                 SearchBarService.productClass = appInfoService.getCat2($stateParams.cat1, $stateParams.cat2);
 

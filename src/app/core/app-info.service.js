@@ -40,14 +40,30 @@ export class AppInfoService {
     getCat3(id1, id2, id3) {
         let retObj = { 'id': null };
         let cat1 = this.getCat1(id1);
-        let cat2 = this.getCat2(id1, id2);
-        angular.forEach(cat2.children, (cat) => {
-            console.log("cat in loop:", cat);
-            if (cat.id == id3) {
-                console.log("Bingo !!");
-                retObj = cat;
-            }
-        });
+        if (id2) {
+            let cat2 = this.getCat2(id1, id2);
+            angular.forEach(cat2.children, (cat) => {
+                console.log("cat in loop:", cat);
+                if (cat.id == id3) {
+                    console.log("Bingo !!");
+                    retObj = cat;
+                }
+            });
+        } else {
+            angular.forEach(cat1.children, (child) => {
+                let cat2 = this.getCat2(id1, child.id);
+                angular.forEach(cat2.children, (cat) => {
+                    console.log("cat in loop:", cat);
+                    if (cat.id == id3) {
+                        console.log("Bingo !!");
+                        retObj = cat;
+                    }
+                });
+            });
+
+
+        }
+
         return retObj;
     }
 
