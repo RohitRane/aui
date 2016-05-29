@@ -57,7 +57,7 @@ export class PartController {
             dataServices.part($stateParams.id).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.partData = response;
-                switch (vm.partData.categories[2]) {
+                switch (vm.partData.categories[2].name) {
                     case 'Flanges': console.log("It's a flanges"); vm.partData.imageUrl = "/assets/images/flange.png"; break;
                     case 'Universal Joints': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/u-joint.jpg"; vm.partData.modelDiagram = "assets/images/model_diagram.gif"; break;
                     case 'Flange Yoke': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/flange_yoke.jpg"; break;

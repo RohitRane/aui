@@ -77,7 +77,7 @@ class SearchResultDirectiveController {
     getImageUrl(part) {
         let retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
         //url ?  retUrl = url : retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
-        switch (part.categories[2]) {
+        switch (part.categories[2].name) {
             case 'Flanges':  retUrl = "/assets/images/flange.png"; break;
             case 'Universal Joints':  retUrl = "/assets/images/u-joint.jpg"; break;
             case 'Flange Yoke':  retUrl = "/assets/images/flange_yoke.jpg"; break;

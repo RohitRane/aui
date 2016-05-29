@@ -71,7 +71,7 @@ export class BreadCrumbController {
                     BreadCrumbService.showOnlyTree = false;
                 }
                 if (selectedCategory.suggestion) {
-                    if (vm.selMainCategory === "All") {
+                    if (vm.selMainCategor.id === 0) {
                         vm.cats = [false, false, false];
                         vm.cats[0] = selectedCategory.name;
                     } else {

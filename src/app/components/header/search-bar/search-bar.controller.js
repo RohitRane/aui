@@ -289,7 +289,7 @@ export class SearchBarController {
             SearchBarService.autoSuggestItem = item;
             $timeout(() => {
                 $rootScope.$broadcast("categoryFilterApplied", { "name": vm.search.searchScope, "suggestion": true, "catFilter": false });
-                //SearchBarService.productLine = vm.search.searchScope;
+                SearchBarService.productLine = vm.search.searchScope;
             });
 
             vm._blurSrchBox();
