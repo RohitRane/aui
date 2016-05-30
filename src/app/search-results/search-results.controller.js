@@ -1,9 +1,9 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, $scope, $timeout, $window, $document, $stateParams, $interval, dataServices, SearchBarService, appInfoService) {
+    constructor($log, $rootScope, $scope, $timeout, $window, $document, $stateParams, $interval, dataServices, SearchBarService, appInfoService, BreadCrumbService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $scope, $timeout, $stateParams, $interval, dataServices, SearchBarService, appInfoService });
+        vm.DI = () => ({ $log, $scope, $timeout, $stateParams, $interval, dataServices, SearchBarService, appInfoService, BreadCrumbService });
 
         $window.scrollTo(0, 0);
 
@@ -29,7 +29,7 @@ export class SearchResultsController {
         let deregistrationCallback2 = $rootScope.$on('searchLaunched', function (event, payload) {
             $log.debug("$on", payload);
             vm.resultStartIndex = 0;
-            vm.getParts(0, 10, payload);
+            vm.getParts(0, 10, payload);            
         });
 
         vm.stickyAd = false;

@@ -60,9 +60,26 @@ export class AppInfoService {
                     }
                 });
             });
-
-
         }
+        return retObj;
+    }
+
+    getCat2WithCat3(id1, id3) {
+        let retObj = {};
+        if (id3) {
+            let cat1 = this.getCat1(id1);
+            angular.forEach(cat1.children, (child) => {
+                let cat2 = this.getCat2(id1, child.id);
+                angular.forEach(cat2.children, (cat) => {
+                    console.log("cat in loop:", cat);
+                    if (cat.id == id3) {
+                        console.log("Bingo !!");
+                        retObj = cat2;
+                    }
+                });
+            });
+        }
+        else retObj = null;
 
         return retObj;
     }

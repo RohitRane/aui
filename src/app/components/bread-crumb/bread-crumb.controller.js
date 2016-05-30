@@ -1,11 +1,15 @@
 /*Author:Rohit Rane*/
 
 export class BreadCrumbController {
-    constructor($log, $timeout, $rootScope, $state, $scope, $window, $document, $stateParams, SearchBarService, BreadCrumbService, appInfoService) {
+    constructor($log, $timeout, $rootScope, $state, $scope, $window, $document, $stateParams, $interval, SearchBarService, BreadCrumbService, appInfoService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $state, $window, $document });
+        vm.DI = () => ({ $state, $window, $document, $timeout, $interval, SearchBarService, appInfoService });
+
+        vm.cats = [false, false, false];
+        vm.showAll = BreadCrumbService.showAll;
+
 
         vm._resizeBreadCrumb();
         vm.sortItem = vm.sortAttributes[0];
@@ -18,11 +22,25 @@ export class BreadCrumbController {
             vm.pageState = 'searchResults';
             if ($stateParams.mode && $stateParams.mode === "hierarchy") {
                 console.log("STATE PARAMS :", $stateParams);
-                vm.cats = [$stateParams.cat1 ? appInfoService.getCat1($stateParams.cat1) : false, $stateParams.cat2 ? appInfoService.getCat2($stateParams.cat1, $stateParams.cat2) : false, $stateParams.cat3 ? appInfoService.getCat3($stateParams.cat1, $stateParams.cat2, $stateParams.cat3) : false];
-                console.log("vm.cats", vm.cats);
+                $timeout(() => {
+                    vm._intializeCats();
+                }, 100);
+
+                /*vm.cats = [$stateParams.cat1 ? appInfoService.getCat1($stateParams.cat1) : false, $stateParams.cat2 ? appInfoService.getCat2($stateParams.cat1, $stateParams.cat2) : false, $stateParams.cat3 ? appInfoService.getCat3($stateParams.cat1, $stateParams.cat2, $stateParams.cat3) : false];
+                console.log("vm.cats", vm.cats);*/
             } else {
                 vm.cats = [false, false, false];
-                vm.cats[0] = angular.fromJson(vm.selMainCategory);
+                let mainCat = angular.fromJson(vm.selMainCategory);
+                if (mainCat.id === 0) {
+                    BreadCrumbService.showAll = true;
+                    vm.showAll = BreadCrumbService.showAll;
+                } else {
+                    //vm.cats[0] = angular.fromJson(vm.selMainCategory);
+                }
+
+                $timeout(() => {
+                    vm._intializeCats();
+                }, 100);
             }
 
             //console.log("In search page");
@@ -54,50 +72,11 @@ export class BreadCrumbController {
 
         let deregistrationCallback = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
             if ($stateParams.mode !== "hierarchy") {
-                $log.debug("Cats before:", vm.cats);
-                $log.debug("Cat Fill :", selectedCategory);
-                //$log.debug("sel Cat :", vm.selectedCategory);
-                if (selectedCategory.catFilter) {
-                    $log.debug("Ct fill applie");
-                    BreadCrumbService.showOnlyTree = true;
-                } else {
-                    console.log("Show filter tree false");
-                    BreadCrumbService.showOnlyTree = false;
-                }
-                if (selectedCategory.suggestion) {
-                    if (vm.selMainCategor.id === 0) {
-                        vm.cats = [false, false, false];
-                        vm.cats[0] = selectedCategory.name;
-                    } else {
-                        vm.cats = [false, false, false];
-                        vm.cats[0] = vm.selMainCategory;
-                        vm.cats[1] = selectedCategory.name;
-                    }
-                }
-                else {
-                    if (!vm.cats[1]) {
-                        vm.cats[1] = selectedCategory.name;
-                    } else if (vm.cats[0] !== "All") {
-                        vm.cats[1] = selectedCategory.name;
-                    } else {
-                        vm.cats[2] = selectedCategory.name;
-                    }
-                }
-
-                //console.log("Cats :",cats);
-
-                if (vm.cats[0] === vm.cats[1]) {
-                    vm.cats[1] = null;
-                }
-                if (vm.cats[1] === vm.cats[2]) {
-                    vm.cats[2] = null;
-                }
-
-                $log.debug("Cats :", vm.cats);
-                BreadCrumbService.cats = vm.cats;
+                vm._intializeCats();
             }
             else {
-                vm.cats[2] = selectedCategory.name;
+                vm._intializeCats();
+                //vm.cats[2] = selectedCategory.name;
             }
         });
 
@@ -105,7 +84,7 @@ export class BreadCrumbController {
         let deregistrationCallback2 = $rootScope.$on("clearCategories", function () {
             $timeout(() => {
                 vm.cats = [false, false, false];
-                vm.cats[0] = vm.selMainCategory;
+                //vm.cats[0] = vm.selMainCategory;
             }, 100);
         });
 
@@ -115,10 +94,25 @@ export class BreadCrumbController {
             $log.debug("YMM IS :", vm.ymm);
         });
 
+        let showAll = $rootScope.$on("showAll", (evt, status) => {
+            BreadCrumbService.showAll = status;
+            vm.showAll = status;
+        });
+
+        let searchLaunched = $rootScope.$on('searchLaunched', function (event, payload) {
+            $timeout(() => {
+                vm._intializeCats();
+            },200);
+        });
+
         $rootScope.$on('$destroy', function () {
             deregistrationCallback();
             deregistrationCallback2();
+            ymmEvent();
+            showAll();
+            searchLaunched();
         });
+
 
     }
 
@@ -161,9 +155,31 @@ export class BreadCrumbController {
         let vm = this;
         if (index === cats.length - 1 && vm.searchString === "") {
             return false;
-        } else if (!cats[index + 1] && !cats[index + 2] && vm.searchString === "") {
+        } else if (!cats[index + 1].id && !cats[index + 2].id && vm.searchString === "") {
             return false;
         }
         else return true;
+    }
+
+    _intializeCats() {
+        let vm = this;
+        let {$interval, SearchBarService, appInfoService} = vm.DI();
+        if (SearchBarService.productLine.id) {
+            vm.cats[0] = SearchBarService.productLine;
+            let intObj = $interval(() => {
+                if (appInfoService.appInfo) {
+                    vm.cats[1] = SearchBarService.productClass ? SearchBarService.productClass : appInfoService.getCat2WithCat3(SearchBarService.productLine.id, SearchBarService.productCategory?SearchBarService.productCategory.id:null);
+                    $interval.cancel(intObj);
+                }
+            }, 200);
+            vm.cats[2] = SearchBarService.productCategory;
+            if (vm.cats[2] && vm.cats[2].id === vm.cats[1].id) {
+                vm.cats[2] = null;
+            } else if (vm.cats[1] && vm.cats[1].id === vm.cats[0].id) {
+                vm.cats[1] = null;
+            }
+        }else{
+            vm.cats =[false,false,false]; 
+        }
     }
 }
