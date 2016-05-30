@@ -17,7 +17,8 @@ export class YmmService {
         this._modelSelected;
         this.$http = $http;
         this.$q = $q;
-        this.ymmURL = 'http://52.8.125.250:8080/search-service/api/ymmList';
+        this.ymmURL = 'http://52.8.125.250:8080';//DEV
+        //this.ymmURL = 'http://54.183.226.9:8080';//QA
         this.method = 'POST';
         this.params = "";
         this.currYMMOrder = [];
@@ -45,7 +46,7 @@ export class YmmService {
 
 
         return this.$http({
-            url: "http://54.183.226.9:8080/search-service/api/ymmList",
+            url: this.ymmURL+"/search-service/api/ymmList",
             method: 'POST',
             data: {
                 "q": SearchBarService.srchStr,
@@ -70,7 +71,7 @@ export class YmmService {
 
         let deferred = this.$q.defer();
         return this.$http({
-            url: "http://54.183.226.9:8080/search-service/api/configData",
+            url:  this.ymmURL+"/search-service/api/configData",
             method: 'GET'
         })
     }
