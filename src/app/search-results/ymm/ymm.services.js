@@ -52,7 +52,7 @@ export class YmmService {
                 "cats": [SearchBarService.productLine.id, null, tempCatId],
                 "lvl1": this.level[1],
                 'lvl2': this.level[2],
-                "lvl3": this.level[3],
+                "lvl3": (this.level[3]==undefined)?(null):(this.level[3]),
                 "from": from,
                 "size": size
             }

@@ -96,7 +96,9 @@ class YMMDirectiveController {
 
     initializeYMM() {
         let vm = this;
-        let {YmmService} = vm.DI();
+        let {$scope,YmmService} = vm.DI();
+        $scope.catChanged = true;
+
 
         YmmService.getAPIConfigDataForYMM()
             .then(function (response) {
@@ -624,6 +626,11 @@ class YMMDirectiveController {
         });
       
       YmmService.emptyLevelData();
+      $scope.catChanged = true;
+      var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
+        submitSelector.addClass('disabled');
+      //  submitSelector.css('background-color', '#0093c6');
+
     }
     //Controller ends here
 }
