@@ -29,7 +29,8 @@
         <ng-include=''  ng-show="otrher">
          -->
       </div>
-      <div ng-show="!srchRes.results.parts.length" ng-include="'app/search-results/null-search/other.html'"></div>
+      <!-- <div ng-show="!srchRes.results.parts.length" ng-include="'app/search-results/null-search/other.html'"></div> -->
+      <other-result ng-show="!srchRes.results.parts.length"></other-result>
         
     </div>
     <div class="col-md-2 parts" id="ad-section" data-ng-class="{'affix-ads':srchRes.stickyAd === true}">

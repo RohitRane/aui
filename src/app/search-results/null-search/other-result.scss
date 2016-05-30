@@ -1,0 +1,46 @@
+.null-other {
+    margin-top: 35px;
+    .cardsSection {
+        .row {
+            -webkit-box-pack: center;
+            display: -webkit-box;
+            .col-md-4 {
+                padding-left: 5px;
+                padding-right: 5px;
+                div.catBlocks {
+                    background-color: #fff;
+                    min-height: 150px;
+                    padding: 15px 20px;
+                    border-radius: 1px;
+                    label:nth-child(1) {
+                        font-weight: 600;
+                        font-size: 18px;
+                        display: block;
+                    }
+                    label:nth-child(2) {
+                        p {
+                            margin-bottom: 0px;
+                            text-align: left;
+                            a {
+                                font-weight: 600;
+                                font-size: 13px;
+                                text-decoration: none;
+                                color: $support_color_primary;
+                                &:hover,
+                                &:focus {
+                                    color: $support_color_primary;
+                                }
+                            }
+                            span {
+                                font-size: 9px;
+                                margin-left: 3px;
+                                font-weight: 500;
+                                color: #000;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
