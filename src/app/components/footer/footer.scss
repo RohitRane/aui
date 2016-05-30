@@ -1,5 +1,59 @@
 /*Author : Shaifali Jaiswal*/
 
+// .mainFooter {
+//     background-color: #dbdbdb;
+//     nav.navbar {
+//         margin-bottom: 0px;
+//         padding-top: 40px !important;
+//         padding-bottom: 30px !important;
+//         .footer-mid {
+//          padding-left: 8%;
+//         }
+//         .navbar-header {
+//             p {
+//                 color: #303030;
+//                 font-size: 12px;
+//                 font-weight: 600;
+//                 padding-top: 1px;
+//                 padding-bottom: 0px;
+//                 span {
+//                     font-weight: 700;
+//                 }
+//             }
+//         }
+//         ul.nav {
+//             li {
+//                 padding-left: 5px;
+//                 a {
+//                     color: #3d3d3d;
+//                     font-size: 12px;
+//                     text-decoration: none;
+//                     padding-top: 0px;
+//                     padding-bottom: 3px;
+//                     font-weight: 600;
+//                     &:after {
+//                         content: '';
+//                         height: 14px;
+//                         width: 1px;
+//                         top: 3px;
+//                         background: #3d3d3d;
+//                         position: absolute;
+//                         margin-left: 0px;
+//                         left: 2px;
+//                     }
+//                     &:hover,
+//                     &:focus {
+//                         background-color: transparent;
+//                         text-decoration: none;
+//                         color: $accent_color;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
 .mainFooter {
     background-color: #dbdbdb;
     nav.navbar {
@@ -7,46 +61,33 @@
         padding-top: 40px !important;
         padding-bottom: 30px !important;
         .footer-mid {
-         padding-left: 8%;
+            padding-left: 8%;
         }
-        .navbar-header {
-            p {
-                color: #303030;
-                font-size: 12px;
-                font-weight: 600;
-                padding-top: 1px;
-                padding-bottom: 0px;
-                span {
-                    font-weight: 700;
-                }
+        p.footer-center {
+            text-align: center;
+            color: #303030;
+            font-size: 12px;
+            font-weight: 600;
+            padding-top: 1px;
+            padding-bottom: 0px;
+            span {
+                font-weight: 700;
+                margin-left: 4px;
+                margin-right: 4px;
             }
-        }
-        ul.nav {
-            li {
-                padding-left: 5px;
-                a {
-                    color: #3d3d3d;
-                    font-size: 12px;
+            a {
+                color: #3d3d3d;
+                font-size: 12px;
+                text-decoration: none;
+                padding-top: 0px;
+                padding-bottom: 3px;
+                font-weight: 600;
+                margin-left: 5px;
+                &:hover,
+                &:focus {
+                    background-color: transparent;
                     text-decoration: none;
-                    padding-top: 0px;
-                    padding-bottom: 3px;
-                    font-weight: 600;
-                    &:after {
-                        content: '';
-                        height: 14px;
-                        width: 1px;
-                        top: 3px;
-                        background: #3d3d3d;
-                        position: absolute;
-                        margin-left: 0px;
-                        left: 2px;
-                    }
-                    &:hover,
-                    &:focus {
-                        background-color: transparent;
-                        text-decoration: none;
-                        color: $accent_color;
-                    }
+                    color: $accent_color;
                 }
             }
         }
