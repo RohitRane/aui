@@ -8,14 +8,8 @@ export class BreadCrumbController {
         vm.DI = () => ({ $state, $window, $document });
 
         vm._resizeBreadCrumb();
-
-        $scope.$watch(() => {
-            return vm.categories;
-        }, (n, o) => {
-            console.log("categories :", n, o);
-            console.log("VM  HERE :", n);
-        });
-
+        vm.sortItem = vm.sortAttributes[0];
+        
         angular.element($window).bind('resize', () => {
             vm._resizeBreadCrumb();
         });

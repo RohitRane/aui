@@ -1,4 +1,4 @@
-<div id="shareOrderlistModal" class="modal-wrapper">
+<!-- <div id="shareOrderlistModal" class="modal-wrapper">
     <div class="modal-header bg-success">
         <div class="row">
             <div class="col-sm-9">
@@ -20,5 +20,72 @@
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="cancel()">Go to Home</button>
     </div>
-</div>
+</div> -->
 <!-- <button class="btn btn-link" type="button" ng-click="close()">X &nbsp;close</button> -->
+
+<!-- ////////////////new code/////////////////////// -->
+
+<div id="shareOrderlistPopup" class="modal-wrapper">
+    <div class="modal-header bg-success">
+        <div class="row">
+            <div class="col-sm-9">
+                <h4>OrderList #826958</h4>
+                <p>April 15, 2016</p>
+            </div>
+            <div class="col-sm-3">
+                <div class="pull-right">
+                    <h4>03</h4>
+                    <p>parts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <h5 class="text-center">Once shared, orderlist will not be editable.</h5>
+        <form class="form-horizontal">
+            <h4>From:</h4>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label class="sr-only">First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name">
+                </div>
+                <div class="col-md-6">
+                    <label class="sr-only">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="sr-only">Your Email ID's </label>
+                    <input type="email" class="form-control" placeholder="Your Email ID's">
+                </div>
+            </div>
+            <h4>To:</h4>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="sr-only">Email ID's</label>
+                    <input type="email" class="form-control" placeholder="To Email ID's">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <textarea class="form-control" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my orderlist.
+                    </textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="getURL">
+                    <h6><span class="glyphicon glyphicon-paperclip"></span><a href="#">Get URL</a></h6>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary" type="button" ng-click="cancel()">Go to Home</button>
+            </div>
+        </div>
+    </div>
+</div>
+
