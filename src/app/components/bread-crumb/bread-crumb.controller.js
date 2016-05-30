@@ -13,7 +13,7 @@ export class BreadCrumbController {
 
         vm._resizeBreadCrumb();
         vm.sortItem = vm.sortAttributes[0];
-        
+
         angular.element($window).bind('resize', () => {
             vm._resizeBreadCrumb();
         });
@@ -89,7 +89,6 @@ export class BreadCrumbController {
         });
 
         let ymmEvent = $rootScope.$on("ymmFiltersApplied", (evt, ymm) => {
-            //debugger;
             vm.ymm = ymm;
             $log.debug("YMM IS :", vm.ymm);
         });
@@ -102,7 +101,7 @@ export class BreadCrumbController {
         let searchLaunched = $rootScope.$on('searchLaunched', function (event, payload) {
             $timeout(() => {
                 vm._intializeCats();
-            },200);
+            }, 200);
         });
 
         $rootScope.$on('$destroy', function () {
@@ -118,7 +117,6 @@ export class BreadCrumbController {
 
     showSubsetInfo(totalResults, resultSetLimit) {
         let retValue = false;
-        console.log("Type OF :", typeof (totalResults));
         (Number(totalResults) > Number(resultSetLimit)) ? retValue = true : retValue = false;
         return retValue;
     }
@@ -152,13 +150,26 @@ export class BreadCrumbController {
     }
 
     showColon(index, cats) {
-        let vm = this;
+        let vm = this, resp = true;
         if (index === cats.length - 1 && vm.searchString === "") {
-            return false;
-        } else if (!cats[index + 1].id && !cats[index + 2].id && vm.searchString === "") {
-            return false;
+            resp = false;
+        } else if (!(cats[index + 1] && cats[index + 1].id) && !(cats[index + 2] && cats[index + 2].id) && vm.searchString === "" ) {
+            resp = false;
         }
-        else return true;
+        return resp;
+    }
+    
+    showYmm(){
+        let vm =this, retVal = false;
+        let {SearchBarService} = vm.DI();
+        if(SearchBarService.ymmFilter){
+            vm.ymm = SearchBarService.ymmFilter;
+        }        
+        let mnCat = angular.fromJson(vm.selMainCategory);
+        if(vm.ymm && mnCat.id==2 && vm.resultLength){
+            retVal = true;
+        }
+        return retVal;
     }
 
     _intializeCats() {
@@ -168,7 +179,7 @@ export class BreadCrumbController {
             vm.cats[0] = SearchBarService.productLine;
             let intObj = $interval(() => {
                 if (appInfoService.appInfo) {
-                    vm.cats[1] = SearchBarService.productClass ? SearchBarService.productClass : appInfoService.getCat2WithCat3(SearchBarService.productLine.id, SearchBarService.productCategory?SearchBarService.productCategory.id:null);
+                    vm.cats[1] = SearchBarService.productClass ? SearchBarService.productClass : appInfoService.getCat2WithCat3(SearchBarService.productLine.id, SearchBarService.productCategory ? SearchBarService.productCategory.id : null);
                     $interval.cancel(intObj);
                 }
             }, 200);
@@ -178,8 +189,8 @@ export class BreadCrumbController {
             } else if (vm.cats[1] && vm.cats[1].id === vm.cats[0].id) {
                 vm.cats[1] = null;
             }
-        }else{
-            vm.cats =[false,false,false]; 
+        } else {
+            vm.cats = [false, false, false];
         }
     }
 }
