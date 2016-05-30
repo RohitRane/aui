@@ -9,6 +9,7 @@ export class SearchResultsController {
 
         vm.currentPage = 1;
         vm.searchString = "";
+        vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DES"];
         vm.results = {
             parts: [],
             totalResults: 0
@@ -165,7 +166,7 @@ export class SearchResultsController {
 
             vm.filters = response.filter;
             vm.category = response.partCategoryList;
-            vm.sortAttributes = response.filter.slice(0, 3);
+           // vm.sortAttributes = response.filter.slice(0, 3);
             if (vm.results.parts) {
                 vm.results.parts = vm.results.parts.map(function (part) {
                     part.displayName = part.partNumber + ' ' + part.partDesc;
