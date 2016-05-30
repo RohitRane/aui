@@ -268,10 +268,11 @@ class YMMDirectiveController {
                     $scope
                 } = vm.DI();
 
-                let currParent = $scope.ymmParent.charAt(0).toUpperCase() + $scope.ymmParent.slice(1).toLowerCase();
-                let currChild1 = $scope.ymmFirstChild.charAt(0).toUpperCase() + $scope.ymmFirstChild.slice(1).toLowerCase();
-                let currChild2 = $scope.ymmSecondChild.charAt(0).toUpperCase() + $scope.ymmSecondChild.slice(1).toLowerCase();
+                let currParent = $scope.ymmParent.charAt(0).toUpperCase() + $scope.ymmParent.slice(1).toLowerCase(),
+                currChild1 = $scope.ymmFirstChild.charAt(0).toUpperCase() + $scope.ymmFirstChild.slice(1).toLowerCase(),
+                currChild2 = $scope.ymmSecondChild.charAt(0).toUpperCase() + $scope.ymmSecondChild.slice(1).toLowerCase();
 
+                console.log('currParent this is the current parent',currParent);
                 let yearPlaceHolder = document.querySelector(".yearSelector");
                 let makePlaceholder = document.querySelector(".makeSelector");
                 let modelPlaceholder = document.querySelector(".modelSelector");
