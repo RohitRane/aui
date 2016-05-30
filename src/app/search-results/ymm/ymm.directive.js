@@ -256,6 +256,10 @@ class YMMDirectiveController {
 
         //yearData(q,cats,year,make,model,from,size)
         vm.selYear = $scope.selYear;
+
+
+   
+
         YmmService.getYearData('SPL55', ["ALL", null, null], null, null, null, null, null).then(
             function (result) {
                 let {
