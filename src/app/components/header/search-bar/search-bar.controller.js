@@ -85,11 +85,15 @@ export class SearchBarController {
 
 
         /* On Refresh string should be retained*/
-        if (SearchBarService.srchStr && $location.path() != "/") {
+        if (!$state.is("home")) {
             $timeout(() => {
-                vm.search.searchString = SearchBarService.srchStr;
+                //vm.search.searchString = SearchBarService.srchStr;
                 vm.search.searchScope = SearchBarService.productLine;
             }, 100);
+            
+            if(SearchBarService.srchStr){
+                vm.search.searchString = SearchBarService.srchStr;
+            }
 
         }
 
@@ -279,7 +283,6 @@ export class SearchBarController {
 
             vm._blurSrchBox();
             $log.debug("Inside search results :", $state.is("searchResults"));
-            debugger;
             $rootScope.$emit("showOnlyTreeInBC", false);
             BreadCrumbService.searchToResults = true;
 

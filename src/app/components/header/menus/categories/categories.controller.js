@@ -1,10 +1,10 @@
 export class CategoryMenuController {
-    constructor($scope, $log, $document, $timeout, $window, $interval, $state, $rootScope, dataServices, appInfoService) {
+    constructor($scope, $log, $document, $timeout, $window, $interval, $state, $rootScope, dataServices, appInfoService, BreadCrumbService) {
         'ngInject';
 
         let vm = this;
 
-        vm.DI = () => ({ $scope, $log, $document, $timeout, $window, $interval, $state, $rootScope });
+        vm.DI = () => ({ $scope, $log, $document, $timeout, $window, $interval, $state, $rootScope, BreadCrumbService });
 
         angular.element($window).bind('resize', () => {
             vm._sizeMegaMenuPopover();
@@ -114,11 +114,12 @@ export class CategoryMenuController {
     }
 
     search(cat1, cat2, cat3) {
-        let vm = this, {$state, $rootScope} = vm.DI();
+        let vm = this, {$state, $rootScope,  BreadCrumbService} = vm.DI();
 
         console.log("Cat-e-gory", cat1, cat2, cat3);
         let paramObj = { 'mode': 'hierarchy', 'cat1': cat1 ? cat1.id : null, 'cat2': cat2 ? cat2.id : null, 'cat3': cat3 ? cat3.id : null };
         $rootScope.$emit("applyHierarchyScope", cat1);
+         BreadCrumbService.showAll = false;
         if ($state.is("searchResults")) {
             $rootScope.$emit("hierarchySearch");
         }
