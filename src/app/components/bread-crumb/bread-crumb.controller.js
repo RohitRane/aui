@@ -151,22 +151,25 @@ export class BreadCrumbController {
 
     showColon(index, cats) {
         let vm = this, resp = true;
-        if (index === cats.length - 1 && vm.searchString === "") {
+        let mnCat = angular.fromJson(vm.selMainCategory);
+        if (!(cats[index] && cats[index].id))
             resp = false;
-        } else if (!(cats[index + 1] && cats[index + 1].id) && !(cats[index + 2] && cats[index + 2].id) && vm.searchString === "" ) {
+        else if (index === cats.length - 1 && vm.searchString === "" && !(vm.ymm && mnCat.id == 2)) {
+            resp = false;
+        } else if (!(cats[index + 1] && cats[index + 1].id) && !(cats[index + 2] && cats[index + 2].id) && vm.searchString === "" && !(vm.ymm && mnCat.id == 2)) {
             resp = false;
         }
         return resp;
     }
     
-    showYmm(){
-        let vm =this, retVal = false;
+    showYmm() {
+        let vm = this, retVal = false;
         let {SearchBarService} = vm.DI();
-        if(SearchBarService.ymmFilter){
+        if (SearchBarService.ymmFilter) {
             vm.ymm = SearchBarService.ymmFilter;
-        }        
+        }
         let mnCat = angular.fromJson(vm.selMainCategory);
-        if(vm.ymm && mnCat.id==2 && vm.resultLength){
+        if (vm.ymm && mnCat.id == 2 && vm.resultLength) {
             retVal = true;
         }
         return retVal;
