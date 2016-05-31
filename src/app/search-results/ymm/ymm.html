@@ -197,7 +197,7 @@
                     <button id="ymmModelSelector" ng-click="vm.findModel($event,this)" type="button" class="btn btn-default disabled" uib-dropdown-toggle ng-disabled="vm.toggleDisableModel($event,this)">
                         {{vm.ymmModel}}<span class="caret"></span>
                     </button>
-                    <ul class="dropdown-menu atsDDContent" id="modelDropDown" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+                    <ul class="dropdown-menu atsDDContent removeListcolumn" id="modelDropDown" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
                         <span class="arrow_box1"></span>
                         <li role="menuitem" ng-click="vm.modelHandler($event,this)" ng-repeat="item in vm.modelList">
                         <a href="#">{{item}}</a>
