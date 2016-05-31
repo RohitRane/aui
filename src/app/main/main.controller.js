@@ -36,7 +36,14 @@ export class MainController {
 
         });
         
-
+        let showTree = $rootScope.$on("showOnlyTreeInBC", (evt, status) => {
+            debugger;
+            BreadCrumbService.showOnlyTree = status;
+        });
+              
+        $rootScope.$on("$destroy",()=>{
+            showTree();
+        });
 
 
     }

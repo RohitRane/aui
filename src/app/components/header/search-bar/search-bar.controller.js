@@ -279,6 +279,9 @@ export class SearchBarController {
 
             vm._blurSrchBox();
             $log.debug("Inside search results :", $state.is("searchResults"));
+            debugger;
+            $rootScope.$emit("showOnlyTreeInBC", false);
+            BreadCrumbService.searchToResults = true;
 
             if ($state.is("searchResults")) {
                 $scope.$emit("searchbarBlurred");

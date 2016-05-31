@@ -20,8 +20,8 @@ class FilterDirectiveController {
     constructor($log, SearchBarService, dataServices, $scope, $rootScope, $timeout) {
         'ngInject';
         let vm = this;
-        
-        $rootScope.$on("$destroy",()=>{
+
+        $rootScope.$on("$destroy", () => {
             clearCat();
         });
 
@@ -194,6 +194,7 @@ class FilterDirectiveController {
         $scope.$emit("checkSearch", SearchBarService.srchStr);
         $scope.$emit("searchLaunched");
         $rootScope.$broadcast("categoryFilterApplied", { obj: selectedCategory, catFilter: true });
+
     }
 
     /* call api to get the filters for the selected subcategory and selected subcategory should be heighlighted */
@@ -239,6 +240,7 @@ class FilterDirectiveController {
 
         $scope.$emit("searchLaunched");
         $rootScope.$broadcast("categoryFilterApplied");
+
     }
 
     /* add extra properties to list and put in listPristine  */
@@ -345,6 +347,12 @@ class FilterDirectiveController {
             resolve();
         });
         return prms();
+    }
+
+    launchTreeEvent() {
+        let vm = this;
+        let {$rootScope} = vm.DI();
+        $rootScope.$emit("showOnlyTreeInBC", true);
     }
 }
 

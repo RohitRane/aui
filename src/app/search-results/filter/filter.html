@@ -1,10 +1,10 @@
 <h6 ng-show="vm.totalCount">SEE ALL CATEGORIES</h6>
 <span class="refine-list">
     <div class="refine-header" data-ng-repeat="category in vm.categoryPristine track by $index | orderBy: 'name'">
-        <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category)">{{category.name}}</span>
+        <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category);vm.launchTreeEvent();">{{category.name}}</span>
         <div class="subcategory"  data-ng-repeat="subcategory in category.children">
             <span ng-class=" subcategory.select ? 'blue': '' " class=
-            "subcategory" ng-click="vm.subCategoryFilter(category, subcategory)">{{subcategory.name}}</span>
+            "subcategory" ng-click="vm.subCategoryFilter(category, subcategory);vm.launchTreeEvent();">{{subcategory.name}}</span>
         </div>
     </div>
     <div ng-show="vm.totalCount"><hr></div>

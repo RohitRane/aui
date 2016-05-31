@@ -12,13 +12,14 @@ export class BreadCrumbController {
 
 
         vm._resizeBreadCrumb();
-        vm.sortItem = vm.sortAttributes[0];
+
 
         angular.element($window).bind('resize', () => {
             vm._resizeBreadCrumb();
         });
 
         if ($state.is('searchResults')) {
+            vm.sortItem = vm.sortAttributes[0];
             vm.pageState = 'searchResults';
             if ($stateParams.mode && $stateParams.mode === "hierarchy") {
                 console.log("STATE PARAMS :", $stateParams);
@@ -47,7 +48,8 @@ export class BreadCrumbController {
         } else if ($state.is('part')) {
             vm.pageState = 'part';
             vm.searchString = SearchBarService.srchStr;
-            vm.cats = BreadCrumbService.cats;
+            vm._intializeCats();
+            //vm.cats = BreadCrumbService.cats;
             $log.debug("Retained Cats :", vm.cats);
         }
 
@@ -78,8 +80,7 @@ export class BreadCrumbController {
                 vm._intializeCats();
                 //vm.cats[2] = selectedCategory.name;
             }
-        });
-
+        });        
 
         let deregistrationCallback2 = $rootScope.$on("clearCategories", function () {
             $timeout(() => {
@@ -161,7 +162,7 @@ export class BreadCrumbController {
         }
         return resp;
     }
-    
+
     showYmm() {
         let vm = this, retVal = false;
         let {SearchBarService} = vm.DI();
