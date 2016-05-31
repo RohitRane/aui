@@ -9,7 +9,7 @@ export class SearchResultsController {
 
         vm.currentPage = 1;
         vm.searchString = "";
-        vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DES"];
+        vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DESC"];
         vm.results = {
             parts: [],
             totalResults: 0

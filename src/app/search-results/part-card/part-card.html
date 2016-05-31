@@ -14,8 +14,8 @@
             <span>
               <a ng-show="partCard.shwOrdrTxt" ng-click="partCard.change('shwQty')">Add to Order List
               </a> <!--<span class="caret"></span>-->
-              <div class="shwQty" ng-show="partCard.shwQty" ng-click="partCard.change('shwMsg')">  
-                <span><input type="text" placeholder="qty"/></span>
+              <div class="shwQty" ng-show="partCard.shwQty">  
+                <span><input type="text" data-ng-model="partCard.qty" placeholder="qty"/></span>
                 <a ng-click="partCard.change('shwMsg')">Add</a>
               </div>
               <span ng-show="partCard.shwMsg">Added to order list.</span>

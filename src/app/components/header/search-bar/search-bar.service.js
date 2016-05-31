@@ -148,6 +148,14 @@ export class SearchBarService {
         return this._ymm;
     }
 
+    get orderList() {
+        return this._orderList;
+    }
+
+    set orderList(newList) {
+            this._orderList = newList;
+    }
+
     clearSession() {
         console.log("Back in clear", sessionStorage.categoryfilters);
         delete sessionStorage.srchStr;

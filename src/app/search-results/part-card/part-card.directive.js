@@ -27,13 +27,10 @@ export function PartCardDirective() {
 }
 
 class SearchResultDirectiveController {
-    constructor($log, $scope, BreadCrumbService) {
+    constructor($log, $scope, BreadCrumbService, SearchBarService, OrderListService) {
         'ngInject';
-        this.dI = {
-            log: $log,
-            scope: $scope,
-            BreadCrumbService: BreadCrumbService
-        };
+        let vm = this;
+        vm.DI = () => ({ $log, $scope, BreadCrumbService, SearchBarService, OrderListService });
           
         /* if(this.part.attrs != null){this.dI.log.debug("if");
              this.part.attrList = Object.keys(this.part.attrs);
@@ -50,14 +47,19 @@ class SearchResultDirectiveController {
     }
 
     change(msg){
+      let vm = this;
+      let { SearchBarService, OrderListService } = vm.DI();
       if(msg == "shwQty"){
         this.shwOrdrTxt = false;
         this.shwQty = true;
       }else if(msg == "shwMsg"){
         this.shwQty = false;
         this.shwMsg = true;
+        Object.assign(vm.part, {id:OrderListService.orderList.length, qty: vm.qty, addToCart: true, LOB:SearchBarService.productLine.name });
+        OrderListService.orderList.push(vm.part);
+        
       }else{
-
+       
       }
     }
 

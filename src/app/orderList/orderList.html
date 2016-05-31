@@ -1,4 +1,4 @@
-<div class="container orderList">
+<!-- <div class="container orderList">
     <div class="row rowReset">
         <div class="col-md-12 cardsSection">
             <div class="panel panel-default resetBorder adjustPadding">
@@ -35,6 +35,52 @@
                                 <div class="col-md-2"><img src="assets/images/machine_pair3.jpg" /></div>
                                 <div class="col-md-6 orderitemDetail" >Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys, I-Beam Standard Overall Width LMSTM Hub<span class="spanRemovePart">Remove Part</span></div>
                                 <div class="col-md-1 editDiv" ><span>21</span><span class="spanEdit"><a href="#">Edit</a></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div class="container orderList">
+    <div class="row rowReset">
+        <div class="col-md-12 cardsSection">
+            <div class="panel panel-default resetBorder adjustPadding">
+                <div class="orderHeading">
+                    <h2>OrderList #826958 <span>({{orderlist.orderList.length}} Parts)</span></h2>
+                    <div class="pull-right alignment-bottom">
+                        <span class="glyphicon glyphicon-info-sign"></span>
+                        <label>Share the orderlist for future reference
+                        </label>
+                    </div>
+                </div>
+                <div class="panel panel-default elearn panelBox">
+                    <div class="panel-body resetPadding">
+                        <div class='partDetails'>
+                            <div class="partHeader">
+                                <h4>Commercial Vehicles (2 Parts)</h4>
+                                <div class="addToCart pull-right;">
+                                    <a href="#">
+                                        <button type="button" class="btn btn-primary" data-ng-click="orderlist.open()">Share Orderlist</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="orderItems" ng-repeat="list in orderlist.orderList | orderBy: 'LOB'">
+                                <div class="col-md-2"><img src="assets/images/machine_pair3.jpg" /></div>
+                                <div class="col-md-6 orderitemDetail" >
+                                    {{list.displayName}}{{list.id}}
+                                    <span class="spanRemovePart" data-ng-click="orderlist.remove(list.id)">Remove Part</span>
+                                </div>
+                                <div class="col-md-1 editDiv" >
+                                    <span data-ng-show="!list.show">{{list.qty}}</span>
+                                    <span data-ng-show="list.show"><input data-ng-model="list.qty"/></span>
+                                    <span class="spanEdit">
+                                        <a data-ng-show="!list.show" data-ng-click="list.show=!list.show">Edit</a>
+                                        <a data-ng-show="list.show" data-ng-click="list.show=!list.show">Save</a>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

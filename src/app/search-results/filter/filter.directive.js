@@ -21,7 +21,8 @@ class FilterDirectiveController {
         'ngInject';
         let vm = this;
 
-        $rootScope.$on("$destroy", () => {
+        vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
+        $rootScope.$on("$destroy",()=>{
             clearCat();
         });
 
@@ -57,7 +58,7 @@ class FilterDirectiveController {
             };
             vm.subCategoryFilter(selectedCategory, selectedSubCategory);
         });
-        vm.DI = () => ({ $log, SearchBarService, dataServices, $scope, $rootScope });
+        
         /* array which holds the updated attributes list */
         vm.listPristine = [];
         /* array which remembers the selected filters to update in new set of filters(retain filters) */
