@@ -199,7 +199,9 @@
                     </button>
                     <ul class="dropdown-menu atsDDContent" id="modelDropDown" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
                         <span class="arrow_box1"></span>
-                        <li role="menuitem" ng-click="vm.modelHandler($event,this)" ng-repeat="item in vm.modelList"><a href="#">{{item}}</a></li>
+                        <li role="menuitem" ng-click="vm.modelHandler($event,this)" ng-repeat="item in vm.modelList">
+                        <a href="#">{{item}}</a>
+                        </li>
                     </ul>
                 </div><button id="ymmSubmitSelector" ng-disabled="vm.toggleYMMSubmit($event,this)" type="button" class="btn btn-default disabled btn-go" uib-dropdown-toggle ng-click="vm.searchByYMM($event,this)">
                     Go

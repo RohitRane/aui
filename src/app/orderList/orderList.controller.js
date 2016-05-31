@@ -14,6 +14,8 @@ export class OrderListController {
    		var modalInstance = $uibModal.open({
                 templateUrl: 'app/orderList/shareOrderList/shareOrderList.html',
                 controller: 'ShareOrderlistController',
+                // templateUrl: 'app/orderList/ShareError/shareError.html',
+                // controller: 'ShareErrorController',
                 size: size,
                 windowClass: 'my-modal-popup',
                 resolve: {

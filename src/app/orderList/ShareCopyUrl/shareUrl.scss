@@ -1,4 +1,6 @@
-#shareOrderlistPopup {
+/*Author : Shaifali Jaiswal*/
+
+#shareCopyUrlPopup {
     .modal-header {
         padding: 15px 15px 5px;
         border-top-left-radius: 3px;
@@ -16,40 +18,17 @@
             background-color: $support_color_bg_success;
         }
     .modal-body {
-        padding-top: 10px;
-        padding-bottom: 20px;
-        form{
-            .form-control{
-                border-radius: 0px;
-            }
+        padding-top: 30px;
+        padding-bottom: 50px;
+        .glyphicon-ok-circle {
+            color: green;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
-        
     }
     .modal-footer {
         border-bottom-left-radius: 3px !important;
         border-bottom-right-radius: 3px !important;
-        div.getURL{
-            text-align: left;
-            padding-left: 5px;
-            span{
-                padding-right: 5px;
-                .glyphicon-paperclip{
-                    font-size: 14px;
-                    font-weight: 600;
-                }
-            }
-            a{
-                font-size: 14px;
-                font-weight: 600; 
-                color:$support_color_primary;
-                &:hover,
-                &:active,
-                &:focus{
-                    text-decoration: none;
-                    color:$support_color_primary;
-                }
-            }
-        }
     }
     .btn {
         color: white;
@@ -76,9 +55,8 @@
 .my-modal-popup {
     @media (min-width: 1024px) {
         .modal-dialog {
-            margin-top: 5%;
+            margin-top: 11%;
         }
     }
 }
-
 
