@@ -2,8 +2,8 @@
 <div class="bread-crumb">
   <span data-ng-if="bc.pageState==='searchResults'" class="resultBar">
     <span ng-show="bc.showSubsetInfo(bc.totalResults,bc.resultSetLimit)">1-{{bc.resultLength}} of </span> {{bc.totalResults}}
-  results for<span class="bold">&nbsp;<span data-ng-if="bc.showAll">All&nbsp;:&nbsp;</span><span data-ng-repeat="cat in bc.cats track by $index"
-    data-ng-show="cat">{{cat['name']}}<span data-ng-if="bc.showColon($index,bc.cats)">&nbsp;:&nbsp;</span></span><span data-ng-if="bc.showYmm()">{{bc.ymm.year}}&nbsp;{{bc.ymm.make}}&nbsp;{{bc.ymm.model}}<span data-ng-if="bc.searchString">&nbsp;:&nbsp;</span></span>
+  results for<span class="bold">&nbsp;<span data-ng-if="bc.showAll" data-ng-click="bc.search()" data-ng-class="{'clickable':bc.isClickable()}">All&nbsp;:&nbsp;</span><span data-ng-repeat="cat in bc.cats track by $index"
+    data-ng-show="cat" data-ng-click="bc.search($index)" data-ng-class="{'clickable':bc.isClickable($index)}">{{cat['name']}}<span data-ng-if="bc.showColon($index,bc.cats)">&nbsp;:&nbsp;</span></span><span data-ng-if="bc.showYmm()">{{bc.ymm.year}}&nbsp;{{bc.ymm.make}}&nbsp;{{bc.ymm.model}}<span data-ng-if="bc.searchString">&nbsp;:&nbsp;</span></span>
   <a data-ng-if="bc.searchString"><span>"</span>{{bc.searchString}}<span>"</span></a>
   </span>
   </span>
@@ -12,7 +12,7 @@
     <span  class="back-section" data-ng-if="!bc.showPathCats" data-ng-click="bc.goToSearch()">
       <i class="fa fa-angle-left"></i>&nbsp;&nbsp;Back to search results for <a href="">"{{bc.searchString}}"</a>
      </span>
-  <span data-ng-if="bc.showPathCats" class="bold">&nbsp;<span data-ng-if="bc.showAll">All&nbsp;:&nbsp;</span><span data-ng-repeat="cat in bc.cats track by $index"
+  <span data-ng-if="bc.showPathCats" class="bold">&nbsp;<span data-ng-if="bc.showAll" data-ng-click="bc.search()">All&nbsp;:&nbsp;</span><span data-ng-repeat="cat in bc.cats track by $index"
     data-ng-show="cat">{{cat['name']}}<span data-ng-if="bc.showColon($index,bc.cats)">&nbsp;:&nbsp;</span></span><span data-ng-if="bc.showYmm()">{{bc.ymm.year}}&nbsp;{{bc.ymm.make}}&nbsp;{{bc.ymm.model}}<span data-ng-if="bc.searchString">&nbsp;:&nbsp;</span></span>
   <a data-ng-if="bc.searchString"><span>"</span>{{bc.searchString}}<span>"</span></a>
   </span>

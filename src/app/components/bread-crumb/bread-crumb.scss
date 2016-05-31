@@ -41,4 +41,11 @@
         text-decoration: underline;        
       }      
     }
+    
+    .clickable{
+        cursor:pointer;
+        &:hover{
+            color:$accent_color;
+        }
+    }
 }

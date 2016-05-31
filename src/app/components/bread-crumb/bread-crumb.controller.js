@@ -3,9 +3,8 @@
 export class BreadCrumbController {
     constructor($log, $timeout, $rootScope, $state, $scope, $window, $document, $stateParams, $interval, SearchBarService, BreadCrumbService, appInfoService) {
         'ngInject';
-
         let vm = this;
-        vm.DI = () => ({ $state, $window, $document, $timeout, $interval, SearchBarService, appInfoService });
+        vm.DI = () => ({ $rootScope, $state, $window, $document, $timeout, $interval, SearchBarService, appInfoService });
 
         vm.cats = [false, false, false];
         vm.showAll = BreadCrumbService.showAll;
@@ -176,6 +175,50 @@ export class BreadCrumbController {
         return retVal;
     }
 
+    search(level =-1) {
+        let vm = this, {$state, $rootScope, appInfoService, SearchBarService} = vm.DI();
+        if (level == -1) {
+            if (SearchBarService.productLine && SearchBarService.productLine.id) {
+                SearchBarService.productLine = appInfoService.getCat1(0);
+                SearchBarService.productClass = null;
+                SearchBarService.productCategory = null;
+                launch();
+            }
+        }
+        else {
+            switch (level) {
+                case 0: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                    SearchBarService.productLine = appInfoService.getCat1(vm.cats[level].id);
+                    SearchBarService.productClass = null;
+                    SearchBarService.productCategory = null;
+                    launch();
+
+                }
+                    break;
+                case 1: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                    SearchBarService.productClass = appInfoService.getCat2(vm.cats[level - 1].id, vm.cats[level].id);
+                    SearchBarService.productCategory = null;
+                    launch();
+                }
+                    break;
+                case 2: angular.noop(); break;
+                default: angular.noop(); break;
+            }
+        }
+        //console.log("Cat-e-gory", cat1, cat2, cat3);
+        //let paramObj = { 'mode': 'hierarchy', 'cat1': cat1 ? cat1.id : null, 'cat2': cat2 ? cat2.id : null, 'cat3': cat3 ? cat3.id : null };
+        //$rootScope.$emit("applyHierarchyScope", cat1);
+
+        function launch() {
+            if ($state.is("searchResults")) {
+                $rootScope.$emit("bcSearch");
+                vm._intializeCats();
+            }
+            //$rootScope.$emit("clearCategoryFilter");
+            $state.go("searchResults", paramObj);
+        }
+    }
+
     _intializeCats() {
         let vm = this;
         let {$interval, SearchBarService, appInfoService} = vm.DI();
@@ -196,5 +239,29 @@ export class BreadCrumbController {
         } else {
             vm.cats = [false, false, false];
         }
+    }
+    isClickable(level = -1) {
+        let vm = this, {$state, $rootScope, appInfoService, SearchBarService} = vm.DI();
+        let retVal = false;
+        if (level == -1) {
+            if (SearchBarService.productLine && SearchBarService.productLine.id) {
+                retVal = true;
+            }
+        }
+        else {
+            switch (level) {
+                case 0: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                    retVal = true;
+                }
+                    break;
+                case 1: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                    retVal = true;
+                }
+                    break;
+                case 2: angular.noop(); break;
+                default: angular.noop(); break;
+            }
+        }
+        return retVal;
     }
 }
