@@ -30,7 +30,8 @@ export class SearchBarController {
         let deregistrationCallback2 = $rootScope.$on("categoryFilterApplied", function (evt, selectedCategory) {
             $log.debug("Cat Fill :", selectedCategory, vm.search.searchScope);
             if (vm.search.searchScope.id === 0) {
-                vm.search.searchScope = appInfoService.getCat1(selectedCategory.id);
+                vm.search.searchScope = SearchBarService.productLine;
+                //vm.search.searchScope = appInfoService.getCat1(selectedCategory.id);
                 $timeout(() => {
                     vm._setWidthSearchBox();
                 }, 50);
@@ -46,18 +47,24 @@ export class SearchBarController {
             vm.search.searchString = previousSearchString;
         });
 
+        vm.search = {
+            searchScope: {},
+            typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
+            typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
+            resultCountUpperLimit: 8,
+            firstSelect: false,
+            categories: []
+        };
+
         let intObj = $interval(() => {
             console.log("Hierarchy nav", appInfoService.appInfo);
             if (angular.isDefined(appInfoService.appInfo) && angular.isDefined(appInfoService.appInfo.cats)) {
                 $interval.cancel(intObj);
-                vm.search = {
-                    searchScope: appInfoService.getCat1(0),
-                    typeaheadTemplate: 'app/components/header/search-bar/typeahead.html',
-                    typeaheadPopupTemplate: 'app/components/header/search-bar/typeahead-popup.html',
-                    resultCountUpperLimit: 8,
-                    firstSelect: false,
-                    categories: []
-                };
+                vm.search.searchScope = appInfoService.getCat1(0);
+
+                vm.search.categories = appInfoService.appInfo.cats.map(function (cat) {
+                    return cat;
+                });
                 $timeout(() => {
                     vm._setWidthSearchBox();
                 }, 50);
@@ -92,14 +99,6 @@ export class SearchBarController {
             vm.search.searchString = SearchBarService.srchStr;
         });
 
-        let intervalObj = $interval(() => {
-            if (angular.isDefined(appInfoService.appInfo && appInfoService.appInfo.cats)) {
-                $interval.cancel(intervalObj);
-                vm.search.categories = appInfoService.appInfo.cats.map(function (cat) {
-                    return cat;
-                });
-            }
-        }, 200);
 
 
         $timeout(() => {
@@ -109,6 +108,7 @@ export class SearchBarController {
         angular.element($window).bind('resize', () => {
             vm._setWidthSearchBox();
         });
+
 
     }
 
@@ -254,19 +254,32 @@ export class SearchBarController {
             $rootScope.$emit("clearCategoryFilter");
             SearchBarService.productLine = vm.search.searchScope;
             SearchBarService.autoSuggestItem = item;
+            let catLevel = 0;
             if (SearchBarService.productLine.id === 0) {
                 SearchBarService.productLine = appInfoService.getCat1(item.suggestId);
+                SearchBarService.productCategory = 0;
+                SearchBarService.productClass = 0;
+
             } else {
+                catLevel = 2;
+                SearchBarService.productClass = 0;
                 SearchBarService.productCategory = appInfoService.getCat3(SearchBarService.productLine.id, null, item.suggestId);
             }
 
             $timeout(() => {
-                $rootScope.$broadcast("categoryFilterApplied", { "id": item.suggestId, "suggestion": true, "catFilter": false });
+                $rootScope.$broadcast("categoryFilterApplied", { "id": item.suggestId, "suggestion": true, "catFilter": false, level: catLevel });
                 SearchBarService.productLine = vm.search.searchScope;
+                if (SearchBarService.productLine.id === 0) {
+                    $rootScope.$emit('showAll', true);
+                }
+                else {
+                    $rootScope.$emit('showAll', false);
+                }
             }, 100);
 
             vm._blurSrchBox();
             $log.debug("Inside search results :", $state.is("searchResults"));
+
             if ($state.is("searchResults")) {
                 $scope.$emit("searchbarBlurred");
                 $scope.$emit("searchLaunched");
@@ -276,6 +289,7 @@ export class SearchBarController {
         } else if (item.typeId === 3) {
             SearchBarService.srchStr = SearchBarService.srchTempStr;
             vm.search.searchString = SearchBarService.srchStr;
+            $rootScope.$emit('showAll', false);
             vm.searchIconClick();
         }
         else if (item.typeId === 5) {
@@ -294,6 +308,7 @@ export class SearchBarController {
 
             vm._blurSrchBox();
             $log.debug("Inside search results :", $state.is("searchResults"));
+
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 $scope.$emit("searchLaunched");
@@ -345,11 +360,18 @@ export class SearchBarController {
                 if (vm.search.searchString) {
                     SearchBarService.productLine = vm.search.searchScope;
                     // $rootScope.$emit("searchIconClicked");
+
                     if ($state.is("searchResults")) {
                         $scope.$emit("searchLaunched");
                         $scope.$emit("searchbarBlurred");
                     } else {
                         $location.path('/search');
+                    }
+                    if (SearchBarService.productLine.id === 0) {
+                        $rootScope.$emit('showAll', true);
+                    }
+                    else {
+                        $rootScope.$emit('showAll', false);
                     }
                 } else {
                     angular.noop();
@@ -360,10 +382,17 @@ export class SearchBarController {
             if (vm.search.searchScope.id == 0) {
                 $location.path('/');
             } else {
+
                 if ($state.is("searchResults")) {
                     $scope.$emit("searchLaunched");
                 } else {
                     $location.path('/search');
+                }
+                if (SearchBarService.productLine.id === 0) {
+                    $rootScope.$emit('showAll', true);
+                }
+                else {
+                    $rootScope.$emit('showAll', false);
                 }
             }
         }

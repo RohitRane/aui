@@ -38,4 +38,14 @@ export class BreadCrumbService {
         sessionStorage.cats = angular.toJson(this._cats);
     }
 
+    get showAll() {
+        this._showAll = angular.fromJson(sessionStorage.showAll);
+        return this._showAll;
+    }
+
+    set showAll(bool) {
+        this._showAll = bool;
+        sessionStorage.showAll = angular.toJson(this._showAll);
+    }
+
 }
