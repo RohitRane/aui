@@ -239,7 +239,7 @@ class YMMDirectiveController {
         }, vm);
 
         var yearHolder = angular.element(document.querySelector('#yearHolder'));
-        yearHolder.css('top', '195px');
+        yearHolder.css('top', '58%');
     }
 
 
@@ -431,7 +431,7 @@ class YMMDirectiveController {
         // if($event.target.nodeName =="A"){
         e.makeSelected = true;
         var makeHolder = angular.element(document.querySelector('#makeDropDown'));
-        makeHolder.css('top', '200px');
+        makeHolder.css('top', '58%');
         // }
     }
 
@@ -504,7 +504,7 @@ class YMMDirectiveController {
         // if($event.target.nodeName =="A"){
         e.ymmSubmit = true;
         var modelHolder = angular.element(document.querySelector('#modelDropDown'));
-        modelHolder.css('top', '200px');
+        modelHolder.css('top', '58%');
         // }
     }
 
