@@ -80,7 +80,7 @@ export class BreadCrumbController {
                 vm._intializeCats();
                 //vm.cats[2] = selectedCategory.name;
             }
-        });        
+        });
 
         let deregistrationCallback2 = $rootScope.$on("clearCategories", function () {
             $timeout(() => {
@@ -179,7 +179,7 @@ export class BreadCrumbController {
     _intializeCats() {
         let vm = this;
         let {$interval, SearchBarService, appInfoService} = vm.DI();
-        if (SearchBarService.productLine.id) {
+        if (SearchBarService.productLine && SearchBarService.productLine.id) {
             vm.cats[0] = SearchBarService.productLine;
             let intObj = $interval(() => {
                 if (appInfoService.appInfo) {

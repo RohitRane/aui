@@ -1,10 +1,10 @@
 /*Author:Rohit Rane*/
 export class PartController {
-    constructor($log, $document, $stateParams, $scope, $timeout, $window, SearchBarService, dataServices, SmoothScrollService) {
+    constructor($log, $document, $stateParams, $scope, $timeout, $window, $sce, SearchBarService, dataServices, SmoothScrollService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $document, $scope, $stateParams, $window, SearchBarService, dataServices, SmoothScrollService });
+        vm.DI = () => ({ $log, $document, $scope, $stateParams, $window, $sce, SearchBarService, dataServices, SmoothScrollService });
 
         $window.scrollTo(0, 0);
 
@@ -28,7 +28,7 @@ export class PartController {
         };
 
         vm.hideForNow = true;
-        
+
         angular.element($window).bind('resize', () => {
             vm._resizeImage();
         });
@@ -57,12 +57,13 @@ export class PartController {
             dataServices.part($stateParams.id).then(function (response) {
                 $log.debug("Response in Controller :", response);
                 vm.partData = response;
+                let retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
                 switch (vm.partData.categories[2].name) {
                     case 'Flanges': console.log("It's a flanges"); vm.partData.imageUrl = "/assets/images/flange.png"; break;
                     case 'Universal Joints': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/u-joint.jpg"; vm.partData.modelDiagram = "assets/images/model_diagram.gif"; break;
                     case 'Flange Yoke': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/flange_yoke.jpg"; break;
                     case 'Ring and Pinions': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/rangeNpinion.jpg"; break;
-                    default: vm.partData.imageUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
+                    default: vm.partData.imageUrl = retUrl;
                 };
                 vm._createCompatibilityTab();
                 vm._createInterchangesTab();
@@ -127,19 +128,19 @@ export class PartController {
             (index < Math.ceil(compArr.length / 2)) ? vm.ymmInterTab1.push(ymm) : vm.ymmInterTab2.push(ymm);
         });
     }
-    _resizeImage(){
+    _resizeImage() {
         let vm = this,
-        { $document } = vm.DI();
+            { $document } = vm.DI();
         let actvPic = $document[0].getElementById("active-pic");
-        
+
         console.log("Resizing image");
 
         vm.containerDimensions = {
             height: actvPic.offsetHeight,
             width: actvPic.offsetWidth
         }
-        
-        console.log("container Dimensions :",vm.containerDimensions);
-        
+
+        console.log("container Dimensions :", vm.containerDimensions);
+
     }
 }
