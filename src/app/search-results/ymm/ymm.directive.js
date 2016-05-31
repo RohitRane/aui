@@ -222,7 +222,7 @@ class YMMDirectiveController {
                     var self = this;
 
                     vm.yearList.forEach(function (year) {
-                        var stringYr = year + "";
+                        var stringYr = year;
                         //checking years with each header Labels, if not matched making grey
                         if (stringYr.substring(0, 3) !== prefixCheck && self.headerLabelArray.indexOf(prefixCheck) == -1) {
                             innerEl.setAttribute('style', 'color:#b0b0b0;font-weight:600');
@@ -232,7 +232,6 @@ class YMMDirectiveController {
                             //checking years with each header Labels, if matched not make grey 
                             self.headerLabelArray.push(prefixCheck);
                             innerEl.setAttribute('style', 'color:black;font-weight:600');
-
                         }
                     }, self)
                 }
@@ -273,9 +272,9 @@ class YMMDirectiveController {
                 currChild2 = $scope.ymmSecondChild.charAt(0).toUpperCase() + $scope.ymmSecondChild.slice(1).toLowerCase();
 
                 console.log('currParent this is the current parent',currParent);
-                let yearPlaceHolder = document.querySelector(".yearSelector");
-                let makePlaceholder = document.querySelector(".makeSelector");
-                let modelPlaceholder = document.querySelector(".modelSelector");
+                let yearPlaceHolder = document.querySelector(".yearSelector"),
+                makePlaceholder = document.querySelector(".makeSelector"),
+                modelPlaceholder = document.querySelector(".modelSelector");
 
                 if (currParent == 'Year') {
                     vm.yearList = result.data.APIResponse.lvl1_list;
@@ -290,32 +289,39 @@ class YMMDirectiveController {
                     $log.debug("YMM response :", vm.modelList);
                 }
 
-                let container = yearPlaceHolder.parentNode;
-                let oldParentItem = container.childNodes[3];
-                if (currParent == "Make") {
+                console.log('currParent this is the current parent',currParent);
 
-                    container.insertBefore(makePlaceholder, oldParentItem);
+                let container = yearPlaceHolder.parentNode;
+              
+
+
+                let oldParentItem = container.childNodes[1];
+               /* if (currParent == "Make") {
+                    yearPlaceHolder.parentNode.insertBefore(makePlaceholder, oldParentItem);
                 }
                 else if (currParent == "Model") {
                     //container.append(modelPlaceholder);
-
-                    container.insertBefore(modelPlaceholder, oldParentItem);
+                    yearPlaceHolder.parentNode.insertBefore(modelPlaceholder, oldParentItem);
                 }
                 else {
                     console.log('year is the default parent');
-                }
+                }*/
 
-                let oldFirstChildItem = container.childNodes[4];
+                (currParent =="Make")?yearPlaceHolder.parentNode.insertBefore(makePlaceholder, oldParentItem):
+                ((currParent=="Model")? yearPlaceHolder.parentNode.insertBefore(modelPlaceholder, oldParentItem):console.log('year is the default parent'));
+
+                
+
+                let oldFirstChildItem = yearPlaceHolder.parentNode.childNodes[2];
                 if (currChild1 == "Year") {
-                    container.insertBefore(yearPlaceholder, oldFirstChildItem);
+                    yearPlaceHolder.parentNode.insertBefore(yearPlaceholder, oldParentItem);
                 }
                 else if (currChild1 == "Make") {
-                    container.insertBefore(makePlaceholder, oldFirstChildItem);
-
+                    yearPlaceHolder.parentNode.insertBefore(makePlaceholder, oldParentItem);
                 }
                 else {
                     console.log('inside last ');
-                    container.insertBefore(modelPlaceholder, oldFirstChildItem);
+                    yearPlaceHolder.parentNode.insertBefore(modelPlaceholder, oldParentItem);
                 }
 
 
