@@ -110,7 +110,7 @@
 .arrow_box:after {
     border-color: rgba(136, 183, 213, 0);
     border-bottom-color: #0093c6;
-    border-width: 10px;
+    border-width: 11px;
     margin-left: 40px;
 }
 
@@ -118,7 +118,7 @@
 .arrow_box:before {
     border-color: rgba(194, 225, 245, 0);
     border-bottom-color: #0093c6;
-    border-width: 10px;
+    border-width: 11px;
     margin-left: 40px;
 }
 
@@ -138,21 +138,13 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-}
-
-.arrow_box1:after {
-    border-color: rgba(136, 183, 213, 0);
+     border-color: rgba(136, 183, 213, 0);
     border-bottom-color: #0093c6;
-    border-width: 10px;
+    border-width: 9px;
     margin-left: -10px;
 }
 
-.arrow_box1:before {
-    border-color: rgba(194, 225, 245, 0);
-    border-bottom-color: #0093c6;
-    border-width: 10px;
-    margin-left: -10px;
-}
+
 
 #makeDropDown,
 #modelDropDown {
