@@ -60,6 +60,8 @@ class YMMDirectiveController {
         vm.ymmModel = "Model";
         vm.ymmMake = "Make";
 
+        $scope.totRows = 8;
+
 
         $scope.ymmParent = 'Year';
         $scope.ymmFirstChild = "Make";
@@ -239,7 +241,7 @@ class YMMDirectiveController {
         }, vm);
 
         var yearHolder = angular.element(document.querySelector('#yearHolder'));
-        yearHolder.css('top', '230px');
+        yearHolder.css('top', '225px');
     }
 
 
@@ -431,7 +433,9 @@ class YMMDirectiveController {
         // if($event.target.nodeName =="A"){
         e.makeSelected = true;
         var makeHolder = angular.element(document.querySelector('#makeDropDown'));
-        makeHolder.css('top', '230px');
+        makeHolder.css('top', '34%');
+        let reqdColumns = Math.ceil(e.vm.makeList.length/e.totRows);
+        document.querySelector('#makeDropDown').style.columnCount = reqdColumns;
         // }
     }
 
@@ -504,7 +508,10 @@ class YMMDirectiveController {
         // if($event.target.nodeName =="A"){
         e.ymmSubmit = true;
         var modelHolder = angular.element(document.querySelector('#modelDropDown'));
-        modelHolder.css('top', '230px');
+        modelHolder.css('top', '34%');
+         e.mSelodelected = true;
+        let reqdColumns = Math.ceil(e.vm.modelList.length/e.totRows);
+        document.querySelector('#modelDropDown').style.columnCount = reqdColumns;
         // }
     }
 
@@ -634,8 +641,8 @@ class YMMDirectiveController {
       
       YmmService.emptyLevelData();
       $scope.catChanged = true;
-      var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
-        submitSelector.addClass('disabled');
+      //var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
+       // submitSelector.addClass('disabled');
       //  submitSelector.css('background-color', '#0093c6');
 
     }
