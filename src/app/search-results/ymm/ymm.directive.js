@@ -222,7 +222,6 @@ class YMMDirectiveController {
                 if (innerEl.textContent.indexOf('s') !== -1) {
                     var prefixCheck = innerEl.textContent.substring(0, 3);
                     var self = this;
-
                     vm.yearList.forEach(function (year) {
                         var stringYr = year;
                         //checking years with each header Labels, if not matched making grey
@@ -433,7 +432,7 @@ class YMMDirectiveController {
         // if($event.target.nodeName =="A"){
         e.makeSelected = true;
         var makeHolder = angular.element(document.querySelector('#makeDropDown'));
-        makeHolder.css('top', '34%');
+        makeHolder.css('top', '36%');
         let reqdColumns = Math.ceil(e.vm.makeList.length/e.totRows);
         document.querySelector('#makeDropDown').style.columnCount = reqdColumns;
         // }
@@ -508,7 +507,7 @@ class YMMDirectiveController {
         // if($event.target.nodeName =="A"){
         e.ymmSubmit = true;
         var modelHolder = angular.element(document.querySelector('#modelDropDown'));
-        modelHolder.css('top', '34%');
+        modelHolder.css('top', '36%');
          e.mSelodelected = true;
         let reqdColumns = Math.ceil(e.vm.modelList.length/e.totRows);
         document.querySelector('#modelDropDown').style.columnCount = reqdColumns;
