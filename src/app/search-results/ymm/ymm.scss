@@ -99,7 +99,6 @@
 .arrow_box:after,
 .arrow_box:before {
     bottom: 103%;
-    left: 6%;
     border: solid transparent;
     content: " ";
     height: 0;
@@ -112,14 +111,14 @@
     border-color: rgba(136, 183, 213, 0);
     border-bottom-color: #0093c6;
     border-width: 10px;
-    margin-left: -10px;
+    margin-left: 40px;
 }
 
 .arrow_box:before {
     border-color: rgba(194, 225, 245, 0);
     border-bottom-color: #0093c6;
-    border-width: 16px;
-    margin-left: -16px;
+    border-width: 10px;
+    margin-left: 40px;
 }
 
 .arrow_box1 {
@@ -129,10 +128,9 @@
 }
 
 .arrow_box1:after,
-.arrow_box:before {
+.arrow_box1:before {
     bottom: 103%;
-    left: 20%;
-    top: -8%;
+    left: 60px;
     border: solid transparent;
     content: " ";
     height: 0;
@@ -151,20 +149,18 @@
 .arrow_box1:before {
     border-color: rgba(194, 225, 245, 0);
     border-bottom-color: #0093c6;
-    border-width: 16px;
-    margin-left: -16px;
+    border-width: 10px;
+    margin-left: -10px;
 }
 
 #makeDropDown,
 #modelDropDown {
-    height: 300px;
-    -webkit-column-count: 5;
-    -moz-column-count: 5;
-    column-count: 5;
+    
+   
     /*3 is just placeholder -- can be anything*/
-    -moz-column-width: 100px;
-    -webkit-column-width: 100px;
-    column-width: 100px;
+    -moz-column-width: 80px;
+    -webkit-column-width: 80px;
+    column-width: 80px;
     ul {
         li {
             display: inline-block;
