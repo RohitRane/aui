@@ -609,7 +609,7 @@ class YMMDirectiveController {
         var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
         submitSelector.removeClass('disabled');
         submitSelector.css('background-color', '#0093c6');
-        submitSelector.css('color', '#000000');
+        submitSelector.css('color', '#FFFFFF');
     }
 
     searchByYMM($event, e) {
