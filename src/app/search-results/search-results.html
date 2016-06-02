@@ -11,7 +11,7 @@
       <filter-directive ng-show="srchRes.results.parts.length" ng-if="srchRes.filters"  category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
     </div>
     <div class="col-md-8">
-      <ymm-directive ng-if="srchRes.productLine == 2 && srchRes.results.parts.length" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>
+      <ymm-directive ng-if="srchRes.productLine == srchRes.automotive_id && srchRes.results.parts.length" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>
       <div ng-show="srchRes.results.totalResults">
         <!--<h5>Related : <a>{{srchRes.searchString}}</a></h5>-->
         <h5></h5>

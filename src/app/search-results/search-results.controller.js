@@ -1,5 +1,5 @@
 export class SearchResultsController {
-    constructor($log, $rootScope, $scope, $timeout, $window, $document, $stateParams, $interval, dataServices, SearchBarService, appInfoService, BreadCrumbService) {
+    constructor($log, $rootScope, $scope, $timeout, $window, $document, $stateParams, $interval, dataServices, SearchBarService, appInfoService, BreadCrumbService, AftermarketConstants) {
         'ngInject';
 
         let vm = this;
@@ -7,6 +7,7 @@ export class SearchResultsController {
 
         $window.scrollTo(0, 0);
 
+        vm.automotive_id = AftermarketConstants.skin.automotive_id;
         vm.currentPage = 1;
         vm.searchString = "";
         vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DESC"];

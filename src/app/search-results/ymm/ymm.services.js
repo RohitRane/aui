@@ -17,8 +17,8 @@ export class YmmService {
         this._modelSelected;
         this.$http = $http;
         this.$q = $q;
-        //this.ymmURL = 'http://52.8.125.250:8080';//DEV
-        this.ymmURL = 'http://54.183.226.9:8080';//QA
+        this.ymmURL = 'http://52.8.125.250:8080';//DEV
+        //this.ymmURL = 'http://52.53.236.6:8080';//QA
         this.method = 'POST';
         this.params = "";
         this.currYMMOrder = [];
