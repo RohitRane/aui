@@ -4,7 +4,7 @@ export class BreadCrumbController {
     constructor($log, $timeout, $rootScope, $state, $scope, $window, $document, $stateParams, $interval, SearchBarService, BreadCrumbService, appInfoService) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({ $rootScope, $state, $window, $document, $timeout, $interval, SearchBarService, appInfoService });
+        vm.DI = () => ({ $rootScope, $state, $window, $document, $timeout, $interval, SearchBarService, appInfoService, BreadCrumbService });
 
         vm.cats = [false, false, false];
         vm.showAll = BreadCrumbService.showAll;
@@ -47,8 +47,9 @@ export class BreadCrumbController {
         } else if ($state.is('part')) {
             vm.pageState = 'part';
             vm.searchString = SearchBarService.srchStr;
-            vm._intializeCats();
-            //vm.cats = BreadCrumbService.cats;
+            //vm._intializeCats();
+            
+            vm.cats = BreadCrumbService.cats;
             $log.debug("Retained Cats :", vm.cats);
         }
 
@@ -221,24 +222,29 @@ export class BreadCrumbController {
 
     _intializeCats() {
         let vm = this;
-        let {$interval, SearchBarService, appInfoService} = vm.DI();
+        let {$interval, SearchBarService, appInfoService, BreadCrumbService} = vm.DI();
         if (SearchBarService.productLine && SearchBarService.productLine.id) {
             vm.cats[0] = SearchBarService.productLine;
             let intObj = $interval(() => {
                 if (appInfoService.appInfo) {
                     vm.cats[1] = SearchBarService.productClass ? SearchBarService.productClass : appInfoService.getCat2WithCat3(SearchBarService.productLine.id, SearchBarService.productCategory ? SearchBarService.productCategory.id : null);
                     $interval.cancel(intObj);
+                    initBCService();
                 }
             }, 200);
             vm.cats[2] = SearchBarService.productCategory;
-            if (vm.cats[2] && vm.cats[2].id === vm.cats[1].id) {
+            if (vm.cats[2] && vm.cats[1] && vm.cats[2].id === vm.cats[1].id) {
                 vm.cats[2] = null;
-            } else if (vm.cats[1] && vm.cats[1].id === vm.cats[0].id) {
+            } else if (vm.cats[1] && vm.cats[0] && vm.cats[1].id === vm.cats[0].id) {
                 vm.cats[1] = null;
             }
         } else {
             vm.cats = [false, false, false];
         }
+        initBCService();
+        function initBCService(){
+            BreadCrumbService.cats = vm.cats;
+        }        
     }
     isClickable(level = -1) {
         let vm = this, {$state, $rootScope, appInfoService, SearchBarService} = vm.DI();
