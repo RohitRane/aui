@@ -20,29 +20,29 @@
             <div class="form-group">
                 <div class="col-md-6">
                     <label class="sr-only">First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name">
+                    <input type="text" data-ng-model="shareList.fName" class="form-control" placeholder="First Name">
                 </div>
                 <div class="col-md-6">
                     <label class="sr-only">Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name">
+                    <input type="text" data-ng-model="shareList.lName" class="form-control" placeholder="Last Name">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Your Email ID's </label>
-                    <input type="email" class="form-control" placeholder="Your Email ID's">
+                    <input type="email" data-ng-model="shareList.fEmail" class="form-control" placeholder="Your Email ID's">
                 </div>
             </div>
             <h4>To:</h4>
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Email ID's</label>
-                    <input type="email" class="form-control" placeholder="To Email ID's">
+                    <input type="email" data-ng-model="shareList.tEmail" class="form-control" placeholder="To Email ID's">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
-                    <textarea class="form-control" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my orderlist.
+                    <textarea class="form-control" data-ng-model="shareList.text" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my orderlist.
                     </textarea>
                 </div>
             </div>
@@ -52,11 +52,11 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="getURL">
-                    <h6><span class="glyphicon glyphicon-paperclip"></span><a href="#">Get URL</a></h6>
+                    <h6><span class="glyphicon glyphicon-paperclip" data-ng-click="shareList.shareOrderList()"></span><a href="#">Get URL</a></h6>
                 </div>
             </div>
             <div class="col-md-6">
-                <button class="btn btn-primary" type="button" ng-click="cancel()">Go to Home</button>
+                <button class="btn btn-primary" type="button" ng-click="shareList.cancel()">Go to Home</button>
             </div>
         </div>
     </div>

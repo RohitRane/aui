@@ -22,7 +22,9 @@ export function dataServices() {
             part: part(DI),
             partByPartNum: partByPartNum(DI),
             appInfo: appInfo(DI),
-            ymmSearch: ymmSearch(DI)
+            ymmSearch: ymmSearch(DI),
+            orderList: orderList(DI),
+            shareList: shareList(DI)
         }
     } 
 }
@@ -35,3 +37,6 @@ import { part } from './requests/part.request';
 import { partByPartNum } from './requests/part-by-pnum.request';
 import { appInfo } from './requests/app-info.request';
 import { ymmSearch } from './requests/ymm-search.request';
+import { orderList } from './requests/order-list.request';
+import { shareList } from './requests/share-list.request';
+

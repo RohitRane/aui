@@ -12,4 +12,11 @@ export class OrderListService {
             this._orderList = newList;
     }
 
+    get orderId() {
+        return this._orderId;
+    }
+
+    set orderId(newId) {
+            this._orderId = newId;
+    }
 }

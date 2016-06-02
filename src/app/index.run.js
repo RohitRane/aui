@@ -1,6 +1,10 @@
-export function runBlock($rootScope, $location, SearchBarService, $window) {
+export function runBlock($rootScope, $location, SearchBarService, dataServices, OrderListService, $window) {
     'ngInject';
-    
+    dataServices.orderList().then(function (response) {
+            OrderListService.orderId = response;
+        }, function (error) {
+        });
+
     $rootScope.$on('$locationChangeSuccess', function() {
     	
         if($rootScope.previousLocation == $location.path() && $location.path() == '/search') {

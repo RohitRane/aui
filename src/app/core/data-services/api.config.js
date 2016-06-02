@@ -41,7 +41,24 @@ export let apiConfig = {
         'data': {}
     },
 
+    'ORDER_LIST': {
+        'url': '',
+        'setUrl': function () {
+            this.url = apiBaseUrl + '/orderList/create';
+        },
+        'method': 'POST',
+        'data': {}
+    },
 
+    'SHARE_LIST': {
+        'url': '',
+        'setUrl': function (payload) {
+            this.url = apiBaseUrl + '/saveOrderList';
+            this.data = payload
+        },
+        'method': 'POST',
+        'data': {}
+    },
 
     'AUTO_SEARCH': {
         'url': '',

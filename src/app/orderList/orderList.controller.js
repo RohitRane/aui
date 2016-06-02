@@ -12,6 +12,7 @@ export class OrderListController {
     getOrderList(){
       let vm = this;
       let {$log, $uibModal, OrderListService} = vm.DI();
+      vm.orderId = OrderListService.orderId;
       vm.orderList = OrderListService.orderList;
     }
     
@@ -33,23 +34,24 @@ export class OrderListController {
    		let vm = this, size ="md";
    		let {$log, $uibModal} = vm.DI();
    		var modalInstance = $uibModal.open({
-                templateUrl: 'app/orderList/shareOrderList/shareOrderList.html',
-                controller: 'ShareOrderlistController',
-                // templateUrl: 'app/orderList/ShareError/shareError.html',
-                // controller: 'ShareErrorController',
-                size: size,
-                windowClass: 'my-modal-popup',
-                resolve: {
-                    items: function() {
-                        return vm.items;
-                    }
-                }
-            });
-
-            // modalInstance.result.then(function(selectedItem) {
-            //     vm.selected = selectedItem;
-            // }, function() {
-            //     $log.info('Modal dismissed at: ' + new Date());
-            // });
+          templateUrl: 'app/orderList/shareOrderList/shareOrderList.html',
+          controller: 'ShareOrderlistController',
+          controllerAs: 'shareList',
+          // templateUrl: 'app/orderList/ShareError/shareError.html',
+          // controller: 'ShareErrorController',
+          size: size,
+          windowClass: 'my-modal-popup',
+          resolve: {
+              items: function() {
+                  return vm.items;
+              }
+          }
+      });
    	}
+
+    cancel() {
+      let vm = this,
+      {$uibModalInstance} = vm.DI();
+        $uibModalInstance.close();
+    }
 }
