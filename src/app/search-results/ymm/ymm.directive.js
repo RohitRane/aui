@@ -29,7 +29,7 @@ export function ymmDirective() {
 }
 
 class YMMDirectiveController {
-    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $http, YmmService) {
+    constructor($log, SearchBarService, dataServices, $scope, $rootScope, $http, $timeout, $document, YmmService) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({
@@ -70,6 +70,17 @@ class YMMDirectiveController {
 
         $scope.catChanged = false;
 
+        let launchYMMList = $rootScope.$on("launchYMMList",()=>{
+            let ymmElem = $document[0].getElementsByClassName("ymm-directive");
+            if(ymmElem[0]){
+                vm.initializeYMM();
+            }
+            
+        });
+        
+        $rootScope.$on("$destroy",()=>{
+            launchYMMList();
+        });
 
         $scope.$on("eventForYMM", function (evt, cat) {
             //Call for API config to know about parent 

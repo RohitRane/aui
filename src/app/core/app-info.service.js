@@ -83,5 +83,17 @@ export class AppInfoService {
 
         return retObj;
     }
+    
+    getYMMCatId(){
+        let retID = null;
+        angular.forEach(this._info.cats, (cat) => {
+            console.log("cat in loop:", cat);
+            if (cat.showYMM == true) {
+                console.log("Bingo !!");
+                retID = cat.id;
+            }
+        });
+        return retID;
+    }
 
 }

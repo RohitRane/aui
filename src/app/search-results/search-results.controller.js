@@ -3,7 +3,7 @@ export class SearchResultsController {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $scope, $timeout, $stateParams, $interval, dataServices, SearchBarService, appInfoService, BreadCrumbService });
+        vm.DI = () => ({ $log, $scope, $timeout, $rootScope, $stateParams, $interval, dataServices, SearchBarService, appInfoService, BreadCrumbService });
 
         $window.scrollTo(0, 0);
 
@@ -23,6 +23,10 @@ export class SearchResultsController {
 
         if ($stateParams.mode && $stateParams.mode === "hierarchy") {
             vm._hierarchyNavigation();
+        }
+        
+        if ($stateParams.mode && $stateParams.mode === "bcNavigation") {
+            vm._breadCrumbNavigation();
         }
 
         vm.resultLoading = false;
@@ -126,7 +130,7 @@ export class SearchResultsController {
 
     getParts(from, size, payload, year, make, model, ymmObj) {
         let vm = this;
-        let {$log, dataServices, SearchBarService, $scope} = vm.DI();
+        let {$log, dataServices, SearchBarService, $scope, $rootScope, appInfoService} = vm.DI();
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine.id;
@@ -184,6 +188,11 @@ export class SearchResultsController {
                     }
                     return part;
                 });
+                
+                let ymmCatId = appInfoService.getYMMCatId();
+                if(ymmCatId === SearchBarService.productLine.id){
+                    $rootScope.$emit("launchYMMList");
+                }
             }
 
             $scope.$emit("showLoading", false);
