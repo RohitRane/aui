@@ -7,17 +7,17 @@
         .adjustPadding {
             padding: 2px 20px;
             margin-top: 10px;
-            .panelBox{
-            	border:none;
-            	clear:both;
-            	box-shadow:none;
+            .panelBox {
+                border: none;
+                clear: both;
+                box-shadow: none;
             }
             .orderHeading {
                 h2 {
                     float: left;
                     font-size: 26px;
-                    span{
-                    	font-size: 21px;
+                    span {
+                        font-size: 21px;
                     }
                 }
                 .alignment-bottom {
@@ -31,50 +31,55 @@
             }
             .resetPadding {
                 padding: 0px !important;
-                .orderItems{
-                	border-bottom:1px solid $support_color_border_second;
-                	overflow:auto;
-                	padding-bottom:0px;
-                	padding-top:25px;
-                	.col-lg-2{
-                		width:13%;
-                	}
-                	.orderitemDetail{
-                		color:$support_color_primary_second;
-                		font-weight:600;
-                		font-size:14px
-                	}
-                	span.spanRemovePart{
-                		color:black;font-size:12px;
-                		display:block;
-                		font-weight:normal;
-                		padding-top:10px;
-                	}
-                	.qtyeditable {
+                .orderItems {
+                    border-bottom: 1px solid $support_color_border_second;
+                    overflow: auto;
+                    padding-bottom: 0px;
+                    padding-top: 25px;
+                    .col-lg-2 {
+                        width: 13%;
+                    }
+                    .orderitemDetail {
+                        color: $support_color_primary_second;
+                        font-weight: 600;
+                        font-size: 14px
+                    }
+                    span.spanRemovePart {
+                        color: black;
+                        font-size: 12px;
+                        display: block;
+                        font-weight: normal;
+                        padding-top: 10px;
+                    }
+                    .qtyeditable {
                         width: 80%;
                         height: 20px;
                     }
                     .cancel-btn {
-                        text-decoration: none;
-                        font-size: 12px;
-                        font-weight: 600;
-                        &:hover {
-                            text-decoration: none;
+                        a { 
+                            color:gray;
+                            font-size: 11px;
+                            font-weight: 700;
+                            &:hover, &:focus {
+                                text-decoration: none;
+                                color:gray;
+                            }
                         }
                     }
-                	.spanEdit{
-                		padding-left:5px;
-                		font-size:12px;
-                		a{
-                			color:$support_color_primary;
-                			text-decoration: none;
-                			font-weight: 600;
-                			&:hover{
-                				color:$support_color_primary;
-                				text-decoration: none;
-                			}
-                		}
-                	}
+                    .spanEdit {
+                        padding-left: 5px;
+                        font-size: 12px;
+                        a {
+                            color: $support_color_primary;
+                            text-decoration: none;
+                            font-weight: 600;
+                            &:hover {
+                                color: $support_color_primary;
+                                text-decoration: none;
+                                cursor: pointer;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -98,24 +103,23 @@
                 a {
                     font-size: 12px;
                     font-weight: bold;
-				}
-                .btn-primary{
-                	border-radius:0;
-                	background-color:$support_color_primary;
-                	border-color:transparent;
-                	color:white;
-                	&:hover{
-                		border-color:transparent;
-                	}
-                	&:active, &:focus{
-                		outline:none;
-                		box-shadow: none;
-                		outline-offset:none;
-                	}
-     			}
+                }
+                .btn-primary {
+                    border-radius: 0;
+                    background-color: $support_color_primary;
+                    border-color: transparent;
+                    color: white;
+                    &:hover {
+                        border-color: transparent;
+                    }
+                    &:active,
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                        outline-offset: none;
+                    }
+                }
             }
         }
     }
 }
-
-
