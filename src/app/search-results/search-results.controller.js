@@ -130,6 +130,7 @@ export class SearchResultsController {
         $scope.$emit("searchbarBlurred");
         vm.searchString = SearchBarService.srchStr;
         vm.productLine = SearchBarService.productLine.id;
+        vm.pLine = SearchBarService.productLine;
         vm.cat1 = SearchBarService.productLine;
         vm.resultLoading = true;
         console.log(vm.results.totalResults + " " + vm.resultLoading);

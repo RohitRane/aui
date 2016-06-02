@@ -4,7 +4,7 @@ export class YmmService {
         this{._srchStr = srchStr;
     }*/
 
-    constructor($http, $q, SearchBarService) {
+    constructor($http, $q, SearchBarService, apiConfig) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({
@@ -17,8 +17,9 @@ export class YmmService {
         this._modelSelected;
         this.$http = $http;
         this.$q = $q;
+        this.ymmURL = apiConfig.BASEURL;
         //this.ymmURL = 'http://52.8.125.250:8080';//DEV
-        this.ymmURL = 'http://52.53.236.6';//QA
+        //this.ymmURL = 'http://52.53.236.6';//QA
         this.method = 'POST';
         this.params = "";
         this.currYMMOrder = [];
