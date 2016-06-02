@@ -231,22 +231,7 @@ export class SearchResultsController {
     }
     
     _breadCrumbNavigation() {
-        let vm = this, {SearchBarService, $stateParams, $timeout, $interval, appInfoService} = vm.DI();
-        /*let intObj = $interval(() => {
-            console.log("Hierarchy nav", appInfoService.appInfo);
-            if (angular.isDefined(appInfoService.appInfo) && angular.isDefined(appInfoService.appInfo.cats)) {
-                $interval.cancel(intObj);
-                console.log("CAT 1 :", $stateParams.cat1);
-                SearchBarService.productLine = appInfoService.getCat1($stateParams.cat1);
-
-                console.log("prod line :", SearchBarService.productLine);
-                SearchBarService.productCategory = appInfoService.getCat3($stateParams.cat1, $stateParams.cat2, $stateParams.cat3);
-                console.log("prod cat :", SearchBarService.productCategory);
-                SearchBarService.productClass = appInfoService.getCat2($stateParams.cat1, $stateParams.cat2);
-
-                vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null);
-            }            
-        }, 100);*/
+        let vm = this, {SearchBarService, $stateParams, $timeout, $interval, appInfoService} = vm.DI();        
         vm.getParts(vm.resultStartIndex, vm.resultSetLimit, SearchBarService.selectdeFilters, null, null, null);
     }
 }

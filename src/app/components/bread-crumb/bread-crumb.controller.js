@@ -48,7 +48,7 @@ export class BreadCrumbController {
             vm.pageState = 'part';
             vm.searchString = SearchBarService.srchStr;
             //vm._intializeCats();
-            
+
             vm.cats = BreadCrumbService.cats;
             $log.debug("Retained Cats :", vm.cats);
         }
@@ -176,8 +176,8 @@ export class BreadCrumbController {
         return retVal;
     }
 
-    search(level =-1) {
-        let vm = this, {$state, $rootScope, appInfoService, SearchBarService} = vm.DI();
+    search(level = -1, type = 1) {
+        let vm = this, {$state, $rootScope, appInfoService, SearchBarService, BreadCrumbService} = vm.DI();
         if (level == -1) {
             if (SearchBarService.productLine && SearchBarService.productLine.id) {
                 SearchBarService.productLine = appInfoService.getCat1(0);
@@ -187,36 +187,73 @@ export class BreadCrumbController {
             }
         }
         else {
-            switch (level) {
-                case 0: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
-                    SearchBarService.productLine = appInfoService.getCat1(vm.cats[level].id);
-                    SearchBarService.productClass = null;
-                    SearchBarService.productCategory = null;
-                    launch();
+            if (type === 1) {
+                switch (level) {
+                    case 0: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                        SearchBarService.productLine = appInfoService.getCat1(vm.cats[level].id);
+                        SearchBarService.productClass = null;
+                        SearchBarService.productCategory = null;
+                        launch();
 
+                    }
+                        break;
+                    case 1: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                        SearchBarService.productClass = appInfoService.getCat2(vm.cats[level - 1].id, vm.cats[level].id);
+                        SearchBarService.productCategory = null;
+                        launch();
+                    }
+                        break;
+                    case 2: if ($state.is("searchResults")) {
+                        angular.noop();
+                    } else {
+                        SearchBarService.productLine = vm.cats[0];
+                        SearchBarService.productClass = vm.cats[1];
+                        SearchBarService.productCategory = vm.cats[2];
+                        launch();
+                    } break;
+                    default: angular.noop(); break;
                 }
-                    break;
-                case 1: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
-                    SearchBarService.productClass = appInfoService.getCat2(vm.cats[level - 1].id, vm.cats[level].id);
-                    SearchBarService.productCategory = null;
-                    launch();
+            } else {
+                BreadCrumbService.showAll = false;
+                switch (level) {
+                    case 0: if (vm.categories[level + 1] && vm.categories[level + 1].id) {
+                        SearchBarService.productLine = appInfoService.getCat1(vm.categories[level].id);
+                        SearchBarService.productClass = null;
+                        SearchBarService.productCategory = null;
+                        launch();
+
+                    }
+                        break;
+                    case 1: if (vm.categories[level + 1] && vm.categories[level + 1].id) {
+                        SearchBarService.productLine = appInfoService.getCat1(vm.categories[level - 1].id);
+                        SearchBarService.productClass = appInfoService.getCat2(vm.categories[level - 1].id, vm.categories[level].id);
+                        SearchBarService.productCategory = null;
+                        launch();
+                    }
+                        break;
+                    case 2: if ($state.is("searchResults")) {
+                        angular.noop();
+                    } else {
+                        SearchBarService.productLine = vm.categories[0];
+                        SearchBarService.productClass = vm.categories[1];
+                        SearchBarService.productCategory = vm.categories[2];
+                        launch();
+                    } break;
+                    default: angular.noop(); break;
                 }
-                    break;
-                case 2: angular.noop(); break;
-                default: angular.noop(); break;
             }
+
         }
-        //console.log("Cat-e-gory", cat1, cat2, cat3);
-        //let paramObj = { 'mode': 'hierarchy', 'cat1': cat1 ? cat1.id : null, 'cat2': cat2 ? cat2.id : null, 'cat3': cat3 ? cat3.id : null };
-        //$rootScope.$emit("applyHierarchyScope", cat1);
 
         function launch() {
             if ($state.is("searchResults")) {
                 $rootScope.$emit("bcSearch");
                 vm._intializeCats();
+            } else if ($state.is("part")) {
+                let paramObj = { 'mode': "bcNavigation" };
+                $state.go("searchResults", paramObj);
             }
-            //$rootScope.$emit("clearCategoryFilter");
-            $state.go("searchResults", paramObj);
+
         }
     }
 
@@ -242,11 +279,11 @@ export class BreadCrumbController {
             vm.cats = [false, false, false];
         }
         initBCService();
-        function initBCService(){
+        function initBCService() {
             BreadCrumbService.cats = vm.cats;
-        }        
+        }
     }
-    isClickable(level = -1) {
+    isClickable(level = -1, type = 1) {
         let vm = this, {$state, $rootScope, appInfoService, SearchBarService} = vm.DI();
         let retVal = false;
         if (level == -1) {
@@ -255,18 +292,43 @@ export class BreadCrumbController {
             }
         }
         else {
-            switch (level) {
-                case 0: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
-                    retVal = true;
+            if (type === 1) {
+                switch (level) {
+                    case 0: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                        retVal = true;
+                    }
+                        break;
+                    case 1: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
+                        retVal = true;
+                    }
+                        break;
+                    case 2: if ($state.is("searchResults")) {
+                        angular.noop();
+                    } else {
+                        retVal = true;
+                    }
+                    default: angular.noop(); break;
                 }
-                    break;
-                case 1: if (vm.cats[level + 1] && vm.cats[level + 1].id) {
-                    retVal = true;
+            } else {
+                switch (level) {
+                    case 0: if (vm.categories[level + 1] && vm.categories[level + 1].id) {
+                        retVal = true;
+                    }
+                        break;
+                    case 1: if (vm.categories[level + 1] && vm.categories[level + 1].id) {
+                        retVal = true;
+                    }
+                        break;
+                    case 2: if ($state.is("searchResults")) {
+                        angular.noop();
+                    } else {
+                        retVal = true;
+                    }
+                    default: angular.noop(); break;
                 }
-                    break;
-                case 2: angular.noop(); break;
-                default: angular.noop(); break;
+
             }
+
         }
         return retVal;
     }

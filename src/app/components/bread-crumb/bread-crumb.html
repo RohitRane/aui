@@ -13,12 +13,12 @@
       <i class="fa fa-angle-left"></i>&nbsp;&nbsp;Back to search results for <a href="">"{{bc.searchString}}"</a>
      </span>
   <span data-ng-if="bc.showPathCats" class="bold">&nbsp;<span data-ng-if="bc.showAll" data-ng-click="bc.search()" data-ng-class="{'clickable':bc.isClickable()}">All&nbsp;:&nbsp;</span><span data-ng-repeat="cat in bc.cats track by $index"
-    data-ng-show="cat" data-ng-class="{'clickable':bc.isClickable($index)}">{{cat['name']}}<span data-ng-if="bc.showColon($index,bc.cats)">&nbsp;:&nbsp;</span></span><span data-ng-if="bc.showYmm()">{{bc.ymm.year}}&nbsp;{{bc.ymm.make}}&nbsp;{{bc.ymm.model}}<span data-ng-if="bc.searchString">&nbsp;:&nbsp;</span></span>
+    data-ng-show="cat" data-ng-click="bc.search($index)" data-ng-class="{'clickable':bc.isClickable($index)}">{{cat['name']}}<span data-ng-if="bc.showColon($index,bc.cats)">&nbsp;:&nbsp;</span></span><span data-ng-if="bc.showYmm()">{{bc.ymm.year}}&nbsp;{{bc.ymm.make}}&nbsp;{{bc.ymm.model}}<span data-ng-if="bc.searchString">&nbsp;:&nbsp;</span></span>
   <a data-ng-if="bc.searchString"><span>"</span>{{bc.searchString}}<span>"</span></a>
   </span>
   </span>
   <span data-ng-if="!bc.showBackButton">&nbsp;
-        <span data-ng-repeat="category in bc.categories track by $index" class="bold">{{category.name}}&nbsp;:&nbsp;</span>
+        <span data-ng-repeat="category in bc.categories track by $index" data-ng-class="{'clickable':bc.isClickable($index,2)}" data-ng-click="bc.search($index,2)" class="bold">{{category.name}}&nbsp;:&nbsp;</span>
   <a href="#">{{bc.partNo}}</a>
   </span>
 
