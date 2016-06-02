@@ -1,11 +1,11 @@
 
 var devServer = "http://52.8.125.250:8080",
-    qaServer = "http://52.53.236.6:8080",
+    qaServer = "http://52.53.236.6",
 
 
 
-    activeAPIBase = devServer,
-    //activeAPIBase = qaServer,
+    //activeAPIBase = devServer,
+    activeAPIBase = qaServer,
     apiBaseUrl = activeAPIBase + '/search-service/api';
 
 
