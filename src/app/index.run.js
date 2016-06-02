@@ -1,4 +1,4 @@
-export function runBlock($rootScope, $location, SearchBarService, dataServices, OrderListService, $window) {
+export function runBlock($rootScope, $location, SearchBarService, dataServices, OrderListService,  $translate,$window) {
     'ngInject';
     dataServices.orderList().then(function (response) {
             OrderListService.orderId = response;

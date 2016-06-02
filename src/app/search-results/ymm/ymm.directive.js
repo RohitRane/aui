@@ -14,11 +14,11 @@ export function ymmDirective() {
         controllerAs: 'vm',
         bindToController: true,
 
-        link: function (scope, el, attr) {
+        link(scope, el, attr) {
             console.log('am in ymm directive link function');
         },
 
-        compile: function (tElement, tAttrs, transclude) {
+        compile(tElement, tAttrs, transclude) {
             return function ($scope, tElement) {
                 $scope.directiveContent = true;
                 console.log('inside compile function');
