@@ -1,10 +1,15 @@
 export function runBlock($rootScope, $location, SearchBarService, dataServices, OrderListService,  $translate,$window) {
     'ngInject';
-    dataServices.orderList().then(function (response) {
+    if(sessionStorage.orderId){
+        OrderListService.orderId = angular.fromJson(sessionStorage.orderId);
+    }else{
+        dataServices.orderList().then(function (response) {
             OrderListService.orderId = response;
+            sessionStorage.orderId = angular.toJson(response);
         }, function (error) {
         });
-
+    }
+    
     $rootScope.$on('$locationChangeSuccess', function() {
     	
         if($rootScope.previousLocation == $location.path() && $location.path() == '/search') {

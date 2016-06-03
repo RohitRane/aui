@@ -13,7 +13,7 @@ export class OrderListController {
       let vm = this;
       let {$log, $uibModal, OrderListService} = vm.DI();
       vm.orderId = OrderListService.orderId;
-      vm.orderList = OrderListService.orderList;
+      vm.orderList = OrderListService.orderList = angular.fromJson(sessionStorage.orderList);
     }
     
     remove(index){

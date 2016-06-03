@@ -3,8 +3,12 @@ export class SearchBarService {
     /*constructor(srchStr) {
         this{._srchStr = srchStr;
     }*/
-    constructor() {
+    constructor(OrderListService) {
+        'ngInject';
+        let vm = this;
+        vm.DI = () => ({ OrderListService });
         this._filters = [{}];
+        this._orderList = [];
         this.nullSearch = {
             flag: false,
             category: ""
@@ -148,14 +152,6 @@ export class SearchBarService {
         return this._ymm;
     }
 
-    get orderList() {
-        return this._orderList;
-    }
-
-    set orderList(newList) {
-            this._orderList = newList;
-    }
-
     clearSession() {
         console.log("Back in clear", sessionStorage.categoryfilters);
         delete sessionStorage.srchStr;
@@ -186,6 +182,8 @@ export class SearchBarService {
 
     _retrieveFromSession() {
         //  console.log("Back in _retrieveFromSession",  sessionStorage.categoryfilters);
+        let vm = this;
+        let {OrderListService} = vm.DI();
         this._srchStr = sessionStorage.srchStr;
         this._productLine = angular.fromJson(sessionStorage.productLine);
         this._productClass = angular.fromJson(sessionStorage.productClass);
@@ -193,7 +191,8 @@ export class SearchBarService {
         this._categoryfilters = angular.fromJson(sessionStorage.categoryfilters);
         this._filters = angular.fromJson(sessionStorage.filters);
         this._selectdeFilters = angular.fromJson(sessionStorage.selectdeFilters);
-        console.log("Back in _retrieveFromSession", sessionStorage.productLine);
+        OrderListService.orderList = angular.fromJson(sessionStorage.orderList);
+        console.log("Back in _retrieveFromSession", angular.fromJson(sessionStorage.orderList), OrderListService.orderList);
         /* this._productLine = sessionStorage.productLine;
          this._productCategory = sessionStorage.productCategory;
          this._typeId = sessionStorage.typeId;

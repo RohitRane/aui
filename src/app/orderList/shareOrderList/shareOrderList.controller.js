@@ -1,9 +1,9 @@
 /*Author : Shaifali Jaiswal*/
 export class ShareOrderlistController {
-    constructor($uibModalInstance, items, dataServices, SearchBarService, OrderListService) {
+    constructor($uibModalInstance, $location, items, dataServices, SearchBarService, OrderListService) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({$uibModalInstance});
+        vm.DI = () => ({$uibModalInstance, $location, dataServices, OrderListService});
         console.log("OrderListService.orderList ", OrderListService.orderList);
     }
 
@@ -15,7 +15,18 @@ export class ShareOrderlistController {
 
     shareOrderList(){
       let vm = this,
-      { dataServices, SearchBarService, OrderListService } = vm.DI();
+      { $location, dataServices, SearchBarService, OrderListService } = vm.DI();
+      console.log(OrderListService.orderList);
+      let temp = OrderListService.orderList;
+      let orderList = temp.map(function (list) {
+        return {
+            "partNumber": list.partNumber,
+            "quantity": list.qty,
+            "partCategory": list.LOB,
+            "partName": list.partDesc
+        }
+      });
+
       let payload = {
         "uuid": OrderListService.orderId,
         "fromFirstName": vm.fName,
@@ -23,10 +34,18 @@ export class ShareOrderlistController {
         "fromEmail": vm.fEmail,
         "description": vm.text,
         "sendTo": [vm.tEmail],
-        "orderParts": OrderListService.orderList
+        "sharedURL": $location.absUrl(),
+        "orderParts": orderList
       };
       dataServices.shareList(payload).then(function (response) {
             OrderListService.orderId = response;
+            /* Once orderlist changed we should get new orderlist */
+            dataServices.orderList().then(function (response) {
+                  OrderListService.orderId = response;
+                  sessionStorage.orderId = angular.toJson(response);
+                  OrderListService.orderList = [];
+              }, function (error) {
+              });
         }, function (error) {
       });
     }

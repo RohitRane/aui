@@ -57,7 +57,7 @@ class SearchResultDirectiveController {
         this.shwMsg = true;
         Object.assign(vm.part, {id:OrderListService.orderList.length, qty: vm.qty, addToCart: true, LOB:SearchBarService.productLine.name });
         OrderListService.orderList.push(vm.part);
-        
+        sessionStorage.orderList = angular.toJson(OrderListService.orderList);
       }else{
        
       }
