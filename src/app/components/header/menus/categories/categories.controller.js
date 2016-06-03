@@ -114,7 +114,7 @@ export class CategoryMenuController {
     }
 
     search(cat1, cat2, cat3) {
-        let vm = this, {$state, $rootScope,  BreadCrumbService} = vm.DI();
+        let vm = this, {$state, $rootScope,  BreadCrumbService, $timeout} = vm.DI();
 
         console.log("Cat-e-gory", cat1, cat2, cat3);
         let paramObj = { 'mode': 'hierarchy', 'cat1': cat1 ? cat1.id : null, 'cat2': cat2 ? cat2.id : null, 'cat3': cat3 ? cat3.id : null };
@@ -126,6 +126,9 @@ export class CategoryMenuController {
         $rootScope.$emit("clearCategoryFilter");
         $state.go("searchResults", paramObj);
         
+        $timeout(()=>{
+            cat1.open = false;
+        },100);       
 
     }
 

@@ -356,7 +356,7 @@
       <div class="panel-body part-panel">
         <div class="section-title bottom top-bottom-gap">Interchanges</hr>
         </div>
-        <div class="col-md-6">
+        <div data-ng-class="part.ymmInterTab2.length!==0?'col-md-6':'col-md-12'">
           <table class="table">
             <thead>
               <tr>
@@ -374,7 +374,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" data-ng-if="part.ymmInterTab2.length!==0">
           <table class="table">
             <thead>
               <tr>

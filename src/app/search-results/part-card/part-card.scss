@@ -4,7 +4,7 @@
             .panel{
                 border-radius: 0px !important;
                 padding: 10px 15px 15px 15px;
-                border: none;
+                border: 1px solid $support_color_light_one;
                 .col-md-6, .col-md-3{
                     padding: 0;
                 }
