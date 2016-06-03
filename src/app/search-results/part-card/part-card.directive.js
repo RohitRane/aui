@@ -63,6 +63,16 @@ class SearchResultDirectiveController {
       }
     }
 
+    sort(sortObj){
+      let vm = this;
+      let { SearchBarService } = vm.DI();
+      if(sortObj = "")
+      SearchBarService.sort = {
+        sortType: sortObj.Name,
+        sortName: sortObj.Type
+      }
+    }
+
     toggleSpecs() {
 
         if (this.toggle) {

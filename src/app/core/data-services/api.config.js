@@ -62,6 +62,15 @@ export let apiConfig = {
         'data': {}
     },
 
+    'SHARED_ORDERLIST': {
+        'url': '',
+        'setUrl': function (id) {
+            this.url = apiBaseUrl + '/orderLists/'+id;
+        },
+        'method': 'GET',
+        'data': {}
+    },
+
     'AUTO_SEARCH': {
         'url': '',
         'setUrl': function (param, category) {
@@ -93,6 +102,10 @@ export let apiConfig = {
                 "make": make,
                 "model": model,
                 "ymm": ymm
+                /*"sort": {
+                    "sortType": "ACS",
+                    "sortName": "PartNumber"
+                }*/
             }
         },
         'method': 'POST',

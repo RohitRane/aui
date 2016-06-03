@@ -10,7 +10,21 @@ export class SearchResultsController {
         vm.automotive_id = AftermarketConstants.skin.automotive_id;
         vm.currentPage = 1;
         vm.searchString = "";
-        vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DESC"];
+       // vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DESC"];
+        vm.sortAttributes = [
+            {
+                Name: "Relevance",
+                Type: ""
+            },
+            {
+                Name: "PartNumber",
+                Type: "ASC"
+            },
+            {
+                Name: "PartNumber",
+                Type: "DESC"
+            }
+        ];
         vm.results = {
             parts: [],
             totalResults: 0

@@ -18,7 +18,7 @@ export class BreadCrumbController {
         });
 
         if ($state.is('searchResults')) {
-            vm.sortItem = vm.sortAttributes[0];
+            vm.sortItem = vm.sortAttributes[0].Name;
             vm.pageState = 'searchResults';
             if ($stateParams.mode && $stateParams.mode === "hierarchy") {
                 console.log("STATE PARAMS :", $stateParams);

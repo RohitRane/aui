@@ -152,6 +152,15 @@ export class SearchBarService {
         return this._ymm;
     }
 
+    get sort() {
+        return this._sort;
+    }
+
+    set sort(obj) {
+        this._sort = obj;
+        sessionStorage.sort = angular.toJson(this._sort);
+    }
+
     clearSession() {
         console.log("Back in clear", sessionStorage.categoryfilters);
         delete sessionStorage.srchStr;
@@ -191,8 +200,7 @@ export class SearchBarService {
         this._categoryfilters = angular.fromJson(sessionStorage.categoryfilters);
         this._filters = angular.fromJson(sessionStorage.filters);
         this._selectdeFilters = angular.fromJson(sessionStorage.selectdeFilters);
-        OrderListService.orderList = angular.fromJson(sessionStorage.orderList);
-        console.log("Back in _retrieveFromSession", angular.fromJson(sessionStorage.orderList), OrderListService.orderList);
+        this._sort = angular.fromJson(sessionStorage.sort);
         /* this._productLine = sessionStorage.productLine;
          this._productCategory = sessionStorage.productCategory;
          this._typeId = sessionStorage.typeId;

@@ -8,5 +8,12 @@ export function routeConfig($stateProvider){
 			templateUrl: 'app/orderList/orderList.html',
 			controller:'OrderListController',
 			controllerAs:'orderlist'
+		})
+		.state('sharedOrderList', {
+			url: '/sharedOrderList/:id',
+			parent: 'aftermarket',
+			templateUrl: 'app/orderList/sharedOrderList/sharedOrderList.html',
+			controller:'SharedOrderListController',
+			controllerAs:'sharedOrderlist'
 		});
 }

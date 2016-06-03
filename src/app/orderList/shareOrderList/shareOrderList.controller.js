@@ -34,7 +34,7 @@ export class ShareOrderlistController {
         "fromEmail": vm.fEmail,
         "description": vm.text,
         "sendTo": [vm.tEmail],
-        "sharedURL": $location.absUrl(),
+        "sharedURL": location.host+"/"+"sharedOrderList",
         "orderParts": orderList
       };
       dataServices.shareList(payload).then(function (response) {

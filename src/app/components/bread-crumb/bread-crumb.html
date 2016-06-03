@@ -29,8 +29,8 @@
                 {{bc.sortItem}} <span class="caret"></span>
   </button>
   <ul class="pull-right" uib-dropdown-menu role="menu " aria-labelledby="single-button">
-    <li role="menuitem">
-      <a href="#" ng-click="bc.sortItem= action; bc.sortAction(action)" ng-model="bc.sortItem" ng-repeat="action in bc.sortAttributes">{{action}}</a>
+    <li role="menuitem" data-ng-click="bc.sort(action)">
+      <a href="#" ng-click="bc.sortItem= sort.Name+':'+sort.Type; bc.sortAction(sort)" ng-model="bc.sortItem" ng-repeat="sort in bc.sortAttributes">{{sort.Name}}:{{sort.Type}}</a>
     </li>
   </ul>
 </div>
