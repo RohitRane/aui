@@ -1,0 +1,43 @@
+<div>
+    <div  data-ng-class="part.ymmCompatibilityTab2.length!==0?'col-md-6':'col-md-12'">
+        <table class="table">
+        <thead>
+            <tr>
+            <th>Year</th>
+            <th>Make</th>
+            <th>Model</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab1.slice((part.partData.apps.currentPage-1)*part.partData.apps.pageLength,part.partData.apps.currentPage*part.partData.apps.pageLength-1)">
+            <td data-ng-bind="ymm.year"></td>
+            <td data-ng-bind="ymm.make"></td>
+            <td data-ng-bind="ymm.model"></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+    <div class="col-md-6" data-ng-if="part.ymmInterTab2.length!==0">
+        <table class="table">
+        <thead>
+            <tr>
+            <th>Year</th>
+            <th>Make</th>
+            <th>Model</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="ymm in part.ymmCompatibilityTab2.slice((part.partData.apps.currentPage-1)*part.partData.apps.pageLength,part.partData.apps.currentPage*part.partData.apps.pageLength-1)">
+            <td data-ng-bind="ymm.year"></td>
+            <td data-ng-bind="ymm.make"></td>
+            <td data-ng-bind="ymm.model"></td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+     <div class="text-center">
+    <uib-pagination data-ng-if="part.partData.apps.showPagination" total-items="part.partData.apps.totalPages" ng-model="part.partData.apps.currentPage" max-size="part.partData.apps.maxSize"
+      class="pagination-sm" boundary-links="true" rotate="false" ng-change="part.partData.apps.pageChanged()" previous-text="&lsaquo;"
+      next-text="&rsaquo;"></uib-pagination>    
+  </div>
+</div>

@@ -1,0 +1,217 @@
+.ymm-directive {
+    padding: 0px 20px;
+    margin: 0px -10px;
+    height: 50px;
+    .scrollable-container-box {
+        height: auto;
+        overflow: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        button {
+            margin-right: 10px;
+        }
+        #ymmSubmitSelector {
+            background-color: #aaaaaa;
+            color: white;
+        }
+    }
+}
+
+div.atsDDContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    background-clip: padding-box;
+    border-top: 5px solid #0093c6;
+    span.arrow_box1 {
+        position: absolute;
+        top: -33px;
+        left: 55px;
+        &:before {
+            content: " ";
+            left: 60px;
+            border: solid transparent;
+            border-color: rgba(136, 183, 213, 0);
+            border-bottom-color: #0093c6;
+            border-width: 9px;
+            margin-left: -10px;
+        }
+        &:after {
+            bottom: 102%;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+    }
+}
+
+ul#yearHolder {
+    // width: 400px;
+    // overflow-x: scroll;
+    
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    background-clip: padding-box;
+    border-top: 5px solid #0093c6;
+    li.arrow_box {
+        position: relative;
+    }
+    li.arrow_box {
+        div#yearSelectorTable {
+            width: 575px;
+            height: 290px;
+            margin-left: 20px;
+            ul {
+                position: relative;
+                display: inline-block;
+                list-style: none;
+                text-indent: 0;
+                margin: 0;
+                padding: .1em .15em;
+                vertical-align: top;
+                zoom: 1;
+                li {
+                    font-size: 12px;
+                    white-space: nowrap;
+                    color: #000;
+                    margin: 0 4px 0 0;
+                    padding: 0 0 5px;
+                    position: relative;
+                    color: #b0b0b0;
+                    font-weight: 600;
+                    h3 {
+                        font-size: 14px;
+                        font-weight: 600;
+                    }
+                    a {
+                        margin: 0;
+                        color: #000;
+                        text-decoration: none;
+                    }
+                    a:hover {
+                        text-decoration: none;
+                        background-color: #444C55;
+                        color: #FFF;
+                        padding-left: 5px;
+                        border-radius: 3px;
+                        -moz-border-radius: 3px;
+                        -webkit-border-radius: 3px;
+                    }
+                    a:visited {
+                        text-decoration: none;
+                        color: #000;
+                        background-color: transparent;
+                    }
+                }
+            }
+            .asEmpty {
+                color: #aaa;
+            }
+        }
+    }
+    li.arrow_box:after,
+    li.arrow_box:before {
+        bottom: 102%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(136, 183, 213, 0);
+        border-bottom-color: #0093c6;
+        border-width: 11px;
+        margin-left: 40px;
+    }
+}
+
+.make-input {
+    padding: 10px 20px 10px 10px;
+}
+
+ul#makeDropDown,
+ul#modelDropDown {
+    width: 400px;
+    height: 280px;
+    overflow-x: scroll;
+    position: relative;
+    display: inline-block;
+    list-style: none outside none;
+    text-indent: 0;
+    margin: 0;
+    padding: 0.2em .8em;
+    vertical-align: top;
+    zoom: 1;
+    // *display: inline;
+    /*3 is just placeholder -- can be anything*/
+    -moz-column-width: 80px;
+    -webkit-column-width: 80px;
+    column-width: 80px;
+    li {
+        display: inline-block;
+        padding-bottom: 3px;
+        width: 60px;
+        white-space: nowrap;
+        color: #000;
+        margin: 0 2px 0 0;
+        padding: 0 0 1px 0;
+        position: relative;
+        a {
+            font-size: 12px !important;
+            margin: 0;
+            padding: 3px 1px !important;
+            width: auto;
+            display: block;
+            color: #000;
+            display: inline-block;
+            text-overflow: ellipsis;
+            white-space: pre-wrap !important;
+        }
+        a:visited {
+            text-decoration: none;
+            color: #000;
+            background-color: transparent;
+        }
+        a:hover {
+            text-decoration: none;
+            background-color: #444C55;
+            color: #FFF;
+            padding-left: 5px;
+            border-radius: 3px;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px
+        }
+    }
+    div.makeInput {
+        display: inline-table !important;
+    }
+}
