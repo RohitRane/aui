@@ -55,8 +55,11 @@
                             .shwQty{
                                  a.disabledButton{
                                  color:red;
-                                cursor: none; opacity: .5; 
+                                cursor: none; 
+                                font-weight: 600;
+                                opacity: .5; 
                                 text-decoration:none;
+                                pointer-events:none;
                             }
                                 input{
                                     width: 20%;
