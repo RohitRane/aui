@@ -20,14 +20,18 @@
               <a style="font-weight:600" ng-class="{false: 'disabledButton'}[partCard.qty > 0]"  adisabled-directive="partCard.qtyNotAllowed" ng-click="partCard.change('shwMsg')">{{'PARTCARD.ADD' | translate}}</a>
             </div>
             <span ng-show="partCard.shwMsg">{{'PARTCARD.SHOWMSG' | translate}}</span>
+
             <div style="color:red" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div>
-             </form>
+            
+
+            <!-- <div style="color:red" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div> -->
+ </form>
             </span>
 
             <!--<span><img src="assets/images/icon_shoppingCart.jpg"></span>-->
           </div>
         </div>
-
+        <div style="color:red; margin-top:10px;font-weight: 600;" class="error text-right" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div>
         <div class="hrLine"></div>
       </div>
       <div class="panel-body">

@@ -56,7 +56,7 @@ export class YmmService {
             method: 'POST',
             data: {
                 "q": SearchBarService.srchStr,
-                "cats": [$stateParams.cat1, null, tempCatId],
+                "cats": [$stateParams.cat1, $stateParams.cat2, $stateParams.cat3],
                 "lvl1": this.level[1],
                 'lvl2': this.level[2],
                 "lvl3": (this.level[3]==undefined)?(null):(this.level[3]),
