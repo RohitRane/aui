@@ -22,13 +22,18 @@ export class OrderListController {
       vm.orderList = OrderListService.orderList = angular.fromJson(sessionStorage.orderList);
     }
     
-    remove(index){
-      let vm = this;
-      let {$log, $uibModal, OrderListService} = vm.DI();
-      //OrderListService.orderList.pop(OrderListService.orderList[id]);
-      OrderListService.orderList.splice(index,1);
-      sessionStorage.orderList = angular.toJson(OrderListService.orderList);
-      vm.orderList = OrderListService.orderList;
+    remove(itemIndex){
+        let vm = this;
+        let {$log, $uibModal, OrderListService} = vm.DI();
+        //OrderListService.orderList.pop(OrderListService.orderList[id]);
+        OrderListService.orderList.forEach(function(item,index,object){
+            if(item.id==itemIndex){
+                object.splice(index, 1)
+            }
+        })
+        // OrderListService.orderList.splice(index,1);
+        sessionStorage.orderList = angular.toJson(OrderListService.orderList);
+        vm.orderList = OrderListService.orderList;
     }
       save(index,qty){
       let vm = this;

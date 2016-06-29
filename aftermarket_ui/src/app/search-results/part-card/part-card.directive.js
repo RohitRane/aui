@@ -10,17 +10,17 @@ export function PartCardDirective() {
         controller: SearchResultDirectiveController,
         controllerAs: 'partCard',
         /* link: function(scope) {
-             $timeout(function(){
-                 if(angular.isDefined(scope.part) && scope.part.attrs != null){
-                     $log.debug("if");
-                     scope.part.attrList = Object.keys(scope.part.attrs);
-                 }else{ 
-                     $log.debug("else");
-                     scope.part.attrList =[];
-                 }
-             }); 
-             
-          },*/
+         $timeout(function(){
+         if(angular.isDefined(scope.part) && scope.part.attrs != null){
+         $log.debug("if");
+         scope.part.attrList = Object.keys(scope.part.attrs);
+         }else{
+         $log.debug("else");
+         scope.part.attrList =[];
+         }
+         });
+
+         },*/
         bindToController: true
     };
     return directive;
@@ -30,12 +30,12 @@ class SearchResultDirectiveController {
     constructor($log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, $translate) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({ $log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService });
+        vm.DI = () => ({$log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService});
 
         /* if(this.part.attrs != null){this.dI.log.debug("if");
-             this.part.attrList = Object.keys(this.part.attrs);
+         this.part.attrList = Object.keys(this.part.attrs);
          }else{ this.dI.log.debug("else");
-             this.part.attrList =[];
+         this.part.attrList =[];
          }*/
 
         this.specLimit = 5;
@@ -44,25 +44,37 @@ class SearchResultDirectiveController {
         this.shwOrdrTxt = true;
         this.shwQty = false;
         this.shwMsg = false;
+        this.qty = "";
+        this.qtyNotAllowed = (this.qty>0)?false:true;
 
-        console.log("part123", vm.part);
+
     }
-
+    checkOrderlistVal(){
+        if(this.qty >0){
+            this.qtyNotAllowed = false;
+        }
+    }
     change(msg) {
         let vm = this;
         let { SearchBarService, OrderListService } = vm.DI();
         if (msg == "shwQty") {
             this.shwOrdrTxt = false;
             this.shwQty = true;
+            if (this.qty > 0) {
+                this.qtyNotAllowed = false;
+            }
+            else {
+                this.qtyNotAllowed = true;
+            }
         } else if (msg == "shwMsg") {
             this.shwQty = false;
             this.shwMsg = true;
 
             let oldItem = false;
-            OrderListService.orderList.map(function(item) {
+            OrderListService.orderList.map(function (item) {
                 if (item.partNumber == vm.part.partNumber) {
                     item.quantity = Number(item.quantity) + Number(vm.qty);
-                    oldItem = true;                    
+                    oldItem = true;
                 }
             })
             if (oldItem == false) {
@@ -113,13 +125,25 @@ class SearchResultDirectiveController {
         let retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
         //url ?  retUrl = url : retUrl = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
         switch (part.categories[2].name) {
-            case 'Flanges': retUrl = "/assets/images/flange.png"; break;
-            case 'Universal Joints': retUrl = "/assets/images/u-joint.jpg"; break;
-            case 'Flange Yoke': retUrl = "/assets/images/flange_yoke.jpg"; break;
-            case 'Flange Yokes': retUrl = "/assets/images/flange_yoke.jpg"; break;
-            case 'Ring and Pinions': retUrl = "/assets/images/rangeNpinion.jpg"; break;
-            default: angular.noop();
-        };
+            case 'Flanges':
+                retUrl = "/assets/images/flange.png";
+                break;
+            case 'Universal Joints':
+                retUrl = "/assets/images/u-joint.jpg";
+                break;
+            case 'Flange Yoke':
+                retUrl = "/assets/images/flange_yoke.jpg";
+                break;
+            case 'Flange Yokes':
+                retUrl = "/assets/images/flange_yoke.jpg";
+                break;
+            case 'Ring and Pinions':
+                retUrl = "/assets/images/rangeNpinion.jpg";
+                break;
+            default:
+                angular.noop();
+        }
+        ;
         return retUrl;
     }
 
@@ -130,7 +154,7 @@ class SearchResultDirectiveController {
     gotoPart(id) {
         let vm = this;
         let {$stateParams, $state} = vm.DI();
-        let paramObj = { "id": id, "type": "id" };
+        let paramObj = {"id": id, "type": "id"};
         angular.extend(paramObj, $stateParams);
         //let paramKeys = Object.keys(paramObj);
         angular.forEach(paramObj, (value, key, obj) => {
