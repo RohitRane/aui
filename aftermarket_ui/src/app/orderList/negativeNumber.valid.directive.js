@@ -14,8 +14,16 @@ export function nonegativeDirective() {
         linkFunction(scope, elem, attrs, ctrl) {
             if (!ctrl) return;
             ctrl.$validators.positive = function(value) {
-                return value && value > 0;
-            };
+                debugger;
+                let abc;
+                let ret = true;
+                if(angular.isDefined(value) && value!==""){
+                    ret =  (value > 0);
+                }
+                 
+                return ret;
+                
+            }
         }
     
 }
