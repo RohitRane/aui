@@ -250,6 +250,7 @@ export class BreadCrumbController {
                     case 2: if ($state.is("searchResults")) {
                         angular.noop();
                     } else {
+                        SearchBarService.listPreviousFilter = [];
                         SearchBarService.productLine = vm.cats[0];
                         SearchBarService.productClass = vm.cats[1];
                         SearchBarService.productCategory = vm.cats[2];

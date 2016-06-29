@@ -434,13 +434,14 @@
         <img data-ng-hide="part.hideForNow" src="assets/images/part-details/machine_exploded.jpg" class="img-responsive" />
       </div>
     </uib-tab>
-    <uib-tab class="tab" index="4" data-ng-if="part.hasInterchanges(part.partData.interchanges) && part.hideForNow">
+    <!-- <uib-tab class="tab" index="4" data-ng-if="part.hasInterchanges(part.partData.interchanges) && part.hideForNow"> -->
+    <!-- <uib-tab class="tab" index="4" data-ng-if="part.hasInterchanges(part.partData.interchanges) && part.hideForNow">
       <uib-tab-heading>
         Interchanges
       </uib-tab-heading>
       <div class="container-fluid" data-ng-include="'app/part/interchanges-table.html'">        
       </div>
-    </uib-tab>
+    </uib-tab> -->
   </uib-tabset>
 
   <div ng-hide="true" id="interchanges" class="comp-table" data-ng-if="part.hasInterchanges(part.partData.interchanges)">
