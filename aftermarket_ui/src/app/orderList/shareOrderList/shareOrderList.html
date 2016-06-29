@@ -1,0 +1,119 @@
+<div id="shareOrderlistPopup" class="modal-wrapper">
+    <div class="modal-header bg-success">
+     <button type="button" class="close" ng-click="shareList.cancel()" data-dismiss="modal">&times;</button>
+        <div class="row">
+            <div class="col-sm-9">
+                <h4>OrderList #{{OrderId.orderId}}</h4>
+                <p>{{shareList.date | date:'yyyy-MM-dd @ h:mma'}}</p>
+            </div>
+            <div class="col-sm-3">
+                <!--   <div class="pull-right">
+                    <h4>03</h4>
+                    <p>parts</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <h5 class="text-center">Once shared, orderlist will not be editable.</h5>
+        <form class="form-horizontal" name="shareOrderlistForm" novalidate>
+            <h4>From:</h4>
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label class="sr-only">First Name</label><span class="madatoryStar">*</span>
+                    <input type="text" nospecialchar-directive name="fName" required data-ng-model="fName" class="form-control" placeholder="First Name" >
+                     
+                    <span style="color:red" ng-show="shareOrderlistForm.fName.$touched && shareOrderlistForm.fName.$invalid">
+                        <span ng-show="shareOrderlistForm.fName.$error.required">Please Enter Your First Name </span>
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <label class="sr-only">Last Name</label><span class="madatoryStar">*</span>
+                    <input nospecialchar-directive type="text" data-ng-model="lName" name="lName" class="form-control" placeholder="Last Name" required>
+                     <span style="color:red" ng-show="shareOrderlistForm.lName.$touched && shareOrderlistForm.lName.$invalid">
+                        <span ng-show="shareOrderlistForm.lName.$error.required">Please Enter Your last Name </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="sr-only">Your Email ID's </label><span class="madatoryStar">*</span>
+                    <input type="email" data-ng-model="fEmail" name="fEmail" class="form-control" placeholder="Your Email ID's" required>
+                      <span style="color:red" ng-show="shareOrderlistForm.fEmail.$touched && shareOrderlistForm.fEmail.$invalid">
+                        <span ng-show="shareOrderlistForm.fEmail.$error.required">Please Enter Your Email </span>
+                        <span ng-show="shareOrderlistForm.fEmail.$error.email">Please Enter correct Email </span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="sr-only">Your Phone Number </label>
+                    <input validtelephone-directive type="tel" class="form-control" placeholder="Your Phone Number"  data-ng-model="phoneNumber" >
+                </div>
+            </div>
+            <h4>To:</h4>
+
+            <!--
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
+                    <input type="email" multiple data-ng-model="shareList.tEmail" name="tEmail" class="form-control" placeholder="To Email ID's" required>
+                   <span style="color:red" ng-show="shareOrderlistForm.tEmail.$touched && shareOrderlistForm.tEmail.$invalid">
+=======
+                    <input type="tel" class="form-control" placeholder="Your Phone Number">
+                </div>
+            </div>
+            <h4>To:</h4>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
+                    <input type="email" data-ng-model="shareList.tEmail" name="tEmail" class="form-control" placeholder="To Email ID's" required>
+                    <span ng-show="shareOrderlistForm.tEmail.$dirty && shareOrderlistForm.tEmail.$invalid">
+>>>>>>> rebase from development'
+                        <span ng-show="shareOrderlistForm.tEmail.$error.required">Please Enter Your Email </span>
+                        <span ng-show="shareOrderlistForm.tEmail.$error.email">Please Enter correct Email </span>
+                    </span>
+                </div>
+            </div>
+<<<<<<< 1c6cc364710cb38183eb9b71c604d717cea4d050
+-->
+            <div class="form-group">
+                <div class="col-md-12">
+                <textarea multipleemails-directive class="form-control" placeholder="To Email ID's" name="tEmail" ng-model="emails" multipleemails-directive required></textarea>
+                <span  ng-class="{'has-error': shareOrderlistForm.tEmail.$invalid}">
+                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$error.required">Please Enter Your Email </span>
+                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$invalid">Please Enter correct Email </span>
+                </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <textarea class="form-control" data-ng-model="descText" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my orderlist.
+                    </textarea>
+                </div>
+            </div>
+
+              <div class="form-group">
+             <div class="col-md-12">
+                    <input style="width:15px;height:15px;float:left;"  ng-checked="callback" type="checkbox" multiple="" data-ng-model="callback" name="callback" class="form-control ng-pristine ng-valid ng-touched" placeholder="To Email ID's">
+<label style="font-size:13px;margin-top:2px; margin-left:3px;">would you like us to call back
+                </label>
+                   </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6">
+               <!-- <div class="getURL">
+                    <h6><span class="glyphicon glyphicon-paperclip"></span><a data-ng-click="shareList.shareOrderList()" href="#">Get URL</a></h6>
+                </div>-->
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary" type="submit" ng-click="shareList.shareOrderList(true)" 
+                    ng-disabled="shareOrderlistForm.$invalid" >Share Orderlist</button>
+            </div>
+        </div>
+    </div>
+</div>
