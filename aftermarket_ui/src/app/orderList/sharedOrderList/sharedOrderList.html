@@ -37,7 +37,7 @@
                             <div ng-repeat="(key, value) in sharedOrderlist.sharedList.orderParts |groupBy: 'partCategory'">
                                     {{key}} {{value.length}}parts
                                 <div class="orderItems" ng-repeat="list in value">
-                                    <div class="col-md-2"><img src="{{list.partImageUrl}}" /></div>
+                                    <div class="col-md-2"><img src="http://{{list.partImageUrl}}" /></div>
                                     <div class="col-md-8 orderitemDetail">
                                         {{list.partNumber}}{{list.id}}
                                     </div>
