@@ -4,8 +4,7 @@
         <span class="category" ng-class=" category.select ? 'blue': '' " ng-click="vm.categoryFilter(category);vm.launchTreeEvent();">{{category.name}}</span>
         <span ng-show="category.children" ng-click="vm.collapseCategory(category);" class="arrow" ng-class=" category.collapse ? 'glyphicon glyphicon-menu-up': 'glyphicon glyphicon-menu-down' "></span>
         <div ng-show="category.collapse" class="subcategory"  data-ng-repeat="subcategory in category.children | orderBy: 'name'">
-            <span ng-class=" subcategory.select ? 'blue': '' " class=
-            "subcategory" ng-click="vm.subCategoryFilter(category, subcategory);vm.launchTreeEvent();">{{subcategory.name}}</span>
+            <span ng-class=" subcategory.select ? 'blue': '' "  ng-click="vm.subCategoryFilter(category, subcategory);vm.launchTreeEvent();">{{subcategory.name}}</span>
         </div>
     </div>
    <!--  <br> -->
