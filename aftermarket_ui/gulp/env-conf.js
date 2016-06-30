@@ -11,15 +11,19 @@ gulp.task('gen-env', function () {
     console.log("API server endpoint in use :");
     console.log(Object.keys(argv));
     if (argv.prod) {
-        console.log("production");
+        console.log("API Environment : production");
         fs.createReadStream('src/env/production.js').pipe(fs.createWriteStream('src/env/env.js'));
     }
     else if (argv.uat) {
-        console.log("uat");
+        console.log("API Environment : uat");
         fs.createReadStream('src/env/uat.js').pipe(fs.createWriteStream('src/env/env.js'));
     }
+    else if (argv.local) {
+        console.log("API Environment : local");
+        fs.createReadStream('src/env/local.js').pipe(fs.createWriteStream('src/env/env.js'));
+    }
     else {
-        console.log("dev");
+        console.log("API Environment : dev");
         fs.createReadStream('src/env/development.js').pipe(fs.createWriteStream('src/env/env.js'));
     }
 });
