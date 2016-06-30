@@ -37,7 +37,10 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3">
-            <a href ng-click="partCard.gotoPart(partCard.part.id)"><img ng-src="http://{{partCard.part.imageUrl}}"></a>
+            <a href ng-click="partCard.gotoPart(partCard.part.id)">
+              <img ng-show="partCard.part.imageUrl" ng-src="http://{{partCard.part.imageUrl}}">
+              <img ng-show="!partCard.part.imageUrl" ng-src="http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE+AVAILABLE">
+            </a>
             <!-- <a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part)}}"></a> -->
           </div>
           <div class="col-md-8" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
