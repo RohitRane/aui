@@ -129,7 +129,7 @@ export class PartController {
                 vm.partData = response;
                 setImages();
                 vm._createCompatibilityTab();
-                vm._createInterchangesTab();
+                //vm._createInterchangesTab();
                 $scope.$emit("showLoading", false);
             }, function (error) {
                 $scope.$emit("showLoading", false);
@@ -141,7 +141,7 @@ export class PartController {
                 setImages();
 
                 vm._createCompatibilityTab();
-                vm._createInterchangesTab();
+                //vm._createInterchangesTab();
                 $scope.$emit("showLoading", false);
             }, function (error) {
                 $scope.$emit("showLoading", false);
