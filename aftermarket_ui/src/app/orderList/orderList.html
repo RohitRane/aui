@@ -6,13 +6,13 @@
                     <div class="row">
                         <div class="col-sm-8">
 
-                            <h2>OrderList #{{orderlist.orderId}} <span>({{orderlist.orderList.length}}&nbsp; <span ng-if="orderlist.orderList.length === 1"> Part </span> <span ng-if="orderlist.orderList.length > 1"> Parts </span>)</span></h2>
+                            <h2>Order List #{{orderlist.orderId}} <span>({{orderlist.orderList.length}}&nbsp; <span ng-if="orderlist.orderList.length === 1"> Part </span> <span ng-if="orderlist.orderList.length > 1"> Parts </span>)</span></h2>
 
                         </div>
                         <div class="col-sm-4">
                             <div class="pull-right alignment-bottom">
                                 <span class="glyphicon glyphicon-info-sign"></span>
-                                <label>Share the orderlist for future reference
+                                <label>Share the order list for future reference
                                 </label>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                                     <div class="col-sm-4">
                                         <div class="addToCart pull-right;">
                                             <a href="#">
-                                                <button type="button" class="btn btn-primary" ng-disabled="!!isThisDisabled()" data-ng-click="orderlist.open()">Share Orderlist</button>
+                                                <button type="button" class="btn btn-primary" ng-disabled="!!isThisDisabled()" data-ng-click="orderlist.open()">Share Order List</button>
                                             </a>
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                          <form name="amOrderlist">
                                             <div class="col-md-4 text-right">
                                                 <span data-ng-show="!list.show" >{{list.quantity}}</span>
-                                                <span data-ng-show="list.show"><input style="width:50px" nonegative-directive min="1" type="number" data-ng-model="list.quantity"  name="qty" class="qtyeditable" /></span>
+                                                <span data-ng-show="list.show"><input style="width:50px" nonegative-directive type="number" data-ng-model="list.quantity"  name="qty" class="qtyeditable" /></span>
                                                   <div class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div>
                                             </div>
                                             <div class="col-md-4 text-right">
@@ -110,7 +110,7 @@
                 <div class="orderHeading">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h2>No OrderList available</span></h2>
+                            <h2>No Order List available</span></h2>
                         </div>
                        
                     </div>

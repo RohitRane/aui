@@ -50,7 +50,7 @@ export let localization = {
       CORRESMATCH:'Corresponding match',
       ADDTOORDERLIST:'Add to Order List',
       ADD:'Add',
-      SHOWMSG:'Added to order list.',
+      SHOWMSG:'Added to Order List.',
       SPECIFICATIONS:'Specifications',
       CALL:'Please Contact Dana Help line number : 1-800-621-8084',
     },
