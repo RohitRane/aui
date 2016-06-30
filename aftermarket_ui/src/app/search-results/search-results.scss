@@ -63,11 +63,17 @@
                 margin-bottom: 10px;
             }
             .refine-header{
+                @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+                    font-size: 12px;
+                }
                 font-weight: 500;
                 font-size: 13px;
                 margin-bottom: 5px;
                 .arrow{
                     float: right;
+                    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+                        margin-top: 3px;
+                    }
                     &:hover{
                         cursor: pointer;
                     }
