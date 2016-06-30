@@ -160,7 +160,8 @@ class SearchResultDirectiveController {
         angular.forEach(paramObj, (value, key, obj) => {
             angular.isUndefined(value) ? delete obj[key] : angular.noop();
         });
-        $state.go("part", paramObj);
+        //$state.go("part", paramObj);
+        return $state.href("part", paramObj);
     }
 }
 

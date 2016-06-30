@@ -4,17 +4,13 @@
         <button type="button" class="close" ng-click="cancel()" data-dismiss="modal">&times;</button>
         <div class="row">
             <div class="col-sm-9">
-                <h4>OrderList {{orderId}}</h4>
+                <h4>Order List {{orderId}}</h4>
                 <p>{{date | date:'yyyy-MM-dd @ h:mma'}}</p>
             </div>
             <div class="col-sm-3">
                 <div class="pull-right">
                     
-                    <h4>(
-                        {{quantity}}
-                        <span ng-if="quantity === 1">Part</span>
-                        <span ng-if="quantity > 1">Parts</span>)
-                    </h4>
+                    <h4>({{quantity}}<span ng-if="quantity === 1"> Part</span><span ng-if="quantity > 1"> Parts</span>)</h4>
                     
                 </div>
             </div>
@@ -22,7 +18,7 @@
     </div>
     <div class="modal-body">
         <h1 class="text-center"><span class="glyphicon glyphicon-ok-circle"></span></h1>
-        <h4 class="text-center">Your order is list is shared</h4>
+        <h4 class="text-center">Your order list is shared</h4>
     </div>
     <div class="modal-footer">
         <a href="/">
