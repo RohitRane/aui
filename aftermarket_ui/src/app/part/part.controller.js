@@ -149,7 +149,7 @@ export class PartController {
         }
 
         function setImages() {
-            let retUrl = "http://placehold.it/1000x1000/dbdbdb/0099CC/?text=NO+IMAGE+AVAILABLE";
+            let retUrl = "http://placehold.it/1000x1000/dbdbdb/0099CC/?text=NO+IMAGE";
             /*switch (vm.partData.categories[2].name) {
                 case 'Flanges': console.log("It's a flanges"); vm.partData.imageUrl = "/assets/images/flange.png"; break;
                 case 'Universal Joints': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/u-joint.jpg"; vm.partData.modelDiagram = "assets/images/model_diagram.gif"; break;
@@ -163,7 +163,7 @@ export class PartController {
                 return thumb;
             });
             //vm.activeThumb.url = vm.partData.imageUrl;
-            vm.activeThumb = { url: "placehold.it/300x300/dbdbdb/0099CC/?text=NO+IMAGE+AVAILABLE", zoom: false };
+            vm.activeThumb = { url: "placehold.it/300x300/dbdbdb/0099CC/?text=NO+IMAGE", zoom: false };
             angular.forEach(vm.thumbs, (thumb, index) => {
                 if (thumb.defaultAssetType) {
                     vm.activeThumb.url = thumb.fileName;

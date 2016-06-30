@@ -25,11 +25,20 @@ export class YmmService {
         //this.ymmURL = 'http://52.53.236.6';//QA
         this.method = 'POST';
         this.params = "";
-        this.currYMMOrder = [];
+        this._currYMMOrder = [];
         this.level = [];
         this.currentCache ={};
 
     }
+
+    set YMMOrder(order){
+        this._currYMMOrder=order;
+    }
+
+    get YMMOrder(){
+        return this._currYMMOrder;
+    }
+
 
     getYearData(q, cats, lvl1, lvl2, lvl3, from, size) {
         let vm = this;

@@ -172,19 +172,26 @@ class YMMDirectiveController {
             $scope, YmmService
             } = vm.DI();
         $scope.catChanged = true;
-        if ($scope.currentYMMOrder.length == 0) {
+        let ymmConfig ="";
+        if(YmmService.YMMOrder.length>0){
+            $scope.currentYMMOrder = YmmService.YMMOrder;
+            $scope.ymmParent = ymmConfig[0];
+            $scope.ymmFirstChild = ymmConfig[1];
+            $scope.ymmSecondChild = ymmConfig[2];
+        }
+        else{
             YmmService.getAPIConfigDataForYMM()
                 .then(function (response) {
                     let {
                         $scope
                         } = vm.DI();
 
-                    let ymmConfig = response.data.APIResponse.ymmConfig;
+                    ymmConfig = response.data.APIResponse.ymmConfig;
                     $scope.currentYMMOrder = ymmConfig;
                     $scope.ymmParent = ymmConfig[0];
                     $scope.ymmFirstChild = ymmConfig[1];
                     $scope.ymmSecondChild = ymmConfig[2];
-
+                    YmmService.YMMOrder = ymmConfig;
                 }, function (error) {
 
                 });
