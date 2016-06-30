@@ -3,7 +3,7 @@
      <button type="button" class="close" ng-click="shareList.cancel()" data-dismiss="modal">&times;</button>
         <div class="row">
             <div class="col-sm-9">
-                <h4>OrderList #{{OrderId.orderId}}</h4>
+                <h4>Order List #{{OrderId.orderId}}</h4>
                 <p>{{shareList.date | date:'yyyy-MM-dd @ h:mma'}}</p>
             </div>
             <div class="col-sm-3">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="modal-body">
-        <h5 class="text-center">Once shared, orderlist will not be editable.</h5>
+        <h5 class="text-center">Once shared, order list will not be editable.</h5>
         <form class="form-horizontal" name="shareOrderlistForm" novalidate>
             <h4>From:</h4>
             <div class="form-group">
@@ -89,7 +89,7 @@
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <textarea class="form-control" data-ng-model="descText" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my orderlist.
+                    <textarea class="form-control" data-ng-model="descText" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my order list.
                     </textarea>
                 </div>
             </div>
@@ -112,7 +112,7 @@
             </div>
             <div class="col-md-6">
                 <button class="btn btn-primary" type="submit" ng-click="shareList.shareOrderList(true)" 
-                    ng-disabled="shareOrderlistForm.$invalid" >Share Orderlist</button>
+                    ng-disabled="shareOrderlistForm.$invalid" >Share Order List</button>
             </div>
         </div>
     </div>
