@@ -7,7 +7,7 @@
         {{'PARTCARD.CORRESMATCH' | translate}}</span></div>
         <div>
           <div class="dispName">
-            <a class="description" href ng-click="partCard.gotoPart(partCard.part.id)"><span class="name">{{partCard.part.displayName}}</span></a>
+            <a class="description" ng-href="{{partCard.gotoPart(partCard.part.id)}}"><span class="name">{{partCard.part.displayName}}</span></a>
           </div>
           <div class="cart pull-right">
             <!--<span>$150</span>-->
@@ -37,7 +37,7 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3">
-            <a href ng-click="partCard.gotoPart(partCard.part.id)">
+            <a ng-href="{{partCard.gotoPart(partCard.part.id)}}">
               <img ng-show="partCard.part.imageUrl" ng-src="http://{{partCard.part.imageUrl}}">
               <img ng-show="!partCard.part.imageUrl" ng-src="http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE">
             </a>
