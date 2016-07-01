@@ -7,8 +7,10 @@
         {{'PARTCARD.CORRESMATCH' | translate}}</span></div>
         <div>
           <div class="dispName">
+
             <!-- <span><img src="assets/images/logo_spicer.jpg" alt="http://placehold.it/50x50"></span> -->
             <a class="description" ng-href="{{partCard.gotoPart(partCard.part.id)}}"><span class="name">{{partCard.part.displayName}}</span></a>
+
           </div>
           <div class="cart pull-right">
             <!--<span>$150</span>-->
@@ -17,7 +19,7 @@
               <a ng-show="partCard.shwOrdrTxt"  style="font-weight:600"  ng-click="partCard.change('shwQty')">{{'PARTCARD.ADDTOORDERLIST' | translate}}
               </a> <!--<span class="caret"></span>-->
             <div class="shwQty" ng-show="partCard.shwQty">
-              <span><input nonegative-directive min="0" name="qty" type="number" ng-change = "partCard.checkOrderlistVal()" data-ng-model="partCard.qty" placeholder="qty"/></span>
+              <span><input nonegative-directive id="{{partCard.part.id}}" name="qty" type="number" ng-change = "partCard.checkOrderlistVal()" data-ng-model="partCard.qty" placeholder="qty" /></span>
               <a style="font-weight:600" ng-class="{false: 'disabledButton'}[partCard.qty > 0]"  adisabled-directive="partCard.qtyNotAllowed" ng-click="partCard.change('shwMsg')">{{'PARTCARD.ADD' | translate}}</a>
             </div>
             <span ng-show="partCard.shwMsg">{{'PARTCARD.SHOWMSG' | translate}}</span>
@@ -38,7 +40,7 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-3">
-            <a ng-href="{{partCard.gotoPart(partCard.part.id)}}">
+            <a href ng-click="partCard.gotoPart(partCard.part.id)">
               <img ng-show="partCard.part.imageUrl" ng-src="http://{{partCard.part.imageUrl}}">
               <img ng-show="!partCard.part.imageUrl" ng-src="http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE">
             </a>
@@ -51,8 +53,8 @@
             </ul>
             <table class="table table-striped">
               <tr data-ng-repeat="key in partCard.part.attrList | limitTo : partCard.specLimit">
-                <td ng-class="{'bold':key == 'Brand'}">{{key}}</td>
-                <td ng-class="{'bold':key == 'Brand'}">{{partCard.part.attrs[key]}}</td>
+                <td>{{key}}</td>
+                <td>{{partCard.part.attrs[key]}}</td>
               </tr>
             </table>
           </div>

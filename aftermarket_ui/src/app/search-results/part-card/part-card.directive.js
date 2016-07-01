@@ -9,18 +9,28 @@ export function PartCardDirective() {
         },
         controller: SearchResultDirectiveController,
         controllerAs: 'partCard',
-        /* link: function(scope) {
-         $timeout(function(){
-         if(angular.isDefined(scope.part) && scope.part.attrs != null){
-         $log.debug("if");
-         scope.part.attrList = Object.keys(scope.part.attrs);
-         }else{
-         $log.debug("else");
-         scope.part.attrList =[];
-         }
-         });
+        link: function(scope, elem, attrs) {
+            elem.bind('keypress', (e) => {
+                var regex = new RegExp("^[0-9]+$");
+                var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                if (regex.test(str)) {
+                    return true;
+                }
 
-         },*/
+                e.preventDefault();
+                return false;
+            });
+            /*$timeout(function(){
+            if(angular.isDefined(scope.part) && scope.part.attrs != null){
+            $log.debug("if");
+            scope.part.attrList = Object.keys(scope.part.attrs);
+            }else{
+            $log.debug("else");
+            scope.part.attrList =[];
+            }
+            });*/
+
+        },
         bindToController: true
     };
     return directive;
@@ -30,7 +40,7 @@ class SearchResultDirectiveController {
     constructor($log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, $translate) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({$log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService});
+        vm.DI = () => ({ $log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService });
 
         /* if(this.part.attrs != null){this.dI.log.debug("if");
          this.part.attrList = Object.keys(this.part.attrs);
@@ -45,12 +55,12 @@ class SearchResultDirectiveController {
         this.shwQty = false;
         this.shwMsg = false;
         this.qty = "";
-        this.qtyNotAllowed = (this.qty>0)?false:true;
+        this.qtyNotAllowed = (this.qty > 0) ? false : true;
 
 
     }
-    checkOrderlistVal(){
-        if(this.qty >0){
+    checkOrderlistVal() {
+        if (this.qty > 0) {
             this.qtyNotAllowed = false;
         }
     }
@@ -62,8 +72,7 @@ class SearchResultDirectiveController {
             this.shwQty = true;
             if (this.qty > 0) {
                 this.qtyNotAllowed = false;
-            }
-            else {
+            } else {
                 this.qtyNotAllowed = true;
             }
         } else if (msg == "shwMsg") {
@@ -71,7 +80,7 @@ class SearchResultDirectiveController {
             this.shwMsg = true;
 
             let oldItem = false;
-            OrderListService.orderList.map(function (item) {
+            OrderListService.orderList.map(function(item) {
                 if (item.partNumber == vm.part.partNumber) {
                     item.quantity = Number(item.quantity) + Number(vm.qty);
                     oldItem = true;
@@ -85,7 +94,7 @@ class SearchResultDirectiveController {
                     partCategory: vm.part.categories[0].name,
                     partName: vm.part.displayName,
                     partImageUrl: vm.part.imageUrl
-                    //
+                        //
                 };
                 OrderListService.orderList.push(temp);
             }
@@ -113,8 +122,7 @@ class SearchResultDirectiveController {
         if (this.toggle) {
             this.specToggleName = "Expand";
             this.specLimit = 5;
-        }
-        else {
+        } else {
             this.specToggleName = "Collapse";
             this.specLimit = this.part.attrList.length;
         }
@@ -142,8 +150,7 @@ class SearchResultDirectiveController {
                 break;
             default:
                 angular.noop();
-        }
-        ;
+        };
         return retUrl;
     }
 
@@ -152,17 +159,26 @@ class SearchResultDirectiveController {
     }
 
     gotoPart(id) {
-        let vm = this;
-        let {$stateParams, $state} = vm.DI();
-        let paramObj = {"id": id, "type": "id"};
-        angular.extend(paramObj, $stateParams);
-        //let paramKeys = Object.keys(paramObj);
-        angular.forEach(paramObj, (value, key, obj) => {
-            angular.isUndefined(value) ? delete obj[key] : angular.noop();
-        });
-        //$state.go("part", paramObj);
-        return $state.href("part", paramObj);
-    }
+            let vm = this;
+            let { $stateParams, $state } = vm.DI();
+            let paramObj = { "id": id, "type": "id" };
+            angular.extend(paramObj, $stateParams);
+            //let paramKeys = Object.keys(paramObj);
+            angular.forEach(paramObj, (value, key, obj) => {
+                angular.isUndefined(value) ? delete obj[key] : angular.noop();
+            });
+            //$state.go("part", paramObj);
+            return $state.href("part", paramObj);
+        }
+        /*nospecial() {
+            deb
+            var regex = new RegExp("^[0-9]+$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+
+            e.preventDefault();
+            return false;
+        }*/
 }
-
-

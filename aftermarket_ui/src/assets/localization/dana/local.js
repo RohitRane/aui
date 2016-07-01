@@ -91,5 +91,8 @@ export let localization = {
     // },
 
     //please don't remove commented code it will used later;
+    // Email:{
+      
+    // }
   }
 }
