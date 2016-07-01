@@ -8,25 +8,26 @@
         <div>
           <div class="dispName">
             <!-- <span><img src="assets/images/logo_spicer.jpg" alt="http://placehold.it/50x50"></span> -->
+             <span ng-show="partCard.part.attrList.length"><img src="http://{{partCard.partImage}}"></span>
+             <span ng-show="!partCard.part.attrList.length"><img src="http://placehold.it/35x35/dbdbdb/0099CC/?text=NO+IMAGE"></span>
+             
             <a class="description" ng-href="{{partCard.gotoPart(partCard.part.id)}}"><span class="name">{{partCard.part.displayName}}</span></a>
           </div>
           <div class="cart pull-right">
             <!--<span>$150</span>-->
             <span>
-             <form name="amOrderlist">
-              <a ng-show="partCard.shwOrdrTxt"  style="font-weight:600"  ng-click="partCard.change('shwQty')">{{'PARTCARD.ADDTOORDERLIST' | translate}}
-              </a> <!--<span class="caret"></span>-->
-            <div class="shwQty" ng-show="partCard.shwQty">
-              <span><input nonegative-directive min="0" name="qty" type="number" ng-change = "partCard.checkOrderlistVal()" data-ng-model="partCard.qty" placeholder="qty"/></span>
-              <a style="font-weight:600" ng-class="{false: 'disabledButton'}[partCard.qty > 0]"  adisabled-directive="partCard.qtyNotAllowed" ng-click="partCard.change('shwMsg')">{{'PARTCARD.ADD' | translate}}</a>
-            </div>
-            <span ng-show="partCard.shwMsg">{{'PARTCARD.SHOWMSG' | translate}}</span>
+               <form name="amOrderlist">
+                <a ng-show="partCard.shwOrdrTxt"  style="font-weight:600"  ng-click="partCard.change('shwQty')">{{'PARTCARD.ADDTOORDERLIST' | translate}}
+                </a> <!--<span class="caret"></span>-->
+                <div class="shwQty" ng-show="partCard.shwQty">
+                  <span><input nonegative-directive min="0" name="qty" type="number" ng-change = "partCard.checkOrderlistVal()" data-ng-model="partCard.qty" placeholder="qty"/></span>
+                  <a style="font-weight:600" ng-class="{false: 'disabledButton'}[partCard.qty > 0]"  adisabled-directive="partCard.qtyNotAllowed" ng-click="partCard.change('shwMsg')">{{'PARTCARD.ADD' | translate}}</a>
+                </div>
+                <span ng-show="partCard.shwMsg">{{'PARTCARD.SHOWMSG' | translate}}</span>
 
-            <div style="color:red; margin-top:10px;font-weight: 600;" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div>
-            
-
-            <!-- <div style="color:red" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div> -->
-          </form>
+                <div style="color:red; margin-top:10px;font-weight: 600;" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div>
+              <!-- <div style="color:red" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div> -->
+              </form>
             </span>
 
             <!--<span><img src="assets/images/icon_shoppingCart.jpg"></span>-->

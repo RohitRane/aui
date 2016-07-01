@@ -27,11 +27,11 @@ export function PartCardDirective() {
 }
 
 class SearchResultDirectiveController {
-    constructor($log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, $translate) {
+    constructor($log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, appInfoService) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({$log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService});
-
+        vm.DI = () => ({$log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, appInfoService});
+        vm.partImage = appInfoService.appInfo.cdnBaseurl;
         /* if(this.part.attrs != null){this.dI.log.debug("if");
          this.part.attrList = Object.keys(this.part.attrs);
          }else{ this.dI.log.debug("else");
@@ -47,8 +47,19 @@ class SearchResultDirectiveController {
         this.qty = "";
         this.qtyNotAllowed = (this.qty>0)?false:true;
 
+        this.assignPartImage();
 
     }
+
+    assignPartImage(){
+        for(let key of this.part.attrList){
+            if(key == "Brand"){
+                this.part.attrs[key] == 'SPL' ? this.partImage += "/logo/logo_Spicer"+".jpg" : this.partImage += "/logo/logo_"+this.part.attrs[key]+".jpg";
+                return;
+            }
+        }
+    }
+
     checkOrderlistVal(){
         if(this.qty >0){
             this.qtyNotAllowed = false;

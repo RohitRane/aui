@@ -42,6 +42,9 @@
                     .dispName{
                         display: inline-block;
                         font-weight: bold;
+                        img{
+                            margin-right: 10px;
+                        }
                     }
                     .cart{
                         text-align: right;
@@ -132,7 +135,7 @@
                 .hrLine{
                     border: 1px solid #dbdbdb;
                     /*margin: -5px 5px 0px 30px;*/
-                    margin: 10px 0px 0px;
+                    //margin: 10px 0px 0px;
                 }
              }
              .panel-body{
