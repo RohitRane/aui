@@ -1,6 +1,6 @@
 export
 
-function ymmDirective() {
+    function ymmDirective() {
     'ngInject';
     let directive = {
         restrict: 'E',
@@ -83,6 +83,13 @@ class YMMDirectiveController {
 
         $scope.catChanged = false;
 
+        vm.flickEven = false;
+        for (let i = 1; i < 8; i++) {
+            $timeout(() => {
+                vm.flickEven = !vm.flickEven;
+            }, 1000 * i);
+        }
+
         let launchYMMList = $rootScope.$on("launchYMMList", () => {
             let ymmElem = $document[0].getElementsByClassName("ymm-directive");
 
@@ -90,7 +97,7 @@ class YMMDirectiveController {
                 //    vm.initializeYMM();
                 console.log('ymm category change listeners called ');
                 $scope.catChanged = true;
-                $scope.ymmParentData =[];
+                $scope.ymmParentData = [];
             }
 
         });
@@ -129,39 +136,39 @@ class YMMDirectiveController {
             "decadeName": "1890s",
             "decadeYears": ['1896', '1897', '1898', '1899']
         }, {
-            "decadeName": "1900s",
-            "decadeYears": ['1900', '1901', '1902', '1903', '1904', '1905', '1906', '1907', '1908', '1909']
-        }, {
-            "decadeName": "1920s",
-            "decadeYears": ['1920', '1921', '1922', '1923', '1924', '1925', '1926', '1927', '1928', '1929']
-        }, {
-            "decadeName": "1930s",
-            "decadeYears": ['1930', '1931', '1932', '1933', '1934', '1935', '1936', '1937', '1938', '1939']
-        }, {
-            "decadeName": "1940s",
-            "decadeYears": ['1940', '1941', '1942', '1943', '1944', '1945', '1946', '1947', '1948', '1949']
-        }, {
-            "decadeName": "1950s",
-            "decadeYears": ['1950', '1951', '1952', '1953', '1954', '1955', '1956', '1957', '1958', '1959']
-        }, {
-            "decadeName": "1960s",
-            "decadeYears": ['1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969']
-        }, {
-            "decadeName": "1970s",
-            "decadeYears": ['1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979']
-        }, {
-            "decadeName": "1980s",
-            "decadeYears": ['1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989']
-        }, {
-            "decadeName": "1990s",
-            "decadeYears": ['1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999']
-        }, {
-            "decadeName": "2000s",
-            "decadeYears": ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009']
-        }, {
-            "decadeName": "2010s",
-            "decadeYears": ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
-        }];
+                "decadeName": "1900s",
+                "decadeYears": ['1900', '1901', '1902', '1903', '1904', '1905', '1906', '1907', '1908', '1909']
+            }, {
+                "decadeName": "1920s",
+                "decadeYears": ['1920', '1921', '1922', '1923', '1924', '1925', '1926', '1927', '1928', '1929']
+            }, {
+                "decadeName": "1930s",
+                "decadeYears": ['1930', '1931', '1932', '1933', '1934', '1935', '1936', '1937', '1938', '1939']
+            }, {
+                "decadeName": "1940s",
+                "decadeYears": ['1940', '1941', '1942', '1943', '1944', '1945', '1946', '1947', '1948', '1949']
+            }, {
+                "decadeName": "1950s",
+                "decadeYears": ['1950', '1951', '1952', '1953', '1954', '1955', '1956', '1957', '1958', '1959']
+            }, {
+                "decadeName": "1960s",
+                "decadeYears": ['1960', '1961', '1962', '1963', '1964', '1965', '1966', '1967', '1968', '1969']
+            }, {
+                "decadeName": "1970s",
+                "decadeYears": ['1970', '1971', '1972', '1973', '1974', '1975', '1976', '1977', '1978', '1979']
+            }, {
+                "decadeName": "1980s",
+                "decadeYears": ['1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989']
+            }, {
+                "decadeName": "1990s",
+                "decadeYears": ['1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999']
+            }, {
+                "decadeName": "2000s",
+                "decadeYears": ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009']
+            }, {
+                "decadeName": "2010s",
+                "decadeYears": ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017']
+            }];
         //starts shaifali code
     }
 
@@ -170,21 +177,21 @@ class YMMDirectiveController {
         let vm = this;
         let {
             $scope, YmmService
-            } = vm.DI();
+        } = vm.DI();
         $scope.catChanged = true;
-        let ymmConfig ="";
-        if(YmmService.YMMOrder.length>0){
+        let ymmConfig = "";
+        if (YmmService.YMMOrder.length > 0) {
             $scope.currentYMMOrder = YmmService.YMMOrder;
             $scope.ymmParent = ymmConfig[0];
             $scope.ymmFirstChild = ymmConfig[1];
             $scope.ymmSecondChild = ymmConfig[2];
         }
-        else{
+        else {
             YmmService.getAPIConfigDataForYMM()
                 .then(function (response) {
                     let {
                         $scope
-                        } = vm.DI();
+                    } = vm.DI();
 
                     ymmConfig = response.data.APIResponse.ymmConfig;
                     $scope.currentYMMOrder = ymmConfig;
@@ -206,7 +213,7 @@ class YMMDirectiveController {
         let {
             $log,
             $scope
-            } = vm.DI();
+        } = vm.DI();
         $scope.initDirective = true;
     }
 
@@ -215,7 +222,7 @@ class YMMDirectiveController {
         let {
             $log,
             $scope
-            } = vm.DI();
+        } = vm.DI();
 
         vm.headerLabelArray = [];
 
@@ -265,7 +272,7 @@ class YMMDirectiveController {
         let {
             $log,
             $scope
-            } = vm.DI();
+        } = vm.DI();
 
         if ($event.target.nodeName == "A") {
             $scope.ymmYear = $event.target.firstChild.data;
@@ -334,7 +341,7 @@ class YMMDirectiveController {
             $q,
             YmmService,
             SearchBarService
-            } = vm.DI();
+        } = vm.DI();
 
         //yearData(q,cats,year,make,model,from,size)
         vm.ymmYear = $scope.ymmYear;
@@ -344,7 +351,7 @@ class YMMDirectiveController {
         $scope.ymmFirstChild = ymmConfig[1];
         $scope.ymmSecondChild = ymmConfig[2];
 
-        $scope.ymmParentData =[];
+        $scope.ymmParentData = [];
         var deferred = $q.defer();
         var promise = deferred.promise;
 
@@ -431,7 +438,7 @@ class YMMDirectiveController {
                 function (result) {
                     let {
                         $scope
-                        } = vm.DI();
+                    } = vm.DI();
 
                     $scope.ymmParentData = result.data.APIResponse.lvl1_list;
                     $log.debug("YMM response for Parent DROP DOWN :", result);
@@ -455,7 +462,7 @@ class YMMDirectiveController {
             $scope,
             YmmService,
             $q
-            } = vm.DI();
+        } = vm.DI();
 
         var populateDropDown = true;
         if ($event.target.nodeName == "A") {
@@ -466,7 +473,7 @@ class YMMDirectiveController {
             } else if ($scope.currentYMMOrder.indexOf('YEAR') == 1) {
                 YmmService.level[2] = null;
             }
-            else{
+            else {
                 populateDropDown = false;
             }
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('YEAR'), $event.target.firstChild.data);
@@ -522,7 +529,7 @@ class YMMDirectiveController {
         });
 
 
-        if(populateDropDown){
+        if (populateDropDown) {
             YmmService.getYearData('SPL55', ["ALL", null, null], e.ymmYear, e.ymmMake, null, null, null).then(
                 function (result) {
                     $log.debug("YMM response for YEAR:", result);
@@ -533,7 +540,7 @@ class YMMDirectiveController {
                     console.log(error.statusText);
                 })
         }
-        else{
+        else {
             deferred.resolve();
             populateDropDown = true;
         }
@@ -558,7 +565,7 @@ class YMMDirectiveController {
 
             $scope
 
-            } = vm.DI();
+        } = vm.DI();
 
         e.makeSelected = true;
         e.catChanged = true;
@@ -605,7 +612,7 @@ class YMMDirectiveController {
 
             $scope
 
-            } = vm.DI();
+        } = vm.DI();
 
         return $scope.currentYMMOrder.indexOf(atr.toUpperCase());
     }
@@ -619,7 +626,7 @@ class YMMDirectiveController {
             $scope,
             YmmService,
             $q
-            } = vm.DI();
+        } = vm.DI();
 
         var populateDropDown = true;
 
@@ -631,7 +638,7 @@ class YMMDirectiveController {
             } else if ($scope.currentYMMOrder.indexOf('MAKE') == 1) {
                 YmmService.level[2] = null;
             }
-            else{
+            else {
                 populateDropDown = false;
             }
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('MAKE'), $event.target.firstChild.data);
@@ -686,7 +693,7 @@ class YMMDirectiveController {
         })
 
 
-        if(populateDropDown){
+        if (populateDropDown) {
             YmmService.getYearData('SPL55', ["ALL", null, null], e.ymmYear, e.ymmMake, null, null, null).then(
                 function (result) {
                     $log.debug("YMM response for MAKE:", result);
@@ -697,7 +704,7 @@ class YMMDirectiveController {
                     console.log(error.statusText);
                 })
         }
-        else{
+        else {
             deferred.resolve();
             populateDropDown = true;
         }
@@ -707,7 +714,7 @@ class YMMDirectiveController {
         let vm = this;
         let {
             $scope
-            } = vm.DI();
+        } = vm.DI();
         var submitSelector = angular.element(document.querySelector('#ymmSubmitSelector'));
         submitSelector.disabled = false;
         submitSelector.addClass('disabled');
@@ -728,7 +735,7 @@ class YMMDirectiveController {
         let vm = this;
         let {
             $scope
-            } = vm.DI();
+        } = vm.DI();
         e.catChanged = true;
         var modelHolder = angular.element(document.querySelector('.modelClass'));
 
@@ -781,7 +788,7 @@ class YMMDirectiveController {
             $scope,
             $q,
             YmmService
-            } = vm.DI();
+        } = vm.DI();
 
         var populateDropDown = true;
         if ($event.target.nodeName == "A") {
@@ -792,7 +799,7 @@ class YMMDirectiveController {
             } else if ($scope.currentYMMOrder.indexOf('MODEL') == 1) {
                 YmmService.level[2] = null;
             }
-            else{
+            else {
                 populateDropDown = false;
             }
             YmmService.setLevelData($scope.currentYMMOrder.indexOf('MODEL'), $event.target.firstChild.data);
@@ -847,7 +854,7 @@ class YMMDirectiveController {
         })
 
 
-        if(populateDropDown){
+        if (populateDropDown) {
             YmmService.getYearData('SPL55', ["ALL", null, null], e.ymmYear, e.ymmMake, null, null, null).then(
                 function (result) {
                     $log.debug("YMM response for MODEL:", result);
@@ -858,7 +865,7 @@ class YMMDirectiveController {
                     console.log(error.statusText);
                 })
         }
-        else{
+        else {
             deferred.resolve();
             populateDropDown = true;
         }
@@ -871,7 +878,7 @@ class YMMDirectiveController {
             $log,
             $http,
             $scope
-            } = vm.DI();
+        } = vm.DI();
 
         if ($event.target.nodeName == "A") {
             // $scope.ymmModel = $event.target.firstChild.data;
@@ -896,7 +903,7 @@ class YMMDirectiveController {
             dataServices,
             YmmService,
             SearchBarService,
-            } = vm.DI();
+        } = vm.DI();
 
         $rootScope.$emit("ymmFiltersApplied", {
             "year": vm.ymmYear,

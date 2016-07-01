@@ -1,18 +1,45 @@
 .ymm-directive {
-    padding: 0px 20px;
+    padding: 7px 10px;
+    //padding-top: 7px;
     margin: 0px -10px;
-    height: 50px;
+    height: 40px !important;
+    vertical-align: middle;
     .scrollable-container-box {
         height: auto;
         overflow: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        /*margin-top: 10px;
+        margin-bottom: 10px;*/
         button {
             margin-right: 10px;
         }
         #ymmSubmitSelector {
             background-color: #aaaaaa;
             color: white;
+        }
+    }
+    &.flick-odd{
+        background-color:$support_color_dark_heading;
+        transition: background-color 0.25s;
+        transition-timing-function: ease-in-out;
+    }
+    &.flick-even{
+        background-color:$accent_color;
+        transition: background-color 0.25s;
+        transition-timing-function: ease-in-out;
+    }
+    #dropdown-hidden-container{
+        label{
+            margin-right: 20px;
+            color: $color_extreme_two;
+            font-weight: 400
+        }
+        .btn{
+            height: 25px;
+            padding: 0px 10px;
+            .caret{
+                margin-left: 10px;
+                //float: right;
+            }
         }
     }
 }

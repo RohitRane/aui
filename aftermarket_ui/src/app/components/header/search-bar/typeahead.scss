@@ -1,7 +1,13 @@
 .typeahead{
     margin-left:10px;
+    height: 20px;
     strong{
         font-weight: 600;
         color:$color_extreme_one;
+    }
+
+    .label{
+        background-color:$accent_color;
+        margin-left: 5px;
     }
 }

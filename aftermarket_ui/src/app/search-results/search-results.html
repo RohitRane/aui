@@ -4,14 +4,15 @@
   <bread-crumb ng-show="srchRes.results.parts.length" result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}"
   sel-main-category="{{srchRes.cat1}}" search-string="{{srchRes.searchString}}"
   sort-attributes="srchRes.sortAttributes" sort-item-changed="srchRes.getParts(0,10,selectedFilters,sort)"></bread-crumb>
-  {{srchRes.currentPage2}}
+  <ymm-directive ng-if="srchRes.showYMMFlag && srchRes.results.parts.length" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>
+  <!--{{srchRes.currentPage2}}-->
   <div class="row search-results">
     <div class="col-md-2 filter">
         <!--data-ng-class="{'affix-filters':srchRes.stickyAd === true}"-->
       <filter-directive ng-show="srchRes.results.parts.length" ng-if="srchRes.filters"  category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
     </div>
     <div class="col-md-8">
-      <ymm-directive ng-if="srchRes.showYMMFlag && srchRes.results.parts.length" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>
+      <!--<ymm-directive ng-if="srchRes.showYMMFlag && srchRes.results.parts.length" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>-->
       <!-- <selected-filter></selected-filter> -->
       <div ng-show="srchRes.results.totalResults">
         <!--<h5>Related : <a>{{srchRes.searchString}}</a></h5>-->
