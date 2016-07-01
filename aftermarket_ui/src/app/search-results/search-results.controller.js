@@ -16,7 +16,11 @@ export class SearchResultsController {
         vm.searchString = "";
         // vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DESC"];
         vm.sortAttributes = [
-
+            {
+                Name: "Relevance",
+                Type: "Relevance",
+                displayName: "Relevance"
+            },
             {
                 Name: "partNumber",
                 Type: "ASC",
