@@ -270,6 +270,7 @@ export class SearchBarController {
         SearchBarService.selectdeFilters = [];
         SearchBarService.listPreviousFilter = [];
         SearchBarService.productLine = vm.search.searchScope;
+        SearchBarService.sort = null;
         $log.debug("Item :", item);
         if (item.typeId === 2) {
             SearchBarService.typeId = item.typeId;
@@ -386,6 +387,7 @@ export class SearchBarController {
         SearchBarService.categoryfilters = [];
         SearchBarService.filters = [];
         SearchBarService.selectdeFilters = [];
+        SearchBarService.sort = null;
         $scope.$emit("searchbarBlurred");
         $rootScope.$emit("clearCategories");
         SearchBarService.productCategory = 0;

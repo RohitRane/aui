@@ -24,12 +24,12 @@ export class SearchResultsController {
             {
                 Name: "partNumber",
                 Type: "ASC",
-                displayName: "Part Number:ASC"
+                displayName: "Part Number:Asc"
             },
             {
                 Name: "partNumber",
                 Type: "DESC",
-                displayName: "Part Number:DESC"
+                displayName: "Part Number:Desc"
             }
         ];
 
