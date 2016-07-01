@@ -10,7 +10,7 @@ export function PartCardDirective() {
         controller: SearchResultDirectiveController,
         controllerAs: 'partCard',
         link: function(scope, elem, attrs) {
-            elem.bind('keypress', (e) => {
+            /*elem.bind('keypress', (e) => {
                 var regex = new RegExp("^[0-9]+$");
                 var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
                 if (regex.test(str)) {
@@ -19,7 +19,7 @@ export function PartCardDirective() {
 
                 e.preventDefault();
                 return false;
-            });
+            });*/
             /*$timeout(function(){
             if(angular.isDefined(scope.part) && scope.part.attrs != null){
             $log.debug("if");
