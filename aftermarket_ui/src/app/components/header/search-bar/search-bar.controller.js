@@ -136,7 +136,7 @@ export class SearchBarController {
 
     textTyped(searchString) {
         let vm = this;
-        let { $log, $rootScope, $scope, $location, dataServices, SearchBarService, $timeout } = vm.DI();
+        let { $log, $rootScope, $scope, $location, dataServices, SearchBarService, appInfoService, $timeout } = vm.DI();
         //root$scope.searchString = searchString;
         SearchBarService.srchTempStr = searchString;
         if ($location.path() == '/search') {
@@ -158,6 +158,15 @@ export class SearchBarController {
                 if (part.suggestType === "CAT_SUGGEST") {
                     $log.debug("CATEGORY >>>>>>>>", part);
                     part.typeId = 2;
+                    if(vm.search.searchScope.id === appInfoService.getYMMCatId()){
+                        part.isYMMCat = true;
+                    }
+                    else if (part.suggestId == appInfoService.getYMMCatId()) {
+                        part.isYMMCat = true;
+                    }
+                    else{
+                        part.isYMMCat = false;
+                    }   
                     resultSet.push(part);
                 }
             });

@@ -1,4 +1,6 @@
 <div class="typeahead">
   <span data-ng-if="match.model.suggestType!=='CAT_SUGGEST'" ng-click="" ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
   <span data-ng-if="match.model.suggestType==='CAT_SUGGEST'" ng-click="" ng-bind-html="match.label | uibTypeaheadHighlight:''"></span>
+  <!--<button data-ng-if="match.model.isYMMCat"></button>-->
+  <span data-ng-if="match.model.isYMMCat" class="label label-default">Search by Year / Make / Model</span>
 </div>
