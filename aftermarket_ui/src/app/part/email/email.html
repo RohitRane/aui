@@ -2,40 +2,46 @@
     <div class="modal-header bg-success">
         <div class="row">
             <div class="col-sm-9">
-                <h4>Mail</h4>
+                <h4>Email-Mail Part</h4>
                 <p></p>
             </div>
             <div class="col-sm-3">
-                
+
             </div>
         </div>
     </div>
     <div class="modal-body">
-        <form class="form-horizontal" name="sharepart">
+        <form class="form-horizontal" name="sharepart" data-ng-submit="email.send()">
             <h4>From:</h4>
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Your Email ID's </label><span class="madatoryStar">*</span>
                     <input type="email" data-ng-model="email.from" name="fEmail" class="form-control" placeholder="Your Email ID's" required>
-                    
+
                 </div>
             </div>
             <h4>To:</h4>
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
-                    <input id="toEmails" data-ng-model="email.to" type="email"  name="tEmail" class="form-control" placeholder="To Email ID's" required>
-                    
+                    <textarea id="toEmails" multipleemails-directive data-ng-model="email.to" name="tEmail" class="form-control" placeholder="Recipient Email ID's separated by comma."
+                        required></textarea>
+
                 </div>
             </div>
-        
+            <div class="form-group" data-ng-if="email.showSuccess">
+                <div class="col-md-12">
+                    <strong><h4 class="text-success">Mail sent successfully</h4></strong>
+                </div>
+            </div>
+
     </div>
     <div class="modal-footer">
         <div class="row">
             <div class="col-md-6">
             </div>
             <div class="col-md-6">
-                <button class="btn btn-primary" data-ng-click="email.send()" type="submit">Submit</button>
+                <button class="btn btn-primary" data-ng-click="email.send()" type="submit">Mail</button>
             </div>
         </div>
     </div>
