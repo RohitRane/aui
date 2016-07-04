@@ -254,6 +254,7 @@ export class PartController {
         vm.partData.apps.currentPage = 1;
         vm.partData.apps.maxSize = 10;
         vm.partData.apps.pageLength = 6;
+        vm.partData.apps.colLength = 5;
         vm.partData.apps.totalPages = vm.partData.apps.length;
         vm.partData.apps.showPagination = vm.partData.apps.totalPages > (vm.partData.apps.pageLength - 1) * 2 ? true : false;
     }
