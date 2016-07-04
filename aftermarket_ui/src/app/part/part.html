@@ -177,7 +177,7 @@
                 <div class="row">
                   <h5>ADD TO ORDER LIST</h5>
                   <form name="amOrderlist">
-                  <input nonegative-directive min="0" no-spl-char type="number" name="qty" data-ng-model="part.qty" placeholder="qty"/> <button class="btn"  ng-class="{true: 'activeButton'}[part.qty > 0]"  ng-click="part.change('shwMsg')" disabled>Add</button></br>
+                  <input nonegative-directive min="0" no-spl-char type="number" name="qty" data-ng-model="part.qty" placeholder="qty"/> <button class="btn"  ng-class="{true: 'activeButton'}[part.qty > 0]"  ng-click="part.change('shwMsg')">Add</button></br>
                     <span ng-show="part.shwMsg">{{'PARTCARD.SHOWMSG' | translate}}</span>
                     <div class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div>
                     </form>

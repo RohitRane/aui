@@ -127,7 +127,7 @@
 			background: #CCC;
 			//font-size: 12px;
 			padding: 0px;
-
+			pointer-events: none;
 			//padding-bottom: 5px;
 		}
 
@@ -141,6 +141,7 @@
 			//font-size: 12px;
 			padding: 0px;
 			//padding-bottom: 5px;
+			pointer-events: visible;
 		}
 	}
 	

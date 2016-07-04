@@ -28,9 +28,10 @@
                 <div class="col-md-12">
                     <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
                     <textarea id="toEmails" multipleemails-directive data-ng-model="email.to" name="tEmail" class="form-control" placeholder="Recipient Email ID's separated by comma." required></textarea>
-                    <span ng-class="{'has-error': sharepart.tEmail.$invalid}">
-                        <span style="color:red" ng-show="sharepart.tEmail.$error.required">Please Enter Your Email </span>
-                        <span style="color:red" ng-show="sharepart.tEmail.$invalid">Please Enter correct Email </span>
+                   <!--  <span ng-class="{'has-error': sharepart.tEmail.$touched && sharepart.tEmail.$invalid}"> -->
+                    <span style="color:red" ng-show="sharepart.tEmail.$touched && sharepart.tEmail.$invalid">
+                        <span ng-show="sharepart.tEmail.$error.required">Please Enter Your Email </span>
+                        <span ng-show="sharepart.tEmail.$error.invalid">Please Enter correct Email </span>
                     </span>
                 </div>
             </div>
