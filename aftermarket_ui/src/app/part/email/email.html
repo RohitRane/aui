@@ -1,47 +1,51 @@
 <div id="sharepartPopup" class="modal-wrapper">
     <div class="modal-header bg-success">
+        <button type="button" class="close" ng-click="email.cancel()" data-dismiss="modal">&times;</button>
         <div class="row">
             <div class="col-sm-9">
-                <h4>Email-Mail Part</h4>
+                <h4>Email Part</h4>
                 <p></p>
             </div>
             <div class="col-sm-3">
-
             </div>
         </div>
     </div>
     <div class="modal-body">
-        <form class="form-horizontal" name="sharepart" data-ng-submit="email.send()">
+        <form class="form-horizontal" name="sharepart" data-ng-submit="email.send()" novalidate>
             <h4>From:</h4>
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Your Email ID's </label><span class="madatoryStar">*</span>
                     <input type="email" data-ng-model="email.from" name="fEmail" class="form-control" placeholder="Your Email ID's" required>
-
+                    <span style="color:red" ng-show="sharepart.fEmail.$touched && sharepart.fEmail.$invalid">
+                        <span ng-show="sharepart.fEmail.$error.required">Please Enter Your Email </span>
+                        <span ng-show="sharepart.fEmail.$error.email">Please Enter correct Email </span>
+                    </span>
                 </div>
             </div>
             <h4>To:</h4>
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
-                    <textarea id="toEmails" multipleemails-directive data-ng-model="email.to" name="tEmail" class="form-control" placeholder="Recipient Email ID's separated by comma."
-                        required></textarea>
-
+                    <textarea id="toEmails" multipleemails-directive data-ng-model="email.to" name="tEmail" class="form-control" placeholder="Recipient Email ID's separated by comma." required></textarea>
+                    <span ng-class="{'has-error': sharepart.tEmail.$invalid}">
+                        <span style="color:red" ng-show="sharepart.tEmail.$error.required">Please Enter Your Email </span>
+                        <span style="color:red" ng-show="sharepart.tEmail.$invalid">Please Enter correct Email </span>
+                    </span>
                 </div>
             </div>
             <div class="form-group" data-ng-if="email.showSuccess">
                 <div class="col-md-12">
-                    <strong><h4 class="text-success">Mail sent successfully</h4></strong>
+                    <h5 class="text-primary"><strong>Mail sent successfully</strong></h5>
                 </div>
             </div>
-
     </div>
     <div class="modal-footer">
         <div class="row">
             <div class="col-md-6">
             </div>
             <div class="col-md-6">
-                <button class="btn btn-primary" data-ng-click="email.send()" type="submit">Mail</button>
+                <button class="btn btn-primary" data-ng-click="email.send()" type="submit"  ng-disabled="sharepart.$invalid">Mail</button>
             </div>
         </div>
     </div>

@@ -30,4 +30,11 @@ export class EmailController {
 
         });
     }
+    cancel() {
+        let vm = this,
+            {
+                $uibModalInstance
+            } = vm.DI();
+        $uibModalInstance.close();
+    }
 }
