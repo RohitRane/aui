@@ -142,6 +142,7 @@ export class CategoryMenuController {
 
         $scope.$emit("reachedhome");
         console.log("Cat-e-gory", cat1, cat2, cat3);
+        SearchBarService.sort = null;
         let paramObj = { 'mode': 'hierarchy', 'str': "", 'cat1': cat1 ? cat1.id : null, 'cat2': cat2 ? cat2.id : null, 'cat3': cat3 ? cat3.id : null, 'filterObject': "" };
         $rootScope.$emit("applyHierarchyScope", cat1);
         BreadCrumbService.showAll = false;
