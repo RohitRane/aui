@@ -5,7 +5,7 @@ export class BreadCrumbController {
         'ngInject';
         let vm = this;
         vm.DI = () => ({ $scope, $rootScope, $state, $window, $document, $timeout, $interval, $stateParams, SearchBarService, appInfoService, BreadCrumbService, searchNavigationService });
-
+        debugger;
         vm.cats = [false, false, false];
         vm.showAll = BreadCrumbService.showAll;
 
@@ -19,6 +19,7 @@ export class BreadCrumbController {
         let intvl = $interval(() => {
             if (appInfoService.appInfo) {
                 $interval.cancel(intvl);
+                debugger;
                 vm.cats = [$stateParams.cat1 ? appInfoService.getCat1($stateParams.cat1) : false, $stateParams.cat2 ? appInfoService.getCat2($stateParams.cat1, $stateParams.cat2) : false, $stateParams.cat3 ? appInfoService.getCat3($stateParams.cat1, $stateParams.cat2, $stateParams.cat3) : false];
                 if ($stateParams.y && $stateParams.mk && $stateParams.md) {
                     //vm.ymm = $stateParams.y + ' ' + $stateParams.mk + ' ' + $stateParams.md;
@@ -33,7 +34,7 @@ export class BreadCrumbController {
         }, 100);
         if ($state.is('searchResults')) {
             //debugger;
-            vm.sortItem = SearchBarService.sort ? "Part Number:"+SearchBarService.sort.sortType[0].toUpperCase()+SearchBarService.sort.sortType.slice(1).toLowerCase() :vm.sortAttributes[0].displayName;
+            vm.sortItem = SearchBarService.sort ? "Part Number:" + SearchBarService.sort.sortType[0].toUpperCase() + SearchBarService.sort.sortType.slice(1).toLowerCase() : vm.sortAttributes[0].displayName;
             vm.pageState = 'searchResults';
             if ($stateParams.from) {
                 vm.pageStart = (Number($stateParams.from) + 1);
@@ -114,6 +115,7 @@ export class BreadCrumbController {
 
         let deregistrationCallback2 = $rootScope.$on("clearCategories", function () {
             $timeout(() => {
+                debugger;
                 vm.cats = [false, false, false];
                 //vm.cats[0] = vm.selMainCategory;
             }, 100);
@@ -178,15 +180,15 @@ export class BreadCrumbController {
     sortAction(sortObj) {
         let vm = this;
         let {SearchBarService, $scope} = vm.DI();
-        if(sortObj.Name == "Relevance"){
+        if (sortObj.Name == "Relevance") {
             SearchBarService.sort = null;
-        }else{
+        } else {
             SearchBarService.sort = {
                 sortAttribute: sortObj.Name,
                 sortType: sortObj.Type
             };
         }
-        
+
         console.log("SearchBarService.sort ", SearchBarService.sort);
         $scope.$emit("searchLaunched");
         // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});
@@ -314,7 +316,8 @@ export class BreadCrumbController {
     _intializeCats() {
         let vm = this;
         let {$interval, SearchBarService, appInfoService, BreadCrumbService} = vm.DI();
-        if (SearchBarService.productLine && SearchBarService.productLine.id) {
+        /*if (SearchBarService.productLine && SearchBarService.productLine.id) {*/
+        if ($stateParams.cat1) {
             vm.cats[0] = SearchBarService.productLine;
             let intObj = $interval(() => {
                 if (appInfoService.appInfo) {
@@ -330,6 +333,7 @@ export class BreadCrumbController {
                 vm.cats[1] = null;
             }
         } else {
+            debugger;
             vm.cats = [false, false, false];
         }
         initBCService();
