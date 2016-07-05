@@ -1,4 +1,12 @@
 <ul class="nav navbar-nav lang-cur-selector">
-  <li><a href="#"><img src="/assets/images/us-en.gif" alt=""> {{'HEADER.MENUS.LANGNCURRENCY.ENGLISHUSD' | translate}}</a></li>
+  <li uib-dropdown>
+    <!--<a href="#" id="lnc-dd" uib-dropdown-toggle><img src="/assets/images/us-en.gif" alt=""> {{'HEADER.MENUS.LANGNCURRENCY.ENGLISHUSD' | translate}}</a>-->
+    <a href="#" id="lnc-dd" uib-dropdown-toggle><img class="flag-pic" ng-src="{{lnc.languages[lnc.languages.activeIndex].image}}" alt=""> {{lnc.languages[lnc.languages.activeIndex].dispName}}</a>
+    <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="lnc-dd">
+      <li ng-repeat="language in lnc.languages">
+        <a href data-ng-click="lnc.toggleLang($index)"><img class="flag-pic" ng-src="{{language.image}}" alt="">{{language.dispName}}</a>
+      </li>
+    </ul>
+  </li>
   <!-- <li><a href="#">USD</a></li> -->
 </ul>

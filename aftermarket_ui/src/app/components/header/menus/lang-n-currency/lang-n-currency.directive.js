@@ -7,7 +7,7 @@ export function langNCurrencyDirective() {
         /*scope: {
             //creationDate: '='
         },*/
-        controller: LangNCurrencyController,
+        controller: 'LangNCurrencyController',
         controllerAs: 'lnc',
         bindToController: true,
         replace: true
@@ -16,9 +16,3 @@ export function langNCurrencyDirective() {
     return directive;
 }
 
-class LangNCurrencyController {
-    constructor($log) {
-        'ngInject';
-        $log.debug("Running lng n curr controller.");
-    }
-}
