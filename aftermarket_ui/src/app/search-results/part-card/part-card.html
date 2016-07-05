@@ -10,7 +10,7 @@
 
             <!-- <span><img src="assets/images/logo_spicer.jpg" alt="http://placehold.it/50x50"></span> -->
              <span ng-show="partCard.part.attrList.length"><img src="http://{{partCard.partImage}}"></span>
-             <span ng-show="!partCard.part.attrList.length"><img src="http://placehold.it/35x35/dbdbdb/0099CC/?text=LOGO"></span>
+             <span ng-show="!partCard.part.attrList.length"><img class="default-logo" src="/assets/images/dana-logo.png"></span>
              
             <a class="description" ng-href="{{partCard.gotoPart(partCard.part.id)}}"><span class="name">{{partCard.part.displayName}}</span></a>
 

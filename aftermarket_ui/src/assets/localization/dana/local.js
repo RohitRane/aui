@@ -56,7 +56,7 @@ export let localization = {
     },
     SEARCHRESULT:{
       ZERORESULT:'has found 0 results.',
-      REDEFINEEXPLORE:'Kindly redefine your search term or explore the parts via search bar.',
+      REDEFINEEXPLORE:'Kindly refine your search term or explore the parts via search bar.',
     },
 
     /////////////////////orderlist/////////////////////

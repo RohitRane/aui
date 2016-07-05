@@ -44,6 +44,10 @@
                         font-weight: bold;
                         img{
                             margin-right: 10px;
+                            &.default-logo{
+                                width:45px;
+                                margin-bottom:10px;
+                            }
                         }
                     }
                     .cart{
