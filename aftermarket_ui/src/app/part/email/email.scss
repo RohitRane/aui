@@ -47,7 +47,7 @@
         background-color: $support_color_primary;
         border-color: transparent;
         color: white;
-        padding:8px 40px;
+        padding:2px 30px;
         &:hover {
             border-color: transparent;
         }
@@ -57,6 +57,9 @@
             box-shadow: none;
             outline-offset: none;
         }
+    }
+    span.glyphicon-send{
+        padding-right: 10px;
     }
 }
 
