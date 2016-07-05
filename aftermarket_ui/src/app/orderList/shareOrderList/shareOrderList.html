@@ -79,7 +79,7 @@
 -->
             <div class="form-group">
                 <div class="col-md-12">
-                <textarea multipleemails-directive class="form-control" placeholder="To Email ID's" name="tEmail" ng-model="emails" multipleemails-directive required></textarea>
+                <textarea multipleemails-directive class="form-control" placeholder="To Email ID's" name="tEmail" ng-model="emails" multipleemails-directive required spellcheck=false></textarea>
                 <span class="has-error"  ng-show="shareOrderlistForm.tEmail.$touched">
                     <span style="color:red" ng-show="shareOrderlistForm.tEmail.$error.required && shareOrderlistForm.tEmail.$touched">Please Enter Your Email </span>
                     <span style="color:red" ng-show="shareOrderlistForm.tEmail.$invalid && shareOrderlistForm.tEmail.$dirty">Please Enter correct Email </span>
