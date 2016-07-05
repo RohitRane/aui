@@ -79,7 +79,7 @@
 -->
             <div class="form-group">
                 <div class="col-md-12">
-                <textarea multipleemails-directive class="form-control" placeholder="To Email ID's" name="tEmail" ng-model="emails" multipleemails-directive required></textarea>
+                <textarea multipleemails-directive class="form-control" placeholder="Recipient Email ID's separated by comma." name="tEmail" ng-model="emails" multipleemails-directive required></textarea>
                 <span  ng-class="{'has-error': shareOrderlistForm.tEmail.$invalid}">
                     <span style="color:red" ng-show="shareOrderlistForm.tEmail.$error.required">Please Enter Your Email </span>
                     <span style="color:red" ng-show="shareOrderlistForm.tEmail.$invalid">Please Enter correct Email </span>
@@ -97,7 +97,7 @@
               <div class="form-group">
              <div class="col-md-12">
                     <input style="width:15px;height:15px;float:left;"  ng-checked="callback" type="checkbox" multiple="" data-ng-model="callback" name="callback" class="form-control ng-pristine ng-valid ng-touched" placeholder="To Email ID's">
-<label style="font-size:13px;margin-top:2px; margin-left:3px;">would you like us to call back
+                    <label style="font-size:13px;margin-top:2px; margin-left:3px;">would you like us to call back
                 </label>
                    </div>
             </div>
