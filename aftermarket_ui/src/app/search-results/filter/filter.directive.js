@@ -280,8 +280,10 @@ class FilterDirectiveController {
             }
         });*/
         vm.listPreviousFilter = [];
+        SearchBarService.sort = null;
         $scope.$emit("checkSearch", SearchBarService.srchStr);
         $rootScope.$broadcast("categoryFilterApplied", { obj: selectedCategory, catFilter: true });
+        
 
         selectedCategory.select = !selectedCategory.select;
         if (SearchBarService.productLine && SearchBarService.productLine.id == 0) {
@@ -350,6 +352,7 @@ class FilterDirectiveController {
             }
         });*/
         SearchBarService.listPreviousFilter = [];
+        SearchBarService.sort = null;
         $rootScope.$broadcast("categoryFilterApplied");
         selectedSubCategory.select = !selectedSubCategory.select;
         if (selectedSubCategory.select) {

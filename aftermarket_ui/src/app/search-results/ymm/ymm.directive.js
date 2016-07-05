@@ -911,7 +911,7 @@ class YMMDirectiveController {
             "model": vm.ymmModel
         });
 
-        let paramObj = angular.merge({}, $stateParams, { 'y': vm.ymmYear, 'mk': vm.ymmMake, 'md': vm.ymmModel });
+        let paramObj = angular.merge({}, $stateParams, { 'y': vm.ymmYear, 'mk': vm.ymmMake, 'md': vm.ymmModel, from: 0 });
         $state.go("searchResults", paramObj);
         /*vm.ymmSearch({
          selectedFilters: SearchBarService.selectdeFilters,
