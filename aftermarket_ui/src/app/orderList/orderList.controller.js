@@ -12,7 +12,6 @@ export class OrderListController {
    	}
 
     getOrderList() {
-        debugger;
         let vm = this;
         let {$log, $uibModal, OrderListService} = vm.DI();
         let storedOrderList = sessionStorage.orderList?angular.fromJson(sessionStorage.orderList):[];
