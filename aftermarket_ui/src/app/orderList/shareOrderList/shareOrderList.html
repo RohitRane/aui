@@ -80,16 +80,16 @@
             <div class="form-group">
                 <div class="col-md-12">
                 <textarea multipleemails-directive class="form-control" placeholder="To Email ID's" name="tEmail" ng-model="emails" multipleemails-directive required></textarea>
-                <span  ng-class="{'has-error': shareOrderlistForm.tEmail.$invalid}">
-                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$error.required">Please Enter Your Email </span>
-                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$invalid">Please Enter correct Email </span>
+                <span class="has-error"  ng-show="shareOrderlistForm.tEmail.$touched">
+                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$error.required && shareOrderlistForm.tEmail.$touched">Please Enter Your Email </span>
+                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$invalid && shareOrderlistForm.tEmail.$dirty">Please Enter correct Email </span>
                 </span>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <textarea class="form-control" data-ng-model="descText" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my order list.
+                    <textarea class="form-control" placeholder="Any message" data-ng-model="descText" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my order list.
                     </textarea>
                 </div>
             </div>

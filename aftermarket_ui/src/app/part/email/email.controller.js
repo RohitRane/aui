@@ -9,7 +9,7 @@ export class EmailController {
         }, 2000);
 
         vm.subject = "The following product has been shared with you.";
-        vm.body = "has shared this product with you : " + url;
+        vm.body = "has shared this part with you : ";
     }
 
     send() {
