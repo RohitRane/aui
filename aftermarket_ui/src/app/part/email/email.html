@@ -19,21 +19,33 @@
                     <input type="email" data-ng-model="email.from" name="fEmail" class="form-control" placeholder="Your Email ID's" required>
                     <span style="color:red" ng-show="sharepart.fEmail.$touched && sharepart.fEmail.$invalid">
                         <span ng-show="sharepart.fEmail.$error.required">Please Enter Your Email </span>
-                        <span ng-show="sharepart.fEmail.$error.email">Please Enter correct Email </span>
+                    <span ng-show="sharepart.fEmail.$error.email">Please Enter correct Email </span>
                     </span>
                 </div>
             </div>
             <h4>To:</h4>
             <div class="form-group">
                 <div class="col-md-12">
-                <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
-                <textarea multipleemails-directive class="form-control" placeholder="Recipient Email ID's separated by comma." name="tEmail" ng-model="email.to" multipleemails-directive required spellcheck=false></textarea>
-                <span class="has-error"  ng-show="sharepart.tEmail.$touched">
+                    <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
+                    <textarea multipleemails-directive class="form-control" placeholder="Recipient Email ID's separated by comma." name="tEmail" ng-model="email.to" multipleemails-directive required spellcheck=false></textarea>
+                    <span class="has-error" ng-show="sharepart.tEmail.$touched">
                     <span style="color:red" ng-show="sharepart.tEmail.$error.required && sharepart.tEmail.$touched">Please Enter Your Email </span>
                     <span style="color:red" ng-show="sharepart.tEmail.$invalid && sharepart.tEmail.$dirty">Please Enter correct Email </span>
-                </span>
+                    </span>
                 </div>
             </div>
+           <!--  <div ng-show="email.loading" id="loading-overlay">
+                <div class="loading">
+                    <img src="/assets/images/loading.gif" width="20" height="20" />
+                    <span class="loading-text">LOADING...</span>
+                </div>
+            </div> -->
+            <email ng-show="email.loading" id="loading-overlay">
+                 <div class="loading">
+                    <img src="/assets/images/loading.gif" width="20" height="20" />
+                    <span class="loading-text">LOADING...</span>
+                </div>
+            </email>
             <div class="form-group" data-ng-if="email.showSuccess">
                 <div class="col-md-12">
                     <h5 class="text-primary"><strong>Mail sent successfully</strong></h5>
@@ -45,12 +57,12 @@
             <div class="col-md-6">
             </div>
             <div class="col-md-6">
-                <button class="btn btn-primary" data-ng-click="email.send()" type="submit"  ng-disabled="sharepart.$invalid">
-                <h5>
+                <button class="btn btn-primary" data-ng-click="email.send()" type="submit" ng-disabled="sharepart.$invalid">
+                    <h5>
                 <span class="glyphicon glyphicon-send"></span>
                 Send
-               </h5> 
-               </button>
+               </h5>
+                </button>
             </div>
         </div>
     </div>

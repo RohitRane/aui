@@ -5,4 +5,5 @@ import {EmailController} from './email/email.controller';
 angular.module('aftermarket.part', [])
     .config(routeConfig)
     .controller('PartController', PartController)
-    .controller('EmailController', EmailController);
+    .controller('EmailController', EmailController)
+   

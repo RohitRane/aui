@@ -1,9 +1,8 @@
 export class EmailController {
-    constructor($uibModalInstance, $document, $timeout, $scope, dataServices, url) {
+    constructor( AftermarketConstants, $uibModalInstance, $document, $timeout, $scope, dataServices, url, $rootScope, $log) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({ $uibModalInstance, $timeout, $scope, dataServices, url });
-
+        vm.DI = () => ({ $uibModalInstance, $timeout, $scope, $log, dataServices, url });
         setTimeout(() => {
             $document[0].getElementById("toEmails").multiple = true;
         }, 2000);
