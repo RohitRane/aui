@@ -37,3 +37,5 @@ angular.module('aftermarket',
     .config(mainConfig);
 
 //Main module.
+
+/*Tagging for qa-06-Jul-2016-1.0*/
