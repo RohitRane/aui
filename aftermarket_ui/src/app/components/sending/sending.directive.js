@@ -8,9 +8,7 @@ export function SendingDirective($rootScope) {
         controllerAs: 'vm',
         replace: true,
         link: function (scope, element, attrm, vm) {
-            $rootScope.$on('showLoading', function(event, flag){
-                vm.sending = flag;
-            });
+            
         }
     };
     return directive;

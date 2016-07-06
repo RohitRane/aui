@@ -35,12 +35,13 @@
                 </div>
             </div>
            
-            <sending-directive></sending-directive>
             <div class="form-group" data-ng-if="email.showSuccess">
                 <div class="col-md-12">
                     <h5 class="text-primary"><strong>Mail sent successfully</strong></h5>
                 </div>
             </div>
+            <sending-directive data-ng-if="email.showSending"></sending-directive>
+            
     </div>
     <div class="modal-footer">
         <div class="row">

@@ -1,8 +1,9 @@
 export class EmailController {
-    constructor( AftermarketConstants, $uibModalInstance, $document, $timeout, $scope, dataServices, url, $rootScope, $log) {
+    constructor( $uibModalInstance, $rootScope, $document, $timeout, $scope, dataServices, url, $log) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({ $uibModalInstance, $timeout, $scope, $log, dataServices, url });
+        vm.showSending = false;
+        vm.DI = () => ({ $uibModalInstance, $timeout, $scope, $log, $rootScope, dataServices, url });
         setTimeout(() => {
             $document[0].getElementById("toEmails").multiple = true;
         }, 2000);
@@ -16,17 +17,20 @@ export class EmailController {
         let {$uibModalInstance, $timeout, $scope, dataServices, url} = vm.DI();
         vm.body = vm.from + " " + vm.body;
         let recipients = vm.to.split(",");
+        //$scope.$emit("showSending", true);
+        vm.showSending = true;
         dataServices.emailPart(url, vm.from, recipients, vm.subject, vm.body).then((response) => {
-            $scope.$emit("showLoading", true);
+            
             if (response.success) {
-                $scope.$emit("showLoading", false);
+                vm.showSending = false;
+                //$scope.$emit("showLoading", false);
                 vm.showSuccess = true;
                 $timeout(() => {
                     $uibModalInstance.close();
                 }, 2000);
             }
         }, (error) => {
-
+            vm.showSending = false;
         });
     }
     cancel() {

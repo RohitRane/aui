@@ -1,7 +1,7 @@
 .sending {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top:87%;
+    left: 40%;
     width: 80px;
     z-index: 999;
     text-align: center;
@@ -15,5 +15,5 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: $color_extreme_two;
+    //background: transparent;
 }
