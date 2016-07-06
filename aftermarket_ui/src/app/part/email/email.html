@@ -34,18 +34,8 @@
                     </span>
                 </div>
             </div>
-           <!--  <div ng-show="email.loading" id="loading-overlay">
-                <div class="loading">
-                    <img src="/assets/images/loading.gif" width="20" height="20" />
-                    <span class="loading-text">LOADING...</span>
-                </div>
-            </div> -->
-            <email ng-show="email.loading" id="loading-overlay">
-                 <div class="loading">
-                    <img src="/assets/images/loading.gif" width="20" height="20" />
-                    <span class="loading-text">LOADING...</span>
-                </div>
-            </email>
+           
+            <sending-directive></sending-directive>
             <div class="form-group" data-ng-if="email.showSuccess">
                 <div class="col-md-12">
                     <h5 class="text-primary"><strong>Mail sent successfully</strong></h5>

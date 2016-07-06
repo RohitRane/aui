@@ -1,5 +1,5 @@
-import { LoadingDirective } from './sending.directive';
-import { LoadingController } from './sending.controller';
+import { SendingDirective } from './sending.directive';
+import { SendingController } from './sending.controller';
 
 angular.module('sending', [])
 	.directive('sendingDirective', SendingDirective)
