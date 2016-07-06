@@ -52,6 +52,8 @@ export class YmmService {
 
         let deferred = this.$q.defer();
 
+        let selFilter = angular.fromJson(sessionStorage.selectdeFilters);
+
         let tempCatId = "";
         if (SearchBarService.productCategory == undefined) {
             tempCatId = null;
@@ -73,6 +75,7 @@ export class YmmService {
             data: {
                 "q": SearchBarService.srchStr,
                 "cats": [$stateParams.cat1, $stateParams.cat2, $stateParams.cat3],
+                "filter": selFilter,
                 "lvl1": this.level[1],
                 'lvl2': this.level[2],
                 "lvl3": (this.level[3]==undefined)?(null):(this.level[3]),
