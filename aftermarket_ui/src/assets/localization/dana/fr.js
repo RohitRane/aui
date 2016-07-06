@@ -8,58 +8,58 @@ export let french = {
         TITLE: 'DANA Aftermarket',
       },
       HEADER: {
-        SITENAME: 'AFTERMARKET_fr',
-        DISCUSSION: 'Discussion Board',
+        SITENAME: 'AFTERMARKETF',
+        DISCUSSION: 'Discussion BoardF',
         MENUS: {
           HELPNFAQ: {
-            HELPLINE: 'DANA Helpline 1-800-621-8084',
-            HELP: 'Help',
-            FAQ: 'FAQ',
+            HELPLINE: 'DANA Helpline 1-800-621-8084F',
+            HELP: 'HelpF',
+            FAQ: 'FAQF',
           },
           LANGNCURRENCY: {
-            ENGLISHUSD: 'English - USD',
+            ENGLISHUSD: 'English - USDF',
           },
           ORDER: {
-            TRACK: 'Track',
-            ORDERS: 'Orders',
-            ORDER: 'Order',
-            LISTS: 'Lists',
+            TRACK: 'TrackF',
+            ORDERS: 'OrdersF',
+            ORDER: 'OrderF',
+            LISTS: 'ListsF',
           },
           PROFILE: {
-            SIGNIN: 'Sign in',
-            REGISTER: 'Register',
+            SIGNIN: 'Sign inF',
+            REGISTER: 'RegisterF',
           }
         }
       },
       FOOTER: {
-        DANAHCORP: '2016 Dana Holding Corporation',
-        ABOUT: 'About',
-        TERMS: 'Terms of Use',
-        POLICY: 'Privacy Policy',
+        DANAHCORP: '2016 Dana Holding CorporationF',
+        ABOUT: 'AboutF',
+        TERMS: 'Terms of UseF',
+        POLICY: 'Privacy PolicyF',
 
       },
       BREADCRUMB: {
-        BACKSECTION: 'Back to search results',
-        FOR: 'for'
+        BACKSECTION: 'Back to search resultsF',
+        FOR: 'forF'
       },
       LOADING: {
-        LOADINGTEXT: 'LOADING...',
+        LOADINGTEXT: 'LOADING...F',
       },
       ////////////////////// search results//////////////////////
       FILTER: {
-        FILTERALLCATEGORY: 'SEE ALL CATEGORIES',
+        FILTERALLCATEGORY: 'SEE ALL CATEGORIESF',
       },
       PARTCARD: {
-        CORRESMATCH: 'Corresponding match',
-        ADDTOORDERLIST: 'Add to Order List',
-        ADD: 'Add',
-        SHOWMSG: 'Added to Order List.',
-        SPECIFICATIONS: 'Specifications',
-        CALL: 'Please Contact Dana Help line number : 1-800-621-8084',
+        CORRESMATCH: 'Corresponding matchF',
+        ADDTOORDERLIST: 'Add to Order ListF',
+        ADD: 'AddF',
+        SHOWMSG: 'Added to Order List.F',
+        SPECIFICATIONS: 'SpecificationsF',
+        CALL: 'Please Contact Dana Help line number : 1-800-621-8084F',
       },
       SEARCHRESULT: {
-        ZERORESULT: 'has found 0 results.',
-        REDEFINEEXPLORE: 'Kindly refine your search term or explore the parts via search bar.',
+        ZERORESULT: 'has found 0 results.F',
+        REDEFINEEXPLORE: 'Kindly refine your search term or explore the parts via search bar.F',
       },
 
       /////////////////////orderlist/////////////////////
