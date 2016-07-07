@@ -7,13 +7,13 @@
                     <div class="row">
                         <div class="col-sm-8">
 
-                            <h2>Order List #{{orderlist.orderId}} <span>({{orderlist.orderList.length}}&nbsp; <span ng-if="orderlist.orderList.length === 1">Part</span> <span ng-if="orderlist.orderList.length > 1">Parts</span>)</span></h2>
+                            <h2>{{ 'ORDERLIST.ORDERLISTHASH' | translate}} {{orderlist.orderId}} <span>({{orderlist.orderList.length}}&nbsp; <span ng-if="orderlist.orderList.length === 1">{{ 'ORDERLIST.PART' | translate}}</span> <span ng-if="orderlist.orderList.length > 1">{{ 'ORDERLIST.PARTS' | translate}}</span>)</span></h2>
 
                         </div>
                         <div class="col-sm-4">
                             <div class="pull-right alignment-bottom">
                                 <span class="glyphicon glyphicon-info-sign"></span>
-                                <label>Share the order list for future reference
+                                <label>{{ 'ORDERLIST.FUTUREREFRENCE' | translate}}
                                 </label>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                     <div class="col-sm-4">
                                         <div class="addToCart pull-right">
                                             <a href="#">
-                                                <button type="button" class="btn btn-primary" ng-disabled="!!isThisDisabled()" data-ng-click="orderlist.open()">Share Order List</button>
+                                                <button type="button" class="btn btn-primary" ng-disabled="!!isThisDisabled()" data-ng-click="orderlist.open()">{{ 'ORDERLIST.SHAREORDERLIST' | translate}}</button>
                                             </a>
                                         </div>
                                     </div>
@@ -62,13 +62,13 @@
                             </div> -->
                             <div class="row">
                                 <div ng-repeat="(key, value) in orderlist.orderList |groupBy: 'partCategory'">
-                                <strong>{{key}} {{value.length}}&nbsp;parts</strong>
+                                <strong>{{key}} {{value.length}}&nbsp;{{ 'ORDERLIST.CAPSOFFPARTS' | translate}}</strong>
                                     <div class="orderItems" ng-repeat="list in value">
                                         <div class="col-md-2"><img width="120" height="120" ng-src="http://{{list.partImageUrl}}" /></div>
                                         <div class="col-md-8 orderitemDetail">
                                             {{list.partName}}
 
-                                            <span class="spanRemovePart" data-ng-click="orderlist.remove(list.id)">Remove Part</span>
+                                            <span class="spanRemovePart" data-ng-click="orderlist.remove(list.id)">{{ 'ORDERLIST.REMOVEPART' | translate }}</span>
                                             <!--{{list}}-->
                                         </div>
                                         <div class="col-md-2">
@@ -80,14 +80,14 @@
                                             </div>
                                             <div class="col-md-4 text-right">
                                                 <span class="spanEdit">
-                                                <a data-ng-show="!list.show" data-ng-click="list.show=!list.show">Edit</a>
-                                                <a data-ng-show="list.show" data-ng-click="list.show=!list.show;orderlist.save(list.id,list.quantity)" ng-class="{false: 'disabledButton'}[list.quantity > 0]">Save</a>
+                                                <a data-ng-show="!list.show" data-ng-click="list.show=!list.show">{{ 'ORDERLIST.EDIT' | translate}}</a>
+                                                <a data-ng-show="list.show" data-ng-click="list.show=!list.show;orderlist.save(list.id,list.quantity)" ng-class="{false: 'disabledButton'}[list.quantity > 0]">{{ 'ORDERLIST.SAVE' | translate}}</a>
                                             </span>
                                             </div>
                                             <div class="col-md-4 text-right">
-                                                <span class="cancel-btn"><a href="" data-ng-click="orderlist.remove(list.id)">X</a></span>
+                                                <span class="cancel-btn"><a href="" data-ng-click="orderlist.remove(list.id)">{{ 'ORDERLIST.REMOVECROSS' | translate}}</a></span>
                                             </div>
-                                            <div class="col-md-12 error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div>
+                                            <div class="col-md-12 error" ng-show="amOrderlist.qty.$error.positive">{{ 'ORDERLIST.ERRORMSG' | translate}}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                 <div class="orderHeading">
                     <div class="row">
                         <div class="col-sm-8">
-                            <h2>No Order List available</span></h2>
+                            <h2>{{ 'ORDERLIST.NOORDERLIST' | translate}}</span></h2>
                         </div>
                        
                     </div>

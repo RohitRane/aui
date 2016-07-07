@@ -1,6 +1,6 @@
 /*Author : Shaifali Jaiswal*/
 export class OrderListController {
-    constructor($uibModal, $log, OrderListService) {
+    constructor($uibModal, $log, OrderListService, $translate) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({ $uibModal, $log, OrderListService });

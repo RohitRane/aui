@@ -47,12 +47,13 @@ export let english = {
     },
 
     //-------------------component/sending-----------------//
-    
+
     SENDING: {
       SENDINGTEXT: 'Mailing....',
     },
 
-    // ------------------header/searchbar------------------//
+    // ------------------components/header/searchbar------------------//
+
     TYPEHEADPOPUP: {
       EXACTMATCH: 'Exact match',
       CLAOSEMATCH: 'Close matches',
@@ -79,19 +80,23 @@ export let english = {
       REDEFINEEXPLORE: 'Kindly refine your search term or explore the parts via search bar.',
     },
 
-    /////////////////////orderlist/////////////////////
+    //--------------------------orderlist----------------------------//
 
-    // ORDERLIST:{
-    //   ORDERLISTHAS:'OrderList #',
-    //   CAPSONPARTS:' Parts',
-    //   FUTUREREFRENCE:'Share the orderlist for future reference',
-    //   SHAREORDERLIST:'Share Orderlist',
-    //   CAPSOFFPARTS:'parts',
-    //   REMOVEPART:'Remove Part',
-    //   EDIT:'Edit',
-    //   SAVE:'Save',
-    //   REMOVECROSS:'X',
-    // },
+    ORDERLIST:{
+      ORDERLISTHASH:'OrderList #',
+      PART:' Part',
+      PARTS:' Parts',
+      FUTUREREFRENCE:'Share the order list for future reference',
+      SHAREORDERLIST:'Share Order List',
+      CAPSONPARTS:'part',
+      CAPSOFFPARTS:'parts',
+      REMOVEPART:'Remove Part',
+      EDIT:'Edit',
+      SAVE:'Save',
+      REMOVECROSS:'X',
+      ERRORMSG: 'Quantity should be positive number',
+      NOORDERLIST: 'No Order List available'
+    },
     // SHAREORDERLIST:{
     //   SHAREDMSG:'Once shared, orderlist will not be editable.',
     //   HEADFROM:'From',
