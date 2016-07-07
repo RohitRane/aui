@@ -53,11 +53,11 @@ export let english = {
     },
 
     // ------------------header/searchbar------------------//
-    // TYPEHEADPOPUP: {
-    //   EXACTMATCH: 'Exact match',
-    //   CLAOSEMATCH: 'Close matches',
-    //   SUGGESTION: 'Suggestions',
-    // },
+    TYPEHEADPOPUP: {
+      EXACTMATCH: 'Exact match',
+      CLAOSEMATCH: 'Close matches',
+      SUGGESTION: 'Suggestions',
+    },
     TYPEAHEAD: {
      SEARCHBYYMM: 'Search by Year / Make / Model',
     },
