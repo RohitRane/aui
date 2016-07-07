@@ -1,5 +1,5 @@
 export class TypeaheadPopupController {
-    constructor($log) {
+    constructor($log, $translate) {
         'ngInject';
 
         let vm = this;

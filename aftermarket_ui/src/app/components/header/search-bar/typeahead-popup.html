@@ -2,9 +2,9 @@
     role="listbox" aria-hidden="{{!isOpen()}}">
     <!--exact match-->
     <div data-ng-repeat="match in matches |orderBy:'model.typeId' track by $index">
-        <p data-ng-if="match.model.firstExact">Exact match</p>
-        <p data-ng-if="match.model.firstClose">Close matches</p>
-        <p data-ng-if="match.model.firstSuggest">Suggestions</p>
+        <p data-ng-if="match.model.firstExact">{{'TYPEHEADPOPUP.EXACTMATCH' | translate}} </p>
+        <p data-ng-if="match.model.firstClose">{{'TYPEHEADPOPUP.CLAOSEMATCH' | translate}} </p>
+        <p data-ng-if="match.model.firstSuggest">{{'TYPEHEADPOPUP.SUGGESTION' | translate}} </p>
         <li data-ng-class="{active: isActive($index), 'view-all-results': match.model.typeId===5, 'suggestions':match.model.typeId==2 }"
             data-ng-mouseenter="selectActive($index)" data-ng-click="selectMatch($index, $event)" role="option" id="{{::match.id}}">
             <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>

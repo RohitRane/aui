@@ -1,6 +1,6 @@
 export class SearchBarController {
 
-    constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, $interval, $state, $stateParams, dataServices, SearchBarService, BreadCrumbService, appInfoService, YmmService) {
+    constructor($log, $scope, $location, $rootScope, $document, $timeout, $window, $interval, $state, $stateParams, dataServices, SearchBarService, BreadCrumbService, appInfoService, YmmService, $translate) {
 
 
         'ngInject';

@@ -45,7 +45,24 @@ export let english = {
     LOADING: {
       LOADINGTEXT: 'LOADING...',
     },
-    ////////////////////// search results//////////////////////
+
+    //-------------------component/sending-----------------//
+    
+    SENDING: {
+      SENDINGTEXT: 'Mailing....',
+    },
+
+    // ------------------header/searchbar------------------//
+    // TYPEHEADPOPUP: {
+    //   EXACTMATCH: 'Exact match',
+    //   CLAOSEMATCH: 'Close matches',
+    //   SUGGESTION: 'Suggestions',
+    // },
+    TYPEAHEAD: {
+     SEARCHBYYMM: 'Search by Year / Make / Model',
+    },
+
+    //------------- search results-----------------------//
     FILTER: {
       FILTERALLCATEGORY: 'SEE ALL CATEGORIES',
     },
