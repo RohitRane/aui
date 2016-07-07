@@ -16,7 +16,7 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Your Email ID's </label><span class="madatoryStar">*</span>
-                    <input type="email" data-ng-model="email.from" name="fEmail" class="form-control" placeholder="Your Email ID's" required>
+                    <input type="email" data-ng-model="email.from" name="fEmail" class="form-control" placeholder="Your Email ID's" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
                     <span style="color:red" ng-show="sharepart.fEmail.$touched && sharepart.fEmail.$invalid">
                         <span ng-show="sharepart.fEmail.$error.required">Please Enter Your Email </span>
                     <span ng-show="sharepart.fEmail.$error.email">Please Enter correct Email </span>
@@ -27,7 +27,8 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
-                    <textarea multipleemails-directive class="form-control" placeholder="Recipient Email ID's separated by comma." name="tEmail" ng-model="email.to" multipleemails-directive required spellcheck=false></textarea>
+                    <textarea multipleemails-directive class="form-control" placeholder="Recipient Email ID's separated by comma." name="tEmail" ng-model="email.to" multipleemails-directive required spellcheck=false 
+                    ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/"></textarea>
                     <span class="has-error" ng-show="sharepart.tEmail.$touched">
                     <span style="color:red" ng-show="sharepart.tEmail.$error.required && sharepart.tEmail.$touched">Please Enter Your Email </span>
                     <span style="color:red" ng-show="sharepart.tEmail.$invalid && sharepart.tEmail.$dirty">Please Enter correct Email </span>
