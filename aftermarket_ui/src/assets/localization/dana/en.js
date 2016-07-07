@@ -95,25 +95,32 @@ export let english = {
       SAVE:'Save',
       REMOVECROSS:'X',
       ERRORMSG: 'Quantity should be positive number',
-      NOORDERLIST: 'No Order List available'
+      NOORDERLIST: 'No Order List available',
     },
-    // SHAREORDERLIST:{
-    //   SHAREDMSG:'Once shared, orderlist will not be editable.',
-    //   HEADFROM:'From',
-    //   FNAME:'First Name',
-    //   MANDATORY:'*',
-    //   FNAMEMSG:'Please Enter Your First Name',
-    //   LNAME:'Last Name',
-    //   LNAMEMSG:'Please Enter Your last Name ',
-    //   FEMAIL:'Your Email ID',
-    //   REQUIREEMAILMSG:'Please Enter Your Email.',
-    //   ERROREMAILMSG:'Please Enter correct Email',
-    //   PHONENO:'Your Phone Number',
-    //   TEMAIL:'Your Email ID',
-    //   TEXTAREA:'Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my orderlist.',
-    //   GETURL:'Get URL',
-    //   GOTOHOME:'Go to Home',
-    // },
+
+    //--------------------------orderlist/shareOrderlist----------------------------//
+
+    SHAREORDERLIST:{
+      ORDERLISTHASH:'OrderList #',
+      SHAREDMSG:'Once shared, orderlist will not be editable.',
+      FROM:'From',
+      FNAME:'First Name',
+      MANDATORY:'*',
+      FNAMEMSG:'Please Enter Your First Name',
+      LNAME:'Last Name',
+      LNAMEMSG:'Please Enter Your last Name ',
+      FEMAIL:'Your Email ID',
+      REQUIREEMAILMSG:'Please Enter Your Email.',
+      ERROREMAILMSG:'Please Enter correct Email',
+      PHONENO:'Your Phone Number',
+      TO: 'To:',
+      TEMAIL:'Your Email ID',
+      TEXTAREA:'Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my order list.',
+      CALLBACK: 'would you like us to call back',
+      // GETURL:'Get URL',
+      // GOTOHOME:'Go to Home',
+      SHAREORDERLIST:'Share Order List',
+    },
 
     //please don't remove commented code it will used later;
     // Email:{

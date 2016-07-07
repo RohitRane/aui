@@ -3,7 +3,7 @@
      <button type="button" class="close" ng-click="shareList.cancel()" data-dismiss="modal">&times;</button>
         <div class="row">
             <div class="col-sm-9">
-                <h4>Order List #{{OrderId.orderId}}</h4>
+                <h4>{{'SHAREORDERLIST.ORDERLISTHASH' | translate}}{{OrderId.orderId}}</h4>
                 <p>{{shareList.date | date:'yyyy-MM-dd @ h:mma'}}</p>
             </div>
             <div class="col-sm-3">
@@ -15,43 +15,44 @@
         </div>
     </div>
     <div class="modal-body">
-        <h5 class="text-center">Once shared, order list will not be editable.</h5>
+        <h5 class="text-center">{{'SHAREORDERLIST.SHAREDMSG' | translate}} </h5>
         <form class="form-horizontal" name="shareOrderlistForm" novalidate>
-            <h4>From:</h4>
+            <h4>{{'SHAREORDERLIST.FROM' | translate}}</h4>
             <div class="form-group">
                 <div class="col-md-6">
-                    <label class="sr-only">First Name</label><span class="madatoryStar">*</span>
+                    <label class="sr-only">{{'SHAREORDERLIST.FNAME' | translate}} </label><span class="madatoryStar">{{'SHAREORDERLIST.MANDATORY' | translate}}</span>
                     <input type="text" nospecialchar-directive name="fName" required data-ng-model="fName" class="form-control" placeholder="First Name" >
                      
                     <span style="color:red" ng-show="shareOrderlistForm.fName.$touched && shareOrderlistForm.fName.$invalid">
-                        <span ng-show="shareOrderlistForm.fName.$error.required">Please Enter Your First Name </span>
+                        <span ng-show="shareOrderlistForm.fName.$error.required">{{'SHAREORDERLIST.FNAMEMSG' | translate}}</span>
                     </span>
                 </div>
                 <div class="col-md-6">
-                    <label class="sr-only">Last Name</label><span class="madatoryStar">*</span>
+                    <label class="sr-only">{{'SHAREORDERLIST.LNAME' | translate}}</label><span class="madatoryStar">{{'SHAREORDERLIST.MANDATORY' | translate}}</span>
                     <input nospecialchar-directive type="text" data-ng-model="lName" name="lName" class="form-control" placeholder="Last Name" required>
                      <span style="color:red" ng-show="shareOrderlistForm.lName.$touched && shareOrderlistForm.lName.$invalid">
-                        <span ng-show="shareOrderlistForm.lName.$error.required">Please Enter Your last Name </span>
+                        <span ng-show="shareOrderlistForm.lName.$error.required">{{'SHAREORDERLIST.LNAMEMSG' | translate}} </span>
                     </span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
-                    <label class="sr-only">Your Email ID's </label><span class="madatoryStar">*</span>
+                    <label class="sr-only">{{'SHAREORDERLIST.FEMAIL' | translate}} </label><span class="madatoryStar">{{'SHAREORDERLIST.MANDATORY' | translate}}</span>
                     <input type="email" data-ng-model="fEmail" name="fEmail" class="form-control" placeholder="Your Email ID's" required>
-                      <span style="color:red" ng-show="shareOrderlistForm.fEmail.$touched && shareOrderlistForm.fEmail.$invalid">
-                        <span ng-show="shareOrderlistForm.fEmail.$error.required">Please Enter Your Email </span>
-                        <span ng-show="shareOrderlistForm.fEmail.$error.email">Please Enter correct Email </span>
+                      <span style="color:red" ng-show="
+                      shareOrderlistForm.fEmail.$touched && shareOrderlistForm.fEmail.$invalid">
+                        <span ng-show="shareOrderlistForm.fEmail.$error.required">{{'SHAREORDERLIST.REQUIREEMAILMSG' | translate}} </span>
+                        <span ng-show="shareOrderlistForm.fEmail.$error.email">{{'SHAREORDERLIST.ERROREMAILMSG' | translate}}</span>
                     </span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-12">
-                    <label class="sr-only">Your Phone Number </label>
+                    <label class="sr-only">{{'SHAREORDERLIST.PHONENO' | translate}}</label>
                     <input validtelephone-directive type="tel" class="form-control" placeholder="Your Phone Number"  data-ng-model="phoneNumber" >
                 </div>
             </div>
-            <h4>To:</h4>
+            <h4>{{'SHAREORDERLIST.TO' | translate}}</h4>
 
             <!--
             <div class="form-group">
@@ -79,17 +80,18 @@
 -->
             <div class="form-group">
                 <div class="col-md-12">
+                <span class="madatoryStar">{{'SHAREORDERLIST.MANDATORY' | translate}}</span>
                 <textarea multipleemails-directive class="form-control" placeholder="To Email ID's" name="tEmail" ng-model="emails" multipleemails-directive required spellcheck=false></textarea>
                 <span class="has-error"  ng-show="shareOrderlistForm.tEmail.$touched">
-                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$error.required && shareOrderlistForm.tEmail.$touched">Please Enter Your Email </span>
-                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$invalid && shareOrderlistForm.tEmail.$dirty">Please Enter correct Email </span>
+                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$error.required && shareOrderlistForm.tEmail.$touched">{{'SHAREORDERLIST.REQUIREEMAILMSG' | translate}} </span>
+                    <span style="color:red" ng-show="shareOrderlistForm.tEmail.$invalid && shareOrderlistForm.tEmail.$dirty">{{'SHAREORDERLIST.ERROREMAILMSG' | translate}} </span>
                 </span>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <textarea class="form-control" placeholder="Any message" data-ng-model="descText" rows="3">Hi, I found some parts on danaaftermarket.com to be ordered. Please check out my order list.
+                    <textarea class="form-control" placeholder="Any message" data-ng-model="descText" rows="3">{{'SHAREORDERLIST.TEXTAREA' | translate}}
                     </textarea>
                 </div>
             </div>
@@ -97,7 +99,7 @@
               <div class="form-group">
              <div class="col-md-12">
                     <input style="width:15px;height:15px;float:left;"  ng-checked="callback" type="checkbox" multiple="" data-ng-model="callback" name="callback" class="form-control ng-pristine ng-valid ng-touched" placeholder="To Email ID's">
-                    <label style="font-size:13px;margin-top:2px; margin-left:3px;">would you like us to call back
+                    <label style="font-size:13px;margin-top:2px; margin-left:3px;">{{'SHAREORDERLIST.CALLBACK' | translate}}
                 </label>
                    </div>
             </div>
@@ -112,7 +114,7 @@
             </div>
             <div class="col-md-6">
                 <button class="btn btn-primary" type="submit" ng-click="shareList.shareOrderList(true)" 
-                    ng-disabled="shareOrderlistForm.$invalid" >Share Order List</button>
+                    ng-disabled="shareOrderlistForm.$invalid">{{'SHAREORDERLIST.SHAREORDERLIST' | translate}}</button>
             </div>
         </div>
     </div>

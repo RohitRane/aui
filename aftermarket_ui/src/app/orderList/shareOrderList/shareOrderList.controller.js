@@ -1,6 +1,6 @@
 /*Author : Shaifali Jaiswal*/
 export class ShareOrderlistController {
-    constructor($uibModalInstance, $scope, $uibModal, $timeout, $location, items, dataServices, SearchBarService, OrderListService, OrderlistModalFactory) {
+    constructor($uibModalInstance, $scope, $uibModal, $timeout, $location, items, dataServices, SearchBarService, OrderListService, OrderlistModalFactory, $translate) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({
