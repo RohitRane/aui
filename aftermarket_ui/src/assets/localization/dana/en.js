@@ -63,23 +63,6 @@ export let english = {
             SEARCHBYYMM: 'Search by Year / Make / Model',
         },
 
-        //------------- search results-----------------------//
-        FILTER: {
-            FILTERALLCATEGORY: 'SEE ALL CATEGORIES',
-        },
-        PARTCARD: {
-            CORRESMATCH: 'Corresponding match',
-            ADDTOORDERLIST: 'Add to Order List',
-            ADD: 'Add',
-            SHOWMSG: 'Added to Order List.',
-            SPECIFICATIONS: 'Specifications',
-            CALL: 'Please Contact Dana Help line number : 1-800-621-8084',
-        },
-        SEARCHRESULT: {
-            ZERORESULT: 'has found 0 results.',
-            REDEFINEEXPLORE: 'Kindly refine your search term or explore the parts via search bar.',
-        },
-
         //--------------------------orderlist----------------------------//
 
         ORDERLIST: {
@@ -201,7 +184,7 @@ export let english = {
           CWATAB : 'Compatible with Applications',
           EVBOMTAB : 'Exploded View & BOM',
           INTERCHANGES:'Interchanges',
-                    // BOMNO. : 'BOM No',
+          // BOMNO. : 'BOM No',
           // LEVEL : 'Level',
           // COMPONENT : 'Component Name',
           // QTY : 'Quantity',
@@ -209,11 +192,32 @@ export let english = {
           VIEWALL: 'View All (31)',
           SECTIONTITLE : 'Is this the right choice for my on-highway fleet?',
           //SECTIONDESCRIPTION: 'Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
-            //    BTW, noticed one of TMCs new trucks the other day..... white in color. Had to take the second look'
+          //    BTW, noticed one of TMCs new trucks the other day..... white in color. Had to take the second look'
             READMORE: 'Read More...',
             ANSBY: 'Answered by',
             BLACK900: 'blackw900',
             DAYS: ', 7 days ago',
+        },
+
+        //------------- searchresults/filter-----------------------//
+
+        FILTER: {
+            FILTERALLCATEGORY: 'SEE ALL CATEGORIES',
+            REFINE: 'REFINE BY',
+        },
+
+        PARTCARD: {
+            CORRESMATCH: 'Corresponding match',
+            ADDTOORDERLIST: 'Add to Order List',
+            ADD: 'Add',
+            SHOWMSG: 'Added to Order List.',
+            VALIDMSG: 'Quantity should be positive number.',
+            SPECIFICATIONS: 'Specifications',
+            CALL: 'Please Contact Dana Help line number : 1-800-621-8084',
+        },
+        SEARCHRESULT: {
+            ZERORESULT: 'has found 0 results.',
+            REDEFINEEXPLORE: 'Kindly refine your search term or explore the parts via search bar.',
         },
 
 
