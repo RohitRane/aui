@@ -322,11 +322,11 @@ export class SearchBarController {
             if ($state.is("searchResults")) {
                 $scope.$emit("searchbarBlurred");
                 // $scope.$emit("searchLaunched");
-                let paramObj = { "str": SearchBarService.srchStr, 'filters': "", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat3": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat2": "", 'y': '', 'mk': '', 'md': '' };
+                let paramObj = { "str": SearchBarService.srchStr, 'filters': "", "from":"", "size":"", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat3": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat2": "", 'y': '', 'mk': '', 'md': '' };
                 $state.go("searchResults", paramObj);
             } else {
                 //$location.path('/search');
-                let paramObj = { "str": SearchBarService.srchStr, 'filters': "", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat3": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat2": "", 'y': '', 'mk': '', 'md': '' };
+                let paramObj = { "str": SearchBarService.srchStr, 'filters': "", "from":"", "size":"", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat3": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat2": "", 'y': '', 'mk': '', 'md': '' };
                 $state.go("searchResults", paramObj);
             }
         } else if (item.typeId === 3) {
@@ -355,7 +355,7 @@ export class SearchBarController {
             if ($location.url() === '/search') {
                 $scope.$emit("searchbarBlurred");
                 //$scope.$emit("searchLaunched");
-                let paramObj = { "str": SearchBarService.srchStr, 'filters': "", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
+                let paramObj = { "str": SearchBarService.srchStr, 'filters': "", "from":"", "size":"", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
                 $state.go("searchResults", paramObj);
             } else {
                 $location.path('/search');
@@ -416,7 +416,7 @@ export class SearchBarController {
 
                     //$scope.$emit("searchLaunched");
                     $scope.$emit("searchbarBlurred");
-                    let paramObj = { "str": SearchBarService.srchStr, 'filters': "", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
+                    let paramObj = { "str": SearchBarService.srchStr, 'filters': "", 'filterObject': "", "from":"", "size":"", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
                     $state.go("searchResults", paramObj);
                     /*if ($state.is("searchResults")) {
                         $scope.$emit("searchLaunched");
@@ -441,10 +441,10 @@ export class SearchBarController {
             } else {
 
                 if ($state.is("searchResults")) {
-                    let paramObj = { "str": SearchBarService.srchStr, 'filters': "", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
+                    let paramObj = { "str": SearchBarService.srchStr, 'filters': "", "from":"", "size":"", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
                     $state.go("searchResults", paramObj);
                 } else {
-                    let paramObj = { "str": SearchBarService.srchStr, 'filters': "", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
+                    let paramObj = { "str": SearchBarService.srchStr, 'filters': "", "from":"", "size":"", 'filterObject': "", "cat1": SearchBarService.productLine ? SearchBarService.productLine.id : "", "cat2": SearchBarService.productCategory ? SearchBarService.productCategory.id : "", "cat3": "", 'y': '', 'mk': '', 'md': '' };
                     $state.go("searchResults", paramObj);
                 }
                 if (SearchBarService.productLine.id === 0) {
