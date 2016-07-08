@@ -9,7 +9,7 @@
     </div>
    <!--  <br> -->
     <div ng-show="vm.categoryPristine.length"><hr></div>
-    <div class="filterHdr" ng-show="vm.listPristine.length">REFINE BY</div>
+    <div class="filterHdr" ng-show="vm.listPristine.length">{{'FILTER.REFINE' | translate}}</div>
     <div class="refine" data-ng-repeat="refine in vm.listPristine track by $index">
         <div class="refineFilterHdr">
             <span>{{refine.name}}</span>

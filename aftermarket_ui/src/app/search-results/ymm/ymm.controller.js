@@ -1,5 +1,5 @@
 export class ymmController {
-  constructor($log) {
+  constructor($log, $translate) {
     'ngInject';
 
 
