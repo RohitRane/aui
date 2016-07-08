@@ -5,11 +5,13 @@
         <span class="name">{{partCard.part.displayName}}</span>
         <span class="cart pull-right">
             <span><img src="{{partCard.part.brandImgUrl}}"></span>
-            <span popover-placement="bottom" uib-popover-template="partCard.dynamicPopover" popover-title="title">Add to WishList <span class="caret"></span></span>
+            <span popover-placement="bottom" uib-popover-template="partCard.dynamicPopover" popover-title="title"> {{'POPOVER.WishList' | translate}}<span class="caret"></span></span>
             
             <script type="text/ng-template" id="myPopoverTemplate.html">
                 <div>
-                    <div>content</div>
+                    <div>
+                    // {{'POPOVER.CONTENT' | translate}}
+                    content</div>
                     <div class="form-group">
                     <label>Popup Title:</label>
                     <input type="text" ng-model="dynamicPopover.title" class="form-control">
@@ -27,7 +29,7 @@
           </div>
           <div class="col-md-5">
             <ul>
-              <li>Specifications</li>
+              <li>{{'POPOVER.SPECIFICATIONS' | translate}}</li>
               <li data-ng-click="partCard.toggleSpecs()"><a>{{partCard.specToggleName}}</a></li>
             </ul>
             <table class="table table-striped">
@@ -40,7 +42,7 @@
           <div class="col-md-4">
             <img alt="http://placehold.it/30x30" src="assets/images/Vector.png">
             <div>
-              <p>MMS<sup>TM</sup>Hub</p>
+              <p>{{'POPOVER.MMS' | translate}}<sup>{{'POPOVER.TM' | translate}}</sup>{{'POPOVER.HUB' | translate}}</p>
             </div>
             <div>
               <ul>

@@ -206,6 +206,8 @@ export let english = {
             REFINE: 'REFINE BY',
         },
 
+        //------------- searchresults/partcard-----------------------//
+
         PARTCARD: {
             CORRESMATCH: 'Corresponding match',
             ADDTOORDERLIST: 'Add to Order List',
@@ -215,6 +217,29 @@ export let english = {
             SPECIFICATIONS: 'Specifications',
             CALL: 'Please Contact Dana Help line number : 1-800-621-8084',
         },
+
+      //------------- searchresults/partcard/popover-----------------------//
+      POPOVER: {
+        WishList: 'Add to WishList',
+        //CONTENT: 'content',
+        //TITLE: 'Popup Title:',
+        SPECIFICATIONS: 'Specifications',
+        MMS: 'MMS',
+        TM: 'TM',
+        HUB: 'Hub',
+      },
+
+
+      //------------- searchresults/selected-filter-----------------------//
+
+      SELECTEDFILTER: {
+        CLOSE:'X',
+      },
+
+      //------------- searchresults/ymm-----------------------//
+
+      //------------------ searchresults-----------------------//
+
         SEARCHRESULT: {
             ZERORESULT: 'has found 0 results.',
             REDEFINEEXPLORE: 'Kindly refine your search term or explore the parts via search bar.',
