@@ -1,6 +1,6 @@
 /*Author:Rohit Rane*/
 export class PartController {
-    constructor($log, $document, $stateParams, $location, $scope, $window, $timeout, $uibModal, SearchBarService, OrderListService, dataServices, SmoothScrollService) {
+    constructor($log, $document, $translate, $stateParams, $location, $scope, $window, $timeout, $uibModal, SearchBarService, OrderListService, dataServices, SmoothScrollService) {
         'ngInject';
 
         let vm = this;
