@@ -288,17 +288,17 @@ class FilterDirectiveController {
         selectedCategory.select = !selectedCategory.select;
         if (SearchBarService.productLine && SearchBarService.productLine.id == 0) {
             SearchBarService.productLine = selectedCategory;
-            let paramObj = {'filters':"", 'filterObject':"",cat1:selectedCategory.id, "cat2": "", "cat3":"", "from":"", "size":""};
+            let paramObj = {'filters':"", 'filterObject':"",cat1:selectedCategory.id, "cat2": "", "cat3":"", "from":"", "size":"", "y":"","mk":"","md":""};
             $state.go("searchResults", paramObj);
         } else {
             if (selectedCategory.select) {
                 SearchBarService.productClass = selectedCategory;
                 SearchBarService.productCategory = 0;
-                let paramObj = {'filters':"", 'filterObject':"","cat2": selectedCategory.id, "cat3":"", "from":"", "size":""};
+                let paramObj = {'filters':"", 'filterObject':"","cat2": selectedCategory.id, "cat3":"", "from":"", "size":"", "y":"","mk":"","md":""};
                 $state.go("searchResults", paramObj);
             } else {
                 SearchBarService.productClass = 0;
-                let paramObj = {'filters':"", 'filterObject':"", "cat1":$stateParams.cat1, "cat2": "", "cat3":"", "from":"", "size":""};
+                let paramObj = {'filters':"", 'filterObject':"", "cat1":$stateParams.cat1, "cat2": "", "cat3":"", "from":"", "size":"", "y":"","mk":"","md":""};
                 $state.go("searchResults", paramObj);
             }
         }
@@ -357,11 +357,11 @@ class FilterDirectiveController {
         selectedSubCategory.select = !selectedSubCategory.select;
         if (selectedSubCategory.select) {
             SearchBarService.productCategory = selectedSubCategory;
-            let paramObj = {'filters':"", 'filterObject':"", "cat2": category.id, "cat3": selectedSubCategory.id, "from":"", "size":"" };
+            let paramObj = {'filters':"", 'filterObject':"", "cat2": category.id, "cat3": selectedSubCategory.id, "from":"", "size":"","y":"","mk":"","md":"" };
             $state.go("searchResults", paramObj);
         } else {
             SearchBarService.productCategory = 0;
-            let paramObj = {'filters':"", 'filterObject':"", "cat1":$stateParams.cat1, "cat2": category.id, "cat3": "", "from":"", "size":"" };
+            let paramObj = {'filters':"", 'filterObject':"", "cat1":$stateParams.cat1, "cat2": category.id, "cat3": "", "from":"", "size":"","y":"","mk":"","md":"" };
             $state.go("searchResults", paramObj);
         }
 

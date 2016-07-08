@@ -312,7 +312,7 @@ export class BreadCrumbController {
 
     _intializeCats() {
         let vm = this;
-        let {$interval, SearchBarService, appInfoService, BreadCrumbService} = vm.DI();
+        let {$interval, $stateParams, SearchBarService, appInfoService, BreadCrumbService} = vm.DI();
         /*if (SearchBarService.productLine && SearchBarService.productLine.id) {*/
         if ($stateParams.cat1) {
             vm.cats[0] = SearchBarService.productLine;
