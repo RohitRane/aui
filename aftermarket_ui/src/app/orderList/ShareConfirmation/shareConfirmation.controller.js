@@ -1,6 +1,6 @@
 /*Author : Shaifali Jaiswal*/
 export class ShareConfirmationController {
-    constructor($stateParams, $scope,dataServices, SearchBarService, OrderListService,$uibModalInstance) {
+    constructor($stateParams, $scope,dataServices, SearchBarService, OrderListService,$uibModalInstance, $translate) {
         'ngInject';
         let vm = this;
         vm.DI = () => ({$stateParams, $scope, dataServices, OrderListService,$uibModalInstance});

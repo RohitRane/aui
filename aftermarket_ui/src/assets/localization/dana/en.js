@@ -122,6 +122,15 @@ export let english = {
       SHAREORDERLIST:'Share Order List',
     },
 
+    //-------------------------Share Confirmation---------------------------//
+    SHARECONFIRM: {
+      ORDERLIST: 'Order List ',
+      PART: 'Part',
+      PARTS: 'Parts',
+      CONFIRMATIONMSG: 'Your order list is shared',
+      GOTOHOME: 'Go to Home',
+    },
+
     //please don't remove commented code it will used later;
     // Email:{
 
