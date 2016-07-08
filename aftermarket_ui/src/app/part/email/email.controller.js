@@ -1,5 +1,5 @@
 export class EmailController {
-    constructor( $uibModalInstance, $rootScope, $document, $timeout, $scope, dataServices, url, $log) {
+    constructor( $uibModalInstance, $rootScope, $document, $timeout, $scope, dataServices, url, $log, $translate) {
         'ngInject';
         let vm = this;
         vm.showSending = false;

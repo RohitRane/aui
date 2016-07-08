@@ -3,7 +3,7 @@
         <button type="button" class="close" ng-click="email.cancel()" data-dismiss="modal">&times;</button>
         <div class="row">
             <div class="col-sm-9">
-                <h4>Email Part</h4>
+                <h4>{{ 'EMAIL.EMILHEADING' | translate}}</h4>
                 <p></p>
             </div>
             <div class="col-sm-3">
@@ -12,34 +12,34 @@
     </div>
     <div class="modal-body">
         <form class="form-horizontal" name="sharepart" data-ng-submit="email.send()" novalidate>
-            <h4>From:</h4>
+            <h4>{{ 'EMAIL.FROM' | translate}} </h4>
             <div class="form-group">
                 <div class="col-md-12">
-                    <label class="sr-only">Your Email ID's </label><span class="madatoryStar">*</span>
+                    <label class="sr-only">{{ 'EMAIL.EMAILID' | translate}} </label><span class="madatoryStar">{{ 'EMAIL.MANDATORY' | translate}}</span>
                     <input type="email" data-ng-model="email.from" name="fEmail" class="form-control" placeholder="Your Email ID's" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{1,5}$/">
                     <span style="color:red" ng-show="sharepart.fEmail.$touched && sharepart.fEmail.$invalid">
-                        <span ng-show="sharepart.fEmail.$error.required">Please Enter Your Email </span>
-                    <span ng-show="sharepart.fEmail.$error.email">Please Enter correct Email </span>
-                     <span ng-show="sharepart.fEmail.$error.pattern">Please Enter correct Email </span>
+                        <span ng-show="sharepart.fEmail.$error.required">{{ 'EMAIL.EMAILREQUIRE' | translate}} </span>
+                    <span ng-show="sharepart.fEmail.$error.email">{{ 'EMAIL.EMAILVALIDATE' | translate}} </span>
+                     <span ng-show="sharepart.fEmail.$error.pattern">{{ 'EMAIL.EMAILVALIDATE' | translate}}</span>
                     </span>
                 </div>
             </div>
-            <h4>To:</h4>
+            <h4>{{ 'EMAIL.TO' | translate}}</h4>
             <div class="form-group">
                 <div class="col-md-12">
-                    <label class="sr-only">Email ID's</label><span class="madatoryStar">*</span>
+                    <label class="sr-only">{{ 'EMAIL.EMAILID' | translate}}</label><span class="madatoryStar">{{ 'EMAIL.MANDATORY' | translate}}</span>
                     <textarea multipleemails-directive class="form-control" placeholder="Recipient Email ID's separated by comma." name="tEmail" ng-model="email.to" multipleemails-directive required spellcheck=false 
                     ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{1,5}$/"></textarea>
                     <span class="has-error" ng-show="sharepart.tEmail.$touched">
-                    <span style="color:red" ng-show="sharepart.tEmail.$error.required && sharepart.tEmail.$touched">Please Enter Your Email </span>
-                    <span style="color:red" ng-show="sharepart.tEmail.$invalid && sharepart.tEmail.$dirty">Please Enter correct Email </span>
+                    <span style="color:red" ng-show="sharepart.tEmail.$error.required && sharepart.tEmail.$touched">{{ 'EMAIL.EMAILREQUIRE' | translate}}</span>
+                    <span style="color:red" ng-show="sharepart.tEmail.$invalid && sharepart.tEmail.$dirty">{{ 'EMAIL.EMAILVALIDATE' | translate}} </span>
                     </span>
                 </div>
             </div>
            
             <div class="form-group" data-ng-if="email.showSuccess">
                 <div class="col-md-12">
-                    <h5 class="text-primary"><strong>Mail sent successfully</strong></h5>
+                    <h5 class="text-primary"><strong>{{ 'EMAIL.SUCCESSMSG' | translate}}</strong></h5>
                 </div>
             </div>
             <sending-directive data-ng-if="email.showSending"></sending-directive>
@@ -53,7 +53,7 @@
                 <button class="btn btn-primary" data-ng-click="email.send()" type="submit" ng-disabled="sharepart.$invalid">
                     <h5>
                 <span class="glyphicon glyphicon-send"></span>
-                Send
+                {{ 'EMAIL.SEND' | translate}}
                </h5>
                 </button>
             </div>
