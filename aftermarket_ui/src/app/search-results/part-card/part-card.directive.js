@@ -9,7 +9,7 @@ export function PartCardDirective() {
         },
         controller: SearchResultDirectiveController,
         controllerAs: 'partCard',
-        link: function(scope, elem, attrs) {
+        link: function (scope, elem, attrs) {
             /*elem.bind('keypress', (e) => {
                 var regex = new RegExp("^[0-9]+$");
                 var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
@@ -37,10 +37,10 @@ export function PartCardDirective() {
 }
 
 class SearchResultDirectiveController {
-    constructor($log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, appInfoService) {
+    constructor($log, $timeout, $stateParams, $state, $document, BreadCrumbService, SearchBarService, OrderListService, appInfoService) {
         'ngInject';
         let vm = this;
-        vm.DI = () => ({$log, $scope, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, appInfoService});
+        vm.DI = () => ({ $log, $timeout, $stateParams, $state, BreadCrumbService, SearchBarService, OrderListService, appInfoService });
         vm.partImage = appInfoService.appInfo.cdnBaseurl;
 
         /* if(this.part.attrs != null){this.dI.log.debug("if");
@@ -59,13 +59,21 @@ class SearchResultDirectiveController {
         this.qtyNotAllowed = (this.qty > 0) ? false : true;
 
         this.assignPartImage();
+        $timeout(() => {
+            let partPics = $document[0].getElementsByClassName("default-pic");
+            angular.forEach(partPics, (partPic) => {
+                partPic.onerror = function () {
+                    this.src = "http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE";
+                }
+            });
+        });
 
     }
 
-    assignPartImage(){
-        for(let key of this.part.attrList){
-            if(key == "Brand"){
-                this.part.attrs[key] == 'SPL' ? this.partImage += "/logo/logo_Spicer"+".jpg" : this.partImage += "/logo/logo_"+this.part.attrs[key]+".jpg";
+    assignPartImage() {
+        for (let key of this.part.attrList) {
+            if (key == "Brand") {
+                this.part.attrs[key] == 'SPL' ? this.partImage += "/logo/logo_Spicer" + ".jpg" : this.partImage += "/logo/logo_" + this.part.attrs[key] + ".jpg";
                 return;
             }
         }
@@ -91,7 +99,7 @@ class SearchResultDirectiveController {
             this.shwMsg = true;
 
             let oldItem = false;
-            OrderListService.orderList.map(function(item) {
+            OrderListService.orderList.map(function (item) {
                 if (item.partNumber == vm.part.partNumber) {
                     item.quantity = Number(item.quantity) + Number(vm.qty);
                     oldItem = true;
@@ -105,7 +113,7 @@ class SearchResultDirectiveController {
                     partCategory: vm.part.categories[0].name,
                     partName: vm.part.displayName,
                     partImageUrl: vm.part.imageUrl
-                        //
+                    //
                 };
                 OrderListService.orderList.push(temp);
             }
@@ -170,26 +178,26 @@ class SearchResultDirectiveController {
     }
 
     gotoPart(id) {
-            let vm = this;
-            let { $stateParams, $state } = vm.DI();
-            let paramObj = { "id": id, "type": "id" };
-            angular.extend(paramObj, $stateParams);
-            //let paramKeys = Object.keys(paramObj);
-            angular.forEach(paramObj, (value, key, obj) => {
-                angular.isUndefined(value) ? delete obj[key] : angular.noop();
-            });
-            //$state.go("part", paramObj);
-            return $state.href("part", paramObj);
+        let vm = this;
+        let { $stateParams, $state } = vm.DI();
+        let paramObj = { "id": id, "type": "id" };
+        angular.extend(paramObj, $stateParams);
+        //let paramKeys = Object.keys(paramObj);
+        angular.forEach(paramObj, (value, key, obj) => {
+            angular.isUndefined(value) ? delete obj[key] : angular.noop();
+        });
+        //$state.go("part", paramObj);
+        return $state.href("part", paramObj);
+    }
+    /*nospecial() {
+        deb
+        var regex = new RegExp("^[0-9]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
         }
-        /*nospecial() {
-            deb
-            var regex = new RegExp("^[0-9]+$");
-            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-            if (regex.test(str)) {
-                return true;
-            }
 
-            e.preventDefault();
-            return false;
-        }*/
+        e.preventDefault();
+        return false;
+    }*/
 }

@@ -45,7 +45,7 @@
         <div class="row">
           <div class="col-md-3">
             <a href ng-href="{{partCard.gotoPart(partCard.part.id)}}">
-              <img ng-show="partCard.part.imageUrl" ng-src="http://{{partCard.part.imageUrl}}">
+              <img class="default-pic" ng-show="partCard.part.imageUrl" ng-src="http://{{partCard.part.imageUrl}}">
               <img ng-show="!partCard.part.imageUrl" ng-src="http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE">
             </a>
             <!-- <a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part)}}"></a> -->

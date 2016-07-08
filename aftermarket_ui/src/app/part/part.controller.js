@@ -177,6 +177,7 @@ export class PartController {
                 angular.forEach(thumbDivs, (thumbDiv) => {
                     var imgs = angular.element(thumbDiv).children();
                     imgs[0].onerror = function () {
+                        debugger;
                         angular.element(thumbDiv).css("display", "none");
                         let x = angular.element(this).attr("data-thumb");
                         x = angular.fromJson(x);

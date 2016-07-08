@@ -162,4 +162,27 @@ export class CategoryMenuController {
 
     }
 
+    linkClicked(evt,cat1, cat2, cat3) {
+        debugger;
+        //evt.preventDefault();
+               
+        let vm = this, {$scope, $state, $rootScope, BreadCrumbService, SearchBarService, searchNavigationService, $timeout} = vm.DI();
+        SearchBarService.sort = null; 
+        $scope.$emit("reachedhome");
+        let paramObj = { 'mode': 'hierarchy', 'str': "", 'cat1': cat1 ? cat1.id : null, 'cat2': cat2 ? cat2.id : null, 'cat3': cat3 ? cat3.id : null, 'filterObject': "" };
+        $rootScope.$emit("applyHierarchyScope", cat1);
+        BreadCrumbService.showAll = false;
+        SearchBarService.srchStr = "";
+        SearchBarService.listPreviousFilter = [];
+        $rootScope.$emit("clearCategoryFilter");
+        BreadCrumbService.searchToResults = true;
+        $timeout(() => {
+            cat1.open = false;
+        }, 100);
+    }
+
+    disableRightClick(evt){
+        evt.preventDefault();
+	}
+
 } 

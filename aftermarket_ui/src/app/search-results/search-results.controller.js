@@ -268,6 +268,10 @@ export class SearchResultsController {
         $state.go("searchResults", paramObj);
     }
 
+    disableRightClick(evt){
+        evt.preventDefault();
+	}
+
     _showYMM() {
         let vm = this;
         let {appInfoService, $stateParams, $interval} = vm.DI();

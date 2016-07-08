@@ -14,6 +14,5 @@ export function OtherResultDirective(){
 class  OtherResultDirectiveController{
 	constructor(){
 		'ngInject';
-	}
-	
+	}	
 }
