@@ -156,43 +156,43 @@ export let english = {
         //------------------part-----------------//
 
         PART: {
-          ELEARN: 'E Learning',
-          CATALOG: 'Part Catalog',
-          SERVICESMANNUAL: 'Service Manual',
-          INSTALLATION: 'Part Installation',
-          SPEC: 'Part Spec',
-          TEXT1: 'Illustrated Part List Dana',
-          TEXT2: 'Spicer Drive Axles S110 Illustrated Part List',
-          DESCRIPTION: 'Description',
-          EMAIL: 'Email',
-          HUBTEXT1: 'Industry Leading hub system technology',
-          HUBTEXT2: 'Reduced maintenance and improved liability',
-          TEXT3: 'There is a advanced part of this model',
-          TEXT4: '202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)',
-          ADDTOORDERLIST: 'ADD TO ORDER LIST',
-          ADD: 'Add',
-          VALIDMSG: 'Quantity should be positive number.',
-          WARRENTY: 'WARRANTY:',
-          TEXT5 : '3 years / 350,000 miles (560,000 kilometers)',
-          WARRENTYMATRIX : 'See Warranty Matrix',
-          MDS : 'Model Diagram & Specifications',
-          PAIRSWITH : 'Pairs with',
-          PARTDETAIL : ' Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...',
-          ALOSBOUGHT : 'You Also Bought',
-          IDENTIFYYPART : 'Identify your part',
-          SMDTAB : 'Specifications & Model Diagram',
-          CWATAB : 'Compatible with Applications',
-          EVBOMTAB : 'Exploded View & BOM',
-          INTERCHANGES:'Interchanges',
-          // BOMNO. : 'BOM No',
-          // LEVEL : 'Level',
-          // COMPONENT : 'Component Name',
-          // QTY : 'Quantity',
-          POPDESCUSSION: 'Popular Discussions',
-          VIEWALL: 'View All (31)',
-          SECTIONTITLE : 'Is this the right choice for my on-highway fleet?',
-          //SECTIONDESCRIPTION: 'Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
-          //    BTW, noticed one of TMCs new trucks the other day..... white in color. Had to take the second look'
+            ELEARN: 'E Learning',
+            CATALOG: 'Part Catalog',
+            SERVICESMANNUAL: 'Service Manual',
+            INSTALLATION: 'Part Installation',
+            SPEC: 'Part Spec',
+            TEXT1: 'Illustrated Part List Dana',
+            TEXT2: 'Spicer Drive Axles S110 Illustrated Part List',
+            DESCRIPTION: 'Description',
+            EMAIL: 'Email',
+            HUBTEXT1: 'Industry Leading hub system technology',
+            HUBTEXT2: 'Reduced maintenance and improved liability',
+            TEXT3: 'There is a advanced part of this model',
+            TEXT4: '202BN103-25, Heavy Axle, Steer Axle, Steer Axle Assy E1202I (69 Kpi)',
+            ADDTOORDERLIST: 'ADD TO ORDER LIST',
+            ADD: 'Add',
+            VALIDMSG: 'Quantity should be positive number.',
+            WARRENTY: 'WARRANTY:',
+            TEXT5: '3 years / 350,000 miles (560,000 kilometers)',
+            WARRENTYMATRIX: 'See Warranty Matrix',
+            MDS: 'Model Diagram & Specifications',
+            PAIRSWITH: 'Pairs with',
+            PARTDETAIL: ' Spicer, Steer Axle, E1002I, E-series, 10,000lbs, Heavy Duty KingPin Joint, 2-Drawkeys,...',
+            ALOSBOUGHT: 'You Also Bought',
+            IDENTIFYYPART: 'Identify your part',
+            SMDTAB: 'Specifications & Model Diagram',
+            CWATAB: 'Compatible with Applications',
+            EVBOMTAB: 'Exploded View & BOM',
+            INTERCHANGES: 'Interchanges',
+            // BOMNO. : 'BOM No',
+            // LEVEL : 'Level',
+            // COMPONENT : 'Component Name',
+            // QTY : 'Quantity',
+            POPDESCUSSION: 'Popular Discussions',
+            VIEWALL: 'View All (31)',
+            SECTIONTITLE: 'Is this the right choice for my on-highway fleet?',
+            //SECTIONDESCRIPTION: 'Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
+            //    BTW, noticed one of TMCs new trucks the other day..... white in color. Had to take the second look'
             READMORE: 'Read More...',
             ANSBY: 'Answered by',
             BLACK900: 'blackw900',
@@ -218,27 +218,32 @@ export let english = {
             CALL: 'Please Contact Dana Help line number : 1-800-621-8084',
         },
 
-      //------------- searchresults/partcard/popover-----------------------//
-      POPOVER: {
-        WishList: 'Add to WishList',
-        //CONTENT: 'content',
-        //TITLE: 'Popup Title:',
-        SPECIFICATIONS: 'Specifications',
-        MMS: 'MMS',
-        TM: 'TM',
-        HUB: 'Hub',
-      },
+        //------------- searchresults/partcard/popover-----------------------//
+        POPOVER: {
+            WishList: 'Add to WishList',
+            //CONTENT: 'content',
+            //TITLE: 'Popup Title:',
+            SPECIFICATIONS: 'Specifications',
+            MMS: 'MMS',
+            TM: 'TM',
+            HUB: 'Hub',
+        },
 
 
-      //------------- searchresults/selected-filter-----------------------//
+        //------------- searchresults/selected-filter-----------------------//
 
-      SELECTEDFILTER: {
-        CLOSE:'X',
-      },
+        SELECTEDFILTER: {
+            CLOSE: 'X',
+        },
 
-      //------------- searchresults/ymm-----------------------//
+        //------------- searchresults/ymm-----------------------//
+        YMM: {
+            SEARCHBYMMY: 'Search by Make / Model / Year',
+            APPLY: 'APPLY',
+        },
 
-      //------------------ searchresults-----------------------//
+
+        //------------------ searchresults-----------------------//
 
         SEARCHRESULT: {
             ZERORESULT: 'has found 0 results.',
