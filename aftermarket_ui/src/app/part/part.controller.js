@@ -158,21 +158,27 @@ export class PartController {
                 default: vm.partData.imageUrl = retUrl;
             };*/
 
-            vm.modalImage = "";
-            vm.bomImage = "";
+            vm.modalImage = [];
+            vm.bomImage = [];
 
             angular.forEach(vm.partData.assets, (thumb) => {
                 if (thumb.fileName)
                     thumb.show = true;
-                if (thumb.assetType === "primary") {
+                if (thumb.assetType === "primary" || thumb.assetType === "outofpackage") {
                     vm.thumbs.push(thumb);
                 }
                 else if (thumb.assetType === "modal") {
-                    vm.modalImage = thumb;
+                    vm.modalImage.push(thumb);
                 }
                 else if (thumb.assetType === "bom") {
-                    vm.bomImage = thumb;
+                    vm.bomImage.push(thumb);
                 }
+
+                vm.activeModal = {};
+                vm.activeBom = {};
+                vm.activeModal.url = vm.modalImage.length? vm.modalImage[0].fileName:"";
+                vm.activeBom.url = vm.bomImage.length? vm.bomImage[0].fileName:"";
+                angular.noop();
 
             });
 
@@ -209,21 +215,26 @@ export class PartController {
                 let modal = $document[0].getElementById("modal-image");
                 if (modal) {
                     $interval.cancel(intvl);
-                    modal.onerror = function () {
-                        angular.element(this).css("display", "none");
-                    }
+                    /*angular.element(modal).bind("error", () => {
+                        angular.element(modal).css("display", "none");
+                    });*/
+                    modal.onerror = () => angular.element(modal).css("display", "none");
+
                 }
-            }, 100);
+            }, 50);
 
             let intvl2 = $interval(() => {
-                let modal = $document[0].getElementById("bom-image");
-                if (modal) {
+                let bom = $document[0].getElementById("bom-image");
+                if (bom) {
                     $interval.cancel(intvl2);
-                    modal.onerror = function () {
+                    /*angular.element(bom).bind("error", () => {
+                        angular.element(bom).css("display", "none");
+                    });*/
+                    bom.onerror = function () {
                         angular.element(this).css("display", "none");
                     }
                 }
-            }, 100);
+            }, 50);
 
         }
     }
@@ -236,10 +247,16 @@ export class PartController {
         return resp;
     }
 
-    changeActiveImage(thumb) {
+    changeActiveImage(thumb, section = 0) {
         let vm = this;
         let {$timeout} = vm.DI();
-        vm.activeThumb.url = thumb;
+        switch(section){
+            case 0 :vm.activeThumb.url = thumb;break;
+            case 1 : vm.activeModal.url = thumb;break;
+            case 2 : vm.activeBom.url = thumb;break;
+        }
+        
+        i
     }
 
     hasSpecification(attrs) {

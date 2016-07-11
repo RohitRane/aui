@@ -16,8 +16,10 @@
       <div class="row top-section-row">
         <div data-ng-class="part.showThumbNailsSection()?'col-md-1':'col-md-0'">
           <!--{{part.thumbs}}-->
-          <div class="custom-thumbnail" data-ng-if="thumb.show" data-ng-class="part.isThumbNailActive(thumb)?'active-thumb':'inactive-thumb'" data-ng-repeat="thumb in part.thumbs">
-            <img ng-src="http://{{thumb.fileName}}" alt="" data-thumb="{{thumb}}" data-ng-class="part.isThumbNailActive(thumb)?'':'opaque'" data-ng-click="part.changeActiveImage(thumb.fileName)">
+          <div class="custom-thumbnail" data-ng-if="thumb.show" data-ng-class="part.isThumbNailActive(thumb)?'active-thumb':'inactive-thumb'"
+            data-ng-repeat="thumb in part.thumbs">
+            <img ng-src="http://{{thumb.fileName}}" alt="" data-thumb="{{thumb}}" data-ng-class="part.isThumbNailActive(thumb)?'':'opaque'"
+              data-ng-click="part.changeActiveImage(thumb.fileName)">
           </div>
         </div>
         <div class="col-md-3">
@@ -28,7 +30,8 @@
                   <a href="#" class="">
                     <!-- <img src="assets/images/part-details/machine_main.jpg" alt="125x125" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"> -->
                     <!--<img src="assets/images/part-details/machine_main.jpg" alt="125x125" >-->
-                    <image-zoom ng-src="{{part.activeThumb.url}}" show-zoom-section="{{part.activeThumb.zoom}}" zoom-index="5" lens-dimensions="{{part.lensDimensions}}" container-dimensions="{{part.containerDimensions}}"></image-zoom>
+                    <image-zoom ng-src="{{part.activeThumb.url}}" show-zoom-section="{{part.activeThumb.zoom}}" zoom-index="5" lens-dimensions="{{part.lensDimensions}}"
+                      container-dimensions="{{part.containerDimensions}}"></image-zoom>
                   </a>
                 </div>
               </div>
@@ -108,7 +111,7 @@
                   <!--<label data-ng-if="!part.partData.longDesc" class="partDesc">
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.                    
                   </label>-->
-                  
+
 
 
                   <!--<label data-ng-if="part.hasSpecification(part.partData.attrs)" class="partDetailsTabDesc">Specification</label>
@@ -177,18 +180,18 @@
                 <div class="row">
                   <h5>{{'PART.ADDTOORDERLIST' | translate}}</h5>
                   <form name="amOrderlist">
-                  <input nonegative-directive min="0" no-spl-char type="number" name="qty" data-ng-model="part.qty" placeholder="qty"/> <button class="btn"  ng-class="{true: 'activeButton'}[part.qty > 0]"  ng-click="part.change('shwMsg')">{{'PART.ADD' | translate}}</button></br>
+                    <input nonegative-directive min="0" no-spl-char type="number" name="qty" data-ng-model="part.qty" placeholder="qty" />                    <button class="btn" ng-class="{true: 'activeButton'}[part.qty > 0]" ng-click="part.change('shwMsg')">{{'PART.ADD' | translate}}</button></br>
                     <span ng-show="part.shwMsg">{{'PARTCARD.SHOWMSG' | translate}}</span>
                     <div class="error" ng-show="amOrderlist.qty.$error.positive">{{'PART.VALIDMSG' | translate}}</div>
-                    </form>
-                    {{vm.part.partData}}
+                  </form>
+                  {{vm.part.partData}}
                 </div>
                 <!--
                  <div class="row">
                  <span>
               <a ng-show="part.shwOrdrTxt" ng-click="part.change('shwQty')">{{'PARTCARD.ADDTOORDERLIST' | translate}}
               </a> <!--<span class="caret"></span>-->
-              <!--
+                <!--
               <div class="shwQty" ng-show="part.shwQty">  
                 <span><input type="text" data-ng-model="part.qty" placeholder="qty"/></span>
                 <a ng-click="part.change('shwMsg')">{{'PARTCARD.ADD' | translate}}</a>
@@ -307,7 +310,7 @@
       <div class="panel panel-default part-panel">
         <div class="panel-header top-bottom-gap">
           <div class="section-title bottom extraLeft">{{'PART.ELEARN' | translate}}{{'PART.ALOSBOUGHT' | translate}}
-          </hr>
+            </hr>
           </div>
         </div>
         <div class="panel-body" data-ng-hide="part.hideForNow">
@@ -382,7 +385,7 @@
     </uib-tab>-->
     <uib-tab class="tab" index="1">
       <uib-tab-heading>{{'PART.SMDTAB' | translate}}
-       
+
       </uib-tab-heading>
       <div class="container-fluid spec-n-model">
         <div class="col-md-5 spec-section">
@@ -395,21 +398,29 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-7 model-section">
-          <img id="modal-image" ng-src="{{part.modalImage.fileName}}" alt="">
+        <div class="col-md-1">
+          <div class="custom-thumbnail" data-ng-if="modal.show" data-ng-class="part.isThumbNailActive(modal)?'active-thumb':'inactive-thumb'"
+            data-ng-repeat="modal in part.modalImage">
+            <img ng-src="http://{{modal.fileName}}" alt="" data-thumb="{{modal}}" data-ng-class="part.isThumbNailActive(modal)?'':'opaque'"
+              data-ng-click="part.changeActiveImage(modal.fileName,1)">
+          </div>
+        </div>
+        <div class="col-md-6 model-section">
+          <!--<img id="modal-image" ng-src="{{part.modalImage[0].fileName}}" alt="">-->
+          <img id="modal-image" ng-src="http://{{part.activeModal.url}}" alt="">
         </div>
       </div>
       <!--<div class="panel panel-default">ABCD</div>-->
     </uib-tab>
     <uib-tab class="tab" index="2" data-ng-if="part.hasCompatibility(part.partData.apps)">
       <uib-tab-heading>{{'PART.CWATAB' | translate}}
-       
+
       </uib-tab-heading>
       <div class="container-fluid" data-ng-include="'app/part/compatibility-table.html'"></div>
     </uib-tab>
     <uib-tab class="tab" index="3" data-ng-if="part.partData.bom.length>0">
       <uib-tab-heading>{{'PART.EVBOMTAB' | translate}}
-       
+
       </uib-tab-heading>
       <div class="container-fluid">
         <table class="table">
@@ -432,7 +443,19 @@
             </tr>
           </tbody>
         </table>
-        <img id="bom-image" ng-src="{{part.bomImage}}" class="img-responsive" />
+        <div class="col-md-12">
+          <div class="col-md-1">
+            <div class="custom-thumbnail" data-ng-if="bImage.show" data-ng-class="part.isThumbNailActive(bImage)?'active-thumb':'inactive-thumb'"
+              data-ng-repeat="bImage in part.bomImage">
+              <img ng-src="http://{{bImage.fileName}}" alt="" data-thumb="{{bImage}}" data-ng-class="part.isThumbNailActive(bImage)?'':'opaque'"
+                data-ng-click="part.changeActiveImage(bImage.fileName,2)">
+            </div>
+          </div>
+          <div class="col-md-11">
+            <img id="bom-image" ng-src="http://{{part.activeBom.url}}" class="img-responsive" />
+          </div>
+        </div>
+
       </div>
     </uib-tab>
     <!-- <uib-tab class="tab" index="4" data-ng-if="part.hasInterchanges(part.partData.interchanges) && part.hideForNow"> -->
@@ -526,8 +549,8 @@
             <div class="comment">
               <p class="section-title">{{'PART.SECTIONTITLE' | translate}}Is this the right choice for my on-highway fleet? </p>
               <p>
-              Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
-                BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look
+                Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty. BTW, noticed
+                one of TMC's new trucks the other day..... white in color. Had to take the second look
                 <span class="readmore"><a>{{'PART.READMORE' | translate}}</a></span>
               </p>
               <p class="Answered-by">{{'PART.ANSBY' | translate}} <a href="#">{{'PART.BLACK900' | translate}}</a>{{'PART.DAYS' | translate}}</p>
@@ -535,9 +558,9 @@
             <div class="comment">
               <p class="section-title">{{'PART.SECTIONTITLE' | translate}}</p>
               <p>
-             <!--  {{'PART.ELEARN' | translate}} -->
-              Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty.
-                BTW, noticed one of TMC's new trucks the other day..... white in color. Had to take the second look
+                <!--  {{'PART.ELEARN' | translate}} -->
+                Dana/Spicer has always had a good product to my knowledge and usually backed it up better on parts/warranty. BTW, noticed
+                one of TMC's new trucks the other day..... white in color. Had to take the second look
                 <span class="readmore"><a>{{'PART.READMORE' | translate}}</a></span>
               </p>
               <p class="Answered-by">{{'PART.ANSBY' | translate}} <a href="#">{{'PART.BLACK900' | translate}}</a>{{'PART.DAYS' | translate}}</p>
