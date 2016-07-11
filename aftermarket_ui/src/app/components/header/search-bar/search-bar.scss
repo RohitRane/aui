@@ -91,6 +91,21 @@
             }
         }
     }
+
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+        .srchPlace{
+            input::-webkit-input-placeholder {
+                font-size: 9px !important;
+
+            }
+        .srchPlace{
+            input::-moz-input-placeholder {
+                font-size: 9px !important;
+
+            }
+       }
+    }
+
     @media(width:1024px) {
         #search-box::-webkit-input-placeholder {
             font-size: 12px
