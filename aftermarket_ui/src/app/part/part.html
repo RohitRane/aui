@@ -396,7 +396,7 @@
           </table>
         </div>
         <div class="col-md-7 model-section">
-          <img src="{{part.partData.modelDiagram}}" alt="">
+          <img id="modal-image" ng-src="{{part.modalImage.fileName}}" alt="">
         </div>
       </div>
       <!--<div class="panel panel-default">ABCD</div>-->
@@ -432,7 +432,7 @@
             </tr>
           </tbody>
         </table>
-        <img data-ng-hide="part.hideForNow" src="assets/images/part-details/machine_exploded.jpg" class="img-responsive" />
+        <img ng-src="{{part.bomImage}}" class="img-responsive" />
       </div>
     </uib-tab>
     <!-- <uib-tab class="tab" index="4" data-ng-if="part.hasInterchanges(part.partData.interchanges) && part.hideForNow"> -->

@@ -1,10 +1,10 @@
 /*Author:Rohit Rane*/
 export class PartController {
-    constructor($log, $document, $translate, $stateParams, $location, $scope, $window, $timeout, $uibModal, SearchBarService, OrderListService, dataServices, SmoothScrollService) {
+    constructor($log, $document, $translate, $stateParams, $location, $scope, $window, $timeout, $uibModal, $interval, SearchBarService, OrderListService, dataServices, SmoothScrollService) {
         'ngInject';
 
         let vm = this;
-        vm.DI = () => ({ $log, $document, $scope, $stateParams, $location, $window, $timeout, $uibModal, SearchBarService, OrderListService, dataServices, SmoothScrollService });
+        vm.DI = () => ({ $log, $document, $scope, $stateParams, $location, $window, $timeout, $uibModal, $interval, SearchBarService, OrderListService, dataServices, SmoothScrollService });
 
         $window.scrollTo(0, 0);
 
@@ -117,7 +117,7 @@ export class PartController {
 
     getPart() {
         let vm = this;
-        let {$log, $stateParams, $scope, $document, $timeout, SearchBarService, dataServices} = vm.DI();
+        let {$log, $stateParams, $scope, $document, $timeout, $interval, SearchBarService, dataServices} = vm.DI();
         $log.debug("part no :", $stateParams);
         vm.productLine = SearchBarService.productLine;
         $log.debug("state type :", $stateParams.type);
@@ -157,11 +157,26 @@ export class PartController {
                 case 'Ring and Pinions': console.log("It's a Universal Jt"); vm.partData.imageUrl = "/assets/images/rangeNpinion.jpg"; break;
                 default: vm.partData.imageUrl = retUrl;
             };*/
-            vm.thumbs = vm.partData.assets.map((thumb) => {
+
+            vm.modalImage = "";
+            vm.bomImage = "";
+
+            angular.forEach(vm.partData.assets, (thumb) => {
                 if (thumb.fileName)
                     thumb.show = true;
-                return thumb;
+                if (thumb.assetType === "primary") {
+                    vm.thumbs.push(thumb);
+                }
+                else if (thumb.assetType === "modal") {
+                    vm.modalImage = thumb;
+                }
+                else if (thumb.assetType === "bom") {
+                    vm.bomImage = thumb;
+                }
+
             });
+
+            //vm.partData.assets.map();
             //vm.activeThumb.url = vm.partData.imageUrl;
             vm.activeThumb = { url: "placehold.it/300x300/dbdbdb/0099CC/?text=NO+IMAGE", zoom: false };
             angular.forEach(vm.thumbs, (thumb, index) => {
@@ -177,7 +192,6 @@ export class PartController {
                 angular.forEach(thumbDivs, (thumbDiv) => {
                     var imgs = angular.element(thumbDiv).children();
                     imgs[0].onerror = function () {
-                        debugger;
                         angular.element(thumbDiv).css("display", "none");
                         let x = angular.element(this).attr("data-thumb");
                         x = angular.fromJson(x);
@@ -190,6 +204,25 @@ export class PartController {
                 });
 
                 angular.noop();
+            }, 100);
+            let intvl = $interval(() => {
+                let modal = $document[0].getElementById("modal-image");
+                if (modal) {
+                    $interval.cancel(intvl);
+                    modal.onerror = function () {
+                        angular.element(this).css("display", "none");
+                    }
+                }
+            }, 100);
+
+            let intvl2 = $interval(() => {
+                let modal = $document[0].getElementById("bom-image");
+                if (modal) {
+                    $interval.cancel(intvl2);
+                    modal.onerror = function () {
+                        angular.element(this).css("display", "none");
+                    }
+                }
             }, 100);
 
         }
@@ -298,18 +331,18 @@ export class PartController {
         let vm = this;
         let {$uibModal, $location} = vm.DI();
         var modalInstance = $uibModal.open({
-          templateUrl: 'app/part/email/email.html',
-          controller: 'EmailController',
-          controllerAs: 'email',
-          size: 'md',
-          windowClass: 'my-modal-popup',
-          resolve: {
-              url: function() {
-                  let x = $location.absUrl();
-                  return x;
-              }
-          },
-          bindToController: true
-      });
+            templateUrl: 'app/part/email/email.html',
+            controller: 'EmailController',
+            controllerAs: 'email',
+            size: 'md',
+            windowClass: 'my-modal-popup',
+            resolve: {
+                url: function () {
+                    let x = $location.absUrl();
+                    return x;
+                }
+            },
+            bindToController: true
+        });
     }
 }
