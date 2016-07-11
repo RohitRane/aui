@@ -19,9 +19,9 @@ export class SearchNavigationService {
         $location.url(url);
     }*/
 
-    gotoResultsPage(cat1 = "", cat2 = "", cat3 = "", from = "", srchStr = "", filters = "", filterObject = "", year = "", make = "", model = "") {
+    gotoResultsPage(cat1 = "", cat2 = "", cat3 = "", from = "", srchStr = "", filters = "", filterObject = "", year = "", make = "", model = "", sort = "") {
         let vm = this, {$state} = vm.DI();
-        let paramObj = { "str": srchStr, 'filters': filters, 'filterObject': filterObject, from: from, 'cat1': cat1 ? cat1.id.toString() : "", "cat2": cat2 ? cat2.id.toString() : "", "cat3": cat3 ? cat3.id.toString() : "", "y": year, "mk": make, "md": model };
+        let paramObj = { "str": srchStr, 'filters': filters, 'filterObject': filterObject, from: from, 'cat1': cat1 ? cat1.id.toString() : "", "cat2": cat2 ? cat2.id.toString() : "", "cat3": cat3 ? cat3.id.toString() : "", "y": year, "mk": make, "md": model, "sort": sort };
         console.log("param obj :", paramObj);
         $state.go("searchResults", paramObj);
     }

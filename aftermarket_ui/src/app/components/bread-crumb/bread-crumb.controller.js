@@ -176,7 +176,7 @@ export class BreadCrumbController {
 
     sortAction(sortObj) {
         let vm = this;
-        let {SearchBarService, $scope} = vm.DI();
+        let {SearchBarService, $scope, $state} = vm.DI();
         if (sortObj.Name == "Relevance") {
             SearchBarService.sort = null;
         } else {
@@ -187,7 +187,9 @@ export class BreadCrumbController {
         }
 
         console.log("SearchBarService.sort ", SearchBarService.sort);
-        $scope.$emit("searchLaunched");
+        let paramObj = {"from":"", "size":"", "sort":SearchBarService.sort ? SearchBarService.sort.sortType == "ASC" ? 1: 2 : ""};
+        $state.go("searchResults", paramObj);
+        //$scope.$emit("searchLaunched");
         // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});
     }
 
