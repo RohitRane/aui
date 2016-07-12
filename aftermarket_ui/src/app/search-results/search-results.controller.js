@@ -223,7 +223,8 @@ export class SearchResultsController {
 
             if (vm.results.parts) {
                 vm.results.parts = vm.results.parts.map(function (part) {
-                    part.displayName = part.partNumber + ' ' + part.partDesc? part.partDesc: '';
+                    part.displayName = part.partNumber + ' ' + part.partDesc;
+                    //part.displayName = part.partNumber + ' ' + part.partDesc? part.partDesc: '';
                     if (part.attrs != null) {
                         part.attrList = Object.keys(part.attrs);
                     } else {

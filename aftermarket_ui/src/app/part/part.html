@@ -398,7 +398,8 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-1">
+        <!--The below commented code is for showing model diagram image, once good images are coming, they'll work.-->
+        <!--<div class="col-md-1">
           <div class="custom-thumbnail" data-ng-if="modal.show" data-ng-class="part.isThumbNailActive(modal)?'active-thumb':'inactive-thumb'"
             data-ng-repeat="modal in part.modalImage">
             <img ng-src="http://{{modal.fileName}}" alt="" data-thumb="{{modal}}" data-ng-class="part.isThumbNailActive(modal)?'':'opaque'"
@@ -406,11 +407,10 @@
           </div>
         </div>
         <div class="col-md-6 model-section">
-          <!--<img id="modal-image" ng-src="{{part.modalImage[0].fileName}}" alt="">-->
           <img id="modal-image" ng-src="http://{{part.activeModal.url}}" alt="">
-        </div>
+        </div>-->
+        <!--The above commented code is for showing model diagram image, once good images are coming, they'll work.-->
       </div>
-      <!--<div class="panel panel-default">ABCD</div>-->
     </uib-tab>
     <uib-tab class="tab" index="2" data-ng-if="part.hasCompatibility(part.partData.apps)">
       <uib-tab-heading>{{'PART.CWATAB' | translate}}
@@ -443,7 +443,8 @@
             </tr>
           </tbody>
         </table>
-        <div class="col-md-12">
+        <!--The below commented code is for showing BOM image, once good images are coming, they'll work.-->
+        <!--<div class="col-md-12">
           <div class="col-md-1">
             <div class="custom-thumbnail" data-ng-if="bImage.show" data-ng-class="part.isThumbNailActive(bImage)?'active-thumb':'inactive-thumb'"
               data-ng-repeat="bImage in part.bomImage">
@@ -454,8 +455,8 @@
           <div class="col-md-11">
             <img id="bom-image" ng-src="http://{{part.activeBom.url}}" class="img-responsive" />
           </div>
-        </div>
-
+        </div>-->
+        <!--The above commented code is for showing BOM image, once good images are coming, they'll work.-->
       </div>
     </uib-tab>
     <!-- <uib-tab class="tab" index="4" data-ng-if="part.hasInterchanges(part.partData.interchanges) && part.hideForNow"> -->
