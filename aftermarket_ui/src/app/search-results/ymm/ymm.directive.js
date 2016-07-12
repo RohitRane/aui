@@ -359,11 +359,12 @@ class YMMDirectiveController {
 
             function () {
 
-                let currParent = $scope.ymmParent.charAt(0).toUpperCase() + $scope.ymmParent.slice(1).toLowerCase(),
-                    currChild1 = $scope.ymmFirstChild.charAt(0).toUpperCase() + $scope.ymmFirstChild.slice(1).toLowerCase(),
-                    currChild2 = $scope.ymmSecondChild.charAt(0).toUpperCase() + $scope.ymmSecondChild.slice(1).toLowerCase();
-
-
+                let currParent, currChild1, currChild2;
+                if ($scope) {
+                    $scope.ymmParent ? currParent = $scope.ymmParent.charAt(0).toUpperCase() + $scope.ymmParent.slice(1).toLowerCase() : angular.noop();
+                    $scope.ymmFirstChild ? currChild1 = $scope.ymmFirstChild.charAt(0).toUpperCase() + $scope.ymmFirstChild.slice(1).toLowerCase() : angular.noop();
+                    $scope.ymmSecondChild ? currChild2 = $scope.ymmSecondChild.charAt(0).toUpperCase() + $scope.ymmSecondChild.slice(1).toLowerCase() : angular.noop();
+                }
 
                 if (currParent == 'Year') {
                     vm.yearList = $scope.ymmParentData;
