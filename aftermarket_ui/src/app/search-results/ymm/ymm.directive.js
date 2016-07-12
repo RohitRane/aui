@@ -434,6 +434,7 @@ class YMMDirectiveController {
         if ($scope.ymmParentData.length > 0) {
             deferred.resolve();
         } else {
+            YmmService.emptyLevelData();
             YmmService.getYearData('SPL55', ["ALL", null, null], null, null, null, null, null).then(
                 function (result) {
                     let {
