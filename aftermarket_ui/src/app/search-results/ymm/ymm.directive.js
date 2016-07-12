@@ -84,7 +84,7 @@ class YMMDirectiveController {
         $scope.catChanged = false;
 
         vm.flickEven = false;
-        for (let i = 1; i < 8; i++) {
+        for (let i = 1; i < 4; i++) {
             $timeout(() => {
                 vm.flickEven = !vm.flickEven;
             }, 1000 * i);
