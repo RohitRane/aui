@@ -50,11 +50,21 @@ export class PartController {
 
     }
 
-    isThumbNailActive(thumb) {
+    isThumbNailActive(thumb, section = 0) {
         let vm = this, status = false;
-        if (vm.activeThumb.url == thumb.fileName) {
-            status = true;
+        switch (section) {
+            case 0: if (vm.activeThumb.url == thumb.fileName) {
+                status = true;
+            }
+            case 1: if (vm.activeModal.url == thumb.fileName) {
+                status = true;
+            }
+            case 2: if (vm.activeBom.url == thumb.fileName) {
+                status = true;
+            }
+            
         }
+
         return status;
     }
 
@@ -176,8 +186,8 @@ export class PartController {
 
                 vm.activeModal = {};
                 vm.activeBom = {};
-                vm.activeModal.url = vm.modalImage.length? vm.modalImage[0].fileName:"";
-                vm.activeBom.url = vm.bomImage.length? vm.bomImage[0].fileName:"";
+                vm.activeModal.url = vm.modalImage.length ? vm.modalImage[0].fileName : "";
+                vm.activeBom.url = vm.bomImage.length ? vm.bomImage[0].fileName : "";
                 angular.noop();
 
             });
@@ -250,12 +260,12 @@ export class PartController {
     changeActiveImage(thumb, section = 0) {
         let vm = this;
         let {$timeout} = vm.DI();
-        switch(section){
-            case 0 :vm.activeThumb.url = thumb;break;
-            case 1 : vm.activeModal.url = thumb;break;
-            case 2 : vm.activeBom.url = thumb;break;
+        switch (section) {
+            case 0: vm.activeThumb.url = thumb; break;
+            case 1: vm.activeModal.url = thumb; break;
+            case 2: vm.activeBom.url = thumb; break;
         }
-        
+
         i
     }
 
