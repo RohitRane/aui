@@ -408,7 +408,7 @@
           </div>
         </div>
         <div class="col-md-6 model-section">
-          <img id="modal-image" ng-src="http://{{part.activeModal.url}}" alt="">
+          <img id="modal-image" data-ng-show="part.activeModal.url" ng-src="http://{{part.activeModal.url}}" alt="">
         </div>
         <!--The above commented code is for showing model diagram image, once good images are coming, they'll work.-->
       </div>
@@ -454,7 +454,7 @@
             </div>
           </div>
           <div class="col-md-11">
-            <img id="bom-image" ng-src="http://{{part.activeBom.url}}" class="img-responsive" />
+            <img id="bom-image" data-ng-show="part.activeBom.url" ng-src="http://{{part.activeBom.url}}" class="img-responsive" />
           </div>
         </div>
         <!--The above commented code is for showing BOM image, once good images are coming, they'll work.-->

@@ -203,24 +203,28 @@ export class PartController {
                     vm.thumbs.unshift(thumb);
                 }
             });
-            $timeout(() => {
+            let intvl_thumb = $interval(() => {
                 let thumbDivs = $document[0].getElementsByClassName("custom-thumbnail");
                 angular.forEach(thumbDivs, (thumbDiv) => {
                     var imgs = angular.element(thumbDiv).children();
-                    imgs[0].onerror = function () {
-                        angular.element(thumbDiv).css("display", "none");
-                        let x = angular.element(this).attr("data-thumb");
-                        x = angular.fromJson(x);
-                        angular.forEach(vm.thumbs, (thumb) => {
-                            if (thumb.fileName === x.fileName) {
-                                thumb.show = false;
-                            }
-                        });
+                    if(imgs.length>0){
+                        $interval.cancel(intvl_thumb);
+                        imgs[0].onerror = function () {
+                            angular.element(thumbDiv).css("display", "none");
+                            let x = angular.element(this).attr("data-thumb");
+                            x = angular.fromJson(x);
+                            angular.forEach(vm.thumbs, (thumb) => {
+                                if (thumb.fileName === x.fileName) {
+                                    thumb.show = false;
+                                }
+                            });
+                        }
                     }
+                    
                 });
 
                 angular.noop();
-            }, 100);
+            }, 50);
             let intvl = $interval(() => {
                 let modal = $document[0].getElementById("modal-image");
                 if (modal) {
@@ -241,7 +245,8 @@ export class PartController {
                         angular.element(bom).css("display", "none");
                     });*/
                     bom.onerror = function () {
-                        angular.element(this).css("display", "none");
+                        debugger;
+                        angular.element(bom).css("display", "none");
                     }
                 }
             }, 50);
