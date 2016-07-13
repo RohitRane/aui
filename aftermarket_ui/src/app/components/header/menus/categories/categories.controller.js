@@ -151,6 +151,7 @@ export class CategoryMenuController {
         }*/
         SearchBarService.srchStr = "";
         SearchBarService.listPreviousFilter = [];
+        SearchBarService.selectdeFilters = [];
         //SearchBarService.selectdeFilters = [];
         $rootScope.$emit("clearCategoryFilter");
         //$state.go("searchResults", paramObj);
@@ -163,7 +164,6 @@ export class CategoryMenuController {
     }
 
     linkClicked(evt,cat1, cat2, cat3) {
-        debugger;
         //evt.preventDefault();
                
         let vm = this, {$scope, $state, $rootScope, BreadCrumbService, SearchBarService, searchNavigationService, $timeout} = vm.DI();
@@ -173,7 +173,7 @@ export class CategoryMenuController {
         $rootScope.$emit("applyHierarchyScope", cat1);
         BreadCrumbService.showAll = false;
         SearchBarService.srchStr = "";
-        SearchBarService.listPreviousFilter = [];
+        SearchBarService.listPreviousFilter = [];        
         $rootScope.$emit("clearCategoryFilter");
         BreadCrumbService.searchToResults = true;
         $timeout(() => {

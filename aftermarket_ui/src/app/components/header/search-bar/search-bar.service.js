@@ -103,6 +103,7 @@ export class SearchBarService {
     }
 
     get selectdeFilters() {
+        //sessionStorage.selectdeFilters = angular.toJson(this._selectdeFilters);
         return this._selectdeFilters;
     }
 
