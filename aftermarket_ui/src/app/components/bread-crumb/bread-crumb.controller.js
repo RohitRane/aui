@@ -7,7 +7,7 @@ export class BreadCrumbController {
         vm.DI = () => ({ $scope, $rootScope, $state, $window, $document, $timeout, $interval, $stateParams, SearchBarService, appInfoService, BreadCrumbService, searchNavigationService });
         vm.cats = [false, false, false];
         vm.showAll = BreadCrumbService.showAll;
-
+        vm.isBomPart = false;
 
         vm._resizeBreadCrumb();
 
@@ -73,13 +73,17 @@ export class BreadCrumbController {
 
             //console.log("In search page");
         } else if ($state.is('part')) {
-            vm.pageState = 'part';
-            let a = $document[0].referrer;
-            vm.searchString = SearchBarService.srchStr;
-            //vm._intializeCats();
+            if ($stateParams.type === "id") {
+                vm.pageState = 'part';
+                let a = $document[0].referrer;
+                vm.searchString = SearchBarService.srchStr;
+                //vm._intializeCats();
 
-            vm.cats = BreadCrumbService.cats;
-            $log.debug("Retained Cats :", vm.cats);
+                vm.cats = BreadCrumbService.cats;
+                $log.debug("Retained Cats :", vm.cats);
+            } else if($stateParams.type === "partnum"){
+                vm.isBomPart = true;
+            }
         }
 
 
@@ -187,7 +191,7 @@ export class BreadCrumbController {
         }
 
         console.log("SearchBarService.sort ", SearchBarService.sort);
-        let paramObj = {"from":"", "size":"", "sort":SearchBarService.sort ? SearchBarService.sort.sortType == "ASC" ? 1: 2 : ""};
+        let paramObj = { "from": "", "size": "", "sort": SearchBarService.sort ? SearchBarService.sort.sortType == "ASC" ? 1 : 2 : "" };
         $state.go("searchResults", paramObj);
         //$scope.$emit("searchLaunched");
         // vm.sortItemChanged({selectedFilters:SearchBarService.selectdeFilters, sortItem:sortObj});

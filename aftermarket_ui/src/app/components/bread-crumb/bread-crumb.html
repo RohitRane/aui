@@ -1,5 +1,5 @@
 <!--Author : Rohit Rane-->
-<div class="bread-crumb">
+<div class="bread-crumb" data-ng-if="!bc.isBomPart">
   <span data-ng-if="bc.pageState==='searchResults'" class="resultBar">
     <span ng-show="bc.showSubsetInfo(bc.totalResults,bc.resultSetLimit)">{{bc.pageStart}}-<span data-ng-if="bc.pageEnd<bc.totalResults">{{bc.pageEnd}}</span><span data-ng-if="bc.pageEnd>bc.totalResults">{{bc.totalResults}}</span> of </span> {{bc.totalResults}}
   results for<span class="bold">&nbsp;<span data-ng-if="bc.showAll" data-ng-click="bc.search()" data-ng-class="{'clickable':bc.isClickable()}">All&nbsp;:&nbsp;</span><span data-ng-repeat="cat in bc.cats track by $index"
