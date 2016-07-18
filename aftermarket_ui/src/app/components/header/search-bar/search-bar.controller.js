@@ -491,5 +491,10 @@ export class SearchBarController {
         $rootScope.$emit("realignMegaMenu");
     }
 
+    clear(){
+        let vm = this;
+        vm.search.searchString = null;
+    }
+
 
 }

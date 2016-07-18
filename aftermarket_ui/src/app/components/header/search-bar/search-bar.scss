@@ -1,5 +1,6 @@
 .search-bar {
     //margin-top: 0px;
+    //position: relative;
     margin-top: 1px;
     margin-left: 4px;
     padding:0px;
@@ -32,7 +33,8 @@
         }
     }
     .form-group .typeahead-popup.dropdown-menu {
-        //left: 163px !important;
+        left: 0px !important;
+        top: 42px !important;
     }
     .form-group .dropdown-menu li a {
         color: black;
@@ -127,5 +129,72 @@
         @media(min-width: + $i*1px) {
             width: ($i+656-1024)*1px;
         }
+    }
+
+    .close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+  outline: 0;
+  cursor: pointer;
+}
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background-color: #FA9595;
+	z-index:1;
+	right: 35px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-weight: normal;
+	font-size: 12px;
+	box-shadow: 0 0 2px #E50F0F;
+	cursor: pointer;
+}
+
+    /*#search-box:after {
+        content: "X";
+        display: block;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        background-color: #FA9595;
+        z-index:1;
+        right: 35px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        padding: 2px;
+        border-radius: 50%;
+        text-align: center;
+        color: white;
+        font-weight: normal;
+        font-size: 12px;
+        box-shadow: 0 0 2px #E50F0F;
+        cursor: pointer;
+    }*/
+
+    .cross{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        cursor:pointer;
+        font-size: 20px;
+    }
+    .srchPlace{
+        position: relative
+    }
+
+    #search-box::-ms-clear {
+        display: none;
     }
 }
