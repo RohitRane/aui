@@ -50,7 +50,7 @@ export let french = {
         FILTERALLCATEGORY: 'SEE ALL CATEGORIESF',
       },
       PARTCARD: {
-        CORRESMATCH: 'Corresponding matchF',
+        CORRESMATCH: 'InterchangeF',
         ADDTOORDERLIST: 'Add to Order ListF',
         ADD: 'AddF',
         SHOWMSG: 'Added to Order List.F',

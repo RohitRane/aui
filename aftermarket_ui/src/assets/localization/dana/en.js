@@ -209,7 +209,7 @@ export let english = {
         //------------- searchresults/partcard-----------------------//
 
         PARTCARD: {
-            CORRESMATCH: 'Corresponding match',
+            CORRESMATCH: 'Interchange',
             ADDTOORDERLIST: 'Add to Order List',
             ADD: 'Add',
             SHOWMSG: 'Added to Order List.',
