@@ -23,7 +23,7 @@ export class SearchNavigationService {
         let vm = this, {$state} = vm.DI();
         let paramObj = { "str": srchStr, 'filters': filters, 'filterObject': filterObject, from: from, 'cat1': cat1 ? cat1.id.toString() : "", "cat2": cat2 ? cat2.id.toString() : "", "cat3": cat3 ? cat3.id.toString() : "", "y": year, "mk": make, "md": model, "sort": sort };
         console.log("param obj :", paramObj);
-        $state.go("searchResults", paramObj);
+        $state.go("searchResults", paramObj,{ reload: true });
     }
 
 }
