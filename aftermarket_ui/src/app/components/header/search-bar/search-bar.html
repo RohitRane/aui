@@ -1,0 +1,25 @@
+<form class="navbar-form navbar-left search-bar" name="search-bar" role="search">
+  
+  <div class="form-group srchPlace">
+    <input type="text" id="search-box" name="search-box" class="form-control" data-ng-model="searchBar.search.searchString" 
+    typeahead-on-select="searchBar.gotoPartDetails($item, $model, $label, $event)" uib-typeahead="result as result.suggestString for result in searchBar.textTyped($viewValue)" 
+    placeholder="Search by Part Number, Product Type, Product Line, Keyword, Interchange, Year, Make, Model" typeahead-focus-first="searchBar.search.firstSelect" typeahead-popup-template-url="app/components/header/search-bar/typeahead-popup.html" typeahead-template-url="app/components/header/search-bar/typeahead.html"
+    data-ng-focus="searchBar.focus()" data-ng-blur="searchBar.blur()">    
+    <span class="fa fa-remove cross" data-ng-if="searchBar.search.searchString" data-ng-click="searchBar.clear()"></span>
+    <!--button class="close-icon" type="reset">-->
+  </div>
+  <!--<div class="form-group btn-group"><button class="close-icon" type="reset"></div>-->
+  <div class="form-group btn-group scope-selector" uib-dropdown>
+    <button id="category-dd" type="button" class="btn button-ddl-head " uib-dropdown-toggle data-ng-click="searchBar.scopeSelClicked()">
+      <p class="search_ddl_head">{{searchBar.search.searchScope.name}} <span class="caret"></span></p>
+    </button>
+    <ul uib-dropdown-menu role="menu" aria-labelledby="category-dd">
+      <li role="menuitem" data-ng-if="category.id!=0" data-ng-repeat="category in searchBar.search.categories" data-ng-click="searchBar.search.searchScope = category; searchBar.scopeSelectorChanged()" ><a href="#">{{category.name}}</a></li>
+      <li class="divider"></li>
+      <li role="menuitem" data-ng-if="category.id==0" data-ng-repeat="category in searchBar.search.categories" data-ng-click="searchBar.search.searchScope = category; searchBar.scopeSelectorChanged()" ><a href="#">{{category.name}}</a></li>
+      <!--<li role="menuitem" data-ng-click="searchBar.search.searchScope = 'All';searchBar.scopeSelectorChanged()"><a href="#">All</a></li>-->
+    </ul>
+  </div>
+  <a data-ng-click="searchBar.searchIconClick()"><button id="lens-button" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button></a>
+</form>
+

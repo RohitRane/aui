@@ -1,0 +1,3 @@
+@mixin font($pt) {
+  font-size: ($pt/72)*96;
+}
