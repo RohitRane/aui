@@ -13,7 +13,36 @@ export class SearchBarService {
             flag: false,
             category: ""
         };
+
+        this._sortAttr = [{
+            Name: "Relevance",
+            Type: "Relevance",
+            displayName: "Relevance"
+        },
+            {
+                Name: "partNumber",
+                Type: "ASC",
+                displayName: "Part Number:Asc"
+            },
+            {
+                Name: "partNumber",
+                Type: "DESC",
+                displayName: "Part Number:Desc"
+            }];
         //this._retrieveFromSession();
+    }
+
+    get sortAttr(){
+        return this._sortAttr;
+    }
+
+    set sortAttr(sAttr){
+        this._sortAttr = sAttr;
+    }
+
+    getParticularSAttr(idx){
+        idx = parseInt(idx);
+        return this._sortAttr[idx];
     }
 
     get srchStr() {
@@ -67,8 +96,8 @@ export class SearchBarService {
     }
 
     set productClass(newSrchStr) {
-            this._productClass = newSrchStr;
-            sessionStorage.productClass = angular.toJson(this._productClass);
+        this._productClass = newSrchStr;
+        sessionStorage.productClass = angular.toJson(this._productClass);
     }
 
     get productCategory() {
@@ -142,13 +171,13 @@ export class SearchBarService {
         this._autoSuggestItem = obj;
         sessionStorage.autoSuggestItem = angular.toJson(this._autoSuggestItem);
     }
-    
-    set ymmFilter(ymm){
+
+    set ymmFilter(ymm) {
         this._ymm = ymm;
         sessionStorage.ymm = angular.toJson(this._ymm);
     }
-    
-    get ymmFilter(){
+
+    get ymmFilter() {
         this._ymm = angular.fromJson(sessionStorage.ymm);
         return this._ymm;
     }

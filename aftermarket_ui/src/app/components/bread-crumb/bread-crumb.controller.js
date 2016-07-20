@@ -32,7 +32,7 @@ export class BreadCrumbController {
         }, 100);
         if ($state.is('searchResults')) {
             //debugger;
-            vm.sortItem = SearchBarService.sort ? "Part Number:" + SearchBarService.sort.sortType[0].toUpperCase() + SearchBarService.sort.sortType.slice(1).toLowerCase() : vm.sortAttributes[0].displayName;
+            vm.sortItem = $stateParams.sort ? "Part Number:" + SearchBarService.getParticularSAttr($stateParams.sort).Type[0].toUpperCase() + SearchBarService.getParticularSAttr($stateParams.sort).Type.slice(1).toLowerCase() : vm.sortAttributes[0].displayName;
             vm.pageState = 'searchResults';
             if ($stateParams.from) {
                 vm.pageStart = (Number($stateParams.from) + 1);

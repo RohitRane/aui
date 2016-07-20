@@ -1,5 +1,4 @@
-
 window.env = {
-    activeAPIBase : 'http://52.8.125.250:8080',
+    activeAPIBase : 'http://52.53.236.6',
     endPoint : '/search-service/api'
 }

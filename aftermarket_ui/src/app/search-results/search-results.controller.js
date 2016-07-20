@@ -15,7 +15,7 @@ export class SearchResultsController {
         vm.automotive_id = AftermarketConstants.skin.automotive_id;
         vm.searchString = "";
         // vm.sortAttributes = ["Relevance", "Part Number: ASC", "Part Number: DESC"];
-        vm.sortAttributes = [
+        vm.sortAttributes = SearchBarService.sortAttr; /*[
             {
                 Name: "Relevance",
                 Type: "Relevance",
@@ -31,7 +31,7 @@ export class SearchResultsController {
                 Type: "DESC",
                 displayName: "Part Number:Desc"
             }
-        ];
+        ];*/
 
         /*if(sessionStorage.refreshClickedSearch){
             SearchBarService.productLine = $stateParams.cat1? sessionStorage.productLine: 0; 
@@ -203,7 +203,7 @@ export class SearchResultsController {
         console.log("fffff in catSearch", vm.currentPage1);
 
         //dataServices.catSearch(SearchBarService.srchStr, SearchBarService.productLine.id, from, size, SearchBarService.productCategory ? SearchBarService.productCategory.id : null, payload, year, make, model, ymm, SearchBarService.productClass ? SearchBarService.productClass.id : null, SearchBarService.sort).then(function (response) {
-        dataServices.catSearch($stateParams.str, $stateParams.cat1 ? $stateParams.cat1 : null, $stateParams.from ? $stateParams.from : 0, $stateParams.size ? $stateParams.size : 10, $stateParams.cat3 ? $stateParams.cat3 : null, angular.fromJson($stateParams.filterObject), year, make, model, ymm, $stateParams.cat2 ? $stateParams.cat2 : null, SearchBarService.sort).then(function (response) {
+        dataServices.catSearch($stateParams.str, $stateParams.cat1 ? $stateParams.cat1 : null, $stateParams.from ? $stateParams.from : 0, $stateParams.size ? $stateParams.size : 10, $stateParams.cat3 ? $stateParams.cat3 : null, angular.fromJson($stateParams.filterObject), year, make, model, ymm, $stateParams.cat2 ? $stateParams.cat2 : null, $stateParams.sort?SearchBarService.getParticularSAttr($stateParams.sort):null).then(function (response) {
             $log.debug("getParts :", payload, year, make, model);
             vm.resultLoading = false;
             /*if (from === 0) {
