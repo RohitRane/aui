@@ -1,7 +1,0 @@
-<ul class="nav navbar-nav category-list">
-    <li data-ng-repeat="category in categoryMenu.categories" data-ng-if="category.id!==0" uib-popover-template="'app/components/header/menus/sub-categories/subcategories.html'" popover-is-open="category.open" data-ng-mouseenter="categoryMenu.catHover(category)" data-ng-mouseleave="categoryMenu.catLeave(category)" popover-placement="bottom">
-        <a href="" data-id={{category.link}} class="separator" data-index={{$index}} data-ng-class="{'last-item':$index===categoryMenu.categories.length-1}" style="outline:none">
-          {{category.name|uppercase}}
-      </a>
-    </li>
-</ul>

@@ -1,9 +1,0 @@
-<div class="image-zoom">
-    <div class="profile-pic col-md-12" id="img-container" data-ng-mouseleave="imgZoom.mouseleft()">
-        <img id="active-img" ng-src="http://{{imgZoom.src}}" alt="" data-ng-mouseover="imgZoom.enlarge($event)"  data-ng-mousemove="imgZoom.enlarge($event)">
-       <div id="lens" data-ng-if="imgZoom.showZoomOrNot()" data-ng-mousemove="imgZoom.enlarge($event)" data-ng-mouseover="imgZoom.enlarge($event)" data-ng-if="imgZoom.showZoom" ></div>
-    </div>
-   <div class="zoom-section col-md-4" data-ng-if="imgZoom.showZoomOrNot()">
-       <div id="zoom" data-ng-if="imgZoom.showZoom"></div>       
-   </div>
-</div>
