@@ -1,0 +1,15 @@
+.selectedFilters{
+	font-weight: bold;
+	.values{
+		font-weight: bold;
+		color: #999;
+		.delete{
+			font-weight: normal;
+		}
+		&:hover{
+			cursor: pointer;
+			text-decoration: line-through;
+			color:black;
+		}
+	}
+}

@@ -1,0 +1,701 @@
+.partDetails{
+	//st:shaifali code
+
+	.part-name-title{
+		font-size: 24px;
+		padding-bottom: 11px;
+		font-weight: 600;
+	}
+  .part-panel{
+      margin-top:20px; 
+  }
+  
+  .warranty{
+	  width: 80%;
+  }
+
+  .custom-thumbnail{
+	  width:40px;
+	  margin:auto;
+	  margin-bottom:7px;
+	  img{
+		  width: 38px;
+		  &.opaque{
+			  opacity: 0.4;
+    		  filter: alpha(opacity=40); 
+		  }
+	  }
+  }
+
+  .sales-desc{
+	  margin-top: 15px;
+	  font-size: 15px;
+	  color: #6c6c6c;
+	  font-weight: 400
+  }
+
+  .active-thumb{
+	  border:1px solid $support_color_light_one;
+  }
+
+  .inactive-thumb{
+	  border:1px solid $support_color_light_two;
+  }
+  
+  .spec-n-model{
+			margin: 0 10px 20px 10px;
+			//border: 2px solid $support_color_light_one;
+			border-radius: 2px;
+			padding: 0px;
+			.col-md-5,.col-md-7{
+				padding: 0px
+			}
+			table{
+				margin-bottom: 0px;
+				td{
+					border-right: 1px solid $support_color_light_one;
+				}
+			}
+			.col-md-7{
+				text-align: center;
+			}
+		/*	-webkit-column-count: 2; 
+    -moz-column-count: 2; 
+    column-count: 2;
+			.spec-section{
+				width: 400px;
+			}
+			.model-section{
+				img{
+					width: 500px;
+				};
+				width: 500px;
+			}
+			*/
+			
+		}
+	
+	.comp-table{
+		table{
+				margin-top: 15px;
+		}
+	}  
+	
+	.mid-sections{
+		margin-top: 20px;
+		//padding-left: 20px;
+	}
+	
+	.data-sheet{
+		margin-top: 20px;
+		.task{
+			display: inline-block;
+			margin-left: 30px;
+			position: relative;
+			&:first-of-type{
+				margin-left: 0px;
+			}
+			.fa{
+				font-size: 20px;
+				vertical-align: middle;
+				color: #87d912
+			}
+			img{
+				margin-bottom: 4px;
+			}
+		}
+	}
+	
+	.scroll-to-btns{		
+		@extend .mid-sections;
+		.btn{
+			color: $support_color_primary;
+			background-color: #fafafa;
+			border-left:1px solid #eee;
+			&:first-child{
+				border-left:0px
+			}
+		}
+		
+	}
+  
+	.add-to-order{
+		input{
+			width: 60px;
+			height: 25px;
+			text-align: center;
+		}
+		button{
+			width: 50px;
+			height: 25px;
+			text-align: center;
+			color: $color_extreme_two;
+			margin-left: 10px;
+			background: #CCC;
+			//font-size: 12px;
+			padding: 0px;
+			pointer-events: none;
+			//padding-bottom: 5px;
+		}
+
+		.activeButton{
+			width: 50px;
+			height: 25px;
+			text-align: center;
+			color: #ffffff;
+			margin-left: 10px;
+			background-color: #007cc3;
+			//font-size: 12px;
+			padding: 0px;
+			//padding-bottom: 5px;
+			pointer-events: visible;
+		}
+	}
+	
+	.top-section-row{
+		padding: 25px 15px 15px 0px;
+		label{
+			//padding-left: 20px;
+		}		
+	}
+	
+  #active-pic{
+        padding: 0px 4px !important;
+				//width:300px;
+				width: 100%;
+				//border: 1px solid #ddd;
+      }
+  .breadcrumb-section{
+  	margin-top:0px !important;
+  	margin-left: -10px;
+  	margin-right: -10px;
+  	.breadcrumb{
+  		padding:20px 20px 10px;
+  		background-color: white;
+  		border-radius: 0px;
+  		li + li:before{
+	  		content: " : ";
+	    	padding: 0 5px;
+	   	}
+  		li a{
+  			color: #000;
+  			font-size: 13px;
+  			font-weight: 600;
+  			&:hover,
+  			&:focus{
+				text-decoration :none
+  			}
+  		}
+  		li.active a{
+  			color:$support_color_primary;
+  			font-size: 13px;
+  			font-weight: 600;
+  		}
+  	}
+  }
+  .panel-default{
+  	border-color: none;
+  }
+  .panel {
+  	.panel-heading{
+  		padding:21px 22px;
+  	}
+  	.panel-body{
+  		padding:0px 15px;
+  	}
+  }
+  //en shaifali code
+  .thumbnail, .elearn{
+    border-radius: 0px;
+  }  
+  .other-images{
+    .thumbnail{
+      height: 70px;
+    }
+  }
+  
+  .tabset{
+	  margin-bottom: 30px;
+	  .nav-tabs{
+		li{
+			min-width:245px;
+			padding-right: 5px;
+			text-align: center;
+			a{
+				background: $support_color_light_one;
+				color: $color_extreme_one;	
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;		  
+			}
+			&.active, &:hover{
+					a{
+						background: $accent_color;
+						color: $color_extreme_two;					
+					}				  
+				}
+			&:last-child{
+				padding-right: 0px;
+			}
+		}
+	  }
+	  
+	  .tab-content{
+		border-bottom: 1px solid $support_color_light_one;
+		border-left: 1px solid $support_color_light_one;
+		border-right: 1px solid $support_color_light_one;
+		border-bottom-left-radius: 4px;
+		border-bottom-right-radius: 4px;
+		padding-top: 25px;
+	  }	  
+	  uib-tab-heading{
+		  font-size: 14px;
+		  font-weight: 600;
+	  }
+  }
+}
+/* shaifali code*/
+.catalog a {
+	color:$support_color_primary;
+	font-weight: 400;
+	font-size: 13px;
+	&:hover, &:focus{
+		color:$support_color_primary;
+		text-decoration: none	
+	}
+}
+.part a  {
+	color:$support_color_primary;
+	font-size: 13px;
+	font-weight: 400;
+	&:hover, &:focus{
+		color:$support_color_primary;
+		text-decoration: none		
+	}
+	
+}
+.partlist a  {
+	color:$support_color_primary;
+	font-weight: 400;
+	font-size: 13px;
+	&:hover, &:focus{
+		color:$support_color_primary;
+		text-decoration: none		
+	}
+	
+}  
+div.Warranty-Matrix a{
+	color:$support_color_primary !important;
+	font-size: 13px;
+	font-weight: 600;
+	text-decoration: none !important;
+	&:hover{
+		text-decoration: none !important;
+	}	
+}
+span.readmore a{
+		color:$support_color_primary !important;
+		font-weight: 400;
+		font-size: 13px;
+		text-decoration: none !important;
+		&:hover{
+			text-decoration: none !important;
+		}		
+}
+.viewAll a{
+	color:$support_color_primary !important;
+	font-weight: 600;
+	text-decoration: none !important;
+	font-size: 12px;
+	&:hover{
+		text-decoration: none !important;
+	}		
+}
+.Answered-by a{
+	font-weight: 400;
+	color:$support_color_primary !important;
+	text-decoration: none !important;
+	font-size: 9px;
+	&:hover{
+		text-decoration: none !important;
+	}		
+}
+// .pannel .pannel-body .row .wishlist .btn-primary{
+	
+// 	background-color:$support_color_primary !important;
+// 	}
+
+i.fa-1x{
+	font-size: 18px;
+}
+
+/* end shaifali code*/
+
+.pannel 
+.partDetails header{
+padding-bottom:10px;
+margin-bottom:10px;
+}
+
+.partDetails h4{
+padding-bottom:10px;
+}
+//where it used?
+.partDetails .reducePaddingRt{
+	padding-right:0px;
+}
+
+.partDetails .elearn span{
+	    padding-left: 1px;
+    	border-width: 5px;
+	b{
+		font-size: 13px;
+	}
+	
+}
+
+
+div.catalog:before {
+   background-image:url('/images/icon_download.jpg') !important;
+	background-repeat:no-repeat ;
+	content:"" !important;
+   display: block;
+   width: 24px;
+   height: 20px;
+}
+
+
+div.part:before {
+   background-image:url('/images/icon_play.jpg') !important;
+	background-repeat:no-repeat ;
+	content:"" !important;
+   display: block;
+   width: 24px;
+   height: 20px;
+}
+
+
+
+div.partlist:before {
+   background-image:url('/images/icon_globe.jpg') !important;
+	background-repeat:no-repeat ;
+	content:"" !important;
+   display: block;
+   width: 24px;
+   height: 20px;
+}
+
+
+div.elearn p{
+	margin:0px !important;
+}
+
+div.elearn .row div.catalog,div.part,div.partlist{
+padding-bottom:10px;
+}
+
+div.feature{
+	padding: 20px 0;
+}
+div.feature img{
+	float: left;
+	margin: 0 20px 0 0;
+	width:62px;
+	height:30px;
+}
+div.feature 
+	p{
+		margin-top: 0;
+		a{	
+			color:$support_color_primary;
+			font-size:12px;
+			font-weight: 400;
+			text-decoration: none;
+			&:hover, &:focus{
+			color:$support_color_primary;
+			text-decoration: none
+		}
+	}
+	
+}
+
+div.poster{
+	height:300px;
+	background-image:url('/images/machine_enlarged.jpg');
+	background-repeat:no-repeat;
+	background-position:right center;
+}
+// again part detail nested one and where it has used ?
+div.partDetails  div#wrap {
+   width:400px;
+   margin:0 auto;
+}
+div.partDetails   div#left_col {
+   float:left;
+   width:200px;
+}
+div.partDetails  div#right_col {
+   float:right;
+   width:200px;
+}
+
+ .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  
+  .pairCarousel label{
+		font-size:13px;
+		background-color:#eff0f1;
+		font-weight:400;
+		color:$support_color_primary;
+		position:absolute;
+		bottom:0px;
+		margin-bottom:0px;
+		padding:10px 5px;
+  }
+  	
+  .pairCarousel .thumbnail{
+		padding:0px ;
+		height:190px;
+		position:relative;
+  }
+
+  
+  //where it has used?
+  .carousal-control.left ,.carousal-control.right{
+  background-image:none !important; 
+      width: 50px;
+    height: 50px;
+    background-color: #333333;
+    top: 40%;
+
+  }
+  
+  
+    
+  .carouselNav .left ,.carouselNav .right{
+  background-image:none !important; 
+      width: 40px;
+    height: 40px;
+    background-color: #333333;
+    top: 40%;
+  }
+  
+  .carouselNav .left {
+  left:30px;
+  }
+  
+  .carouselNav .right {
+  right:7px !important;
+  }
+  //compleate
+
+ .partDetails .bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.bomDetails tr:nth-child(even) {
+    background-color: #eaeaea;
+}
+.bomDetails tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+
+.partDetails table{
+	width:100%;
+	padding:0px;
+}
+
+label.partDesc {
+	font-weight:normal;
+	font-size:13px;
+	width:100%;
+	color:$support_color_dark_two
+}
+
+label.partDetailsTabDesc {
+	padding-top:13px;
+	font-weight:bold;
+	font-size:15px;
+	width:100%;
+
+}
+
+.resetPadding {
+	padding:0px !important;
+}
+.partDetails table {
+	line-height:25px !important;
+}
+
+.partDetails table tr {
+	line-height:25px !important;
+	th{
+		font-size: 13px;
+	}
+}
+
+.partDetails table tr td{
+	padding-top:0px !important;
+	padding-bottom:0px !important;
+	padding-left: 10px;
+	font-size: 	12px;
+	margin:0px important;
+	font-weight: 600;
+	line-height:25px !important;
+	a{	
+		color:$support_color_primary !important;
+		font-size:12px !important;
+		text-decoration: none;
+		font-weight: 600;
+		&:hover,
+		&:focus{
+			color:$support_color_primary;
+			text-decoration: none
+		}
+	}
+}
+.partDetails tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.partDetails  tbody tr:nth-child(odd) {
+    background-color: #eaeaea;
+}
+
+
+
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;
+	    border-left: 1px solid #ccc;
+}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 200px; }
+
+.pannel .warranty .panel-body{
+padding:0px;
+}
+
+
+
+.warranty h5{
+	font-size:18px;
+	font-weight:bold;
+}
+.extraLeft{
+	padding:8px;
+}
+
+.section-title{
+font-size:18px;
+padding-bottom: 11px;
+font-weight:bold;
+}
+div.comment {
+padding:25px 18px 5px;
+}
+div.comment .section-title{
+	font-size:18px;
+	font-weight:bold;
+	padding-bottom: 1px;
+}
+
+.partResultsBM ul {
+	margin:0px;
+	// margin: auto;
+	padding:0px;
+	background-color:#fafafa;
+}
+
+.partResultsBM ul li{
+	display:inline-block;
+	// background-color:#fafafa;
+	line-height:25px;
+	text-align:center;
+	font-size:12x;
+	width:32%;
+	padding-left:10px;
+	border-right:1px solid #eee;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+.partResultsBM ul li a{
+	// @include font(13px);
+	// color:#34acd1;
+	color: $support_color_primary;
+    font-size: 13px;
+    font-weight: 600;
+    &:hover, &:focus{
+    	text-decoration: none;
+    	color: $support_color_primary;
+    }
+}
+
+.partResultsBM ul li:last-child {
+	border-right:none;
+}
+.part-panel{
+  	.top-bottom-gap{
+  		padding:0px 10px 11px;
+  	}
+}
+.wishlist .btn-primary{
+	// padding:5px 23px;
+	width:100%;
+	background-color:$support_color_primary; 
+	border-color:$support_color_primary;
+	font-weight: 600;
+	// @media(min-width: 1025px) {
+ //        padding:5px 55px;
+ //    }
+    &:active,&:focus,&:hover {
+		background-color:$support_color_primary; 
+		border-color:$support_color_primary;
+	}
+}
+ul.lmsHub  li{
+	font-weight: 600;
+	list-style: square;
+}
+.partDetails {
+	.panel.well {
+		padding:10px 19px;
+		border:none;
+		box-shadow: none;
+	}
+}
+.partDetails{
+	.withoutBorder{
+		.panel{
+			box-shadow: none;
+		}
+	}
+	.addTopSpacing{
+		margin-top: 50px;
+        display: none
+	}
+}
+// .partDetails{
+// 	.withoutBorder2{
+// 		.pannel.panel-default{
+// 			border-color: none;
+// 		}
+// 	}
+// }

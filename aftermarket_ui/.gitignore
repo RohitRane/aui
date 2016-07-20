@@ -1,0 +1,11 @@
+node_modules/
+bower_components/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+.vscode/
+dist/
+gulp/sprite.js
+src/assets/sprite/
+src/env/env.js
