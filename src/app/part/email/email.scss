@@ -1,0 +1,59 @@
+#sharepartPopup {
+    .modal-header {
+        padding: 15px 15px 5px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid $support_color_border;
+        
+        h4 {
+            margin-top: 2px;
+            margin-bottom: 4px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+    .bg-success {
+            background-color: $support_color_bg_success;
+        }
+    .modal-body {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        form{
+            .form-control{
+                border-radius: 0px;
+            }
+            
+            .madatoryStar{
+                color:red;
+                font-size: 12px;
+            }
+        }
+        
+    }
+    .modal-footer {
+        border-bottom-left-radius: 3px !important;
+        border-bottom-right-radius: 3px !important;
+
+    }
+    .btn {
+        color: white;
+        font-size: 12px;
+    }
+    .btn-primary {
+        border-radius: 0;
+        background-color: $support_color_primary;
+        border-color: transparent;
+        color: white;
+        padding:8px 40px;
+        &:hover {
+            border-color: transparent;
+        }
+        &:active,
+        &:focus {
+            outline: none;
+            box-shadow: none;
+            outline-offset: none;
+        }
+    }
+}
+

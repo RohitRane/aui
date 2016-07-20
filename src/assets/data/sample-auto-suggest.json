@@ -1,0 +1,164 @@
+{
+    "DanaResponse": {
+        "lineId": "1",
+        "total": 29,
+        "parts": [
+            {
+                "id": "151",
+                "name": "U-Joint Kit",
+                "sku": "SPL90X",
+                "desc": "U-Joint Kit",
+                "type": "exact",
+                "typeId": 1
+            },
+            {
+                "id": "150",
+                "name": "U-Joint Kit",
+                "sku": "SPL100-1X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "125",
+                "name": "U-Joint Kit",
+                "sku": "5001247",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "149",
+                "name": "U-Joint Kit",
+                "sku": "5-777X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "148",
+                "name": "U-Joint Kit",
+                "sku": "5-773X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "147",
+                "name": "U-Joint Kit",
+                "sku": "5-746X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "146",
+                "name": "U-Joint Kit",
+                "sku": "5-677X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "1",
+                "name": "U-Joint Kit",
+                "sku": "5-676X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "145",
+                "name": "U-Joint Kit",
+                "sku": "5-675X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "144",
+                "name": "U-Joint Kit",
+                "sku": "5-674X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "143",
+                "name": "U-Joint Kit",
+                "sku": "5-671X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "142",
+                "name": "U-Joint Kit",
+                "sku": "5-610X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "141",
+                "name": "U-Joint Kit",
+                "sku": "5-585XM",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "140",
+                "name": "U-Joint Kit",
+                "sku": "5-54X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "139",
+                "name": "U-Joint Kit",
+                "sku": "5-515X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "138",
+                "name": "U-Joint Kit",
+                "sku": "5-510X",
+                "desc": "U-Joint Kit",
+                "type": "close",
+                "typeId": 2
+            },
+            {
+                "id": "137",
+                "name": "U-Joints in Commercial Vehicles",
+                "desc": "U-Joint Kit",
+                "type": "suggestion",
+                "typeId": 3
+            },
+            {
+                "id": "136",
+                "name": "U-Joints in Industrial",
+                "desc": "U-Joint Kit",
+                "type": "suggestion",
+                "typeId": 3
+            },
+            {
+                "id": "135",
+                "name": "U-Joints in Light Vehicles",
+                "desc": "U-Joint Kit",
+                "type": "suggestion",
+                "typeId": 3
+            },
+            {
+                "id": "134",
+                "name": "U-Joint in Off Highway",
+                "desc": "U-Joint Kit",
+                "type": "suggestion",
+                "typeId": 3
+            }
+        ]
+    }
+}

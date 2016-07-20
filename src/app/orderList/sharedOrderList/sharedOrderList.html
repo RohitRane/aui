@@ -1,0 +1,57 @@
+<!-- <div class="container orderList">
+    <div class="row rowReset">
+        <div class="col-md-12 cardsSection">
+            <div class="panel panel-default resetBorder adjustPadding">
+               
+                <div class="panel panel-default elearn panelBox">
+                    <div class="panel-body resetPadding">
+                        <div class='partDetails'>
+                            {{sharedOrderlist.sharedList.uuid}}
+                            <div class="orderItems" ng-repeat="list in sharedOrderlist.sharedList.orderParts | orderBy: 'LOB'">
+                                <div class="col-md-2"><img src="assets/images/machine_pair3.jpg" /></div>
+                                <div class="col-md-8 orderitemDetail">
+                                    {{list.partNumber}}{{list.id}}
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="col-md-4 text-right">
+                                        <span>{{list.quantity}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ -->
+
+<div class="container orderList">
+    <div class="row rowReset">
+        <div class="col-md-12 cardsSection">
+            <div class="panel panel-default resetBorder adjustPadding">
+                <div class="panel panel-default elearn panelBox">
+                    <div class="panel-body resetPadding">
+                        <div class='partDetails'>
+                            <div ng-repeat="(key, value) in sharedOrderlist.sharedList.orderParts |groupBy: 'partCategory'">
+                                    {{key}} {{value.length}}parts
+                                <div class="orderItems" ng-repeat="list in value">
+                                    <div class="col-md-2"><img src="{{list.partImageUrl}}" /></div>
+                                    <div class="col-md-8 orderitemDetail">
+                                        {{list.partNumber}}{{list.id}}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="col-md-4 text-right">
+                                            <span>{{list.quantity}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
