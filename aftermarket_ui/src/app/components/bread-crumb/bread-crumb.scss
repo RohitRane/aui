@@ -1,0 +1,77 @@
+/*Author:Rohit Rane*/
+
+.bread-crumb {
+    height: 40px;
+    padding: 0px 10px;
+    background-color: $color_extreme_two;
+    margin: 0px -10px;
+    > a {
+        width: 20px;
+        float: left;
+        i {
+            float: left;
+            margin: 12px 12px 0px 0px;
+            font-size: 14px;
+            color: $accent_color;
+        }
+        &:hover {
+            i {
+                color: $accent_color;
+            }
+        }
+    }
+    .resultBar {
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            font-size: 8px !important;
+            line-height: 50px !important;
+        }
+        width: calc(100% - 216px);
+        font-size: 12px;
+        float: left;
+        line-height: 40px;
+        .bold {
+            font-weight: bold;
+            a {
+                cursor: pointer;
+            }
+        }
+    }
+    .dropdownBar {
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            line-height: 50px !important;
+        }
+    }
+    .dropdownBar {
+        width: 196px;
+        float: left;
+        line-height: 40px;
+        float: right;
+        > .btn-group {
+            float:right;
+            margin-top: 10px;
+            margin-left: 10px;
+            .btn {
+                padding: 2px 5px;
+                font-size: 12px;
+                background-color: $support_color_light_one;
+                float: right;
+            }
+        }
+        > span {
+            float: right;
+        }
+    }
+    .back-section {
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    .clickable {
+        cursor: pointer;
+        color: $accent_color;
+        &:hover {
+            color: $accent_color;
+        }
+    }
+}

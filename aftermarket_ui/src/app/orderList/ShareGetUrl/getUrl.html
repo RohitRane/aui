@@ -1,0 +1,40 @@
+<div id="getUrlPopup" class="modal-wrapper">
+    <div class="modal-header bg-success">
+        <div class="row">
+            <div class="col-sm-9">
+                <h4>OrderList&nbsp;&nbsp;{{orderId}}</h4>
+                <p>April 15, 2016</p>
+            </div>
+            <div class="col-sm-3">
+                <div class="pull-right">
+                    <h4>{{quantity}}</h4>
+                    <p>parts</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <h5 class="text-center">Once shared, orderlist will not be editable.</h5>
+        <form class="form-horizontal">
+            <h4>Your Orderlist URL</h4>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="sr-only">URL</label>
+                    <input type="url" id="shreURL" class="form-control" ng-model="shareURL" placeholder="www.danaaftermarket.com">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="getURL">
+                    <h6><span class="glyphicon glyphicon-share"></span><a href="#">Share via mail</a></h6>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-primary" type="button" ng-click="copyUrl.copySelectionText()">Copy URL</button>
+            </div>
+        </div>
+    </div>
+</div>

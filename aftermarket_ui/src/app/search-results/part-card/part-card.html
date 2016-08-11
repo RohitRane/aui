@@ -1,0 +1,81 @@
+<div class="part-card">
+  <div class="result-card">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <!--<span><img src="assets/images/icon_feature.jpg" alt="http://placehold.it/50x50"></span>-->
+        <div class="interchange-badge" ng-show="{{partCard.part.interChngPart}}"><span>
+        {{'PARTCARD.CORRESMATCH' | translate}}</span></div>
+        <div>
+          <div class="dispName">
+
+            <!-- <span><img src="assets/images/logo_spicer.jpg" alt="http://placehold.it/50x50"></span> -->
+             <span ng-show="partCard.part.attrList.length"><img class="brand-logo" src="http://{{partCard.partImage}}"></span>
+             <!--<span ng-show="!partCard.part.attrList.length"><img class="default-logo" src="/assets/images/dana-logo.png"></span>-->
+             
+            <a class="description" ng-href="{{partCard.gotoPart(partCard.part)}}"><span class="name">{{partCard.part.displayName}}</span></a>
+
+          </div>
+          <div class="cart pull-right">
+            <!--<span>$150</span>-->
+            <span>
+
+             <form name="amOrderlist">
+              <a ng-show="partCard.shwOrdrTxt"  style="font-weight:600"  ng-click="partCard.change('shwQty')">{{'PARTCARD.ADDTOORDERLIST' | translate}}
+              </a> <!--<span class="caret"></span>-->
+            <div class="shwQty" ng-show="partCard.shwQty">
+              <span><input nonegative-directive id="{{partCard.part.id}}" no-spl-char name="qty" type="number" ng-change = "partCard.checkOrderlistVal()" data-ng-model="partCard.qty" placeholder="qty" min="0" /></span>
+              <a style="font-weight:600" ng-class="{false: 'disabledButton'}[partCard.qty > 0]"  adisabled-directive="partCard.qtyNotAllowed" ng-click="partCard.change('shwMsg')">{{'PARTCARD.ADD' | translate}}</a>
+            </div>
+            <span ng-show="partCard.shwMsg">{{'PARTCARD.SHOWMSG' | translate}}</span>
+
+           <!--  <div style="color:red; margin-top:10px;font-weight: 600;" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div> -->
+
+               <!--  <div style="color:red; margin-top:10px;font-weight: 600;" class="error" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div> -->
+              <div style="font-weight: 700;" class="error text-primary" ng-show="amOrderlist.qty.$error.positive">{{'PARTCARD.VALIDMSG' | translate}}</div>
+              </form>
+            </span>
+
+            <!--<span><img src="assets/images/icon_shoppingCart.jpg"></span>-->
+          </div>
+        </div>
+      <!--   <div style="color:red; margin-top:1px;font-weight: 600;" class="error text-right" ng-show="amOrderlist.qty.$error.positive">Quantity should be positive number.</div> -->
+        <div class="hrLine"></div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-3">
+            <a href ng-href="{{partCard.gotoPart(partCard.part)}}">
+              <img class="default-pic" ng-show="partCard.part.imageUrl" ng-src="http://{{partCard.part.imageUrl}}">
+              <img ng-show="!partCard.part.imageUrl" ng-src="http://placehold.it/160x160/dbdbdb/0099CC/?text=NO+IMAGE">
+            </a>
+            <!-- <a href="/part/id/{{partCard.part.id}}"><img  ng-src="{{partCard.getImageUrl(partCard.part)}}"></a> -->
+          </div>
+          <div class="col-md-8" ng-class="partCard.part.attrList.length ? 'rghtBorder' : '' ">
+            <ul ng-show="partCard.part.attrList.length">
+              <li>{{'PARTCARD.SPECIFICATIONS' | translate}}</li>
+              <li ng-show="partCard.part.attrList.length > 5" data-ng-click="partCard.toggleSpecs()"><a>{{partCard.specToggleName}}</a></li>
+            </ul>
+            <table class="table table-striped">
+              <tr data-ng-repeat="key in partCard.part.attrList | limitTo : partCard.specLimit">
+                <td ng-class="{'bold':key == 'Brand'}">{{key}}</td>
+                <td ng-class="{'bold':key == 'Brand'}">{{partCard.part.attrs[key]}}</td>
+              </tr>
+            </table>
+          </div>
+          <!-- <div class="col-md-4">
+            <img alt="http://placehold.it/30x30" src="assets/images/Vector.png">
+            <div>
+              <p>MMS<sup>TM</sup>Hub</p>
+            </div>
+            <div>
+              <ul>
+                <li data-ng-repeat="list in partCard.part.innovation.features">{{list}}</li>
+              </ul>
+            </div>
+          </div> -->
+        </div>
+        <div class="row pull-right" ng-show="{{partCard.part.interChngPart}}"><span><b>{{'PARTCARD.CALL' | translate}}</b></span></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="advanced-search-menu">
+    <!--<ul>
+        <li data-ng-repeat="menuOption in asc.advancedMenu" ng-model="asc.activeSearch" uib-btn-radio="menuOption" ng-class="classNme in asc.advancedMenu">
+            <i data-ng-if="menuOption.name!==asc.activeSearch.name" name="{{menuOption.name}}-radio" class="fa fa-circle-o"></i>
+            <i data-ng-if="menuOption.name===asc.activeSearch.name" name="{{menuOption.name}}-radio" class="fa fa-dot-circle-o"></i>
+            <label for="{{menuOption.name}}-radio">{{menuOption.displayName}}</label>
+        </li> 
+    </ul>-->
+    <ul>
+        <li data-ng-repeat="menuOption in asc.advancedMenu" ng-class="menuOption.classNme">
+            <input id="{{menuOption.name}}" type="radio" value="{{menuOption.name}}" ng-model="asc.advancedMenu.name" ng-checked="(menuOption.name===asc.activeSearch.name)" ng-click="asc.changeAdvancedSearch($index,menuOption)"/>
+            <label for="{{menuOption.name}}">{{menuOption.displayName}}</label>
+        </li>
+    </ul>
+
+    <div class="active-search" data-ng-include="asc.activeSearch.templateUrl"></div>
+</div>

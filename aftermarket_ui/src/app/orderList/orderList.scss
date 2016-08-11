@@ -1,0 +1,140 @@
+.orderList {
+    // overflow: auto;
+    // width: 1280px;
+    .rowReset {
+        margin: 0px;
+        margin-top: 14px;
+        .adjustPadding {
+            padding: 2px 20px;
+            margin-top: 10px;
+            .panelBox {
+                border: none;
+                clear: both;
+                box-shadow: none;
+            }
+            .orderHeading {
+                h2 {
+                    float: left;
+                    font-size: 26px;
+                    span {
+                        font-size: 21px;
+                    }
+                }
+                .alignment-bottom {
+                    vertical-align: bottom;
+                    margin-top: 30px;
+                    label {
+                        font-size: 13px;
+                        font-weight: normal;
+                    }
+                }
+            }
+            .resetPadding {
+                padding: 0px !important;
+                .orderItems {
+                    border-bottom: 1px solid $support_color_border_second;
+                    overflow: auto;
+                    padding-bottom: 25px;
+                    padding-top: 25px;
+                    overflow:hidden;
+                    .col-lg-2 {
+                        width: 13%;
+                    }
+                    .orderitemDetail {
+                        color: $support_color_primary_second;
+                        font-weight: 600;
+                        font-size: 14px
+                    }
+                    span.spanRemovePart {
+                        color: black;
+                        font-size: 12px;
+                        display: block;
+                        font-weight: normal;
+                        padding-top: 10px;
+                        cursor: pointer;
+                    }
+                    .qtyeditable {
+                        width: 80%;
+                        height: 20px;
+                    }
+                    .cancel-btn {
+                        a {
+                            color: gray;
+                            font-size: 11px;
+                            font-weight: 700;
+                            &:hover,
+                            &:focus {
+                                text-decoration: none;
+                                color: gray;
+                            }
+                        }
+                    }
+                    .spanEdit {
+                        padding-left: 5px;
+                        font-size: 12px;
+                        a.disabledButton{
+                            color:red;
+                               color: #AAAAAA;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+                                 &:hover {
+                                color: #AAAAAA;
+    cursor: default;
+    pointer-events: none;
+    text-decoration: none;
+                            }
+                        }
+                        a {
+                            color: $support_color_primary;
+                            text-decoration: none;
+                            font-weight: 600;
+                            &:hover {
+                                color: $support_color_primary;
+                                text-decoration: none;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .partDetails {
+        .partHeader {
+            border-bottom: 1px solid $support_color_border_second;
+            margin-bottom: 2px;
+            h4 {
+                font-size: 16px;
+                width: 69%;
+                color: $support_color_dark_heading;
+                display: inline-block;
+            }
+            .addToCart {
+                display: inline-block;
+                padding-top: 7px;
+                margin-right: 20px;
+                margin-bottom: 10px;
+                a {
+                    font-size: 12px;
+                    font-weight: bold;
+                }
+                .btn-primary {
+                    border-radius: 0;
+                    background-color: $support_color_primary;
+                    border-color: transparent;
+                    color: white;
+                    &:hover {
+                        border-color: transparent;
+                    }
+                    &:active,
+                    &:focus {
+                        outline: none;
+                        box-shadow: none;
+                        outline-offset: none;
+                    }
+                }
+            }
+        }
+    }
+}

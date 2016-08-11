@@ -1,0 +1,29 @@
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{'PART.INTERCHANGES_TABLE.COL1' | translate}}</th>
+                <th>{{'PART.INTERCHANGES_TABLE.COL2' | translate}}</th> 
+                <th>{{'PART.INTERCHANGES_TABLE.COL6' | translate}}</th>               
+                <th>{{'PART.INTERCHANGES_TABLE.COL4' | translate}}</th>
+                <th>{{'PART.INTERCHANGES_TABLE.COL5' | translate}}</th>
+                <!--<th>{{'PART.INTERCHANGES_TABLE.COL3' | translate}}</th>-->
+                <!--<th>{{'PART.INTERCHANGES_TABLE.COL4' | translate}}</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="intChng in part.partData.interchanges">
+                <td data-ng-bind="intChng.name"></td>                
+                <td data-ng-bind="intChng.partNumber"></td>
+                <td data-ng-bind="part.partData.categories[2].name"></td>
+                <!--<td>
+                    <span data-ng-if="intChng.interChgComments==='Supersession'">{{'PART.INTERCHANGES_TABLE.SUPERSEDED' | translate}}</span>
+                </td>-->                
+                <td data-ng-bind="part.partData.attrs.Brand"></td>
+                <td data-ng-bind="part.partData.partNumber"></td>
+                <!--<td data-ng-bind="intChng.footNotes"></td>-->
+            </tr>
+        </tbody>
+    </table>
+    <img data-ng-hide="part.hideForNow" src="assets/images/part-details/machine_exploded.jpg" class="img-responsive" />
+</div>

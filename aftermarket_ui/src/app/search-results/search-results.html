@@ -1,0 +1,80 @@
+<div style="background-color:white;">
+
+
+    <bread-crumb ng-show="srchRes.results.parts.length" result-set-limit="{{srchRes.resultSetLimit}}" total-results="{{srchRes.results.totalResults}}" result-length="{{srchRes.results.parts.length}}" sel-main-category="{{srchRes.cat1}}" search-string="{{srchRes.searchString}}" sort-attributes="srchRes.sortAttributes" sort-item-changed="srchRes.getParts(0,10,selectedFilters,sort)"></bread-crumb>
+    <!--{{srchRes.currentPage2}}-->
+    <div class="row search-results">
+        <div class="col-md-2 filter">
+            <!--data-ng-class="{'affix-filters':srchRes.stickyAd === true}"-->
+            <filter-directive ng-show="srchRes.results.parts.length" ng-if="srchRes.filters" category="srchRes.category" list="srchRes.filters" total-count="srchRes.results.totalResults" selected-items-changed="srchRes.getParts(0,10,selectedItems)"></filter-directive>
+        </div>
+        <div class="col-md-8">
+            <ymm-directive ng-if="srchRes.showYMMFlag && srchRes.results.parts.length" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>
+            <div class="row status-results" ng-show="srchRes.isICSRes">
+                <p data-ng-if="srchRes.results.totalResults">Showing <b>{{srchRes.results.totalResults}}</b> match for interchange part number <b>"{{srchRes.partNumber}}"</b></p>
+            </div>
+            <div class="row clr-filters" data-ng-if="srchRes.results.totalResults">
+                <div class="col-md-10">
+                    <ul>
+                        <div style="display:inline" data-ng-repeat="filtr in srchRes.appliedFilters">
+                            <li data-ng-repeat="val in filtr.values">
+                                <span class="label label-default">
+                <span data-ng-bind="filtr.name"></span>&nbsp;:&nbsp;<span data-ng-bind="val"></span>
+                                <img src="assets/images/icon-cross-google-search-bar.png" alt="" data-ng-click="srchRes.clearFilter($index, $parent.$index)">
+                                </span>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+                <div class="col-md-2 pull-right">
+                    <span class="label label-default" data-ng-if="srchRes.appliedFilters.length">
+            <span>Clear All</span>
+                    <img src="assets/images/icon-cross-google-search-bar.png" alt="" data-ng-click="srchRes.clearFilter()">
+                    </span>
+                </div>
+            </div>
+            <!--<ymm-directive ng-if="srchRes.showYMMFlag && srchRes.results.parts.length" ymm-search="srchRes.getParts(0,10,selectedFilters, null, null, null,ymm)"></ymm-directive>-->
+            <!-- <selected-filter></selected-filter> -->
+            <div ng-show="srchRes.results.totalResults">
+                <!--<h5>Related : <a>{{srchRes.searchString}}</a></h5>-->
+                <h5></h5>
+                <part-card-directive data-ng-repeat="part in srchRes.results.parts track by $index" part="part"></part-card-directive>
+                <div class="row text-center" data-ng-show="srchRes.results.totalResults > srchRes.resultStartIndex+srchRes.resultSetLimit && srchRes.results.totalResults > srchRes.resultSetLimit && srchRes.results.parts.length" ">
+          <!-- <button class="btn btn-default load-more " data-ng-click="srchRes.loadMore() ">Load More ...</button> -->
+          <uib-pagination total-items="srchRes.results.totalResults " ng-change="intializePage " ng-model="srchRes.currentPage1 " max-size="10 "
+        class="pagination-sm " boundary-links="true " rotate="false " ng-click="srchRes.pageChanged() " previous-text="&lsaquo; "
+        next-text="&rsaquo; "></uib-pagination>
+        </div>
+      </div>
+      <div class="no-results " ng-if="!(srchRes.resultLoading || srchRes.results.totalResults) ">
+        <p>Your Search for "<span class="bold">{{srchRes.searchString}}</span>" {{'SEARCHRESULT.ZERORESULT' | translate}}</br>{{'SEARCHRESULT.REDEFINEEXPLORE' | translate }}
+                    </p>
+                    <!-- <ng-clude='' ng-show="all">
+        <ng-include=''  ng-show="otrher">
+         -->
+                </div>
+                <!-- <div ng-show="!srchRes.results.parts.length" ng-include="'app/search-results/null-search/other.html'"></div> -->
+                <other-result ng-if="!srchRes.results.parts.length"></other-result>
+
+            </div>
+            <div class="col-md-2 parts" id="ad-section" data-ng-class="{'affix-ads':srchRes.stickyAd === true}">
+                <!--<div class="part1 ">
+            <img src="http://placehold.it/100x100 ">
+            <p><span>THE PREMIUM CHOICE FOR COMMERCIAL VECHILE.</span></p>
+        </div>
+        <div class="part2 ">
+            <div class="media ">
+                <div class="media-left ">
+                    <a href="# ">
+                        <img class="media-object " src="http://placehold.it/30x30 " alt="... ">
+                    </a>
+                </div>
+                <div class="media-body ">
+                    <p class="media-heading ">THE PREMIUM CHOICE FOR COMMERCIAL VECHILE</p>
+                </div>
+            </div>
+        </div>-->
+                <img src="assets/images/Commercial.png">
+            </div>
+        </div>
+    </div>

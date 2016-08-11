@@ -1,0 +1,49 @@
+<div>
+    <div class="ymmFilterInputs row">
+        <div class="col-md-12 pull-right">
+            <i class="fa fa-filter" aria-hidden="true"></i>
+            <input type="text" placeholder="year" ng-model="part.comptblFilter.year" ng-change="part._createCompatibilityTab()">
+            <input type="text" placeholder="make" ng-model="part.comptblFilter.make" ng-change="part._createCompatibilityTab()">
+            <input type="text" placeholder="model" ng-model="part.comptblFilter.model" ng-change="part._createCompatibilityTab()">
+        </div>
+    </div>
+    <div data-ng-class="part.ymmCompatibilityTab2.length!==0?'col-md-6':'col-md-12'">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'COMPATIBILITY.YEAR' | translate}}</th>
+                    <th>{{ 'COMPATIBILITY.MAKE' | translate}}</th>
+                    <th>{{ 'COMPATIBILITY.MODEL' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="ymm in part.ymmCompatibilityTab1.slice((part.partData.apps.currentPage-1)*(part.partData.apps.pageLength-1),part.partData.apps.currentPage*(part.partData.apps.pageLength-1))">
+                    <td data-ng-bind="ymm.year"></td>
+                    <td data-ng-bind="ymm.make"></td>
+                    <td data-ng-bind="ymm.model"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6" data-ng-if="part.ymmCompatibilityTab2.length!==0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ 'COMPATIBILITY.YEAR' | translate}}</th>
+                    <th>{{ 'COMPATIBILITY.MAKE' | translate}}</th>
+                    <th>{{ 'COMPATIBILITY.MODEL' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="ymm in part.ymmCompatibilityTab2.slice((part.partData.apps.currentPage-1)*(part.partData.apps.pageLength-1),part.partData.apps.currentPage*(part.partData.apps.pageLength-1))">
+                    <td data-ng-bind="ymm.year"></td>
+                    <td data-ng-bind="ymm.make"></td>
+                    <td data-ng-bind="ymm.model"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 text-center">
+        <uib-pagination data-ng-if="part.partData.apps.showPagination" total-items="part.partData.apps.totalPages" ng-model="part.partData.apps.currentPage" max-size="part.partData.apps.maxSize" class="pagination-sm" boundary-links="true" rotate="false" ng-change="part.partData.apps.pageChanged()" previous-text="&lsaquo;" next-text="&rsaquo;"></uib-pagination>
+    </div>
+</div>

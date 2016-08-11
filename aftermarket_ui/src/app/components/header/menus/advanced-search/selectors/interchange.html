@@ -1,0 +1,11 @@
+<form class="interchange-search" role="form" ng-submit="asc.interChange.submit(interchangeSearchForm.$valid,interchangeSearchText)" name="interchangeSearchForm" novalidate>
+    <div class="interchange-row">
+        <div class="interchange-clm">
+            <input type="text" name="interchangeSearchText" ng-model="interchangeSearchText" placeholder="Type interchange part number" class="form-control input-sm" id="interchangeSearchText" required />
+        </div>
+        <div class="interchange-clm">
+            <input type="submit" value="Go" class="btn btn-primary btn-sm" name="interchangeSearchSubmit" ng-class="interchangeSearchForm.$invalid?'disabled':''"/>
+        </div>
+    </div>
+</form>
+<p class="interchangeSearchFormMsg">{{asc.interChange.errMsg}}</p>

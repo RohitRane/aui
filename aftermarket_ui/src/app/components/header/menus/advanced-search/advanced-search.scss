@@ -1,0 +1,86 @@
+.advanced-search-menu {
+    display: block;
+    float: left;
+    width: 100%;
+    ul {
+        display: inline;
+        float: left;
+        margin: 0px;
+        padding: 0px;
+        border-right:$advanced_search_bar_color solid 1px;
+        margin-top: -2px;
+        width: 370px;
+        li {
+            display: inline;
+            text-decoration: none;
+            margin: 9px;
+            float: left;
+            color: #999999;
+            font-size: 12px;
+            cursor: pointer;
+            input {
+                font-size: 16px;
+                float: left;
+                cursor: pointer;
+                &:focus {
+                    outline: 0;
+                }
+            }
+            label {
+                float: left;
+                margin-left: 5px;
+                margin-top: 2px;
+                cursor: pointer;
+            }
+        }
+        .active {
+            color: #383838;
+        }
+    }
+    .active-search {
+        display: inline;
+        width: calc(100% - 370px);
+        float: left;
+        .interchangeSearchFormMsg {
+            margin: 10px;
+            color: #f00;
+            float: left;
+        }
+        .interchange-search {
+            float: left;
+            .interchange-row {
+                float: left;
+                margin-left: 10px;
+                .interchange-clm {
+                    float: left;
+                    margin: 3px;
+                    &:nth-child(1) {
+                        width: 300px;
+                    }
+                    input {
+                        font-size: 12px;
+                        //text-align: left;
+                        border-radius: 3px;
+                    }
+                    .disabled {
+                        border: #acacac solid 1px;
+                        background: transparent;
+                        color: #acacac;
+                    }
+                    /*#interchangeSearchText::-webkit-input-placeholder {
+                        text-align: left;
+                    }
+                    #interchangeSearchText:-moz-placeholder {
+                        text-align: left;
+                    }
+                    #interchangeSearchText::-moz-placeholder {
+                        text-align: left;
+                    }
+                    #interchangeSearchText:-ms-input-placeholder {
+                        text-align: left;
+                    }*/
+                }
+            }
+        }
+    }
+}
